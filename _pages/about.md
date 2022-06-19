@@ -8,7 +8,7 @@ redirect_from:
   - /about.html
 ---
 
-======
+
 I’m a lecturer in computational mathematics at the [School of Mathematics and Statistics](https://www.st-andrews.ac.uk/mathematics-statistics/) at the [University of St Andrews](www.st-andrews.ac.uk)
 
 My research interests are in fluid dynamics, in particular in turbulent flows, please see some the research pages above for details.
