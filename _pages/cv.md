@@ -9,33 +9,37 @@ redirect_from:
 
 {% include base_path %}
 
+Grants
+======
+EPSRC New Investigator Award “Stabilisation of Exact Coherent Structures in Fluid Turbulence” EP/S037055 £208,587. Start date: 01/05/2020
+
 Education
 ======
-* B.S. in GitHub, GitHub University, 2012
-* M.S. in Jekyll, GitHub University, 2014
-* Ph.D in Version Control Theory, GitHub University, 2018 (expected)
+* MMath in Applied Mathematics, University of St Andrews, 2006
+* MSc in Mathematical & Numerical Modelling of the Atmosphere & Oceans, Reading University, 2007
+* Ph.D in Vortex Dynamics, University of St Andrews, 2012
 
 Work experience
 ======
-* Summer 2015: Research Assistant
-  * Github University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
+* Sept 2017-May 2022: Lecturer in Applied Mathematics
+  * Keele University
+  * Education & Research
 
-* Fall 2015: Research Assistant
-  * Github University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
+* Oct 2015-Aug 2017: PDRA
+  * University of Cambridge
+  * MUST Programme Grant
+  * Supervisor: Professor C.P. Caulfield
+
+* Oct 2013-Oct 2015: PDRA
+  * University College Dublin
+  * Genesis & Development of Extreme Events
+  * Supervisor: Dr Miguel Bustamante
+
+* April 2012-Oct 2013: PDRA
+  * University of Bristol
+  * Periodic orbits as a basis for fluid turbulence
+  * Supervisor: Professor Rich Kerswell
   
-Skills
-======
-* Skill 1
-* Skill 2
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
-* Skill 3
-
 Publications
 ======
   <ul>{% for post in site.publications %}
@@ -56,4 +60,8 @@ Teaching
   
 Service and leadership
 ======
-* Currently signed in to 43 different slack teams
+
+* Director of Recruitment & Marketing and Admissions Tutor for Mathematics (Keele 2019-2022).
+* Member of extended School Senior Management Team, Mathematics Courses Committee and Athena SWAN steering committee. (Keele)
+* Reviewer for EPSRC, Journal of Fluid Mechanics, Physics of Fluids, Fluid Dynamics Research & EJM B/Fluids.
+

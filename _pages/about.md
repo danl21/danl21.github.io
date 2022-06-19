@@ -27,3 +27,15 @@ From April 2012 to October 2013 I worked at the [School of Mathematics](http://w
 
 I completed my PhD here in the [Vortex Dynamics group](http://www-vortex.mcs.st-and.ac.uk) under the supervision of [David Dritschel](http://www-vortex.mcs.st-and.ac.uk/~dgd) working on helical vortex equilibria and and adaptive vortex filament approach to the 3D Euler equations. 
 
+Contact
+=======
+
+Email: dl21 'at' st-andrews.ac.uk
+
+Office 313
+School of Mathematics & Statistics
+University of St Andrews
+North Haugh
+St Andrews
+Fife
+KY16 9SS
