@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "Personal webpage for Dan Lucas"
+title: "Welcome"
 excerpt: "About me"
 author_profile: true
 redirect_from: 
@@ -8,11 +8,10 @@ redirect_from:
   - /about.html
 ---
 
-Welcome
 ======
 I’m a lecturer in computational mathematics at the [School of Mathematics and Statistics](https://www.st-andrews.ac.uk/mathematics-statistics/) at the [University of St Andrews](www.st-andrews.ac.uk)
 
-My research interests are in fluid dynamics, in particular in turbulent flows, please see some of the pages above for details.
+My research interests are in fluid dynamics, in particular in turbulent flows, please see some the research pages above for details.
 
 About
 ======
