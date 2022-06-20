@@ -16,7 +16,7 @@ My research interests are in fluid dynamics, in particular in turbulent flows, p
 About
 ======
 
-Prior to joining St Andrews I was a lecturer in applied mathematics at [the School of Computing and Mathematics](https://www.keele.ac.uk/scm) at [Keele University](www.keele.ac.uk)
+Prior to joining St Andrews I was a lecturer in applied mathematics at [the School of Computing and Mathematics](https://www.keele.ac.uk/scm) at [Keele University](www.keele.ac.uk)
  between September 2017 and May 2022.
 
 Before Keele I was a postdoctoral researcher working at [DAMTP](http://www.damtp.cam.ac.uk) in Cambridge as part of the Mathematical Underpinnings of Stratified Turbulence [(MUST)](http://www.damtp.cam.ac.uk/research/env/must) project working mainly with [Colm Caulfield](http://www.damtp.cam.ac.uk/people/c.p.caulfield/).
@@ -32,10 +32,10 @@ Contact
 
 Email: dl21 'at' st-andrews.ac.uk
 
-Office 313
-School of Mathematics & Statistics
-University of St Andrews
-North Haugh
-St Andrews
-Fife
-KY16 9SS
+Office 313  
+School of Mathematics & Statistics  
+University of St Andrews  
+North Haugh  
+St Andrews  
+Fife  
+KY16 9SS  
