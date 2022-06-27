@@ -27,7 +27,7 @@ From October 2013 to October 2015 I was a postdoc in the [School of Mathematical
 
 From April 2012 to October 2013 I worked at the [School of Mathematics](http://www.maths.bris.ac.uk/) at the [University of Bristol](http://www.bris.ac.uk/) on an EPSRC funded study into [periodic orbits as a basis for fluid turbulence](http://www.maths.bris.ac.uk/dynamic/show_funded_project/index.php?project_id=85) working with [Rich Kerswell FRS](https://www.damtp.cam.ac.uk/user/rrk26/).
 
-I completed my PhD here in the [Vortex Dynamics group](http://www-vortex.mcs.st-and.ac.uk) under the supervision of [David Dritschel](http://www-vortex.mcs.st-and.ac.uk/~dgd) working on helical vortex equilibria and and adaptive vortex filament approach to the 3D Euler equations. 
+I completed my PhD here in the [Vortex Dynamics group](http://www-vortex.mcs.st-and.ac.uk) under the supervision of [David Dritschel](http://www-vortex.mcs.st-and.ac.uk/~dgd) working on helical vortex equilibria and an adaptive vortex filament approach to the 3D Euler equations. 
 
 Contact
 =======
