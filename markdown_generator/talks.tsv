@@ -1,5 +1,35 @@
-title	type	url_slug	venue	date	location	talk_url	description
-Talk 1 on Relevant Topic in Your Field	Talk	talk-1	UC San Francisco, Department of Testing	2012-03-01	San Francisco, California		This is a description of your talk, which is a markdown files that can be all markdown-ified like any other post. Yay markdown!
-Tutorial 1 on Relevant Topic in Your Field	Tutorial	tutorial-1	UC-Berkeley Institute for Testing Science	2013-03-01	Berkeley CA, USA	http://exampleurl.com	This is a description of your tutorial, note the different field in type. This is a markdown files that can be all markdown-ified like any other post. Yay markdown!
-Talk 2 on Relevant Topic in Your Field	Talk	talk-2	London School of Testing	2014-02-01	London, UK	http://example2.com	This is a description of your talk, which is a markdown files that can be all markdown-ified like any other post. Yay markdown!
-Conference Proceeding talk 3 on Relevant Topic in Your Field	Conference proceedings talk	talk-3	Testing Institute of America 2014 Annual Conference	2014-03-01	Los Angeles, CA		This is a description of your conference proceedings talk, note the different field in type. You can put anything in this field.
+title	type	url_slug	venue	date	location	talk_url	description	
+"Stabilisation of exact coherent structures using time-delayed feedback in 2D turbulence 
+"	Talk	Talk21	"Numerical Analysis Seminar, North Carolina State University 
+"	2021-10-19	Online			
+"Stabilisation of exact coherent structures using time-delayed feedback in 2D turbulence 
+"	Talk	Talk20	"Shear flow transition and turbulence seminar
+"	2021-07-23	Online			
+"Stabilisation of exact coherent structures using time-delayed feedback in 2D turbulence 
+"	Talk	Talk19	Australasian fluid mechanics seminar series	2020-11-25	Online	https://www.youtube.com/watch?v=CeQWeZ7vNzU		
+"Stabilisation of exact coherent structures using time-delayed feedback in 2D turbulence 
+"	Talk	Talk18	"Physical applied mathematics seminar, University of Manchester"	2020-11-11	Online			
+"Layers, localisation, and relaminarisation in horizontally shearing stratified turbulence 
+"	Conference talk	Talk17	"17th European Turbulence Conference, Turin"	2019-07-03	"Turin, Italy"	http://www.etc17.it/		
+"Layers, localisation, and relaminarisation in horizontally shearing stratified turbulence 
+"	Talk	Talk16	"Fluids & Materials Seminar, University of Bristol"	2019-05-02	"Bristol, UK"			
+"Layers, localisation, and relaminarisation in horizontally shearing stratified turbulence 
+"	Talk	Talk15	"Aerodynamics & Flight Mechanics Group Seminar, University of Southampton"	2019-05-08	"Southampton, UK"			
+"Layers, localisation, and relaminarisation in horizontally shearing stratified turbulence 
+"	Talk	Talk14	"Applied Mathematics Seminar, Coventry University"	2018-11-07	"Coventry, UK"			
+"Layers, localisation, and relaminarisation in horizontally shearing stratified turbulence 
+"	Talk	Talk13	Woods Hole Geophysical Fluid Dynamics Summer Programme	2018-07-03	"Woods Hole, MA, USA"	https://www.whoi.edu/gfd/		
+Layers & mixing in stratified turbulence; a dynamical systems perspective	Talk	Talk12	"Fluids & MHD Seminar, University of Leeds"	2018-05-24	"Leeds, UK"			
+Layers & mixing in stratified turbulence; a dynamical systems perspective	Talk	Talk11	"Fluids Seminar, School of Mathematics, Imperial College "	2018-02-09	"London, UK"			
+Layers & mixing in stratified turbulence; a dynamical systems perspective	Talk	Talk10	"Applied Mathematics Colloquium, University of Sheffield"	2018-07-02	"Sheffield, UK"			
+Irreversible mixing by unstable periodic orbits in stratified turbulence	Conference talk	Talk9	"16th European Turbulence Conference, KTH, Stockholm"	2017-08-21	"Stockholm, Sweden"	http://www.etc16.se/		
+Exact coherent structures driving layer formation in stratified turbulence	Conference talk	Talk8	69th Annual Meeting of the American Physical Society Division of Fluid Dynamics	2016-11-20	"Portland, OR, USA"	http://apsdfd2016pdx.org/		
+Exact coherent structures driving layer formation in stratified turbulence	Talk	Talk7	"Applied Mathematics Seminar, Loughborough University"	2016-10-12	"Loughborough, UK"			
+Unstable periodic orbits and sustaining processes in body-forced turbulence	Conference talk	Talk6	"France-Japan shear flow workshop, ESPCI"	2016-03-02	"Paris, France"			
+Assessing late-time singular behaviour in symmetry-plane models of 3D Euler flow	Conference talk	Talk5	"15th European Turbulence Conference, Delft"	2015-08-26	"Delft, Netherlands"			
+Numerical simulation of agglomeration and transport of drilling-generated particles in directional oil wells	Workshop	Talk4	"Adwell open seminar, International Research Institute Stavanger"	2014-12-09	"Stavanger, Norway"			
+Robust energy transfer mechanism via precession resonance in nonlinear wave systems	Conference talk	Talk3	67th Annual Meeting of the American Physical Society Division of Fluid Dynamics	2014-11-26	"San Francisco, USA"	http://apsdfd2014.stanford.edu/		
+"Recurrent flows embedded in 2D turbulence 
+"	Talk	Talk2	"Applied Mathematics Seminar, University of Glasgow"	2015-05-21	"Glasgow, UK"			
+"Recurrent flows embedded in 2D turbulence 
+"	Talk	Talk1	"MACSI Seminar, University of Limerick"	2014-03-25	Limeri			
