@@ -8,6 +8,8 @@ date: 2022-09-12
 location: "St Andrews, UK"
 ---
 
+In semester 1 I will be teaching on [MT2000 Computing Workshop](https://www.st-andrews.ac.uk/mathematics-statistics/students/ug/orientation-week/#:~:text=for%20students%20taking-,2000,-%2Dlevel%20modules%202022) and [MT1001 Introductory Mathematics](https://www.st-andrews.ac.uk/subjects/modules/catalogue/?code=MT1001&academic_year=2022/3).
+
 [MT2000 Computing Workshop](https://www.st-andrews.ac.uk/mathematics-statistics/students/ug/orientation-week/#:~:text=for%20students%20taking-,2000,-%2Dlevel%20modules%202022)
 ======
 This is an introductory workshop to teach Python to undergraduate mathematicians. We use [jupyter](https://jupyter.org/) notebooks in the module and deliver it in *flipped* mode.
