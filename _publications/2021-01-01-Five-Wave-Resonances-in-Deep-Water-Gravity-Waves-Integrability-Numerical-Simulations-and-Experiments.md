@@ -10,8 +10,8 @@ citation: ' Dan Lucas,  Marc Perlin,  Dian-Yong Liu,  Shane Walsh,  Rossen Ivano
 [Access paper here](https://www.mdpi.com/2311-5521/6/6/205){:target="_blank"}
 
 
-![Colliding wave packets](/images/waterwave.mp4){loop=""}
+![Colliding wave packets](\/images/waterwave.mp4){loop=""}
 
 <video width="320" height="240" controls>
-  <source src="/images/waterwave.mp4" type="video/mp4">
+  <source src="\/images/waterwave.mp4" type="video/mp4">
 </video>
