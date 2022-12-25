@@ -13,5 +13,5 @@ citation: ' Dan Lucas,  Marc Perlin,  Dian-Yong Liu,  Shane Walsh,  Rossen Ivano
 ![Colliding wave packets](\/images/waterwave.mp4){loop=""}
 
 <video width="320" height="240" controls>
-  <source src="\/images/waterwave.mp4" type="video/mp4">
+  <source src="waterwave.mp4" type="video/mp4">
 </video>
