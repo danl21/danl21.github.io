@@ -1,0 +1,910 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Introduction to Computational Thinking &#8212; MT3510 Introduction to Mathematical Computing</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Interactivity" href="2Interactivity.html" />
+    <link rel="prev" title="Chapter 2: Topics in Computational Mathematics" href="0intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">MT3510 Introduction to Mathematical Computing</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to MT3510
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../diary.html">
+   Module diary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../generic-guidance-23.html">
+   Coursework submission guidance
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../1_IntroNotebooks/0intro.html">
+   Chapter 1: The Fundamentals
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/1%20Python%20and%20Jupyter%20Notebooks%20Basics.html">
+     Python &amp; Jupyter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/2%20Variables.html">
+     Variables
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/3%20Modules%20and%20Numpy.html">
+     Modules and numpy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/4%20Errors.html">
+     Errors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/5%20Printing%20and%20Strings.html">
+     Printing to the screen
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/6%20For%20Loops.html">
+     For loops
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/7%20Nested%20For%20Loops.html">
+     Nested
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       for
+      </span>
+     </code>
+     loops
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/8%20Functions.html">
+     Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/9%20Conditionals.html">
+     Conditionals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/10%20While%20Loops.html">
+     While loops
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/11%20Lists%20and%20Tuples.html">
+     Lists
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/12%20Arrays.html">
+     Arrays
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/13%20Slicing.html">
+     Slicing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/14%20Floating%20Point%20Numbers.html">
+     Floating point numbers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/15%20Sets%20and%20Dicts.html">
+     Sets and Dicts
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/16%20Types.html">
+     Types
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/17%20Input%20and%20Files.html">
+     Input and files
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/18%20Plotting.html">
+     Matplotlib
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/19%20Markdown%20and%20LaTeX.html">
+     Markdown
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="0intro.html">
+   Chapter 2: Topics in Computational Mathematics
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Introduction to Computational Thinking
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2Interactivity.html">
+     Interactivity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="3Sympy.html">
+     SymPy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="4Computational_Complexity.html">
+     Introduction to Computational Complexity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="5GoodPractise1_Efficiency.html">
+     Good practise in Python: Part 1 Efficiency
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="6ComputationalGeometry.html">
+     Computational Geometry
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="7GoodPractise2_Usability.html">
+     Good practise in Python Part 2: Usability &amp; Style
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../3_AppliedNotebooks/0intro.html">
+   Chapter 3 Applied Mathematics: Interpolation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3_AppliedNotebooks/Interpolation_Part1_Linear.html">
+     Interpolation Part 1: Linear Interpolation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3_AppliedNotebooks/Interpolation_Part2_Polynomial.html">
+     Interpolation Part 2: Polynomial interpolation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3_AppliedNotebooks/Interpolation_Part3_PiecewisePolynomial.html">
+     Interpolation Part 3: Piecewise polynomial interpolation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3_AppliedNotebooks/Interpolation_Part4_CubicSpline.html">
+     Interpolation Part 4: Spline interpolation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../4_PureNotebooks/0intro.html">
+   Chapter 4 Pure Mathematics: Graph Theory
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../5_StatsNotebooks/0intro.html">
+   Chapter 5 Statistics:
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/2_CoreNotebooks/1Computational_Thinking.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/2_CoreNotebooks/1Computational_Thinking.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#when-to-compute">
+   When to compute?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-to-compute">
+   How to compute?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#abstraction">
+     Abstraction
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pseudocode">
+     Pseudocode
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-did-we-compute">
+   What did we compute??
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#debugging">
+     Debugging
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example">
+     Example
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#remember">
+   Remember:
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Introduction to Computational Thinking</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#when-to-compute">
+   When to compute?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-to-compute">
+   How to compute?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#abstraction">
+     Abstraction
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pseudocode">
+     Pseudocode
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-did-we-compute">
+   What did we compute??
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#debugging">
+     Debugging
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example">
+     Example
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#remember">
+   Remember:
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-computational-thinking">
+<h1>Introduction to Computational Thinking<a class="headerlink" href="#introduction-to-computational-thinking" title="Permalink to this headline">#</a></h1>
+<p>In this notebook we will discuss the <strong>process</strong> of solving mathematical problems aided by computation. This process is often referred to as <a class="reference external" href="https://en.wikipedia.org/wiki/Computational_thinking"><em>computational thinking</em></a> and is something we will be doing quite a lot during the course of this module.</p>
+<section id="when-to-compute">
+<h2>When to compute?<a class="headerlink" href="#when-to-compute" title="Permalink to this headline">#</a></h2>
+<p>Our first step, when beginning to tackle a problem, is to decide if computation is the best approach or a helpful tactic. We are typically hoping to use computation to take some of the leg-work out of an otherwise lengthy, complex or difficult procedure.</p>
+<p>Consider the definite integral,</p>
+<div class="math notranslate nohighlight">
+\[ 
+\int_a^bf(x)dx, 
+\]</div>
+<p>in the case where <span class="math notranslate nohighlight">\(f(x)\)</span> is not easily integrated directly, for instance <span class="math notranslate nohighlight">\(f(x)=\frac{1}{\ln(x)}.\)</span></p>
+<p>We might resort to <a class="reference external" href="https://openstax.org/books/calculus-volume-2/pages/a-table-of-integrals">textbooks</a> in the first instance to check whether we are simply unaware of the required technique or result. We might then try an internet search; perhaps if we’re smart we might use a tool like <a class="reference external" href="https://www.wolframalpha.com/">Wolfram Alpha</a> to quickly find out about the integral. In some respects this is the beginning of our computaional thinking!</p>
+<p>The first step in our process might be</p>
+<ul class="simple">
+<li><p>What is the problem and can computing help?</p></li>
+</ul>
+</section>
+<section id="how-to-compute">
+<h2>How to compute?<a class="headerlink" href="#how-to-compute" title="Permalink to this headline">#</a></h2>
+<p>Perhaps a simple search on Wolfram Alpha will give us enough information to solve our problem, however, having found out that this integral has no simple closed-form solution we might now wish to have our own method to compute its value, rather than relying on the <a class="reference external" href="https://en.wikipedia.org/wiki/Black_box">black-box</a> of a software package. In this case we can make use of well known <a class="reference external" href="https://link-springer-com.ezproxy.st-andrews.ac.uk/chapter/10.1007/978-1-4842-4246-9_8">numerical approximations</a> to approximate the integral by the composite midpoint rectangle rule, i.e.</p>
+<div class="math notranslate nohighlight">
+\[
+\int_a^bf(x)dx \approx h\sum_{i=0}^{N-1}f\left(\frac{x_i+x_{i+1}}{2}\right).
+\]</div>
+<p>It is perfectly possible to perform this midpoint rule calculation by hand, however it is rather onerous, especially if we want to take large <span class="math notranslate nohighlight">\(N\)</span> and obtain an accurate result. So, having a bit of Python behind us, we can easily compute this sum <em>automatically</em> for various choices of <span class="math notranslate nohighlight">\(N,\,a,\,b\)</span> or even a different <span class="math notranslate nohighlight">\(f(x)\)</span> if we write our code well. For example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">1</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">midpoint_integral</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="n">f</span><span class="p">):</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span><span class="o">-</span><span class="n">a</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">h</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:])))</span>
+
+<span class="n">midpoint_integral</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1000</span><span class="p">,</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.1184247826314846
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this case <em>why</em> we use a computer to obtain this result is abundantly clear; we need to speed up an otherwise routine lengthy set of calculations.</p>
+<p>However what if <span class="math notranslate nohighlight">\(f(x)=x^2?\)</span> A computational solution to this problem would not be appropriate as the solution is easily written down with minimal effort.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><em>In some cases the automation of a set of calculations could be so advantageous so as to render the impossible possible. For instance, it would probably take centuries of person time to perform the calculations embedded within the simulation of the atmosphere to generate your weather forecast (<a class="reference external" href="https://www.metoffice.gov.uk/research/approach/modelling-systems">see here for more</a>).</em></p>
+</div>
+<p>This brings us to the next part of our <em>computational thinking</em> process</p>
+<ul class="simple">
+<li><p>Express our problem in a form accessible to a computer (<strong>abstraction</strong>)</p></li>
+<li><p>Implement the abstracted version of the problem in the required programming language or software package</p></li>
+</ul>
+<p>For the purposes of this module, the implementation step is in Python, but the skills you learn here are readily transferred to other languages (e.g. <a class="reference external" href="https://julialang.org/">Julia</a>, <a class="reference external" href="https://www.r-project.org/">R</a>, <a class="reference external" href="https://en.wikipedia.org/wiki/C%2B%2B">C++</a>) or software packages (e.g. <a class="reference external" href="https://uk.mathworks.com/products/matlab.html">MATLAB</a>, <a class="reference external" href="https://octave.org/index">Octave</a>, <a class="reference external" href="https://www.wolfram.com/mathematica/">Mathematica</a>).</p>
+<section id="abstraction">
+<h3>Abstraction<a class="headerlink" href="#abstraction" title="Permalink to this headline">#</a></h3>
+<p>This abstratction is worthy of additional discussion. In the example above, the process of converting the integral into something accessible to the computer actually involved some <a class="reference external" href="https://encore.st-andrews.ac.uk/iii/encore/record/C__Rb2075268"><em>numerical analysis</em></a> when formulating the midpoint rule. A numerical approach is often the way to proceed when tackling problems in applied mathematics where a complex physical problem is being considered and an approximate solution is the only option (even though a solution might be formally approximate, it might be very good and highly useful!).</p>
+<p>In other areas of mathematical computing this <em>abstraction</em> step can contain the application of different techniques or methods in that area.</p>
+<p>In statistics, the problem is often one involving the analysis or modelling of real-world data which contains uncertainty and the abstraction might require the user to determine an appropriate model for the data which accounts for errors or stochasticity. Most of statistics can be considered part of an abstraction process to enable meaningful conclusions to be drawn from data.</p>
+<p>In pure mathematics, the abstraction step could involve the development of a new algorithm. For instance it might be possible to formulate a program to test, by brute force, or <em>prove by exhaustion</em>, all the cases in a finite problem. Computer-assisted proofs have solved problems in <a class="reference external" href="https://en.wikipedia.org/wiki/Four_color_theorem">graph theory</a> and enabled ever larger <a class="reference external" href="https://en.wikipedia.org/wiki/Great_Internet_Mersenne_Prime_Search">prime numbers to be computed</a>.</p>
+</section>
+<section id="pseudocode">
+<h3>Pseudocode<a class="headerlink" href="#pseudocode" title="Permalink to this headline">#</a></h3>
+<p>To assist with abstraction when a complicated code is required we can make use of <em>pseudocode</em> to bridge the gap between the stated problem and the implemented program. Pseudocode is a representation of the algorithm or program written in (relatively) plain English but containing the important steps of logic and mathematical operations required. There are no hard-and-fast rules for creating pseudocode but it should <strong>not</strong> be code and it should be easily read by a human user.</p>
+<p>For the example of the midpoint rule above our pseudocode might have looked something like</p>
+<div class="admonition-pseudocode admonition">
+<p class="admonition-title">Pseudocode</p>
+<ul class="simple">
+<li><p>Define <span class="math notranslate nohighlight">\(f(x)\)</span></p></li>
+<li><p>Set <span class="math notranslate nohighlight">\(a,\,b\)</span> and <span class="math notranslate nohighlight">\(N\)</span></p></li>
+<li><p>Compute <span class="math notranslate nohighlight">\(h = (b-a)/(N-1)\)</span></p></li>
+<li><p>Set a grid of points <span class="math notranslate nohighlight">\(x_0=a,\, x_1=a+h,\,\dots,\,x_N=b\)</span></p></li>
+<li><p>Sum over all subintervals <span class="math notranslate nohighlight">\([x_{i-1},x_i]\)</span> the function evaluated at its midpoint, <span class="math notranslate nohighlight">\(\frac{x_{i-1}+x_i}{2}\)</span> and multiply by h</p></li>
+<li><p>Return the result</p></li>
+</ul>
+</div>
+<p>Pseudocode is useful for keeping track of the process when you come to the implementation step, and can serve as a useful form of documentation of what you have done.</p>
+</section>
+</section>
+<section id="what-did-we-compute">
+<h2>What did we compute??<a class="headerlink" href="#what-did-we-compute" title="Permalink to this headline">#</a></h2>
+<p>It might be tempting to think once we complete step 3 above we are done, but we are not!</p>
+<p>The final part of the process is to interpret our results and consider:</p>
+<ul class="simple">
+<li><p>Are the results correct? (<em>validate and debug</em>)</p></li>
+</ul>
+<p>This is arguably the checkpoint to determine whether you are really finished with the implementation step! In most cases there are simple ways by which we can check our code is producing the correct results. For instance with the integration example above, how can we be sure that <code class="docutils literal notranslate"><span class="pre">1.118...</span></code> is the right value? One approach might be to test the midpoint rule on an easily integrated function first to make sure our implementation is correct. For instance <span class="math notranslate nohighlight">\(g(x) = 3x^2\)</span> then <span class="math notranslate nohighlight">\(\int_2^3g(x)dx = 19.\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">g</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">3</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="n">midpoint_integral</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1000</span><span class="p">,</span><span class="n">g</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>18.99999974949925
+</pre></div>
+</div>
+</div>
+</div>
+<section id="debugging">
+<h3>Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">#</a></h3>
+<p>Suppose the result we obtained from our test was not as expected, or when the code was executed we recieve some warnings or errors. Fixing these issues is known as debugging. Often this is the most time consuming and involved part of the entire computational process and so developing good debugging skills is vital!</p>
+<p>In Chapter 1 in the <a class="reference internal" href="../1_IntroNotebooks/4%20Errors.html#error-notebook"><span class="std std-ref"><strong>Errors</strong></span></a> notebook we briefly discussed interpreting error messages. In general Python is quite good at showing you what has gone wrong and where, however when we are starting out we still need to build up our familiarity with the technical terms. A good idea, when an error is not obvious, is to check if there is a better description of the <em>exception</em> online, e.g. <a class="reference external" href="https://docs.python.org/3/library/exceptions.html">here</a>.</p>
+<p>Usually <em>syntax errors</em> and <em>runtime errors</em> are relatively easily fixed; once you understand the error message it often just requires some patience to figure out the fix. Harder, and requiring a little more skill to fix, are the so-called <em>semantic errors</em> which occur, not because your code fails to execute, but because the code fails to give the expected result. In such cases there are no error messages to help!</p>
+<p>In the <a class="reference internal" href="../1_IntroNotebooks/4%20Errors.html#error-notebook"><span class="std std-ref"><em>Errors</em></span></a> notebook we discussed how documenting your code is a useful way to keep track of what you expect your code to do. Part of your documentation might involve the pseudocode we discussed above. If you’re still struggling to find your bug here are a few hints or techniques which might help.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p><strong>Simplify</strong></p>
+<p>The first thing to do is break your code up into smaller, simpler pieces and try to check each part. This is where having a modular program with good use of functions comes in handy (see section <a class="reference internal" href="7GoodPractise2_Usability.html#good-practise2"><span class="std std-ref">Good practise part 2</span></a>). Sometimes it is helpful to create a <em>minimal example</em>, i.e. the smallest code snippet which contains the bug; this usually eliminates many possible sources of error.</p>
+<p><strong>Output</strong></p>
+<p>It’s hard to tell what the internal workings of a program are doing unless we see some output, <code class="docutils literal notranslate"><span class="pre">print()</span></code> is your best friend when debugging! This is particularly useful if you have some iteration or a long calculation because you might be able to spot the point at which the code fails. Outputs don’t have to be limited to just a <code class="docutils literal notranslate"><span class="pre">print</span></code> statement, in some cases a plot might help point out where the trouble lies.</p>
+<p><strong>Test</strong></p>
+<p>This comes back to the validation step referred to earlier. Throughout your debuggging step be on the lookout for simple tests you can put your code through to check it does what you need it to. Sometimes this will also mean thinking about how general your code is. As a simple example, suppose you defined a function involving a term  <span class="math notranslate nohighlight">\(x(1+1/x)\)</span> but you didn’t test it near zero so missed the singular behaviour. (Rewriting this line (<span class="math notranslate nohighlight">\(x+1\)</span>) will fix the issue!)</p>
+<p><strong>Ask for help</strong></p>
+<p>You will, inevitably, have to resort to a more experienced pair of eyes at some point during this module. This is (partly) what the lab sessions are for! We are on hand to help, debugging is a (fun?) part of the process but please don’t struggle in silence. This advice carries over to programming outside of this module; seek help when you need it, the internet has some useful <a class="reference external" href="https://stackoverflow.com/">places to ask for help</a>.</p>
+<p><strong>Debugging tools</strong></p>
+<p>Eventually, it might become necessary (or welcomed!) to turn to some tools to help your bug search. A <a class="reference external" href="https://docs.python.org/3/library/pdb.html"><em>debugger</em></a> can help you trace through your code to find out where things are going wrong. This is likely a last resort in this module but if you end up doing a lot of programming in your job or on another module you might find a debugger makes hunting bugs a bit more efficient.</p>
+</div>
+<p>In subsequent sections we will touch on other tips and techniques to help reduce the time spent debugging.</p>
+</section>
+<section id="example">
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">#</a></h3>
+<p>Here is an example of a bug using the midpoint example, suppose we didn’t have the answer above but had written the following code:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">midpoint_integral</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="n">f</span><span class="p">):</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span><span class="o">-</span><span class="n">a</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">h</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">f</span><span class="p">((</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:])))</span>
+
+<span class="n">midpoint_integral</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1000</span><span class="p">,</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6273186412227292
+</pre></div>
+</div>
+</div>
+</div>
+<p>On the face of it, there appears to be nothing wrong, we got a sensible looking answer, but is it correct? Well, we should really be diligent and test more thoroughly. Using the test involving <span class="math notranslate nohighlight">\(g(x)\)</span> from above</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">midpoint_integral</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1000</span><span class="p">,</span><span class="n">g</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>75.999998997997
+</pre></div>
+</div>
+</div>
+</div>
+<p>Oops, now we are sure there must be an error in the code; but where?</p>
+<p>Let’s simplify and output. Here simplification might just mean taking a small <span class="math notranslate nohighlight">\(N,\)</span> examining each component used and checking it is correct.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">6</span>  <span class="c1"># choose a smaller value to make outputs easier to read</span>
+
+<span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span><span class="o">-</span><span class="n">a</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;h=&#39;</span><span class="p">,</span><span class="n">h</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x=&#39;</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;g(x) = &#39;</span><span class="p">,</span><span class="n">g</span><span class="p">((</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:])))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>h= 0.2
+x= [2.  2.2 2.4 2.6 2.8 3. ]
+g(x) =  [ 52.92  63.48  75.    87.48 100.92]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Examining this output carefully we can see that there’s somthing off in the <span class="math notranslate nohighlight">\(g(x)\)</span> function evaluations. We are testing with <span class="math notranslate nohighlight">\(g(x)=3x^2\)</span> so the values we expect should roughly start at <span class="math notranslate nohighlight">\(g(2)=12\)</span> and go to <span class="math notranslate nohighlight">\(g(3)=27.\)</span></p>
+<p>Consulting the code again, and checking with the psuedocode, we can spot that we should be evaluating at <em>midpoints</em>; we missed a factor of <span class="math notranslate nohighlight">\(\frac{1}{2}\)</span>! Before going back and fixing the original function we should first test that this fix will give the required result:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mid_x</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;midpoints = &#39;</span><span class="p">,</span> <span class="n">mid_x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;g(mid_x) = &#39;</span><span class="p">,</span> <span class="n">g</span><span class="p">(</span><span class="n">mid_x</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;integral = &#39;</span><span class="p">,</span> <span class="n">h</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">g</span><span class="p">(</span><span class="n">mid_x</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>midpoints =  [2.1 2.3 2.5 2.7 2.9]
+g(mid_x) =  [13.23 15.87 18.75 21.87 25.23]
+integral =  18.990000000000002
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notice that the introduction of the variable <code class="docutils literal notranslate"><span class="pre">mid_x</span></code> storing the midpoints might have made us less likely to make this error in the first place.</p>
+<hr class="docutils" />
+<p>Once we are happy that our results are correct, the final part of the computational thinking process is to consider</p>
+<ul class="simple">
+<li><p>What do the results tell us in the context of the original problem?</p></li>
+</ul>
+<p>We leave this part largely for other modules, or specific examples in the lab exercises or projects; really it comes down to using your computational skills and methods to present the results in the best possible way. This might mean creating plots, figures, tables, or exploring parameter values to draw more general conclusions.</p>
+</section>
+</section>
+<section id="remember">
+<h2>Remember:<a class="headerlink" href="#remember" title="Permalink to this headline">#</a></h2>
+<div class="admonition-the-computational-thinking-process admonition">
+<p class="admonition-title">The computational thinking process</p>
+<ol class="simple">
+<li><p><strong>D</strong>ecide: What is the problem and can computing help?</p></li>
+<li><p><strong>A</strong>bstract: Express the problem in a form accessible to a computer.</p></li>
+<li><p><strong>I</strong>mplement: Implement the abstracted version of the problem (in Python).</p></li>
+<li><p><strong>V</strong>alidate: Are the results correct?</p></li>
+<li><p><strong>I</strong>nterpret: What do the results tell us in the context of the original problem?</p></li>
+<li><p><strong>D</strong>one!</p></li>
+</ol>
+</div>
+<p>If you haven’t already, now watch the video <a class="reference external" href="https://st-andrews.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=8611f8b9-0829-4912-bdc1-af8c00e9ccbd"><em>Computational thinking: bisection</em></a> to see a demonstration of the process in real-time for the bisection method.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./2_CoreNotebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="0intro.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Chapter 2: Topics in Computational Mathematics</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="2Interactivity.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Interactivity</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Dan Lucas, Finn Smith, Ben Swallow<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

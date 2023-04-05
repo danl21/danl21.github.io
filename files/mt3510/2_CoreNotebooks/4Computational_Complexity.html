@@ -1,0 +1,1437 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Introduction to Computational Complexity &#8212; MT3510 Introduction to Mathematical Computing</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Good practise in Python: Part 1 Efficiency" href="5GoodPractise1_Efficiency.html" />
+    <link rel="prev" title="SymPy" href="3Sympy.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">MT3510 Introduction to Mathematical Computing</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to MT3510
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../diary.html">
+   Module diary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../generic-guidance-23.html">
+   Coursework submission guidance
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../1_IntroNotebooks/0intro.html">
+   Chapter 1: The Fundamentals
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/1%20Python%20and%20Jupyter%20Notebooks%20Basics.html">
+     Python &amp; Jupyter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/2%20Variables.html">
+     Variables
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/3%20Modules%20and%20Numpy.html">
+     Modules and numpy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/4%20Errors.html">
+     Errors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/5%20Printing%20and%20Strings.html">
+     Printing to the screen
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/6%20For%20Loops.html">
+     For loops
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/7%20Nested%20For%20Loops.html">
+     Nested
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       for
+      </span>
+     </code>
+     loops
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/8%20Functions.html">
+     Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/9%20Conditionals.html">
+     Conditionals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/10%20While%20Loops.html">
+     While loops
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/11%20Lists%20and%20Tuples.html">
+     Lists
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/12%20Arrays.html">
+     Arrays
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/13%20Slicing.html">
+     Slicing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/14%20Floating%20Point%20Numbers.html">
+     Floating point numbers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/15%20Sets%20and%20Dicts.html">
+     Sets and Dicts
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/16%20Types.html">
+     Types
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/17%20Input%20and%20Files.html">
+     Input and files
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/18%20Plotting.html">
+     Matplotlib
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/19%20Markdown%20and%20LaTeX.html">
+     Markdown
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="0intro.html">
+   Chapter 2: Topics in Computational Mathematics
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="1Computational_Thinking.html">
+     Introduction to Computational Thinking
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2Interactivity.html">
+     Interactivity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="3Sympy.html">
+     SymPy
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Introduction to Computational Complexity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="5GoodPractise1_Efficiency.html">
+     Good practise in Python: Part 1 Efficiency
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="6GoodPractise2_Usability.html">
+     Good practise in Python Part 2: Usability &amp; Style
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="7ComputationalGeometry.html">
+     Computational Geometry
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="8Introduction_to_Pandas.html">
+     Introduction to pandas
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../3_AppliedNotebooks/0intro.html">
+   Chapter 3 Applied Mathematics: Interpolation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3_AppliedNotebooks/Interpolation_Part1_Linear.html">
+     Interpolation Part 1: Linear Interpolation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3_AppliedNotebooks/Interpolation_Part2_Polynomial.html">
+     Interpolation Part 2: Polynomial interpolation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3_AppliedNotebooks/Interpolation_Part3_PiecewisePolynomial.html">
+     Interpolation Part 3: Piecewise polynomial interpolation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3_AppliedNotebooks/Interpolation_Part4_CubicSpline.html">
+     Interpolation Part 4: Spline interpolation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../4_PureNotebooks/0intro.html">
+   Chapter 4 Pure Mathematics: Graph Theory
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../5_StatsNotebooks/0intro.html">
+   Chapter 5 Statistics:
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/2_CoreNotebooks/4Computational_Complexity.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/2_CoreNotebooks/4Computational_Complexity.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#asymptotic-notation">
+   Asymptotic Notation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#big-o-grows-no-faster-than">
+     Big-O - “grows no faster than”
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#examples">
+       Examples
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#little-o-grows-significantly-slower-than">
+     Little-O - “grows significantly slower than”
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       Examples
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#big-theta-grows-at-roughly-the-same-rate">
+     Big-Theta - “grows at roughly the same rate”
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id2">
+       Examples
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#anonymous-functions">
+     Anonymous Functions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#basic-manipulations-with-asymptotic-notation">
+   Basic Manipulations with Asymptotic Notation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ignore-positive-constants">
+     Ignore Positive Constants
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id3">
+       Examples
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ignore-slower-growing-terms">
+     Ignore Slower-Growing Terms
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id4">
+       Examples
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#multiplying-asymptotics">
+     Multiplying Asymptotics
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id5">
+       Examples
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analysing-code">
+   Analysing Code
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-1">
+     Example 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-2">
+     Example 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-3">
+     Example 3
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-4">
+     Example 4
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sorting-algorithms">
+   Sorting Algorithms
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bubble-sort">
+     Bubble Sort
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#insertion-sort">
+     Insertion Sort
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#insertion-sort-example">
+       Insertion Sort Example
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-best-possible-sort">
+     The Best Possible Sort?
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#theorem">
+       Theorem
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#proof-ish">
+         Proof(ish)
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#amortized-complexity">
+   Amortized Complexity
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Introduction to Computational Complexity</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#asymptotic-notation">
+   Asymptotic Notation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#big-o-grows-no-faster-than">
+     Big-O - “grows no faster than”
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#examples">
+       Examples
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#little-o-grows-significantly-slower-than">
+     Little-O - “grows significantly slower than”
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       Examples
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#big-theta-grows-at-roughly-the-same-rate">
+     Big-Theta - “grows at roughly the same rate”
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id2">
+       Examples
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#anonymous-functions">
+     Anonymous Functions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#basic-manipulations-with-asymptotic-notation">
+   Basic Manipulations with Asymptotic Notation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ignore-positive-constants">
+     Ignore Positive Constants
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id3">
+       Examples
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ignore-slower-growing-terms">
+     Ignore Slower-Growing Terms
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id4">
+       Examples
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#multiplying-asymptotics">
+     Multiplying Asymptotics
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id5">
+       Examples
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analysing-code">
+   Analysing Code
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-1">
+     Example 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-2">
+     Example 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-3">
+     Example 3
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-4">
+     Example 4
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sorting-algorithms">
+   Sorting Algorithms
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bubble-sort">
+     Bubble Sort
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#insertion-sort">
+     Insertion Sort
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#insertion-sort-example">
+       Insertion Sort Example
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-best-possible-sort">
+     The Best Possible Sort?
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#theorem">
+       Theorem
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#proof-ish">
+         Proof(ish)
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#amortized-complexity">
+   Amortized Complexity
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-computational-complexity">
+<h1>Introduction to Computational Complexity<a class="headerlink" href="#introduction-to-computational-complexity" title="Permalink to this headline">#</a></h1>
+<p>One of the obvious questions we might ask about an algorithm or bit of code is “how long will it take to run?”. Unfortunately, answering this question precisely is essentially impossible. One reason for this is that the behaviour of modern computers is highly optimized and complex. Instead, we often look for an estimate for how the runtime of the algorithm or code behaves asymptotically as the input size increases - e.g., does it scale linearly, quadratically, logarithmically, etc. We also tend to consider <em>number of steps or basic operations taken</em> rather than <em>time</em>, since these are more independent of any particular computer.</p>
+<p>In our context, a “step” or “basic operation” is something like accessing or modifying an element of a list, adding two numbers, comparing two numbers, or assigning a value to a variable.
+A quick disclaimer: the discussion here is necessarily a bit vague; to define these notions properly you need to talk about things like a <em>model of computation</em>. See MT4512 Automata, Languages, and Complexity for a more precise account.</p>
+<p>We will assume that these basic operations take some constant amount of time each. The joy of complexity analysis is that because we are only trying to estimate how the algorithm scales, we get to ignore constants. For example, if an algorithm takes <span class="math notranslate nohighlight">\(xn\)</span> steps on an input of size <span class="math notranslate nohighlight">\(n\)</span>, where <span class="math notranslate nohighlight">\(x\)</span> is some constant, then for our purposes this is the same as taking <span class="math notranslate nohighlight">\(n\)</span> steps - all that matters is that it scales linearly. We would say that the algorithm is <span class="math notranslate nohighlight">\(O(n)\)</span>, or more precisely <span class="math notranslate nohighlight">\(\Theta(n)\)</span> - more on this notation below.</p>
+<p>If we want to measure the number of basic operations that an algorithm takes, we run into the problem of what input we should be giving it. It might be the case that our algorithm can handle some inputs very quickly and other inputs of the same size need much more work. In this course, we will mostly focus on the <em>worst-case</em>, i.e. the maximum number of steps the algorithm requires to handle an input of size <span class="math notranslate nohighlight">\(n\)</span>.</p>
+<p>Here’s a toy example to demonstrate the idea: imagine we have a length-<span class="math notranslate nohighlight">\(n\)</span> list <code class="docutils literal notranslate"><span class="pre">L</span></code> of numbers, which we know contains at least one negative numbers, and we are trying to find the first negative number in <code class="docutils literal notranslate"><span class="pre">L</span></code>. We might perform the following simple algorithm: loop through the elements <code class="docutils literal notranslate"><span class="pre">x</span></code> of <code class="docutils literal notranslate"><span class="pre">L</span></code> (in order), and if <code class="docutils literal notranslate"><span class="pre">x</span></code> is negative then return <code class="docutils literal notranslate"><span class="pre">x</span></code>. Here’s an implementation of that:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This assumes that all of the entries of L are real numbers,</span>
+<span class="c1"># and that there is at least one negative number.</span>
+<span class="k">def</span> <span class="nf">first_negative</span><span class="p">(</span><span class="n">L</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">L</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">x</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The worst case for this algorithm would be if the first negative number is the last element of the list; then we have to go through the entire list to find it. Until we find a negative number, for each element in the list we perform two steps: accessing that element and comparing its value to <span class="math notranslate nohighlight">\(0\)</span>. In the worst case this would take <span class="math notranslate nohighlight">\(2n\)</span> steps, so this algorithm is <em>linear(-time)</em>.</p>
+<p>Complexity analysis of an algorithm is about the <em>inherent</em> and <em>coarse</em> complexity of the algorithm, rather than the fine details of a particular implementation in code. You can also analyse the complexity of an implementation, and these will match if the implementation doesn’t introduce any extra complexity - but in practice it is often worth introducing some extra complexity to make the implementation simpler.</p>
+<p>There’s another side to this discussion - what is the inherent complexity of the <em>problem</em> itself? Could we solve the problem above, of finding the first negative number in a list, with an algorithm that is faster than linear? In this case, no: if we do less than a linear amount of work, then we can’t look at every element of the list (or even any fixed proportion of them) - and we could construct a case where all of the entries we look at are positive but we don’t know anything about the others.</p>
+<section id="asymptotic-notation">
+<h2>Asymptotic Notation<a class="headerlink" href="#asymptotic-notation" title="Permalink to this headline">#</a></h2>
+<p>To make our analysis more convenient, we introduce some new symbols. The precise definitions here are not critical, as it is unusual to work directly with the definitions.</p>
+<p>We will take <span class="math notranslate nohighlight">\(n\)</span> to be a natural number variable, and <span class="math notranslate nohighlight">\(f(n)\)</span> and <span class="math notranslate nohighlight">\(g(n)\)</span> to be (eventually) positive functions of <span class="math notranslate nohighlight">\(n\)</span>. You can drop the positivity requirement on <span class="math notranslate nohighlight">\(g(n)\)</span> if you take absolute values in the following discussion, but we do need to keep the positivity requirement on <span class="math notranslate nohighlight">\(f(n)\)</span>. You should imagine that <span class="math notranslate nohighlight">\(f(n)\)</span> and <span class="math notranslate nohighlight">\(g(n)\)</span> either stay constant or trend upwards as <span class="math notranslate nohighlight">\(n \to \infty\)</span>, since for us they represent the amount of steps an algorithm will take on an input of size <span class="math notranslate nohighlight">\(n\)</span>.</p>
+<section id="big-o-grows-no-faster-than">
+<h3>Big-O - “grows no faster than”<a class="headerlink" href="#big-o-grows-no-faster-than" title="Permalink to this headline">#</a></h3>
+<p>We write <span class="math notranslate nohighlight">\(g(n) \in O(f(n))\)</span> or <span class="math notranslate nohighlight">\(g(n) = O(f(n))\)</span> to mean that <span class="math notranslate nohighlight">\(f(n)\)</span> is asymptotically an upper bound for <span class="math notranslate nohighlight">\(g(n)\)</span>, up to some constant multiple; more precisely, that there is some natural number <span class="math notranslate nohighlight">\(n_0\)</span> and constant <span class="math notranslate nohighlight">\(C\)</span> such that <span class="math notranslate nohighlight">\(g(n) \leq Cf(n)\)</span> for all <span class="math notranslate nohighlight">\(n &gt; n_0\)</span>. You might prefer to think about this as saying that the ratio <span class="math notranslate nohighlight">\(\frac{g(n)}{f(n)}\)</span> is bounded as <span class="math notranslate nohighlight">\(n \to \infty\)</span> (ignoring any issues of division by 0), or that <span class="math notranslate nohighlight">\(g(n)\)</span> grows no faster than some constant multiple of <span class="math notranslate nohighlight">\(f(n)\)</span>.</p>
+<p>The use of <span class="math notranslate nohighlight">\(=\)</span> is somewhat misleading; if <span class="math notranslate nohighlight">\(g(n) = O(f_1(n))\)</span> and <span class="math notranslate nohighlight">\(g(n) = O(f_2(n))\)</span> this does not mean that <span class="math notranslate nohighlight">\(O(f_1(n)) = O(f_2(n))\)</span>.</p>
+<section id="examples">
+<h4>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">#</a></h4>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(3n^2 + 2n = O(n^3)\)</span>, since the ratio <span class="math notranslate nohighlight">\(\frac{3n^2 + 2n}{n^3}\)</span> tends to 0 and not <span class="math notranslate nohighlight">\(\infty\)</span>.</p>
+<ul>
+<li><p>It is also, for example, <span class="math notranslate nohighlight">\(O(n^3 + 1)\)</span>, but it is unusual to write this - the <span class="math notranslate nohighlight">\(1\)</span> is irrelevant next to the <span class="math notranslate nohighlight">\(n^3\)</span> and <span class="math notranslate nohighlight">\(O(n^3) = O(n^3 + 1)\)</span>.</p></li>
+</ul>
+</li>
+<li><p><span class="math notranslate nohighlight">\(3n^2 + 2n = O(n^2)\)</span>.</p>
+<ul>
+<li><p>Even though <span class="math notranslate nohighlight">\(3n^2 + 2n &gt; n^2\)</span>, the ratio <span class="math notranslate nohighlight">\(\frac{3n^2 + 2n}{n^2}\)</span> tends to <span class="math notranslate nohighlight">\(3\)</span> rather than <span class="math notranslate nohighlight">\(\infty\)</span>.</p></li>
+</ul>
+</li>
+<li><p><span class="math notranslate nohighlight">\(O(1)\)</span> is a fancy way of writing “constant”</p></li>
+</ul>
+<p>We say that an algorithm is <span class="math notranslate nohighlight">\(O(f(n))\)</span> if it takes <span class="math notranslate nohighlight">\(g(n)\)</span> steps and <span class="math notranslate nohighlight">\(g(n) = O(f(n))\)</span>. The algorithm described in the introduction for finding a negative number in a list, which takes time proportional to <span class="math notranslate nohighlight">\(n\)</span>, is <span class="math notranslate nohighlight">\(O(n)\)</span> - and also <span class="math notranslate nohighlight">\(O(n^{200})\)</span>.</p>
+</section>
+</section>
+<section id="little-o-grows-significantly-slower-than">
+<h3>Little-O - “grows significantly slower than”<a class="headerlink" href="#little-o-grows-significantly-slower-than" title="Permalink to this headline">#</a></h3>
+<p>Similarly, <span class="math notranslate nohighlight">\(g(n) = o(f(n))\)</span> if <span class="math notranslate nohighlight">\(g(n)\)</span> is asymptotically <em>dominated</em> by <span class="math notranslate nohighlight">\(f(n)\)</span>, i.e. <span class="math notranslate nohighlight">\(\frac{g(n)}{f(n)} \to 0\)</span> as <span class="math notranslate nohighlight">\(n \to \infty\)</span>.</p>
+<section id="id1">
+<h4>Examples<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h4>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(3n^2 - 2n = o(n^3)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(3n^2 - 2n \neq o(n^2)\)</span></p></li>
+<li><p>between <span class="math notranslate nohighlight">\(n^2\)</span> and <span class="math notranslate nohighlight">\(n^3\)</span>, we have <span class="math notranslate nohighlight">\(3n^2 - 2n = o(n^2\log n)\)</span>.</p></li>
+</ul>
+<p>The algorithm in the introduction is not <span class="math notranslate nohighlight">\(o(n)\)</span>, since it does take a linear amount of time, but it is <span class="math notranslate nohighlight">\(o(n^2)\)</span> since <span class="math notranslate nohighlight">\(n^2\)</span> asymptotically dominates any linear function.</p>
+</section>
+</section>
+<section id="big-theta-grows-at-roughly-the-same-rate">
+<h3>Big-Theta - “grows at roughly the same rate”<a class="headerlink" href="#big-theta-grows-at-roughly-the-same-rate" title="Permalink to this headline">#</a></h3>
+<p>Finally, <span class="math notranslate nohighlight">\(g(n) = \Theta(f(n))\)</span> if <span class="math notranslate nohighlight">\(g(n) = O(f(n))\)</span> and <span class="math notranslate nohighlight">\(f(n) = O(g(n))\)</span>, i.e. <span class="math notranslate nohighlight">\(g(n)\)</span> and <span class="math notranslate nohighlight">\(f(n)\)</span> asymptotically grow at the same rate up to some constant multiples.</p>
+<p>It is common practice in many books and papers to write <span class="math notranslate nohighlight">\(g(n) = O(f(n))\)</span> while really meaning <span class="math notranslate nohighlight">\(g(n) = \Theta(f(n))\)</span>. The difference is that the <span class="math notranslate nohighlight">\(g(n) = O(f(n))\)</span> gives an upper-bound for <span class="math notranslate nohighlight">\(g(n)\)</span>, while <span class="math notranslate nohighlight">\(g(n) = \Theta(f(n))\)</span> gives an upper- <em>and</em> lower-bound.</p>
+<section id="id2">
+<h4>Examples<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h4>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(3n^2 - 2n = \Theta(n^2)\)</span></p></li>
+<li><p>if <span class="math notranslate nohighlight">\(f\)</span> and <span class="math notranslate nohighlight">\(g\)</span> are polynomials then <span class="math notranslate nohighlight">\(g(n) = \Theta(f(n))\)</span> if and only if they have the same degree</p></li>
+<li><p>the algorithm in the introduction is <span class="math notranslate nohighlight">\(\Theta(n)\)</span>.</p></li>
+</ul>
+</section>
+</section>
+<section id="anonymous-functions">
+<h3>Anonymous Functions<a class="headerlink" href="#anonymous-functions" title="Permalink to this headline">#</a></h3>
+<p>Sometimes we use the notation above to replace functions in expressions. For example, <span class="math notranslate nohighlight">\(\exp n + \frac{3}{2}n^2\log 2n - 3n = \exp n + O(n^2\log n)\)</span>. You may have seen this used before when writing Taylor expansions, e.g. <span class="math notranslate nohighlight">\(\ln (1 - x) = -x -\frac{x^2}{2} -\frac{x^3}{3} - O(x^4)\)</span>.</p>
+</section>
+</section>
+<section id="basic-manipulations-with-asymptotic-notation">
+<h2>Basic Manipulations with Asymptotic Notation<a class="headerlink" href="#basic-manipulations-with-asymptotic-notation" title="Permalink to this headline">#</a></h2>
+<p>Asymptotic notation can make reasoning much easier by stripping away fiddly details. In this section we detail some of the basic things you can do with it. You might prefer to skim this section in favour of the more concrete applications in the next section (Analysing Code).</p>
+<section id="ignore-positive-constants">
+<h3>Ignore Positive Constants<a class="headerlink" href="#ignore-positive-constants" title="Permalink to this headline">#</a></h3>
+<p>Positive constants do not matter for Big-O, Little-O, and Big-<span class="math notranslate nohighlight">\(\Theta\)</span> notation.</p>
+<section id="id3">
+<h4>Examples<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h4>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(12n^3 = \Theta(n^3)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(n = O(3n)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(3n = O(n)\)</span></p></li>
+</ul>
+</section>
+</section>
+<section id="ignore-slower-growing-terms">
+<h3>Ignore Slower-Growing Terms<a class="headerlink" href="#ignore-slower-growing-terms" title="Permalink to this headline">#</a></h3>
+<p>Get rid of slow-growing terms: if <span class="math notranslate nohighlight">\(f(n) = f_1(n) + f_2(n)\)</span> where <span class="math notranslate nohighlight">\(f_2(n) \in o(f_1(n))\)</span>, you can throw away <span class="math notranslate nohighlight">\(f_2(n)\)</span>.</p>
+<p>Be careful! While it is generally okay to throw away one slow-growing term, if you have many small terms they can combine to be a fast-growing term. For example, each of the individual terms <span class="math notranslate nohighlight">\(i\)</span> in <span class="math notranslate nohighlight">\(\sum_{i=1}^n i\)</span> is <span class="math notranslate nohighlight">\(O(n)\)</span>, but together the sum is <span class="math notranslate nohighlight">\(\Theta(n^2)\)</span>. The general rule is that you can safely throw away a <em>constant</em> number of slow-growing terms.</p>
+<p>Here’s a hierarchy of functions that commonly appear, in order of how fast they grow. Don’t worry about this table too much!</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Notation</p></th>
+<th class="head"><p>Notes</p></th>
+<th class="head"><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Constant</p></td>
+<td><p><span class="math notranslate nohighlight">\(O(1)\)</span></p></td>
+<td><p></p></td>
+<td><p><span class="math notranslate nohighlight">\(3 = O(1)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Logarithmic</p></td>
+<td><p><span class="math notranslate nohighlight">\(O(\log n)\)</span></p></td>
+<td><p>Any base</p></td>
+<td><p><span class="math notranslate nohighlight">\(3\log n+12 = O(\log n)\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Polynomial</p></td>
+<td><p><span class="math notranslate nohighlight">\(O(n^a)\)</span></p></td>
+<td><p>For any <span class="math notranslate nohighlight">\( 1 \leq a &lt; b\)</span>: <span class="math notranslate nohighlight">\(n^a = o(n^b)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(n^\pi + 3n^2 + 2\log n = O(n^\pi)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Polynomial times logarithm</p></td>
+<td><p><span class="math notranslate nohighlight">\(O(n^a \log n)\)</span></p></td>
+<td><p>For any <span class="math notranslate nohighlight">\(\varepsilon &gt; 0\)</span>: <span class="math notranslate nohighlight">\(n^a = o(n^a \log n),\)</span> <span class="math notranslate nohighlight">\(n^a\log n = o(n^{a + \varepsilon})\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(n^3 \log n + 12n^3 = O(n^3 \log n)\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Exponential</p></td>
+<td><p><span class="math notranslate nohighlight">\(O(\exp (an))\)</span></p></td>
+<td><p>For  any <span class="math notranslate nohighlight">\(0 &lt; a &lt; b\)</span>: <span class="math notranslate nohighlight">\(\exp(an) = o(\exp(bn))\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(3\exp (2n) + n^{10000}\exp\left(\frac{3n}{2}\right) = O(\exp 2n)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Factorial</p></td>
+<td><p><span class="math notranslate nohighlight">\(O(n!)\)</span></p></td>
+<td><p></p></td>
+<td><p><span class="math notranslate nohighlight">\( n! + \exp (10^{1000} n) = O(n!)\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>The last two lines showcase one of the weaknesses of asymptotic analysis: by the time <span class="math notranslate nohighlight">\(\exp (2n)\)</span> dominates <span class="math notranslate nohighlight">\(n^{10000}\exp\left(\frac{3n}{2}\right)\)</span>, the values are impossibly large for runtimes anyway. Algorithms which only beat other algorithms in impossibly large cases are called <em>galactic algorithms</em>.</p>
+<section id="id4">
+<h4>Examples<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h4>
+<ul class="simple">
+<li><p>You can throw away all but the highest power in a polynomial</p></li>
+<li><p><span class="math notranslate nohighlight">\(O(n^2 + \log n) = O(n^2)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(O(n^3\log n + n^3) = O(n^3\log n)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(O(a^n + n^{k}) = O(a^n)\)</span> for any <span class="math notranslate nohighlight">\(a &gt; 1\)</span> and <span class="math notranslate nohighlight">\(k &gt; 0\)</span>.</p></li>
+</ul>
+</section>
+</section>
+<section id="multiplying-asymptotics">
+<h3>Multiplying Asymptotics<a class="headerlink" href="#multiplying-asymptotics" title="Permalink to this headline">#</a></h3>
+<p>If you are adding together <span class="math notranslate nohighlight">\(f(n)\)</span> many terms which are each <span class="math notranslate nohighlight">\(O(g(n))\)</span>, then you can combine them into one <span class="math notranslate nohighlight">\(O(f(n)g(n))\)</span> term. In general this only gives you an upper bound, but it is also true that adding <span class="math notranslate nohighlight">\(f(n)\)</span> many terms which are each <span class="math notranslate nohighlight">\(\Theta(g(n))\)</span> results in a <span class="math notranslate nohighlight">\(\Theta(f(n)g(n))\)</span> term. Be careful not to mix together <span class="math notranslate nohighlight">\(O\)</span> and <span class="math notranslate nohighlight">\(\Theta\)</span> though!</p>
+<section id="id5">
+<h4>Examples<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h4>
+<ul class="simple">
+<li><p>In the sum <span class="math notranslate nohighlight">\(\sum_{i=1}^{n} i\)</span>, we have <span class="math notranslate nohighlight">\(n\)</span> terms which are each <span class="math notranslate nohighlight">\(O(n)\)</span>, giving us <span class="math notranslate nohighlight">\(O(n\times n)\)</span> in total.</p>
+<ul>
+<li><p>We can also say that the sum is <span class="math notranslate nohighlight">\(\Theta(n^2)\)</span> since we know that <span class="math notranslate nohighlight">\(\sum_{i=1}^{n} i = \frac{n(n-1)}{2}\)</span>.</p></li>
+</ul>
+</li>
+<li><p>In the sum <span class="math notranslate nohighlight">\(\sum_{i=1}^{n^3} (i + 3)\)</span>, we have <span class="math notranslate nohighlight">\(n^3\)</span> many <span class="math notranslate nohighlight">\(O(n)\)</span> terms, each of which is <span class="math notranslate nohighlight">\(O(n^3)\)</span>, so we have an upper bound that the sum is <span class="math notranslate nohighlight">\(O(n^6)\)</span>.</p></li>
+<li><p>For the same sum, we can’t automatically say that it is <span class="math notranslate nohighlight">\(\Theta(n^6)\)</span> since not all of the terms are <span class="math notranslate nohighlight">\(\Theta(n)\)</span> (e.g. the first term is always just <span class="math notranslate nohighlight">\(4\)</span>). However, we can show that is is <span class="math notranslate nohighlight">\(\Theta(n^6)\)</span> by applying standard tricks from analysis (only considering part of the sum, and then replacing the terms in it with smaller terms) to also obtain a lower bound of</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\sum_{i=1}^{n^3} (i + 3) \geq \sum_{i = \left\lceil\frac{1}{2}n^3\right\rceil}^{n^3} (i + 3) \geq \sum_{i = \left\lceil\frac{1}{2}n^3\right\rceil}^{n^3} \left(\left\lceil\frac{1}{2}n^3\right\rceil + 3\right) = \left(n^3 - \left\lceil\frac{1}{2}n^3\right\rceil + 1\right)\left(\left\lceil\frac{1}{2}n^3\right\rceil + 3\right) = \Theta(n^6).\]</div>
+<ul class="simple">
+<li><p>Similarly, <span class="math notranslate nohighlight">\(\sum_{i = 1}^{2n} (3i\log i + i) = \Theta(n^2\log n)\)</span>.</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="analysing-code">
+<h2>Analysing Code<a class="headerlink" href="#analysing-code" title="Permalink to this headline">#</a></h2>
+<p>In this section, we apply the ideas above to analysing some actual code. We will first see some simple examples, and then look at some more important examples of <em>sorting algorithms</em>.</p>
+<section id="example-1">
+<h3>Example 1<a class="headerlink" href="#example-1" title="Permalink to this headline">#</a></h3>
+<p>This code concatenates two lists into a new list:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">concat</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">M</span><span class="p">):</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">L</span><span class="p">:</span>
+        <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">M</span><span class="p">:</span>
+        <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">out</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">concat</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, &#39;a&#39;, &#39;b&#39;, &#39;c&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>In order to determine the complexity of this algorithm, we first have to decide what our “input size” parameter <span class="math notranslate nohighlight">\(n\)</span> is. If we write <span class="math notranslate nohighlight">\(l\)</span> and <span class="math notranslate nohighlight">\(m\)</span> for the sizes of the two lists, then in this case it makes sense to consider <span class="math notranslate nohighlight">\(n = l + m\)</span>. Having decided this, what is the complexity?</p>
+<ol class="simple">
+<li><p>Creating an empty list is <span class="math notranslate nohighlight">\(O(1)\)</span> - it doesn’t depend on <span class="math notranslate nohighlight">\(n\)</span>.</p></li>
+<li><p>We then perform two loops, each of which contains a single <code class="docutils literal notranslate"><span class="pre">append</span></code> operation.</p>
+<ul class="simple">
+<li><p>If we consult a <a class="reference external" href="https://wiki.python.org/moin/TimeComplexity">reference</a> we see that the “Amortized Worst Case” for <code class="docutils literal notranslate"><span class="pre">append</span></code> on a <code class="docutils literal notranslate"><span class="pre">list</span></code> is <span class="math notranslate nohighlight">\(O(1)\)</span> (see below for an explanation of “Amortized”).</p></li>
+<li><p>The first loop runs <span class="math notranslate nohighlight">\(l\)</span> times and the second <span class="math notranslate nohighlight">\(m\)</span> times, so we have an <span class="math notranslate nohighlight">\((l + m)O(1) = O(l + m) = O(n)\)</span> contribution from the loops.</p></li>
+</ul>
+</li>
+<li><p>Finally, we will assume that <code class="docutils literal notranslate"><span class="pre">return</span></code> is also <span class="math notranslate nohighlight">\(O(1)\)</span>.</p></li>
+</ol>
+<p>Overall, this algorithm is <span class="math notranslate nohighlight">\(O(1) + O(n) + O(1) = O(n)\)</span>, i.e. it is linear in the sum of the sizes of the two lists.</p>
+</section>
+<section id="example-2">
+<h3>Example 2<a class="headerlink" href="#example-2" title="Permalink to this headline">#</a></h3>
+<p>This example (inefficiently) finds all of the elements which lie in the intersection of two lists (without repetition).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">inter</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">M</span><span class="p">):</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="c1"># Go through each element of L.</span>
+    <span class="c1"># If it is also in M, and we haven&#39;t seen it before, then append it to out.</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">L</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">M</span> <span class="ow">and</span> <span class="n">x</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">out</span><span class="p">:</span>
+            <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">out</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">inter</span><span class="p">([</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">3.14</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mf">3.14</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;hello&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2, 3.14]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s analyse this in the same way as the previous example, and with the same notation.</p>
+<ol class="simple">
+<li><p>Creating the empty list <code class="docutils literal notranslate"><span class="pre">out</span></code> is <span class="math notranslate nohighlight">\(O(1)\)</span>.</p></li>
+<li><p>The loop will give a contribution of <span class="math notranslate nohighlight">\(O(l \times f(n))\)</span>, where <span class="math notranslate nohighlight">\(f(n)\)</span> is the number of steps taken inside the loop.</p></li>
+<li><p>Inside the loop, we check <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">in</span> <span class="pre">M</span> <span class="pre">and</span> <span class="pre">not</span> <span class="pre">x</span> <span class="pre">in</span> <span class="pre">out</span></code>. A quick search of the internet for “python list membership complexity” reveals that doing testing <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">in</span> <span class="pre">M</span></code> is <span class="math notranslate nohighlight">\(O(m)\)</span> and <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">not</span> <span class="pre">in</span> <span class="pre">out</span></code> is <span class="math notranslate nohighlight">\(O(|\text{out}|)\)</span>. We know that out can’t be longer than <span class="math notranslate nohighlight">\(M\)</span>, so overall this is just <span class="math notranslate nohighlight">\(O(m)\)</span>.</p></li>
+<li><p>We again assume that <code class="docutils literal notranslate"><span class="pre">return</span></code> is <span class="math notranslate nohighlight">\(O(1)\)</span>.</p></li>
+</ol>
+<p>The runtime here is dominated by the loop, giving an <span class="math notranslate nohighlight">\(O(lm)\)</span> complexity. If we want this in terms of one parameter, we could instead write <span class="math notranslate nohighlight">\(O(n^2)\)</span>. It is left as an exercise to show that it is in fact worst-case <span class="math notranslate nohighlight">\(\Theta(n^2)\)</span> - you will have to bound <span class="math notranslate nohighlight">\(lm\)</span> in terms of <span class="math notranslate nohighlight">\(n^2\)</span>.</p>
+</section>
+<section id="example-3">
+<h3>Example 3<a class="headerlink" href="#example-3" title="Permalink to this headline">#</a></h3>
+<p>This example calculates the sum</p>
+<div class="math notranslate nohighlight">
+\[ 
+\sum_{i = 1}^{n} \sum_{j = 2 \text{, j even}}^{3n} \frac{1}{i ^2  j}. 
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">strange_sum</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="o">*</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+            <span class="n">term</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="n">i</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">j</span><span class="p">)</span>
+            <span class="n">total</span> <span class="o">+=</span> <span class="n">term</span>
+    <span class="k">return</span> <span class="n">total</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">strange_sum</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.571242109163766
+</pre></div>
+</div>
+</div>
+</div>
+<p>Analysing this:</p>
+<ol class="simple">
+<li><p>Setting <code class="docutils literal notranslate"><span class="pre">total</span> <span class="pre">=</span> <span class="pre">0</span></code> is <span class="math notranslate nohighlight">\(O(1)\)</span></p></li>
+<li><p>The outer loop repeats <span class="math notranslate nohighlight">\(n\)</span> times.</p></li>
+<li><p>The inner loop repeats roughly <span class="math notranslate nohighlight">\(\frac{3n}{2} = O(n)\)</span> times.</p></li>
+<li><p>The work done inside the inner loop is constant, so each inner loop does <span class="math notranslate nohighlight">\(O(n)\)</span> work in total.</p></li>
+<li><p>So the nested loops do <span class="math notranslate nohighlight">\(O(n^2)\)</span> work in total.</p></li>
+<li><p>Overall, the function takes <span class="math notranslate nohighlight">\(O(n^2)\)</span> steps.</p></li>
+</ol>
+<p>To be more precise, we could replace each of the <span class="math notranslate nohighlight">\(O\)</span>s above with <span class="math notranslate nohighlight">\(\Theta\)</span>.</p>
+<p>The <em>very rough</em> rule-of-thumb is that <span class="math notranslate nohighlight">\(k\)</span> nested for-loops, where the innermost loop does constant work, <em>often</em> means <span class="math notranslate nohighlight">\(\Theta(n^k)\)</span> complexity. However, this is not always the case: we could calculate</p>
+<div class="math notranslate nohighlight">
+\[
+\sum_{i = 1}^{10} \sum_{j = 2 \text{, j even}}^{n^4} \frac{1}{i ^2  j} 
+\]</div>
+<p>using two nested for-loops, and the complexity would be <span class="math notranslate nohighlight">\(\Theta(n^4)\)</span>.</p>
+</section>
+<section id="example-4">
+<h3>Example 4<a class="headerlink" href="#example-4" title="Permalink to this headline">#</a></h3>
+<p>This example is a more efficient version of Example 2, for finding the intersection of two lists.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">inter</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">M</span><span class="p">):</span>
+    <span class="c1"># Make sets from L and M</span>
+    <span class="n">L_set</span><span class="p">,</span> <span class="n">M_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">L</span><span class="p">),</span> <span class="nb">set</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
+    <span class="c1"># Intersect those sets, and return the answer as a list</span>
+    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">L_set</span> <span class="o">&amp;</span> <span class="n">M_set</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">inter</span><span class="p">([</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">3.14</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mf">3.14</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;hello&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2, 3.14]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Our analysis now looks like this:</p>
+<ol class="simple">
+<li><p>We don’t know what the complexity of doing <code class="docutils literal notranslate"><span class="pre">set(L)</span></code> is, but we can make an educated guess:</p>
+<ul class="simple">
+<li><p>We could create <code class="docutils literal notranslate"><span class="pre">set(L)</span></code> by first making an empty set <span class="math notranslate nohighlight">\(O(1)\)</span> and then adding each element from <span class="math notranslate nohighlight">\(L\)</span> to the set if it isn’t already in it.</p></li>
+<li><p>Testing whether an element is in a set is worst-case <span class="math notranslate nohighlight">\(O(\text{|set|})\)</span> (<a class="reference external" href="https://wiki.python.org/moin/TimeComplexity">reference</a>).</p></li>
+<li><p>Here, we know that the size of the set is at most <span class="math notranslate nohighlight">\(l\)</span>, so in total this set creation is <span class="math notranslate nohighlight">\(O(l^2)\)</span>.</p></li>
+<li><p>Similarly, <code class="docutils literal notranslate"><span class="pre">set(M)</span></code> is <span class="math notranslate nohighlight">\(O(m^2)\)</span>.</p></li>
+</ul>
+</li>
+<li><p>Overall, the line <code class="docutils literal notranslate"><span class="pre">L_set,</span> <span class="pre">M_set</span> <span class="pre">=</span> <span class="pre">set(L),</span> <span class="pre">set(M)</span></code> is <span class="math notranslate nohighlight">\(O(l^2) + O(m^2) = O(n^2)\)</span>.</p></li>
+<li><p>We next need to know the complexity of <code class="docutils literal notranslate"><span class="pre">L_set</span> <span class="pre">&amp;</span> <span class="pre">M_set</span></code>. The largest that these sets could be is <span class="math notranslate nohighlight">\(l\)</span> and <span class="math notranslate nohighlight">\(m\)</span>, and the same reference document as above says that intersection will take in the worst case <span class="math notranslate nohighlight">\(O(lm) = O(n^2)\)</span>.</p></li>
+<li><p>Making a <code class="docutils literal notranslate"><span class="pre">list</span></code> from the intersection just requires us to iterate through the intersection and repeatedly append each value to an initially empty list. This will take no more than <span class="math notranslate nohighlight">\(O(n)\)</span> steps.</p></li>
+</ol>
+<p>Overall, this is still <span class="math notranslate nohighlight">\(O(n^2)\)</span>. In practice, however, it is massively more efficient than Example 2. This is because the <em>worst-case</em> complexity of set membership and intersection are very unlikely to arise (note the <em>average</em> complexities listed at that reference). Worst-case complexity analysis can be misleading!</p>
+</section>
+</section>
+<section id="sorting-algorithms">
+<h2>Sorting Algorithms<a class="headerlink" href="#sorting-algorithms" title="Permalink to this headline">#</a></h2>
+<p>One of the most important problems in computation is sorting a list (or similar things like a numpy array). It is a critical step in many algorithms, and so a great deal of work has gone into optimising sorting code.</p>
+<p>There are a vast number of different ways to sort lists. We will talk about two which fall into the class of <em>comparison-based sorting</em>. These are algorithms that only rely on <span class="math notranslate nohighlight">\(\leq\)</span> to compare the elements of the list, and don’t need any more information. The key is that you can define <span class="math notranslate nohighlight">\(\leq\)</span> for lots of things, not just numbers:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The list containing only &quot;a&quot; is &lt;= the list containing &quot;a&quot; and &quot;b&quot; and 2</span>
+<span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>This means that comparison-based sorting is very general. In some cases where the elements of your list have specific properties there are better options (like <em>integer sorting algorithms</em>).</p>
+<section id="bubble-sort">
+<h3>Bubble Sort<a class="headerlink" href="#bubble-sort" title="Permalink to this headline">#</a></h3>
+<p>Bubble sort is a very simple comparison sort. It generally performs poorly, but is instructive to analyse. Given a length-<span class="math notranslate nohighlight">\(n\)</span> list <span class="math notranslate nohighlight">\(L\)</span> of objects, it goes like so: repeatedly go through the list from the start to the end, swapping adjacent pairs of objects in the list if they are not in the correct order. Stop after you have passed through the entire list without making any swaps (since then everything must be in the right order).</p>
+<p>If you happen to prefer to understand algorithms through the medium of Hungarian folk dance, then <a class="reference external" href="https://www.youtube.com/watch?v=Iv3vgjM8Pv4">I have good news</a> (though as the comments mention, it is not an entirely accurate representation).</p>
+<p>In pseudocode, this is:</p>
+<ol class="simple">
+<li><p>Set a boolean variable <code class="docutils literal notranslate"><span class="pre">swapped</span> <span class="pre">=</span> <span class="pre">True</span></code></p></li>
+<li><p>While <code class="docutils literal notranslate"><span class="pre">swapped</span> <span class="pre">==</span> <span class="pre">True</span></code>, repeat the following:
+3. Set <code class="docutils literal notranslate"><span class="pre">swapped</span> <span class="pre">=</span> <span class="pre">False</span></code>.
+4. For <code class="docutils literal notranslate"><span class="pre">i</span></code> in <span class="math notranslate nohighlight">\(0, 1, \ldots, n - 2\)</span>:
+5. If not <code class="docutils literal notranslate"><span class="pre">L[i]</span> <span class="pre">&lt;=</span> <span class="pre">L[i</span> <span class="pre">+</span> <span class="pre">1]</span></code> then:
+6. Swap <code class="docutils literal notranslate"><span class="pre">L[i]</span></code> and <code class="docutils literal notranslate"><span class="pre">L[i+1]</span></code>;
+7. Set <code class="docutils literal notranslate"><span class="pre">swapped</span> <span class="pre">=</span> <span class="pre">True</span></code>.</p></li>
+</ol>
+<p>The variable <code class="docutils literal notranslate"><span class="pre">swapped</span></code> simply represents whether we made any swaps on a pass through the list.</p>
+<p>In code:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">bubble_sort</span><span class="p">(</span><span class="n">L</span><span class="p">):</span>
+    <span class="n">swapped</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">while</span> <span class="n">swapped</span><span class="p">:</span>
+        <span class="n">swapped</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">L</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">L</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">L</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]:</span>
+                <span class="n">L</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">L</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">L</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">L</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+                <span class="n">swapped</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">return</span> <span class="n">L</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bubble_sort</span><span class="p">([</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-1, 1, 2, 5, 6]
+</pre></div>
+</div>
+</div>
+</div>
+<p>There is a big issue when analysing the complexity of this; we can show that the complexity of the inner <code class="docutils literal notranslate"><span class="pre">for</span></code>-loop is <span class="math notranslate nohighlight">\(O(n)\)</span>, but what do we do for the <code class="docutils literal notranslate"><span class="pre">while</span></code> loop? We need to know how many times the <code class="docutils literal notranslate"><span class="pre">while</span></code> loop will run. The key in this case is that after <span class="math notranslate nohighlight">\(k\)</span> passes through the list, the largest <span class="math notranslate nohighlight">\(k\)</span> elements will always have “bubbled” to the end of the list and be in the correct place (exercise in induction!). As a quick example, here is the sequence of lists that bubble sort produces in the first two passes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Initial</span> <span class="nb">list</span><span class="p">:</span>
+<span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+
+<span class="n">First</span> <span class="k">pass</span><span class="p">:</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">Swapped</span> <span class="n">indices</span> <span class="mi">0</span> <span class="ow">and</span> <span class="mi">1</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">Swapped</span> <span class="n">indices</span> <span class="mi">1</span> <span class="ow">and</span> <span class="mi">2</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">Swapped</span> <span class="n">indices</span> <span class="mi">2</span> <span class="ow">and</span> <span class="mi">3</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span> <span class="o">-</span> <span class="n">Swapped</span> <span class="n">indices</span> <span class="mi">3</span> <span class="ow">and</span> <span class="mi">4</span><span class="p">,</span> <span class="n">largest</span> <span class="n">element</span> <span class="n">now</span> <span class="ow">in</span> <span class="n">right</span> <span class="n">place</span>
+
+<span class="n">Second</span> <span class="k">pass</span><span class="p">:</span>
+<span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span> <span class="o">-</span> <span class="n">Swapped</span> <span class="n">indices</span> <span class="mi">0</span> <span class="ow">and</span> <span class="mi">1</span>
+<span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span> <span class="o">-</span> <span class="n">Did</span> <span class="ow">not</span> <span class="n">swap</span> <span class="n">indices</span> <span class="mi">1</span> <span class="ow">and</span> <span class="mi">2</span>
+<span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span> <span class="o">-</span> <span class="n">Swapped</span> <span class="n">indices</span> <span class="mi">2</span> <span class="ow">and</span> <span class="mi">3</span>
+<span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span> <span class="o">-</span> <span class="n">Did</span> <span class="ow">not</span> <span class="n">swap</span> <span class="n">indices</span> <span class="mi">3</span> <span class="ow">and</span> <span class="mi">4</span><span class="p">,</span> <span class="n">largest</span> <span class="n">two</span> <span class="n">elements</span> <span class="n">now</span> <span class="ow">in</span> <span class="n">right</span> <span class="n">places</span>
+
+<span class="o">...</span>
+</pre></div>
+</div>
+<p>Once the largest <span class="math notranslate nohighlight">\(n\)</span> elements (i.e. all elements) are in the right place, we are done. This means that the <code class="docutils literal notranslate"><span class="pre">while</span></code> loop repeats at most <span class="math notranslate nohighlight">\(n\)</span> times, so the algorithm is <span class="math notranslate nohighlight">\(O(n^2)\)</span>. To show that it is <span class="math notranslate nohighlight">\(\Theta(n^2)\)</span>, we could exhibit a list of length <span class="math notranslate nohighlight">\(n\)</span> that does take <span class="math notranslate nohighlight">\(\Theta(n^2)\)</span> steps, for each <span class="math notranslate nohighlight">\(n\)</span> (exercise!).</p>
+<p>You may have noticed that there is “wasted work” in our bubble sort. For example, if the last <span class="math notranslate nohighlight">\(k\)</span> elements are in the correct order then there is no need to consider them each time through the loop. There are many ways of optimising the performance of bubble sort, but without fundamentally changing the algorithm it will still be <span class="math notranslate nohighlight">\(\Theta(n^2)\)</span>.</p>
+</section>
+<section id="insertion-sort">
+<h3>Insertion Sort<a class="headerlink" href="#insertion-sort" title="Permalink to this headline">#</a></h3>
+<p>Bubble sort is mostly a “toy” sorting algorithm; it is inefficient and rarely seriously used. The following algorithm <em>is</em> widely-used, though we will see that it has the same theoretical complexity as bubble sort. Given a length-<span class="math notranslate nohighlight">\(n\)</span> list <span class="math notranslate nohighlight">\(L\)</span>, the idea is to start a new empty list <span class="math notranslate nohighlight">\(M\)</span>, and then repeatedly take an element from <span class="math notranslate nohighlight">\(L\)</span> and “insert” it into the right place in <span class="math notranslate nohighlight">\(M\)</span>. At each stage, <span class="math notranslate nohighlight">\(M\)</span> will be in the right order, and after <span class="math notranslate nohighlight">\(n\)</span> insertions it will contain all of the elements from <span class="math notranslate nohighlight">\(L\)</span>. In pseudocode:</p>
+<ol class="simple">
+<li><p>Set <code class="docutils literal notranslate"><span class="pre">M</span> <span class="pre">=</span> <span class="pre">[]</span></code>.</p></li>
+<li><p>For each <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">in</span> <span class="pre">L</span></code>:
+3. Find the index <code class="docutils literal notranslate"><span class="pre">i</span></code> at which <code class="docutils literal notranslate"><span class="pre">x</span></code> should be inserted into <code class="docutils literal notranslate"><span class="pre">M</span></code> to keep <code class="docutils literal notranslate"><span class="pre">M</span></code> in order.
+4. Insert <code class="docutils literal notranslate"><span class="pre">x</span></code> at that index in <code class="docutils literal notranslate"><span class="pre">M</span></code></p></li>
+</ol>
+<p>There’s an example of this being done after the following discussion. Once again, those with a preference for Hungarian folk dance <a class="reference external" href="https://www.youtube.com/watch?v=ROalU379l3U">are in luck</a> (note that the version of insertion sort they are doing is a little different, but the idea is the same).</p>
+<p>We leave the implementation of insertion sort as an exercise, but will discuss the complexity:</p>
+<ol class="simple">
+<li><p>Initially creating <code class="docutils literal notranslate"><span class="pre">M</span></code> is <span class="math notranslate nohighlight">\(O(1)\)</span>.</p></li>
+<li><p>We loop <span class="math notranslate nohighlight">\(n\)</span> times. Each time, we:
+3. Find the index <code class="docutils literal notranslate"><span class="pre">i</span></code>.
+- This could be done in <span class="math notranslate nohighlight">\(O(|M|)\)</span> steps by just going through all of the indices to find one that works.
+- Alternatively, it can be done in <span class="math notranslate nohighlight">\(O(\log |M|)\)</span> steps by doing a <em>binary search</em> in <code class="docutils literal notranslate"><span class="pre">M</span></code>, since <code class="docutils literal notranslate"><span class="pre">M</span></code> is sorted. This just means first comparing <code class="docutils literal notranslate"><span class="pre">x</span></code> to the middle element of <code class="docutils literal notranslate"><span class="pre">M</span></code> to see which half it lies in; then comparing against the middle element of that half and so on. This requires <span class="math notranslate nohighlight">\(O(\log_2 (|M|))\)</span> steps since we are cutting the search space in half at each stage.
+4. Inserting <code class="docutils literal notranslate"><span class="pre">x</span></code> into <code class="docutils literal notranslate"><span class="pre">M</span></code>. You might hope that this is <span class="math notranslate nohighlight">\(O(1)\)</span>, but it is unfortunately actually an <span class="math notranslate nohighlight">\(O(|M|)\)</span> operation (since you have to shift everything after <code class="docutils literal notranslate"><span class="pre">x</span></code> down by 1 position). See the <a class="reference external" href="https://wiki.python.org/moin/TimeComplexity">reference</a>.
+5. So overall, we do <span class="math notranslate nohighlight">\(O(|M|)\)</span> work each time through the loop.</p></li>
+</ol>
+<p>We can bound <span class="math notranslate nohighlight">\(|M|\)</span> above by <span class="math notranslate nohighlight">\(n\)</span>, so this algorithm is <span class="math notranslate nohighlight">\(O(n^2)\)</span>. It is also <span class="math notranslate nohighlight">\(\Theta(n^2)\)</span>; the worst case is when <span class="math notranslate nohighlight">\(L\)</span> is in reverse-order, since then you have to shift every element in <span class="math notranslate nohighlight">\(M\)</span> down by one every time you insert a new element, resulting in <span class="math notranslate nohighlight">\(1 + 2 + 3 + \ldots + n - 1 = \Theta(n^2)\)</span> shifts.</p>
+<p>Even though insertion sort and bubble sort have the same complexity and bubble sort is generally not useful, insertion sort <em>is</em> used. It is a practical algorithm for dealing with small lists, and is often used as a sort of recursive “base case” of more complex algorithms. It is also a very natural algorithm, and similar to what you might do by hand.</p>
+<p>There are two morals here:</p>
+<ol class="simple">
+<li><p>Worst-case asymptotic analysis doesn’t tell you everything.</p></li>
+<li><p>Be careful when inserting things into a list; it is often a source of accidental gains in complexity.</p></li>
+</ol>
+<section id="insertion-sort-example">
+<h4>Insertion Sort Example<a class="headerlink" href="#insertion-sort-example" title="Permalink to this headline">#</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Initial</span> <span class="n">lists</span><span class="p">:</span>
+<span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">M</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="n">Insertion</span> <span class="mi">1</span><span class="p">:</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">-</span> <span class="n">only</span> <span class="n">one</span> <span class="n">possible</span> <span class="n">index</span> <span class="n">to</span> <span class="n">insert</span> <span class="n">x</span> <span class="n">into</span> <span class="n">M</span>
+<span class="n">M</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+
+<span class="n">Insertion</span> <span class="mi">2</span><span class="p">:</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">-</span> <span class="mi">1</span> <span class="n">should</span> <span class="n">go</span> <span class="n">before</span> <span class="mi">5</span><span class="p">,</span> <span class="n">so</span> <span class="n">index</span> <span class="mi">0</span>
+<span class="n">M</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+
+<span class="n">Insertion</span> <span class="mi">3</span><span class="p">:</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="mi">3</span> <span class="n">should</span> <span class="n">go</span> <span class="n">after</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">before</span> <span class="mi">5</span><span class="p">,</span> <span class="n">so</span> <span class="n">index</span> <span class="mi">1</span>
+<span class="n">M</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+
+<span class="n">Insertion</span> <span class="mi">4</span><span class="p">:</span> 
+<span class="n">x</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span> <span class="n">should</span> <span class="n">go</span> <span class="n">after</span> <span class="mi">3</span> <span class="ow">and</span> <span class="n">before</span> <span class="mi">5</span><span class="p">,</span> <span class="n">so</span> <span class="n">index</span> <span class="mi">2</span>
+<span class="n">M</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="the-best-possible-sort">
+<h3>The Best Possible Sort?<a class="headerlink" href="#the-best-possible-sort" title="Permalink to this headline">#</a></h3>
+<p>We’ve seen two sorting algorithms, both of which have complexity <span class="math notranslate nohighlight">\(O(n^2)\)</span>. A natural question to ask would be if we can find a sorting algorithm with a lower complexity, and what the lowest possible complexity would be. The answer to the first question is yes: there are many known sorting algorithms with <span class="math notranslate nohighlight">\(\Theta(n\log n)\)</span> complexity, some of which we will discuss in the Pure section of this course. The answer to the other question is also known:</p>
+<section id="theorem">
+<h4>Theorem<a class="headerlink" href="#theorem" title="Permalink to this headline">#</a></h4>
+<p>Any comparison-based sorting algorithm requires at least <span class="math notranslate nohighlight">\(\Theta(n\log n)\)</span> comparisons.</p>
+<section id="proof-ish">
+<h5>Proof(ish)<a class="headerlink" href="#proof-ish" title="Permalink to this headline">#</a></h5>
+<p>The key is to think about the amount of information that we can gain from doing comparisons. Remember that comparison-based sorting only assumes that you can compare objects using <span class="math notranslate nohighlight">\(\leq\)</span>, and in particular the only way we can get <em>any information</em> about the order the objects should come in is by comparing two of them. This means that if we perform <span class="math notranslate nohighlight">\(k\)</span> comparisons, we can at most distinguish between <span class="math notranslate nohighlight">\(2^k\)</span> orders of a list, since each comparison just gives us one of two values. Suppose in the worst-case, we perform <span class="math notranslate nohighlight">\(M\)</span> comparisons on our list of length <span class="math notranslate nohighlight">\(n\)</span>. This means that there are at most <span class="math notranslate nohighlight">\(2^M\)</span> different “paths” our algorithm can take while sorting the list, imagining each test <span class="math notranslate nohighlight">\(x \leq y\)</span> is a “fork in the road” of our algorithm.</p>
+<p>Each different ordering of our list must take a different path through our algorithm (why?) and a list of length <span class="math notranslate nohighlight">\(n\)</span> can be ordered in <span class="math notranslate nohighlight">\(n!\)</span> different ways. <span class="math notranslate nohighlight">\(2^M \geq n!\)</span>. There’s a nice result called <em>Stirling’s Approximation</em>, which is a bit more powerful than we need but worth knowing anyway, which tells us that asymptotically <span class="math notranslate nohighlight">\(n! \sim \sqrt{2\pi n}\left(\frac{n}{e}\right)^n\)</span>. Taking logs (base 2) gives us</p>
+<div class="math notranslate nohighlight">
+\[ M \geq \log(n!) \sim \log\left(\sqrt{2\pi n}\left(\frac{n}{e}\right)^n\right) = \frac{1}{2}\log(2\pi n) + n\log(n) - n\log(e) = n\log(n) - O(n)\]</div>
+<p>That is, we require roughly <span class="math notranslate nohighlight">\(n\log n\)</span> comparisons to distinguish between all the different orderings of lists.</p>
+<p>If you are allowed to do more than just compare two objects with <span class="math notranslate nohighlight">\(\leq\)</span>, then you can potentially do better.</p>
+</section>
+</section>
+</section>
+</section>
+<section id="amortized-complexity">
+<h2>Amortized Complexity<a class="headerlink" href="#amortized-complexity" title="Permalink to this headline">#</a></h2>
+<p>You will often see reference to “amortized” complexity when looking up how long basic operations take, like appending an element to a list. The precise definition isn’t too important here, but the basic meaning is this: if you repeatedly do an amortized <span class="math notranslate nohighlight">\(O(f(n))\)</span> operation, then on average over those repeated calls it will take <span class="math notranslate nohighlight">\(O(f(n))\)</span> time at worst.</p>
+<p>This is subtly different from the <em>average</em> complexity, where you are averaging over all of your inputs but not assuming that the operation is done more than once.</p>
+<p>For example, if you repeatedly append to a single list, then it will almost always take constant time. However, when your list reaches certain sizes more space needs to be allocated for it, and this takes a non-constant amount of time. Fortunately, this happens so rarely that when your repeated calls to <code class="docutils literal notranslate"><span class="pre">append</span></code> are averaged out they only take <span class="math notranslate nohighlight">\(O(1)\)</span> time. In this course, we won’t be picky if you say that something is <span class="math notranslate nohighlight">\(O(f(n))\)</span> and it is really only amortized <span class="math notranslate nohighlight">\(O(f(n))\)</span>.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./2_CoreNotebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="3Sympy.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">SymPy</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="5GoodPractise1_Efficiency.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Good practise in Python: Part 1 Efficiency</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Dan Lucas, Finn Smith, Ben Swallow<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

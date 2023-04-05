@@ -1,0 +1,953 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Floating point numbers &#8212; MT3510 Introduction to Mathematical Computing</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Sets and Dicts" href="15%20Sets%20and%20Dicts.html" />
+    <link rel="prev" title="Slicing" href="13%20Slicing.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">MT3510 Introduction to Mathematical Computing</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to MT3510
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="0intro.html">
+   Chapter 1: The Fundamentals
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="1%20Python%20and%20Jupyter%20Notebooks%20Basics.html">
+     Python &amp; Jupyter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2%20Variables.html">
+     Variables
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="3%20Modules%20and%20Numpy.html">
+     Modules and numpy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="4%20Errors.html">
+     Errors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="5%20Printing%20and%20Strings.html">
+     Printing to the screen
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="6%20For%20Loops.html">
+     For loops
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="7%20Nested%20For%20Loops.html">
+     Nested
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       for
+      </span>
+     </code>
+     loops
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="8%20Functions.html">
+     Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="9%20Conditionals.html">
+     Conditionals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="10%20While%20Loops.html">
+     While loops
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="11%20Lists%20and%20Tuples.html">
+     Lists
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="12%20Arrays.html">
+     Arrays
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="13%20Slicing.html">
+     Slicing
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Floating point numbers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="15%20Sets%20and%20Dicts.html">
+     Sets and Dicts
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="16%20Types.html">
+     Types
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="17%20Input%20and%20Files.html">
+     Input and files
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="18%20Plotting.html">
+     Matplotlib
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="19%20Markdown%20and%20LaTeX.html">
+     Markdown
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../2_CoreNotebooks/0intro.html">
+   Chapter 2: Topics in Computational Mathematics
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_CoreNotebooks/1Computational_Thinking.html">
+     Introduction to Computational Thinking
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_CoreNotebooks/2Interactivity.html">
+     Interactivity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_CoreNotebooks/3Sympy.html">
+     SymPy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_CoreNotebooks/4Computational_Complexity.html">
+     Introduction to Computational Complexity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_CoreNotebooks/5GoodPractise1_Efficiency.html">
+     Good practise in Python: Part 1 Efficiency
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_CoreNotebooks/6ComputationalGeometry.html">
+     Computational Geometry
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_CoreNotebooks/7GoodPractise2_Usability.html">
+     Good practise in Python Part 2: Usability &amp; Style
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../3_AppliedNotebooks/0intro.html">
+   Chapter 3 Applied Mathematics: Interpolation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3_AppliedNotebooks/Interpolation_Part1_Linear.html">
+     Interpolation Part 1: Linear Interpolation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3_AppliedNotebooks/Interpolation_Part2_Polynomial.html">
+     Interpolation Part 2: Polynomial interpolation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3_AppliedNotebooks/Interpolation_Part3_PiecewisePolynomial.html">
+     Interpolation Part 3: Piecewise polynomial interpolation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3_AppliedNotebooks/Interpolation_Part4_CubicSpline.html">
+     Interpolation Part 4: Spline interpolation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../4_PureNotebooks/0intro.html">
+   Chapter 4 Pure Mathematics: Graphs
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../4_PureNotebooks/notebooks.html">
+     Content with notebooks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../5_StatsNotebooks/0intro.html">
+   Chapter 5 Statistics:
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/1_IntroNotebooks/14 Floating Point Numbers.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/1_IntroNotebooks/14 Floating Point Numbers.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Floating point numbers
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#precision-and-the-machine-epsilon">
+     Precision and the machine epsilon
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#binary-representations">
+     Binary representations
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#comparing-floats">
+     Comparing floats
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overflow-and-underflow">
+   Overflow and underflow
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#infinity-and-nan">
+     Infinity and NaN
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Floating point numbers</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Floating point numbers
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#precision-and-the-machine-epsilon">
+     Precision and the machine epsilon
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#binary-representations">
+     Binary representations
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#comparing-floats">
+     Comparing floats
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overflow-and-underflow">
+   Overflow and underflow
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#infinity-and-nan">
+     Infinity and NaN
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="floating-point-numbers">
+<h1>Floating point numbers<a class="headerlink" href="#floating-point-numbers" title="Permalink to this headline">#</a></h1>
+<p>We’ve seen that we can represent decimals using <code class="docutils literal notranslate"><span class="pre">floats</span></code>, and also that these <code class="docutils literal notranslate"><span class="pre">floats</span></code> can sometimes have strange behaviour.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">0.1</span> <span class="o">+</span> <span class="mf">0.2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.30000000000000004
+</pre></div>
+</div>
+</div>
+</div>
+<p>It’s important to understand what is going on here. A <em><strong>floating point number</strong></em> is one that is (approximately) represented in a format similar to “scientific notation”, but where the number of significant figures and the base of the exponent is fixed. For example, we might fix the number of significant figures at <span class="math notranslate nohighlight">\(16\)</span> and the base as <span class="math notranslate nohighlight">\(10\)</span>, and represent two numbers of very different magnitudes:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} 
+\sqrt{2} \approx 1.414213562373095 \times 10^{0}, \\
+e^{35} \approx  1.586013452313431 \times 10^{15}.
+\end{split}\]</div>
+<p>The significant digits are called the <em><strong>significand</strong></em> or <em><strong>mantissa</strong></em>, and the exponent is conveniently called the exponent.</p>
+<p>Note that the error in the second approximation will be much larger in absolute value. The term “floating point” refers to how the exponent moves the decimal point across the significant figures.</p>
+<p>Computers typically use a floating-point system to represent non-integer real numbers. The system used by Python is a little different to the representation above. It assumes that the point lies after the last significant digit, rather than after the first as above. It also uses base-2 (binary), and stores 53 significant binary digits (<em><strong>bits</strong></em>) along with 11 bits for the exponent, for a total of 64 bits (8 bytes). This system is called a <em><strong>double-precision</strong></em> float. The two numbers above would be represented as follows:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\sqrt{2} \approx 6369051672525773 \times 2^{-52}, \\
+e^{35} \approx 6344053809253723 \times 2^{-2}.
+\end{split}\]</div>
+<p>Here we have given the significands and exponents in base ten for convenience, but they would be stored in binary.</p>
+<p>Since <span class="math notranslate nohighlight">\(2^{53} \approx 10^{16}\)</span>, we roughly get 16 significant decimal digits in a double-precision float. There are also <em><strong>single-precision</strong></em> floats, which take up 4 bytes (24 significant bits and 8 exponent bits). This translates into around 7 significant decimal digits.</p>
+<section id="precision-and-the-machine-epsilon">
+<h2>Precision and the machine epsilon<a class="headerlink" href="#precision-and-the-machine-epsilon" title="Permalink to this headline">#</a></h2>
+<p>Since there are a fixed number of significant digits, there are often issues when adding together numbers of different magnitudes. Consider the following:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">35</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.1</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">35</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>Since the exponent for <span class="math notranslate nohighlight">\(e^{35}\)</span> is large, the fixed 53 significant bits cannot show the difference between <span class="math notranslate nohighlight">\(e^{35}\)</span> and <span class="math notranslate nohighlight">\(e^{35} + 0.1\)</span>.</p>
+<p>A very important example comes from considering numbers just slightly larger than 1.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1e-14 is shorthand for 10**(-14).</span>
+<span class="c1"># Test if Python can distinguish between 1 + 1e-14 and 1</span>
+<span class="mi">1</span> <span class="o">+</span> <span class="mf">1e-14</span> <span class="o">==</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">+</span> <span class="mf">1e-15</span> <span class="o">==</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">+</span> <span class="mf">1e-16</span> <span class="o">==</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>Python cannot distinguish between <span class="math notranslate nohighlight">\(1\)</span> and <span class="math notranslate nohighlight">\(1 + 10^{-16}\)</span>; they are represented by the same float. This value of <span class="math notranslate nohighlight">\(10^{-16}\)</span> is a good approximation for <span class="math notranslate nohighlight">\(2^{-53}\)</span>, which is the “true” largest value <span class="math notranslate nohighlight">\(\varepsilon\)</span> such that Python cannot distinguish between <span class="math notranslate nohighlight">\(1\)</span> and <span class="math notranslate nohighlight">\(1 + \varepsilon\)</span>. This value <span class="math notranslate nohighlight">\(\varepsilon\)</span> is called the <em><strong>machine epsilon</strong></em>, and represents the relative error that appears in floating point representations.</p>
+<p>It is important to remember that the machine epsilon is a relative error. The gaps between indistinguishable floats grow as the exponent increases, and shrink as it decreases - the machine epsilon is the gap when the exponent is 0. The machine epsilon <em><strong>is not</strong></em> the smallest representible number - see the <a class="reference external" href="#Overflow-and-underflow">section on underflow</a>.</p>
+<p>We saw above that <span class="math notranslate nohighlight">\(e^{35}\)</span> and <span class="math notranslate nohighlight">\(e^{35} + 0.1\)</span> also could not be distinguished. We can use the machine epsilon to get a rough estimate for the largest value <span class="math notranslate nohighlight">\(\delta\)</span> such that <span class="math notranslate nohighlight">\(e^{35} + \delta\)</span> is indistinguishable from <span class="math notranslate nohighlight">\(e^{35}\)</span> as follows:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">delta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">35</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span><span class="o">**-</span><span class="mi">53</span>
+
+<span class="n">delta</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.17608286521236036
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">35</span><span class="p">)</span> <span class="o">+</span> <span class="n">delta</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">35</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">35</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">delta</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">35</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="binary-representations">
+<h2>Binary representations<a class="headerlink" href="#binary-representations" title="Permalink to this headline">#</a></h2>
+<p>There is another issue that can crop up with floats: the fact that they use a binary representation means that some simple decimals cannot be easily represented. For example, the number <span class="math notranslate nohighlight">\(0.1\)</span> is a nice decimal fraction, but cannot be represented as a finite binary fraction. This can cause some strange effects:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="mi">3</span> <span class="o">*</span> <span class="n">a</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.30000000000000004
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span> <span class="o">*</span> <span class="n">a</span> <span class="o">==</span> <span class="mf">0.3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<p>The issue here is that <code class="docutils literal notranslate"><span class="pre">a</span></code> will be the closest representable float to <span class="math notranslate nohighlight">\(0.1\)</span>, and <code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">*</span> <span class="pre">a</span></code> is then not necessarily the closest float to the true value <span class="math notranslate nohighlight">\(0.3\)</span>. You can find out the representation that Python is using:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span><span class="o">.</span><span class="n">as_integer_ratio</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(3602879701896397, 36028797018963968)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="mi">36028797018963968</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>55.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>This means that <span class="math notranslate nohighlight">\(0.1\)</span> is being represented as <span class="math notranslate nohighlight">\(\frac{3602879701896397}{2^{55}}\)</span>.</p>
+</section>
+<section id="comparing-floats">
+<h2>Comparing floats<a class="headerlink" href="#comparing-floats" title="Permalink to this headline">#</a></h2>
+<p>Given the issues above, it is often not a good idea to directly compare floats <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> using <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">==</span> <span class="pre">y</span></code>. Instead, consider testing their absolute difference: <code class="docutils literal notranslate"><span class="pre">abs(x</span> <span class="pre">-</span> <span class="pre">y)</span> <span class="pre">&lt;=</span> <span class="pre">err</span></code> for some fixed value of <code class="docutils literal notranslate"><span class="pre">err</span></code>.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="overflow-and-underflow">
+<h1>Overflow and underflow<a class="headerlink" href="#overflow-and-underflow" title="Permalink to this headline">#</a></h1>
+<p>As well as the limitations discussed above, caused by the number of significant bits, there are limitations caused by the fixed number of bits available for the exponent. Since we have 11 bits available for the exponent, and one of those bits is used to determine whether it is positive or negative, the exponent can go up to <span class="math notranslate nohighlight">\(2^{10} - 1\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">2.0</span> <span class="o">**</span> <span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="mi">10</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8.98846567431158e+307
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">2.0</span> <span class="o">**</span> <span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">OverflowError</span><span class="g g-Whitespace">                             </span>Traceback (most recent call last)
+<span class="nn">Input In [14],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="mf">2.0</span> <span class="o">**</span> <span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="ne">OverflowError</span>: (34, &#39;Result too large&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>An <code class="docutils literal notranslate"><span class="pre">OverflowError</span></code> occurs when the result of a calculation is too large to fit in a <code class="docutils literal notranslate"><span class="pre">float</span></code>.</p>
+<p>A similar issue can occur when the exponent gets too small, though here we don’t get an error.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="o">**-</span><span class="mi">1074</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5e-324
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="o">**-</span><span class="mi">1075</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0
+</pre></div>
+</div>
+</div>
+</div>
+<section id="infinity-and-nan">
+<h2>Infinity and NaN<a class="headerlink" href="#infinity-and-nan" title="Permalink to this headline">#</a></h2>
+<p>If we directly create a <code class="docutils literal notranslate"><span class="pre">float</span></code> which is too large, Python will treat it like infinity.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 2.3 * (10**310) is, of course, equal to infinity</span>
+<span class="mf">2.3e310</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>inf
+</pre></div>
+</div>
+</div>
+</div>
+<p>The other special value is <code class="docutils literal notranslate"><span class="pre">nan</span></code>, standing for “not a number”, which can arise if your calculations take a strange turn like multiplying infinity by 0.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># infinity times 0 is not a number</span>
+<span class="mf">2.3e310</span> <span class="o">*</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nan
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># infinity minus infinity is not a number</span>
+<span class="mf">2.3e310</span> <span class="o">-</span> <span class="mf">4.5e350</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nan
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./1_IntroNotebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="13%20Slicing.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Slicing</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="15%20Sets%20and%20Dicts.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Sets and Dicts</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Dan Lucas, Finn Smith, Ben Swallow<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

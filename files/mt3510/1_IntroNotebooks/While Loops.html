@@ -1,0 +1,612 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>While loops &#8212; MT3510 Introduction to Mathematical Computing</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Variables" href="Variables.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">MT3510 Introduction to Mathematical Computing</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown.html">
+   Markdown Files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown-notebooks.html">
+   Notebooks with MyST Markdown
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Arrays.html">
+   Arrays
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/1_IntroNotebooks/While Loops.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/1_IntroNotebooks/While Loops.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   While loops
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#infinite-loops">
+   Infinite loops
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#breaking-out-of-loops">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Break
+    </span>
+   </code>
+   ing out of loops
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>While loops</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   While loops
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#infinite-loops">
+   Infinite loops
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#breaking-out-of-loops">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Break
+    </span>
+   </code>
+   ing out of loops
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="while-loops">
+<h1>While loops<a class="headerlink" href="#while-loops" title="Permalink to this headline">#</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">For</span></code> loops are a very valuable construct for repeating something when you already know how many times you will need to repeat (even if that is determined by some other variable). However, we often wish to repeat until a condition is no longer satisfied. For example, we might summarise the process of debugging as “while there are still bugs in the program, fix a bug!”</p>
+<p>Python offers the <code class="docutils literal notranslate"><span class="pre">while</span></code> loop for this purpose. It has the following form:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="o">&lt;</span><span class="n">condition</span><span class="o">&gt;</span><span class="p">:</span>
+    <span class="n">things</span> <span class="n">to</span> <span class="n">do</span> <span class="k">while</span> <span class="n">the</span> <span class="n">condition</span> <span class="ow">is</span> <span class="kc">True</span>
+</pre></div>
+</div>
+<p>Python will first evaluate the condition. If it is <code class="docutils literal notranslate"><span class="pre">True</span></code>, then the loop body will be run. The condition will then be checked again, and if it is <code class="docutils literal notranslate"><span class="pre">True</span></code> the loop body will be run again. This continues until the condition evaluates to <code class="docutils literal notranslate"><span class="pre">False</span></code>.
+Here’s an example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.9</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">while</span> <span class="n">x</span> <span class="o">!=</span> <span class="mf">0.5</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>  <span class="c1"># increment i manually, as we&#39;re not using a for-loop</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;after </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> iterations, x = </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>after 1 iterations, x = 0.17999999999999997
+after 2 iterations, x = 0.29519999999999996
+after 3 iterations, x = 0.41611392
+after 4 iterations, x = 0.4859262511644672
+after 5 iterations, x = 0.49960385918742867
+after 6 iterations, x = 0.49999968614491325
+after 7 iterations, x = 0.49999999999980305
+after 8 iterations, x = 0.5
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that the condition isn’t checked <em>inside</em> the loop body, so Python won’t break the loop halfway through the loop body if the condition becomes <code class="docutils literal notranslate"><span class="pre">False</span></code>. Because of this, if we rearranged the statements in the loop body, we would get a different final number printed:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.9</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">while</span> <span class="n">x</span> <span class="o">!=</span> <span class="mf">0.5</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;after </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> iterations, x = </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>after 0 iterations, x = 0.9
+after 1 iterations, x = 0.17999999999999997
+after 2 iterations, x = 0.29519999999999996
+after 3 iterations, x = 0.41611392
+after 4 iterations, x = 0.4859262511644672
+after 5 iterations, x = 0.49960385918742867
+after 6 iterations, x = 0.49999968614491325
+after 7 iterations, x = 0.49999999999980305
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the example below, we have a turtle draw a spiral from the centre until it reaches a bounding box 150 units away from the centre.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mobilechelonian</span> <span class="kn">import</span> <span class="n">Turtle</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># the centre coordinate is (200, 200)</span>
+<span class="n">centre</span> <span class="o">=</span> <span class="mi">200</span>
+
+<span class="c1"># create a turtle caled Terry</span>
+<span class="n">terry</span> <span class="o">=</span> <span class="n">Turtle</span><span class="p">()</span>
+<span class="n">terry</span><span class="o">.</span><span class="n">speed</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># we need a variable to keep track of the angle to turn to make the spiral</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1"># Loop until terry is 150 away from the centre in the x or y direction.</span>
+<span class="c1"># np.abs computes the absolute value of its argument, so we are testing the if the difference</span>
+<span class="c1"># between centre and posX is &lt; 150, and the difference between centre and posY is &lt; 150.</span>
+<span class="k">while</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">centre</span> <span class="o">-</span> <span class="n">terry</span><span class="o">.</span><span class="n">posX</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">150</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">centre</span> <span class="o">-</span> <span class="n">terry</span><span class="o">.</span><span class="n">posY</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">150</span><span class="p">):</span>
+    <span class="c1"># move forward a small amount to approximate a curve</span>
+    <span class="n">terry</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+    
+    <span class="c1"># The angle terry turns should get smaller as he goes to obtain a spiral</span>
+    <span class="c1"># so turn by 360/i, then increase i.</span>
+    <span class="c1"># There are many other choices that would also make a spiral.</span>
+    <span class="n">terry</span><span class="o">.</span><span class="n">left</span><span class="p">(</span><span class="mi">360</span><span class="o">/</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="nn">Input In [3],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">mobilechelonian</span> <span class="kn">import</span> <span class="n">Turtle</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># the centre coordinate is (200, 200)</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;mobilechelonian&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="infinite-loops">
+<h1>Infinite loops<a class="headerlink" href="#infinite-loops" title="Permalink to this headline">#</a></h1>
+<p>There is a danger lurking in <code class="docutils literal notranslate"><span class="pre">while</span></code> loops: what happens if the condition <em>never</em> becomes <code class="docutils literal notranslate"><span class="pre">False</span></code>? Python will simply keep running the loop body forever. This is called an <em><strong>infinite loop</strong></em>, and is one of the common causes of programs freezing or crashing. Whenever you write a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop, you should consider how you know it will eventually finish, i.e. how you know that the condition will eventually be false. It is <a class="reference external" href="https://en.wikipedia.org/wiki/Halting_problem">literally impossible</a> for Python to decide whether a general <code class="docutils literal notranslate"><span class="pre">while</span></code> loop will terminate, and so it is up to you as the programmer!
+Proving that a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop will terminate often requires some mathematical insight.</p>
+<p>If you run into an infinite loop (or simply a loop which is taking too long to terminate), you can stop Python executing your code by clicking the “stop” button in the menu beside the “Run” button.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="breaking-out-of-loops">
+<h1><code class="docutils literal notranslate"><span class="pre">Break</span></code>ing out of loops<a class="headerlink" href="#breaking-out-of-loops" title="Permalink to this headline">#</a></h1>
+<p>There are two common alternatives used to break out of while loops. The first is the <code class="docutils literal notranslate"><span class="pre">break</span></code> statement. When this is encountered in a loop, Python will immediately stop executing the loop and go to the next line in the code. If you have nested loops, <code class="docutils literal notranslate"><span class="pre">break</span></code> will only break out of the inner-most loop that contains the <code class="docutils literal notranslate"><span class="pre">break</span></code> statement.</p>
+<p>In the example below, a <code class="docutils literal notranslate"><span class="pre">break</span></code> statement is used to exit a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop when the user inputs the correct number. We’ll discuss user input more in the final worksheet. If you execute the following cell, Python will get “stuck” in the loop and you will have to exit using the “stop” button in the menu bar, or by guessing the correct number. The technique used in this example - using <code class="docutils literal notranslate"><span class="pre">while</span> <span class="pre">True</span></code> to keep looping and processing user input - is called an “event loop” and lies at the heart of any program you can interact with continuously, like office software or games.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+<span class="c1"># This program implements a guessing game where numbers are</span>
+<span class="c1"># read in from the user in order to guess an answer known to the</span>
+<span class="c1"># computer</span>
+
+<span class="c1"># First set the answer to be a random number between 0 and 100</span>
+<span class="n">answer</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># Explain in words what the user needs to do:</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Guess a number between 0 and 100 - I only stop when you get it right!&quot;</span><span class="p">)</span>
+
+<span class="c1"># Start a while loop which only exits if the user guesses the number correctly</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="c1"># This line reads in a guess from the user:</span>
+    <span class="n">guess</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;&gt;&quot;</span><span class="p">))</span>
+    <span class="c1"># Next see whether the guess is too small, too large or right:</span>
+    <span class="k">if</span> <span class="n">guess</span> <span class="o">&lt;</span> <span class="n">answer</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Higher&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">guess</span> <span class="o">&gt;</span> <span class="n">answer</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Lower&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># If we get here the answer is right</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Correct! Congratulations.&quot;</span><span class="p">)</span>
+        <span class="c1"># If the answer is right exit the loop</span>
+        <span class="k">break</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Come back and play again soon!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Guess a number between 0 and 100 - I only stop when you get it right!
+&gt;30
+Higher
+&gt;60
+Higher
+&gt;80
+Lower
+&gt;70
+Higher
+&gt;75
+Lower
+&gt;72
+Lower
+&gt;71
+Correct! Congratulations.
+Come back and play again soon!
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Break</span></code> statements can also be used in <code class="docutils literal notranslate"><span class="pre">for</span></code> loops. They are often used when you are searching for an object with some property, and there is no reason to keep doing work once you have found it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sets i to be the first integer between 100 and 200 which is divisible by 47.</span>
+<span class="c1"># There are better ways of doing this!</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">201</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">47</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="c1"># if we break now, the variable i will keep its current value</span>
+        <span class="k">break</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;the first multiple of 47 between 100 and 200 is </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>the first multiple of 47 between 100 and 200 is 141
+</pre></div>
+</div>
+</div>
+</div>
+<p>The other standard way of breaking loops applies if the loop is contained in a function. Since a <code class="docutils literal notranslate"><span class="pre">return</span></code> statement immediately stops the function from being run and returns the control flow to where it was called from, it also breaks out of any loop in the function.</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./1_IntroNotebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="Variables.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Variables</p>
+        </div>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Dan Lucas<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

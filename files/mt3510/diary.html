@@ -1,0 +1,702 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Module diary &#8212; MT3510 Introduction to Mathematical Computing</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Coursework submission guidance" href="generic-guidance-23.html" />
+    <link rel="prev" title="Welcome to MT3510" href="intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">MT3510 Introduction to Mathematical Computing</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to MT3510
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Module diary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="generic-guidance-23.html">
+   Coursework submission guidance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="project1.html">
+   Applied Mathematics Team Project
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="1_IntroNotebooks/0intro.html">
+   Chapter 1: The Fundamentals
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="1_IntroNotebooks/1%20Python%20and%20Jupyter%20Notebooks%20Basics.html">
+     Python &amp; Jupyter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="1_IntroNotebooks/2%20Variables.html">
+     Variables
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="1_IntroNotebooks/3%20Modules%20and%20Numpy.html">
+     Modules and numpy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="1_IntroNotebooks/4%20Errors.html">
+     Errors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="1_IntroNotebooks/5%20Printing%20and%20Strings.html">
+     Printing to the screen
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="1_IntroNotebooks/6%20For%20Loops.html">
+     For loops
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="1_IntroNotebooks/7%20Nested%20For%20Loops.html">
+     Nested
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       for
+      </span>
+     </code>
+     loops
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="1_IntroNotebooks/8%20Functions.html">
+     Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="1_IntroNotebooks/9%20Conditionals.html">
+     Conditionals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="1_IntroNotebooks/10%20While%20Loops.html">
+     While loops
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="1_IntroNotebooks/11%20Lists%20and%20Tuples.html">
+     Lists
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="1_IntroNotebooks/12%20Arrays.html">
+     Arrays
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="1_IntroNotebooks/13%20Slicing.html">
+     Slicing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="1_IntroNotebooks/14%20Floating%20Point%20Numbers.html">
+     Floating point numbers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="1_IntroNotebooks/15%20Sets%20and%20Dicts.html">
+     Sets and Dicts
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="1_IntroNotebooks/16%20Types.html">
+     Types
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="1_IntroNotebooks/17%20Input%20and%20Files.html">
+     Input and files
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="1_IntroNotebooks/18%20Plotting.html">
+     Matplotlib
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="1_IntroNotebooks/19%20Markdown%20and%20LaTeX.html">
+     Markdown
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="2_CoreNotebooks/0intro.html">
+   Chapter 2: Topics in Computational Mathematics
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2_CoreNotebooks/1Computational_Thinking.html">
+     Introduction to Computational Thinking
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2_CoreNotebooks/2Interactivity.html">
+     Interactivity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2_CoreNotebooks/3Sympy.html">
+     SymPy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2_CoreNotebooks/4Computational_Complexity.html">
+     Introduction to Computational Complexity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2_CoreNotebooks/5GoodPractise1_Efficiency.html">
+     Good practise in Python: Part 1 Efficiency
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2_CoreNotebooks/6GoodPractise2_Usability.html">
+     Good practise in Python Part 2: Usability &amp; Style
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2_CoreNotebooks/7ComputationalGeometry.html">
+     Computational Geometry
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2_CoreNotebooks/8Introduction_to_Pandas.html">
+     Introduction to Pandas
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="3_AppliedNotebooks/0intro.html">
+   Chapter 3: Applied Mathematics: Interpolation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="3_AppliedNotebooks/Interpolation_Part1_Linear.html">
+     Interpolation Part 1: Linear Interpolation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="3_AppliedNotebooks/Interpolation_Part2_Polynomial.html">
+     Interpolation Part 2: Polynomial interpolation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="3_AppliedNotebooks/Interpolation_Part3_PiecewisePolynomial.html">
+     Interpolation Part 3: Piecewise polynomial interpolation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="3_AppliedNotebooks/Interpolation_Part4_CubicSpline.html">
+     Interpolation Part 4: Spline interpolation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="4_PureNotebooks/0intro.html">
+   Chapter 4: Pure Mathematics: Graph Theory
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="5_StatsNotebooks/0intro.html">
+   Chapter 5: Statistics:
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/diary.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#week-6">
+   Week 6
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#week-5">
+   Week 5
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#week-4">
+   Week 4
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#week-3">
+   Week 3
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#week-2">
+   Week 2
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#week-1">
+   Week 1
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Module diary</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#week-6">
+   Week 6
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#week-5">
+   Week 5
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#week-4">
+   Week 4
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#week-3">
+   Week 3
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#week-2">
+   Week 2
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#week-1">
+   Week 1
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="module-diary">
+<h1>Module diary<a class="headerlink" href="#module-diary" title="Permalink to this headline">#</a></h1>
+<p>With the unusual flipped format of this module you will need to take a little more responsibility for organising your time. To help, this page will summarise the tasks for each week including a reminder of upcoming deadlines and a description of the videos to review.</p>
+<section id="week-6">
+<h2>Week 6<a class="headerlink" href="#week-6" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Attend Q&amp;A drop-in session on <a class="reference external" href="https://teams.microsoft.com/l/channel/19%3a918090f750e9412089a0d7246b9cdfb1%40thread.tacv2/Monday%2520drop-in?groupId=3aa7e196-9697-4b27-ad46-e33c5a40cc77&amp;tenantId=f85626cb-0da8-49d3-aa58-64ef678ef01a">MS Teams</a> on Monday at 1pm. We will discuss the applied <em>team</em> project, the session will be recorded.</p></li>
+<li><p>Read the instructions for the applied team project on Moodle/JupyterHub, meet with your team and begin work on it.</p></li>
+<li><p>Watch the week 6 videos on <a class="reference external" href="https://st-andrews.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=baa22bf3-39db-40b2-a37b-afa300e1ae7c">piecewise interpolation</a> and <a class="reference external" href="https://st-andrews.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=caed980c-a91f-4be2-a3f2-afab00edf842">spline interpolation</a></p></li>
+<li><p>Complete Tutorial 6 on spline interpolation supported by attendance at the laboratory tutorial sessions.</p></li>
+<li><p>Submit the practical for marking by 9am Monday 6th March.</p></li>
+<li><p>Read feedback from practical 4 posted to MMS.</p></li>
+<li><p>Return here toward the end of week 6 to review tasks for week 7.</p></li>
+</ul>
+</section>
+<section id="week-5">
+<h2>Week 5<a class="headerlink" href="#week-5" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Attend Q&amp;A drop-in session on <a class="reference external" href="https://teams.microsoft.com/l/channel/19%3a918090f750e9412089a0d7246b9cdfb1%40thread.tacv2/Monday%2520drop-in?groupId=3aa7e196-9697-4b27-ad46-e33c5a40cc77&amp;tenantId=f85626cb-0da8-49d3-aa58-64ef678ef01a">MS Teams</a> on Monday at 1pm.</p></li>
+<li><p>Watch the week 5 videos on <a class="reference external" href="https://st-andrews.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=5066ca16-275b-4bdf-b43d-af9b00ef5342">linear interpolation</a> and <a class="reference external" href="https://st-andrews.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=ed26e534-b353-4732-a8a6-afa100b5d462">polynomial interpolation</a></p></li>
+<li><p>Complete Tutorial on interpolation supported by attendance at the laboratory tutorial sessions.</p></li>
+<li><p>Complete the <a class="reference external" href="https://forms.office.com/e/r1v5TWJAZm">mid-semester survey</a></p></li>
+<li><p>Submit the practical for marking by 9am Monday 20th February.</p></li>
+<li><p>Read feedback from practical 3 posted to MMS.</p></li>
+<li><p>Return here toward the end of week 5 to review tasks for week 6.</p></li>
+</ul>
+</section>
+<section id="week-4">
+<h2>Week 4<a class="headerlink" href="#week-4" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Attend Q&amp;A drop-in session on <a class="reference external" href="https://teams.microsoft.com/l/channel/19%3a918090f750e9412089a0d7246b9cdfb1%40thread.tacv2/Monday%2520drop-in?groupId=3aa7e196-9697-4b27-ad46-e33c5a40cc77&amp;tenantId=f85626cb-0da8-49d3-aa58-64ef678ef01a">MS Teams</a> on Monday at 1pm.</p></li>
+<li><p>Watch the week 4 videos on <a class="reference external" href="https://st-andrews.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=45343302-dd43-4841-9f42-af8c00ea219d">Computational Geometry</a>, <a class="reference external" href="https://st-andrews.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=ef11244d-104d-4faf-be36-af9400d86615">Graham scan algorithm</a> and <a class="reference external" href="https://st-andrews.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=19faf01c-b6f7-4937-bc88-af9e01047652">Introduction to Pandas</a> and read through the accompanying notebooks.</p></li>
+<li><p>Complete practical 4 on the Graham scan algorithm supported by attendance at the laboratory tutorial sessions and the video above. Please watch the video <strong>before</strong> attending the tutorial session.</p></li>
+<li><p>Submit the practical for marking by 9am Monday 13th February.</p></li>
+<li><p>Read feedback from practical 2 posted to MMS.</p></li>
+<li><p>Attempt the fourth Moodle quiz.</p></li>
+<li><p>Return here toward the end of week 4 to review tasks for week 5.</p></li>
+</ul>
+</section>
+<section id="week-3">
+<h2>Week 3<a class="headerlink" href="#week-3" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Attend Q&amp;A drop-in session on <a class="reference external" href="https://teams.microsoft.com/l/channel/19%3a918090f750e9412089a0d7246b9cdfb1%40thread.tacv2/Monday%2520drop-in?groupId=3aa7e196-9697-4b27-ad46-e33c5a40cc77&amp;tenantId=f85626cb-0da8-49d3-aa58-64ef678ef01a">MS Teams</a> on Monday at 1pm.</p></li>
+<li><p>Watch the week 3 videos on <a class="reference external" href="https://st-andrews.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=45e76f23-3a01-4207-9032-af970108901d">Computational Complexity</a>, <a class="reference external" href="https://st-andrews.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=8dd31fdf-f78b-4f79-aa2a-af8500dbe377">Good Practise part 1</a> and <a class="reference external" href="https://st-andrews.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=b683ec4b-8629-42c5-b917-af870119d627">Good Practise Part 2</a> and read through the accompanying notebooks.</p></li>
+<li><p>Complete practical 3, part 2 on the Fibonacci numbers supported by attendance at the laboratory tutorial sessions.</p></li>
+<li><p>Submit the practical for marking by 9am Monday 6th February.</p></li>
+<li><p>Attempt the third Moodle quiz.</p></li>
+<li><p>Return here toward the end of week 3 to review tasks for week 4.</p></li>
+</ul>
+</section>
+<section id="week-2">
+<h2>Week 2<a class="headerlink" href="#week-2" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Attend Q&amp;A drop-in session on <a class="reference external" href="https://teams.microsoft.com/l/channel/19%3a918090f750e9412089a0d7246b9cdfb1%40thread.tacv2/Monday%2520drop-in?groupId=3aa7e196-9697-4b27-ad46-e33c5a40cc77&amp;tenantId=f85626cb-0da8-49d3-aa58-64ef678ef01a">MS Teams</a> on Monday at 1pm.</p></li>
+<li><p>Watch the week 2 videos on <a class="reference external" href="https://st-andrews.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=8611f8b9-0829-4912-bdc1-af8c00e9ccbd">Computational Thinking</a>, <a class="reference external" href="https://st-andrews.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=3681195e-0bdd-4969-9dd3-af4300f97584">sympy</a> and <a class="reference external" href="https://st-andrews.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=c4f24665-90ce-4832-b976-af4300f975a6">interactivity</a> and read through the accompanying notebooks.</p></li>
+<li><p>Complete practical 2 on the Fibonacci numbers supported by attendance at the laboratory tutorial sessions.</p></li>
+<li><p>Submit the practical for marking by 9am Monday 30th January, <em>please note that this work is for credit</em>.</p></li>
+<li><p>Attempt the second Moodle quiz.</p></li>
+<li><p>Return here toward the end of week 2 to review tasks for week 3.</p></li>
+</ul>
+</section>
+<section id="week-1">
+<h2>Week 1<a class="headerlink" href="#week-1" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Watch the module <a class="reference external" href="https://st-andrews.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=735a2120-723a-4bc1-928b-af870119dc4f">introduction video</a>.</p></li>
+<li><p>Familiarise yourself with the JupyterHub (link on Moodle) and the content that appears there.</p></li>
+<li><p>Review all of the content in <a class="reference internal" href="1_IntroNotebooks/0intro.html#chapter1"><span class="std std-ref">Chapter 1: The Fundamentals</span></a> which should be revision from 2000 level.</p></li>
+<li><p>Watch any accompanying videos for Chapter 1 that you feel you need to via the module <a class="reference external" href="https://st-andrews.cloud.panopto.eu/Panopto/Pages/Sessions/List.aspx?folderID=453c6432-da66-4cdb-89ec-af4300f80c28">Panopto channel.</a></p></li>
+<li><p>Attempt the first Moodle quiz.</p></li>
+<li><p>Complete the practical on the simple pendulum supported by attendance at the laboratory tutorial sessions.</p></li>
+<li><p>Submit the practical for marking by 9am next Monday (23rd January) (not for credit this week).</p></li>
+<li><p>Return here toward the end of week 1 to review tasks for week 2.</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Welcome to MT3510</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="generic-guidance-23.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Coursework submission guidance</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Dan Lucas, Finn Smith, Ben Swallow<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

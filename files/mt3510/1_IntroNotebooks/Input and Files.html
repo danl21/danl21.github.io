@@ -1,0 +1,1392 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Input and files &#8212; MT3510 Introduction to Mathematical Computing</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Interactivity" href="Interactivity.html" />
+    <link rel="prev" title="Functions" href="Functions.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">MT3510 Introduction to Mathematical Computing</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown.html">
+   Markdown Files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown-notebooks.html">
+   Notebooks with MyST Markdown
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Arrays.html">
+   Arrays
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/1_IntroNotebooks/Input and Files.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/1_IntroNotebooks/Input and Files.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Input and files
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#csv-files">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     CSV
+    </span>
+   </code>
+   files
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-csv">
+     Using
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       csv
+      </span>
+     </code>
+     :
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-pandas">
+     Using
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       pandas
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#numpy-input-and-output">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Numpy
+    </span>
+   </code>
+   input and output
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Input and files</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Input and files
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#csv-files">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     CSV
+    </span>
+   </code>
+   files
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-csv">
+     Using
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       csv
+      </span>
+     </code>
+     :
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-pandas">
+     Using
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       pandas
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#numpy-input-and-output">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Numpy
+    </span>
+   </code>
+   input and output
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="input-and-files">
+<h1>Input and files<a class="headerlink" href="#input-and-files" title="Permalink to this headline">#</a></h1>
+<p>Very often, we want to work with data that has already been collected or generated elsewhere. This might take the form of data from online surveys, or acoustic monitoring sensors, or perhaps the results of intensive fluid-dynamics simulations carried out on huge remote clusters of computers. There are a vast number of possible formats for data, and ways of reading it into Python, so we will focus only on the simplest.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="csv-files">
+<h1><code class="docutils literal notranslate"><span class="pre">CSV</span></code> files<a class="headerlink" href="#csv-files" title="Permalink to this headline">#</a></h1>
+<p>A <em>comma-separated value</em> (csv) file contains the data in a simple form: each line of the file contains a number of values, separated by commas. Often the first line consists of <em>headers</em> (i.e. bits of text describing each column of data).</p>
+<p>As an example, the file <code class="docutils literal notranslate"><span class="pre">data/strathkiness-rainfall.csv</span></code> consists of daily rainfall data for Strathkinness (near St Andrews), between August 1st 2020 and August 23rd 2021. This data is published by SEPA under the Open Government License v3.0; you can find the most recent rainfall data <a class="reference external" href="https://www2.sepa.org.uk/rainfall/data/index/11368">here</a>. The first few lines of that file look like this:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Timestamp,Value
+01/08/2020 09:00:00,0.2
+02/08/2020 09:00:00,0.0
+03/08/2020 09:00:00,2.0
+</pre></div>
+</div>
+<p>This has two columns: <code class="docutils literal notranslate"><span class="pre">Timestamp</span></code>, the day the data is for, and <code class="docutils literal notranslate"><span class="pre">Value</span></code>, the total daily rainfall (in millimetres).</p>
+<section id="using-csv">
+<h2>Using <code class="docutils literal notranslate"><span class="pre">csv</span></code>:<a class="headerlink" href="#using-csv" title="Permalink to this headline">#</a></h2>
+<p>We could read the rainfall data into Python like so:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># we can use the csv module to read csv files</span>
+<span class="kn">import</span> <span class="nn">csv</span>
+
+<span class="c1"># </span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;data/strathkiness-rainfall.csv&#39;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">csvfile</span><span class="p">:</span>
+    <span class="c1"># Create a &quot;reader&quot; object to do the reading.</span>
+    <span class="c1"># You *can* use things other than commas in csv files, so we have to </span>
+    <span class="c1"># tell the reader that the value separator is a comma here.</span>
+    <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">csvfile</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+    <span class="n">rain_data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">reader</span><span class="p">)</span>  <span class="c1"># convert the data to a list</span>
+
+<span class="n">rain_data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[&#39;Timestamp&#39;, &#39;Value&#39;],
+ [&#39;01/08/2020 09:00:00&#39;, &#39;0.2&#39;],
+ [&#39;02/08/2020 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;03/08/2020 09:00:00&#39;, &#39;2.0&#39;],
+ [&#39;04/08/2020 09:00:00&#39;, &#39;15.8&#39;],
+ [&#39;05/08/2020 09:00:00&#39;, &#39;0.4&#39;],
+ [&#39;06/08/2020 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;07/08/2020 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;08/08/2020 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;09/08/2020 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;10/08/2020 09:00:00&#39;, &#39;1.6&#39;],
+ [&#39;11/08/2020 09:00:00&#39;, &#39;7.6&#39;],
+ [&#39;12/08/2020 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;13/08/2020 09:00:00&#39;, &#39;0.8&#39;],
+ [&#39;14/08/2020 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;15/08/2020 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;16/08/2020 09:00:00&#39;, &#39;0.2&#39;],
+ [&#39;17/08/2020 09:00:00&#39;, &#39;2.2&#39;],
+ [&#39;18/08/2020 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;19/08/2020 09:00:00&#39;, &#39;4.4&#39;],
+ [&#39;20/08/2020 09:00:00&#39;, &#39;1.4&#39;],
+ [&#39;21/08/2020 09:00:00&#39;, &#39;5.0&#39;],
+ [&#39;22/08/2020 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;23/08/2020 09:00:00&#39;, &#39;1.0&#39;],
+ [&#39;24/08/2020 09:00:00&#39;, &#39;3.2&#39;],
+ [&#39;25/08/2020 09:00:00&#39;, &#39;41.4&#39;],
+ [&#39;26/08/2020 09:00:00&#39;, &#39;1.8&#39;],
+ [&#39;27/08/2020 09:00:00&#39;, &#39;15.2&#39;],
+ [&#39;28/08/2020 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;29/08/2020 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;30/08/2020 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;31/08/2020 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;01/09/2020 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;02/09/2020 09:00:00&#39;, &#39;8.4&#39;],
+ [&#39;03/09/2020 09:00:00&#39;, &#39;0.2&#39;],
+ [&#39;04/09/2020 09:00:00&#39;, &#39;1.2&#39;],
+ [&#39;05/09/2020 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;06/09/2020 09:00:00&#39;, &#39;3.0&#39;],
+ [&#39;07/09/2020 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;08/09/2020 09:00:00&#39;, &#39;2.0&#39;],
+ [&#39;09/09/2020 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;10/09/2020 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;11/09/2020 09:00:00&#39;, &#39;0.4&#39;],
+ [&#39;12/09/2020 09:00:00&#39;, &#39;2.2&#39;],
+ [&#39;13/09/2020 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;14/09/2020 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;15/09/2020 09:00:00&#39;, &#39;0.2&#39;],
+ [&#39;16/09/2020 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;17/09/2020 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;18/09/2020 09:00:00&#39;, &#39;0.2&#39;],
+ [&#39;19/09/2020 09:00:00&#39;, &#39;0.6&#39;],
+ [&#39;20/09/2020 09:00:00&#39;, &#39;0.2&#39;],
+ [&#39;21/09/2020 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;22/09/2020 09:00:00&#39;, &#39;0.6&#39;],
+ [&#39;23/09/2020 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;24/09/2020 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;25/09/2020 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;26/09/2020 09:00:00&#39;, &#39;0.2&#39;],
+ [&#39;27/09/2020 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;28/09/2020 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;29/09/2020 09:00:00&#39;, &#39;3.8&#39;],
+ [&#39;30/09/2020 09:00:00&#39;, &#39;18.2&#39;],
+ [&#39;01/10/2020 09:00:00&#39;, &#39;1.2&#39;],
+ [&#39;02/10/2020 09:00:00&#39;, &#39;6.4&#39;],
+ [&#39;03/10/2020 09:00:00&#39;, &#39;65.8&#39;],
+ [&#39;04/10/2020 09:00:00&#39;, &#39;8.4&#39;],
+ [&#39;05/10/2020 09:00:00&#39;, &#39;3.2&#39;],
+ [&#39;06/10/2020 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;07/10/2020 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;08/10/2020 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;09/10/2020 09:00:00&#39;, &#39;1.0&#39;],
+ [&#39;10/10/2020 09:00:00&#39;, &#39;0.4&#39;],
+ [&#39;11/10/2020 09:00:00&#39;, &#39;3.6&#39;],
+ [&#39;12/10/2020 09:00:00&#39;, &#39;4.6&#39;],
+ [&#39;13/10/2020 09:00:00&#39;, &#39;7.2&#39;],
+ [&#39;14/10/2020 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;15/10/2020 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;16/10/2020 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;17/10/2020 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;18/10/2020 09:00:00&#39;, &#39;1.8&#39;],
+ [&#39;19/10/2020 09:00:00&#39;, &#39;11.0&#39;],
+ [&#39;20/10/2020 09:00:00&#39;, &#39;1.2&#39;],
+ [&#39;21/10/2020 09:00:00&#39;, &#39;6.4&#39;],
+ [&#39;22/10/2020 09:00:00&#39;, &#39;3.4&#39;],
+ [&#39;23/10/2020 09:00:00&#39;, &#39;3.2&#39;],
+ [&#39;24/10/2020 09:00:00&#39;, &#39;0.6&#39;],
+ [&#39;25/10/2020 09:00:00&#39;, &#39;0.2&#39;],
+ [&#39;26/10/2020 09:00:00&#39;, &#39;3.6&#39;],
+ [&#39;27/10/2020 09:00:00&#39;, &#39;5.2&#39;],
+ [&#39;28/10/2020 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;29/10/2020 09:00:00&#39;, &#39;4.4&#39;],
+ [&#39;30/10/2020 09:00:00&#39;, &#39;7.2&#39;],
+ [&#39;31/10/2020 09:00:00&#39;, &#39;8.8&#39;],
+ [&#39;01/11/2020 09:00:00&#39;, &#39;3.8&#39;],
+ [&#39;02/11/2020 09:00:00&#39;, &#39;3.4&#39;],
+ [&#39;03/11/2020 09:00:00&#39;, &#39;0.2&#39;],
+ [&#39;04/11/2020 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;05/11/2020 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;06/11/2020 09:00:00&#39;, &#39;0.2&#39;],
+ [&#39;07/11/2020 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;08/11/2020 09:00:00&#39;, &#39;9.8&#39;],
+ [&#39;09/11/2020 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;10/11/2020 09:00:00&#39;, &#39;2.8&#39;],
+ [&#39;11/11/2020 09:00:00&#39;, &#39;10.6&#39;],
+ [&#39;12/11/2020 09:00:00&#39;, &#39;1.8&#39;],
+ [&#39;13/11/2020 09:00:00&#39;, &#39;0.2&#39;],
+ [&#39;14/11/2020 09:00:00&#39;, &#39;3.4&#39;],
+ [&#39;15/11/2020 09:00:00&#39;, &#39;2.4&#39;],
+ [&#39;16/11/2020 09:00:00&#39;, &#39;0.8&#39;],
+ [&#39;17/11/2020 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;18/11/2020 09:00:00&#39;, &#39;0.8&#39;],
+ [&#39;19/11/2020 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;20/11/2020 09:00:00&#39;, &#39;1.8&#39;],
+ [&#39;21/11/2020 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;22/11/2020 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;23/11/2020 09:00:00&#39;, &#39;0.6&#39;],
+ [&#39;24/11/2020 09:00:00&#39;, &#39;1.2&#39;],
+ [&#39;25/11/2020 09:00:00&#39;, &#39;0.2&#39;],
+ [&#39;26/11/2020 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;27/11/2020 09:00:00&#39;, &#39;0.2&#39;],
+ [&#39;28/11/2020 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;29/11/2020 09:00:00&#39;, &#39;1.4&#39;],
+ [&#39;30/11/2020 09:00:00&#39;, &#39;1.6&#39;],
+ [&#39;01/12/2020 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;02/12/2020 09:00:00&#39;, &#39;1.8&#39;],
+ [&#39;03/12/2020 09:00:00&#39;, &#39;22.0&#39;],
+ [&#39;04/12/2020 09:00:00&#39;, &#39;19.8&#39;],
+ [&#39;05/12/2020 09:00:00&#39;, &#39;0.8&#39;],
+ [&#39;06/12/2020 09:00:00&#39;, &#39;0.4&#39;],
+ [&#39;07/12/2020 09:00:00&#39;, &#39;10.4&#39;],
+ [&#39;08/12/2020 09:00:00&#39;, &#39;2.8&#39;],
+ [&#39;09/12/2020 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;10/12/2020 09:00:00&#39;, &#39;7.4&#39;],
+ [&#39;11/12/2020 09:00:00&#39;, &#39;1.6&#39;],
+ [&#39;12/12/2020 09:00:00&#39;, &#39;1.2&#39;],
+ [&#39;13/12/2020 09:00:00&#39;, &#39;10.0&#39;],
+ [&#39;14/12/2020 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;15/12/2020 09:00:00&#39;, &#39;3.8&#39;],
+ [&#39;16/12/2020 09:00:00&#39;, &#39;1.0&#39;],
+ [&#39;17/12/2020 09:00:00&#39;, &#39;0.6&#39;],
+ [&#39;18/12/2020 09:00:00&#39;, &#39;5.4&#39;],
+ [&#39;19/12/2020 09:00:00&#39;, &#39;3.0&#39;],
+ [&#39;20/12/2020 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;21/12/2020 09:00:00&#39;, &#39;0.8&#39;],
+ [&#39;22/12/2020 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;23/12/2020 09:00:00&#39;, &#39;0.2&#39;],
+ [&#39;24/12/2020 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;25/12/2020 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;26/12/2020 09:00:00&#39;, &#39;4.2&#39;],
+ [&#39;27/12/2020 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;28/12/2020 09:00:00&#39;, &#39;2.6&#39;],
+ [&#39;29/12/2020 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;30/12/2020 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;31/12/2020 09:00:00&#39;, &#39;3.0&#39;],
+ [&#39;01/01/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;02/01/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;03/01/2021 09:00:00&#39;, &#39;6.6&#39;],
+ [&#39;04/01/2021 09:00:00&#39;, &#39;0.6&#39;],
+ [&#39;05/01/2021 09:00:00&#39;, &#39;0.2&#39;],
+ [&#39;06/01/2021 09:00:00&#39;, &#39;2.0&#39;],
+ [&#39;07/01/2021 09:00:00&#39;, &#39;0.6&#39;],
+ [&#39;08/01/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;09/01/2021 09:00:00&#39;, &#39;1.8&#39;],
+ [&#39;10/01/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;11/01/2021 09:00:00&#39;, &#39;9.6&#39;],
+ [&#39;12/01/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;13/01/2021 09:00:00&#39;, &#39;15.4&#39;],
+ [&#39;14/01/2021 09:00:00&#39;, &#39;3.2&#39;],
+ [&#39;15/01/2021 09:00:00&#39;, &#39;9.2&#39;],
+ [&#39;16/01/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;17/01/2021 09:00:00&#39;, &#39;0.6&#39;],
+ [&#39;18/01/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;19/01/2021 09:00:00&#39;, &#39;9.4&#39;],
+ [&#39;20/01/2021 09:00:00&#39;, &#39;14.6&#39;],
+ [&#39;21/01/2021 09:00:00&#39;, &#39;1.0&#39;],
+ [&#39;22/01/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;23/01/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;24/01/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;25/01/2021 09:00:00&#39;, &#39;0.6&#39;],
+ [&#39;26/01/2021 09:00:00&#39;, &#39;1.2&#39;],
+ [&#39;27/01/2021 09:00:00&#39;, &#39;0.8&#39;],
+ [&#39;28/01/2021 09:00:00&#39;, &#39;8.2&#39;],
+ [&#39;29/01/2021 09:00:00&#39;, &#39;6.4&#39;],
+ [&#39;30/01/2021 09:00:00&#39;, &#39;0.2&#39;],
+ [&#39;31/01/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;01/02/2021 09:00:00&#39;, &#39;6.4&#39;],
+ [&#39;02/02/2021 09:00:00&#39;, &#39;11.0&#39;],
+ [&#39;03/02/2021 09:00:00&#39;, &#39;9.2&#39;],
+ [&#39;04/02/2021 09:00:00&#39;, &#39;29.4&#39;],
+ [&#39;05/02/2021 09:00:00&#39;, &#39;17.0&#39;],
+ [&#39;06/02/2021 09:00:00&#39;, &#39;4.4&#39;],
+ [&#39;07/02/2021 09:00:00&#39;, &#39;0.6&#39;],
+ [&#39;08/02/2021 09:00:00&#39;, &#39;0.8&#39;],
+ [&#39;09/02/2021 09:00:00&#39;, &#39;4.8&#39;],
+ [&#39;10/02/2021 09:00:00&#39;, &#39;5.0&#39;],
+ [&#39;11/02/2021 09:00:00&#39;, &#39;1.8&#39;],
+ [&#39;12/02/2021 09:00:00&#39;, &#39;0.8&#39;],
+ [&#39;13/02/2021 09:00:00&#39;, &#39;2.0&#39;],
+ [&#39;14/02/2021 09:00:00&#39;, &#39;2.8&#39;],
+ [&#39;15/02/2021 09:00:00&#39;, &#39;0.8&#39;],
+ [&#39;16/02/2021 09:00:00&#39;, &#39;2.4&#39;],
+ [&#39;17/02/2021 09:00:00&#39;, &#39;0.6&#39;],
+ [&#39;18/02/2021 09:00:00&#39;, &#39;5.8&#39;],
+ [&#39;19/02/2021 09:00:00&#39;, &#39;7.4&#39;],
+ [&#39;20/02/2021 09:00:00&#39;, &#39;1.4&#39;],
+ [&#39;21/02/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;22/02/2021 09:00:00&#39;, &#39;0.2&#39;],
+ [&#39;23/02/2021 09:00:00&#39;, &#39;8.0&#39;],
+ [&#39;24/02/2021 09:00:00&#39;, &#39;0.2&#39;],
+ [&#39;25/02/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;26/02/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;27/02/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;28/02/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;01/03/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;02/03/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;03/03/2021 09:00:00&#39;, &#39;1.4&#39;],
+ [&#39;04/03/2021 09:00:00&#39;, &#39;0.2&#39;],
+ [&#39;05/03/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;06/03/2021 09:00:00&#39;, &#39;0.2&#39;],
+ [&#39;07/03/2021 09:00:00&#39;, &#39;2.0&#39;],
+ [&#39;08/03/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;09/03/2021 09:00:00&#39;, &#39;14.2&#39;],
+ [&#39;10/03/2021 09:00:00&#39;, &#39;4.6&#39;],
+ [&#39;11/03/2021 09:00:00&#39;, &#39;0.4&#39;],
+ [&#39;12/03/2021 09:00:00&#39;, &#39;1.2&#39;],
+ [&#39;13/03/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;14/03/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;15/03/2021 09:00:00&#39;, &#39;2.2&#39;],
+ [&#39;16/03/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;17/03/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;18/03/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;19/03/2021 09:00:00&#39;, &#39;0.2&#39;],
+ [&#39;20/03/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;21/03/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;22/03/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;23/03/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;24/03/2021 09:00:00&#39;, &#39;2.4&#39;],
+ [&#39;25/03/2021 09:00:00&#39;, &#39;3.4&#39;],
+ [&#39;26/03/2021 09:00:00&#39;, &#39;0.6&#39;],
+ [&#39;27/03/2021 09:00:00&#39;, &#39;3.0&#39;],
+ [&#39;28/03/2021 09:00:00&#39;, &#39;1.6&#39;],
+ [&#39;29/03/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;30/03/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;31/03/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;01/04/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;02/04/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;03/04/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;04/04/2021 09:00:00&#39;, &#39;0.4&#39;],
+ [&#39;05/04/2021 09:00:00&#39;, &#39;0.2&#39;],
+ [&#39;06/04/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;07/04/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;08/04/2021 09:00:00&#39;, &#39;0.2&#39;],
+ [&#39;09/04/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;10/04/2021 09:00:00&#39;, &#39;1.2&#39;],
+ [&#39;11/04/2021 09:00:00&#39;, &#39;0.2&#39;],
+ [&#39;12/04/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;13/04/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;14/04/2021 09:00:00&#39;, &#39;0.2&#39;],
+ [&#39;15/04/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;16/04/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;17/04/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;18/04/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;19/04/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;20/04/2021 09:00:00&#39;, &#39;0.4&#39;],
+ [&#39;21/04/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;22/04/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;23/04/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;24/04/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;25/04/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;26/04/2021 09:00:00&#39;, &#39;3.6&#39;],
+ [&#39;27/04/2021 09:00:00&#39;, &#39;1.6&#39;],
+ [&#39;28/04/2021 09:00:00&#39;, &#39;0.2&#39;],
+ [&#39;29/04/2021 09:00:00&#39;, &#39;0.6&#39;],
+ [&#39;30/04/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;01/05/2021 09:00:00&#39;, &#39;3.0&#39;],
+ [&#39;02/05/2021 09:00:00&#39;, &#39;0.2&#39;],
+ [&#39;03/05/2021 09:00:00&#39;, &#39;30.0&#39;],
+ [&#39;04/05/2021 09:00:00&#39;, &#39;1.0&#39;],
+ [&#39;05/05/2021 09:00:00&#39;, &#39;0.6&#39;],
+ [&#39;06/05/2021 09:00:00&#39;, &#39;5.6&#39;],
+ [&#39;07/05/2021 09:00:00&#39;, &#39;1.4&#39;],
+ [&#39;08/05/2021 09:00:00&#39;, &#39;6.8&#39;],
+ [&#39;09/05/2021 09:00:00&#39;, &#39;0.6&#39;],
+ [&#39;10/05/2021 09:00:00&#39;, &#39;4.8&#39;],
+ [&#39;11/05/2021 09:00:00&#39;, &#39;9.4&#39;],
+ [&#39;12/05/2021 09:00:00&#39;, &#39;0.2&#39;],
+ [&#39;13/05/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;14/05/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;15/05/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;16/05/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;17/05/2021 09:00:00&#39;, &#39;8.0&#39;],
+ [&#39;18/05/2021 09:00:00&#39;, &#39;1.0&#39;],
+ [&#39;19/05/2021 09:00:00&#39;, &#39;10.0&#39;],
+ [&#39;20/05/2021 09:00:00&#39;, &#39;18.2&#39;],
+ [&#39;21/05/2021 09:00:00&#39;, &#39;3.4&#39;],
+ [&#39;22/05/2021 09:00:00&#39;, &#39;0.2&#39;],
+ [&#39;23/05/2021 09:00:00&#39;, &#39;32.8&#39;],
+ [&#39;24/05/2021 09:00:00&#39;, &#39;3.2&#39;],
+ [&#39;25/05/2021 09:00:00&#39;, &#39;2.4&#39;],
+ [&#39;26/05/2021 09:00:00&#39;, &#39;1.8&#39;],
+ [&#39;27/05/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;28/05/2021 09:00:00&#39;, &#39;0.2&#39;],
+ [&#39;29/05/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;30/05/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;31/05/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;01/06/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;02/06/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;03/06/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;04/06/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;05/06/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;06/06/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;07/06/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;08/06/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;09/06/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;10/06/2021 09:00:00&#39;, &#39;0.2&#39;],
+ [&#39;11/06/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;12/06/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;13/06/2021 09:00:00&#39;, &#39;3.2&#39;],
+ [&#39;14/06/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;15/06/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;16/06/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;17/06/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;18/06/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;19/06/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;20/06/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;21/06/2021 09:00:00&#39;, &#39;0.2&#39;],
+ [&#39;22/06/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;23/06/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;24/06/2021 09:00:00&#39;, &#39;3.4&#39;],
+ [&#39;25/06/2021 09:00:00&#39;, &#39;2.4&#39;],
+ [&#39;26/06/2021 09:00:00&#39;, &#39;7.4&#39;],
+ [&#39;27/06/2021 09:00:00&#39;, &#39;1.0&#39;],
+ [&#39;28/06/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;29/06/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;30/06/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;01/07/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;02/07/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;03/07/2021 09:00:00&#39;, &#39;1.0&#39;],
+ [&#39;04/07/2021 09:00:00&#39;, &#39;5.8&#39;],
+ [&#39;05/07/2021 09:00:00&#39;, &#39;1.0&#39;],
+ [&#39;06/07/2021 09:00:00&#39;, &#39;5.6&#39;],
+ [&#39;07/07/2021 09:00:00&#39;, &#39;0.2&#39;],
+ [&#39;08/07/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;09/07/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;10/07/2021 09:00:00&#39;, &#39;0.4&#39;],
+ [&#39;11/07/2021 09:00:00&#39;, &#39;0.2&#39;],
+ [&#39;12/07/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;13/07/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;14/07/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;15/07/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;16/07/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;17/07/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;18/07/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;19/07/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;20/07/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;21/07/2021 09:00:00&#39;, &#39;0.2&#39;],
+ [&#39;22/07/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;23/07/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;24/07/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;25/07/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;26/07/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;27/07/2021 09:00:00&#39;, &#39;12.6&#39;],
+ [&#39;28/07/2021 09:00:00&#39;, &#39;0.6&#39;],
+ [&#39;29/07/2021 09:00:00&#39;, &#39;1.0&#39;],
+ [&#39;30/07/2021 09:00:00&#39;, &#39;4.8&#39;],
+ [&#39;31/07/2021 09:00:00&#39;, &#39;0.8&#39;],
+ [&#39;01/08/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;02/08/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;03/08/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;04/08/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;05/08/2021 09:00:00&#39;, &#39;11.0&#39;],
+ [&#39;06/08/2021 09:00:00&#39;, &#39;1.2&#39;],
+ [&#39;07/08/2021 09:00:00&#39;, &#39;1.6&#39;],
+ [&#39;08/08/2021 09:00:00&#39;, &#39;5.4&#39;],
+ [&#39;09/08/2021 09:00:00&#39;, &#39;1.8&#39;],
+ [&#39;10/08/2021 09:00:00&#39;, &#39;13.2&#39;],
+ [&#39;11/08/2021 09:00:00&#39;, &#39;4.8&#39;],
+ [&#39;12/08/2021 09:00:00&#39;, &#39;0.2&#39;],
+ [&#39;13/08/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;14/08/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;15/08/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;16/08/2021 09:00:00&#39;, &#39;0.2&#39;],
+ [&#39;17/08/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;18/08/2021 09:00:00&#39;, &#39;2.8&#39;],
+ [&#39;19/08/2021 09:00:00&#39;, &#39;0.2&#39;],
+ [&#39;20/08/2021 09:00:00&#39;, &#39;3.2&#39;],
+ [&#39;21/08/2021 09:00:00&#39;, &#39;8.0&#39;],
+ [&#39;22/08/2021 09:00:00&#39;, &#39;0.0&#39;],
+ [&#39;23/08/2021 09:00:00&#39;, &#39;0.0&#39;]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that this has read in all of the data as strings, and has included the headers. We could get rid of the headers by slicing the list (<code class="docutils literal notranslate"><span class="pre">rain_data</span> <span class="pre">=</span> <span class="pre">rain_data[1:]</span></code>), and we could convert the values to floats by using <code class="docutils literal notranslate"><span class="pre">float</span></code>. Here’s how we might do both simultaneously using list comprehension:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rain_data</span> <span class="o">=</span> <span class="p">[[</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">rain_data</span><span class="p">[</span><span class="mi">1</span><span class="p">:]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that this has left the timestamp as a string. Python does have the ability to work directly with so called <code class="docutils literal notranslate"><span class="pre">datetimes</span></code>, but we leave this out for simplicity.</p>
+</section>
+<section id="using-pandas">
+<h2>Using <code class="docutils literal notranslate"><span class="pre">pandas</span></code><a class="headerlink" href="#using-pandas" title="Permalink to this headline">#</a></h2>
+<p>If you are planning to do statistical analysis on your data, you are likely to want to import it into a “dataframe” using <code class="docutils literal notranslate"><span class="pre">pandas</span></code> instead:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">rain_data2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/strathkiness-rainfall.csv&quot;</span><span class="p">)</span>
+<span class="n">rain_data2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="nn">Input In [3],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">rain_data2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/strathkiness-rainfall.csv&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">rain_data2</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;pandas&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that this is stored in a dataframe object, rather than a list. You could extract the values out of the dataframe object like so:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rain_data2</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[&#39;01/08/2020 09:00:00&#39;, 0.2],
+       [&#39;02/08/2020 09:00:00&#39;, 0.0],
+       [&#39;03/08/2020 09:00:00&#39;, 2.0],
+       [&#39;04/08/2020 09:00:00&#39;, 15.8],
+       [&#39;05/08/2020 09:00:00&#39;, 0.4],
+       [&#39;06/08/2020 09:00:00&#39;, 0.0],
+       [&#39;07/08/2020 09:00:00&#39;, 0.0],
+       [&#39;08/08/2020 09:00:00&#39;, 0.0],
+       [&#39;09/08/2020 09:00:00&#39;, 0.0],
+       [&#39;10/08/2020 09:00:00&#39;, 1.6],
+       [&#39;11/08/2020 09:00:00&#39;, 7.6],
+       [&#39;12/08/2020 09:00:00&#39;, 0.0],
+       [&#39;13/08/2020 09:00:00&#39;, 0.8],
+       [&#39;14/08/2020 09:00:00&#39;, 0.0],
+       [&#39;15/08/2020 09:00:00&#39;, 0.0],
+       [&#39;16/08/2020 09:00:00&#39;, 0.2],
+       [&#39;17/08/2020 09:00:00&#39;, 2.2],
+       [&#39;18/08/2020 09:00:00&#39;, 0.0],
+       [&#39;19/08/2020 09:00:00&#39;, 4.4],
+       [&#39;20/08/2020 09:00:00&#39;, 1.4],
+       [&#39;21/08/2020 09:00:00&#39;, 5.0],
+       [&#39;22/08/2020 09:00:00&#39;, 0.0],
+       [&#39;23/08/2020 09:00:00&#39;, 1.0],
+       [&#39;24/08/2020 09:00:00&#39;, 3.2],
+       [&#39;25/08/2020 09:00:00&#39;, 41.4],
+       [&#39;26/08/2020 09:00:00&#39;, 1.8],
+       [&#39;27/08/2020 09:00:00&#39;, 15.2],
+       [&#39;28/08/2020 09:00:00&#39;, 0.0],
+       [&#39;29/08/2020 09:00:00&#39;, 0.0],
+       [&#39;30/08/2020 09:00:00&#39;, 0.0],
+       [&#39;31/08/2020 09:00:00&#39;, 0.0],
+       [&#39;01/09/2020 09:00:00&#39;, 0.0],
+       [&#39;02/09/2020 09:00:00&#39;, 8.4],
+       [&#39;03/09/2020 09:00:00&#39;, 0.2],
+       [&#39;04/09/2020 09:00:00&#39;, 1.2],
+       [&#39;05/09/2020 09:00:00&#39;, 0.0],
+       [&#39;06/09/2020 09:00:00&#39;, 3.0],
+       [&#39;07/09/2020 09:00:00&#39;, 0.0],
+       [&#39;08/09/2020 09:00:00&#39;, 2.0],
+       [&#39;09/09/2020 09:00:00&#39;, 0.0],
+       [&#39;10/09/2020 09:00:00&#39;, 0.0],
+       [&#39;11/09/2020 09:00:00&#39;, 0.4],
+       [&#39;12/09/2020 09:00:00&#39;, 2.2],
+       [&#39;13/09/2020 09:00:00&#39;, 0.0],
+       [&#39;14/09/2020 09:00:00&#39;, 0.0],
+       [&#39;15/09/2020 09:00:00&#39;, 0.2],
+       [&#39;16/09/2020 09:00:00&#39;, 0.0],
+       [&#39;17/09/2020 09:00:00&#39;, 0.0],
+       [&#39;18/09/2020 09:00:00&#39;, 0.2],
+       [&#39;19/09/2020 09:00:00&#39;, 0.6],
+       [&#39;20/09/2020 09:00:00&#39;, 0.2],
+       [&#39;21/09/2020 09:00:00&#39;, 0.0],
+       [&#39;22/09/2020 09:00:00&#39;, 0.6],
+       [&#39;23/09/2020 09:00:00&#39;, 0.0],
+       [&#39;24/09/2020 09:00:00&#39;, 0.0],
+       [&#39;25/09/2020 09:00:00&#39;, 0.0],
+       [&#39;26/09/2020 09:00:00&#39;, 0.2],
+       [&#39;27/09/2020 09:00:00&#39;, 0.0],
+       [&#39;28/09/2020 09:00:00&#39;, 0.0],
+       [&#39;29/09/2020 09:00:00&#39;, 3.8],
+       [&#39;30/09/2020 09:00:00&#39;, 18.2],
+       [&#39;01/10/2020 09:00:00&#39;, 1.2],
+       [&#39;02/10/2020 09:00:00&#39;, 6.4],
+       [&#39;03/10/2020 09:00:00&#39;, 65.8],
+       [&#39;04/10/2020 09:00:00&#39;, 8.4],
+       [&#39;05/10/2020 09:00:00&#39;, 3.2],
+       [&#39;06/10/2020 09:00:00&#39;, 0.0],
+       [&#39;07/10/2020 09:00:00&#39;, 0.0],
+       [&#39;08/10/2020 09:00:00&#39;, 0.0],
+       [&#39;09/10/2020 09:00:00&#39;, 1.0],
+       [&#39;10/10/2020 09:00:00&#39;, 0.4],
+       [&#39;11/10/2020 09:00:00&#39;, 3.6],
+       [&#39;12/10/2020 09:00:00&#39;, 4.6],
+       [&#39;13/10/2020 09:00:00&#39;, 7.2],
+       [&#39;14/10/2020 09:00:00&#39;, 0.0],
+       [&#39;15/10/2020 09:00:00&#39;, 0.0],
+       [&#39;16/10/2020 09:00:00&#39;, 0.0],
+       [&#39;17/10/2020 09:00:00&#39;, 0.0],
+       [&#39;18/10/2020 09:00:00&#39;, 1.8],
+       [&#39;19/10/2020 09:00:00&#39;, 11.0],
+       [&#39;20/10/2020 09:00:00&#39;, 1.2],
+       [&#39;21/10/2020 09:00:00&#39;, 6.4],
+       [&#39;22/10/2020 09:00:00&#39;, 3.4],
+       [&#39;23/10/2020 09:00:00&#39;, 3.2],
+       [&#39;24/10/2020 09:00:00&#39;, 0.6],
+       [&#39;25/10/2020 09:00:00&#39;, 0.2],
+       [&#39;26/10/2020 09:00:00&#39;, 3.6],
+       [&#39;27/10/2020 09:00:00&#39;, 5.2],
+       [&#39;28/10/2020 09:00:00&#39;, 0.0],
+       [&#39;29/10/2020 09:00:00&#39;, 4.4],
+       [&#39;30/10/2020 09:00:00&#39;, 7.2],
+       [&#39;31/10/2020 09:00:00&#39;, 8.8],
+       [&#39;01/11/2020 09:00:00&#39;, 3.8],
+       [&#39;02/11/2020 09:00:00&#39;, 3.4],
+       [&#39;03/11/2020 09:00:00&#39;, 0.2],
+       [&#39;04/11/2020 09:00:00&#39;, 0.0],
+       [&#39;05/11/2020 09:00:00&#39;, 0.0],
+       [&#39;06/11/2020 09:00:00&#39;, 0.2],
+       [&#39;07/11/2020 09:00:00&#39;, 0.0],
+       [&#39;08/11/2020 09:00:00&#39;, 9.8],
+       [&#39;09/11/2020 09:00:00&#39;, 0.0],
+       [&#39;10/11/2020 09:00:00&#39;, 2.8],
+       [&#39;11/11/2020 09:00:00&#39;, 10.6],
+       [&#39;12/11/2020 09:00:00&#39;, 1.8],
+       [&#39;13/11/2020 09:00:00&#39;, 0.2],
+       [&#39;14/11/2020 09:00:00&#39;, 3.4],
+       [&#39;15/11/2020 09:00:00&#39;, 2.4],
+       [&#39;16/11/2020 09:00:00&#39;, 0.8],
+       [&#39;17/11/2020 09:00:00&#39;, 0.0],
+       [&#39;18/11/2020 09:00:00&#39;, 0.8],
+       [&#39;19/11/2020 09:00:00&#39;, 0.0],
+       [&#39;20/11/2020 09:00:00&#39;, 1.8],
+       [&#39;21/11/2020 09:00:00&#39;, 0.0],
+       [&#39;22/11/2020 09:00:00&#39;, 0.0],
+       [&#39;23/11/2020 09:00:00&#39;, 0.6],
+       [&#39;24/11/2020 09:00:00&#39;, 1.2],
+       [&#39;25/11/2020 09:00:00&#39;, 0.2],
+       [&#39;26/11/2020 09:00:00&#39;, 0.0],
+       [&#39;27/11/2020 09:00:00&#39;, 0.2],
+       [&#39;28/11/2020 09:00:00&#39;, 0.0],
+       [&#39;29/11/2020 09:00:00&#39;, 1.4],
+       [&#39;30/11/2020 09:00:00&#39;, 1.6],
+       [&#39;01/12/2020 09:00:00&#39;, 0.0],
+       [&#39;02/12/2020 09:00:00&#39;, 1.8],
+       [&#39;03/12/2020 09:00:00&#39;, 22.0],
+       [&#39;04/12/2020 09:00:00&#39;, 19.8],
+       [&#39;05/12/2020 09:00:00&#39;, 0.8],
+       [&#39;06/12/2020 09:00:00&#39;, 0.4],
+       [&#39;07/12/2020 09:00:00&#39;, 10.4],
+       [&#39;08/12/2020 09:00:00&#39;, 2.8],
+       [&#39;09/12/2020 09:00:00&#39;, 0.0],
+       [&#39;10/12/2020 09:00:00&#39;, 7.4],
+       [&#39;11/12/2020 09:00:00&#39;, 1.6],
+       [&#39;12/12/2020 09:00:00&#39;, 1.2],
+       [&#39;13/12/2020 09:00:00&#39;, 10.0],
+       [&#39;14/12/2020 09:00:00&#39;, 0.0],
+       [&#39;15/12/2020 09:00:00&#39;, 3.8],
+       [&#39;16/12/2020 09:00:00&#39;, 1.0],
+       [&#39;17/12/2020 09:00:00&#39;, 0.6],
+       [&#39;18/12/2020 09:00:00&#39;, 5.4],
+       [&#39;19/12/2020 09:00:00&#39;, 3.0],
+       [&#39;20/12/2020 09:00:00&#39;, 0.0],
+       [&#39;21/12/2020 09:00:00&#39;, 0.8],
+       [&#39;22/12/2020 09:00:00&#39;, 0.0],
+       [&#39;23/12/2020 09:00:00&#39;, 0.2],
+       [&#39;24/12/2020 09:00:00&#39;, 0.0],
+       [&#39;25/12/2020 09:00:00&#39;, 0.0],
+       [&#39;26/12/2020 09:00:00&#39;, 4.2],
+       [&#39;27/12/2020 09:00:00&#39;, 0.0],
+       [&#39;28/12/2020 09:00:00&#39;, 2.6],
+       [&#39;29/12/2020 09:00:00&#39;, 0.0],
+       [&#39;30/12/2020 09:00:00&#39;, 0.0],
+       [&#39;31/12/2020 09:00:00&#39;, 3.0],
+       [&#39;01/01/2021 09:00:00&#39;, 0.0],
+       [&#39;02/01/2021 09:00:00&#39;, 0.0],
+       [&#39;03/01/2021 09:00:00&#39;, 6.6],
+       [&#39;04/01/2021 09:00:00&#39;, 0.6],
+       [&#39;05/01/2021 09:00:00&#39;, 0.2],
+       [&#39;06/01/2021 09:00:00&#39;, 2.0],
+       [&#39;07/01/2021 09:00:00&#39;, 0.6],
+       [&#39;08/01/2021 09:00:00&#39;, 0.0],
+       [&#39;09/01/2021 09:00:00&#39;, 1.8],
+       [&#39;10/01/2021 09:00:00&#39;, 0.0],
+       [&#39;11/01/2021 09:00:00&#39;, 9.6],
+       [&#39;12/01/2021 09:00:00&#39;, 0.0],
+       [&#39;13/01/2021 09:00:00&#39;, 15.4],
+       [&#39;14/01/2021 09:00:00&#39;, 3.2],
+       [&#39;15/01/2021 09:00:00&#39;, 9.2],
+       [&#39;16/01/2021 09:00:00&#39;, 0.0],
+       [&#39;17/01/2021 09:00:00&#39;, 0.6],
+       [&#39;18/01/2021 09:00:00&#39;, 0.0],
+       [&#39;19/01/2021 09:00:00&#39;, 9.4],
+       [&#39;20/01/2021 09:00:00&#39;, 14.6],
+       [&#39;21/01/2021 09:00:00&#39;, 1.0],
+       [&#39;22/01/2021 09:00:00&#39;, 0.0],
+       [&#39;23/01/2021 09:00:00&#39;, 0.0],
+       [&#39;24/01/2021 09:00:00&#39;, 0.0],
+       [&#39;25/01/2021 09:00:00&#39;, 0.6],
+       [&#39;26/01/2021 09:00:00&#39;, 1.2],
+       [&#39;27/01/2021 09:00:00&#39;, 0.8],
+       [&#39;28/01/2021 09:00:00&#39;, 8.2],
+       [&#39;29/01/2021 09:00:00&#39;, 6.4],
+       [&#39;30/01/2021 09:00:00&#39;, 0.2],
+       [&#39;31/01/2021 09:00:00&#39;, 0.0],
+       [&#39;01/02/2021 09:00:00&#39;, 6.4],
+       [&#39;02/02/2021 09:00:00&#39;, 11.0],
+       [&#39;03/02/2021 09:00:00&#39;, 9.2],
+       [&#39;04/02/2021 09:00:00&#39;, 29.4],
+       [&#39;05/02/2021 09:00:00&#39;, 17.0],
+       [&#39;06/02/2021 09:00:00&#39;, 4.4],
+       [&#39;07/02/2021 09:00:00&#39;, 0.6],
+       [&#39;08/02/2021 09:00:00&#39;, 0.8],
+       [&#39;09/02/2021 09:00:00&#39;, 4.8],
+       [&#39;10/02/2021 09:00:00&#39;, 5.0],
+       [&#39;11/02/2021 09:00:00&#39;, 1.8],
+       [&#39;12/02/2021 09:00:00&#39;, 0.8],
+       [&#39;13/02/2021 09:00:00&#39;, 2.0],
+       [&#39;14/02/2021 09:00:00&#39;, 2.8],
+       [&#39;15/02/2021 09:00:00&#39;, 0.8],
+       [&#39;16/02/2021 09:00:00&#39;, 2.4],
+       [&#39;17/02/2021 09:00:00&#39;, 0.6],
+       [&#39;18/02/2021 09:00:00&#39;, 5.8],
+       [&#39;19/02/2021 09:00:00&#39;, 7.4],
+       [&#39;20/02/2021 09:00:00&#39;, 1.4],
+       [&#39;21/02/2021 09:00:00&#39;, 0.0],
+       [&#39;22/02/2021 09:00:00&#39;, 0.2],
+       [&#39;23/02/2021 09:00:00&#39;, 8.0],
+       [&#39;24/02/2021 09:00:00&#39;, 0.2],
+       [&#39;25/02/2021 09:00:00&#39;, 0.0],
+       [&#39;26/02/2021 09:00:00&#39;, 0.0],
+       [&#39;27/02/2021 09:00:00&#39;, 0.0],
+       [&#39;28/02/2021 09:00:00&#39;, 0.0],
+       [&#39;01/03/2021 09:00:00&#39;, 0.0],
+       [&#39;02/03/2021 09:00:00&#39;, 0.0],
+       [&#39;03/03/2021 09:00:00&#39;, 1.4],
+       [&#39;04/03/2021 09:00:00&#39;, 0.2],
+       [&#39;05/03/2021 09:00:00&#39;, 0.0],
+       [&#39;06/03/2021 09:00:00&#39;, 0.2],
+       [&#39;07/03/2021 09:00:00&#39;, 2.0],
+       [&#39;08/03/2021 09:00:00&#39;, 0.0],
+       [&#39;09/03/2021 09:00:00&#39;, 14.2],
+       [&#39;10/03/2021 09:00:00&#39;, 4.6],
+       [&#39;11/03/2021 09:00:00&#39;, 0.4],
+       [&#39;12/03/2021 09:00:00&#39;, 1.2],
+       [&#39;13/03/2021 09:00:00&#39;, 0.0],
+       [&#39;14/03/2021 09:00:00&#39;, 0.0],
+       [&#39;15/03/2021 09:00:00&#39;, 2.2],
+       [&#39;16/03/2021 09:00:00&#39;, 0.0],
+       [&#39;17/03/2021 09:00:00&#39;, 0.0],
+       [&#39;18/03/2021 09:00:00&#39;, 0.0],
+       [&#39;19/03/2021 09:00:00&#39;, 0.2],
+       [&#39;20/03/2021 09:00:00&#39;, 0.0],
+       [&#39;21/03/2021 09:00:00&#39;, 0.0],
+       [&#39;22/03/2021 09:00:00&#39;, 0.0],
+       [&#39;23/03/2021 09:00:00&#39;, 0.0],
+       [&#39;24/03/2021 09:00:00&#39;, 2.4],
+       [&#39;25/03/2021 09:00:00&#39;, 3.4],
+       [&#39;26/03/2021 09:00:00&#39;, 0.6],
+       [&#39;27/03/2021 09:00:00&#39;, 3.0],
+       [&#39;28/03/2021 09:00:00&#39;, 1.6],
+       [&#39;29/03/2021 09:00:00&#39;, 0.0],
+       [&#39;30/03/2021 09:00:00&#39;, 0.0],
+       [&#39;31/03/2021 09:00:00&#39;, 0.0],
+       [&#39;01/04/2021 09:00:00&#39;, 0.0],
+       [&#39;02/04/2021 09:00:00&#39;, 0.0],
+       [&#39;03/04/2021 09:00:00&#39;, 0.0],
+       [&#39;04/04/2021 09:00:00&#39;, 0.4],
+       [&#39;05/04/2021 09:00:00&#39;, 0.2],
+       [&#39;06/04/2021 09:00:00&#39;, 0.0],
+       [&#39;07/04/2021 09:00:00&#39;, 0.0],
+       [&#39;08/04/2021 09:00:00&#39;, 0.2],
+       [&#39;09/04/2021 09:00:00&#39;, 0.0],
+       [&#39;10/04/2021 09:00:00&#39;, 1.2],
+       [&#39;11/04/2021 09:00:00&#39;, 0.2],
+       [&#39;12/04/2021 09:00:00&#39;, 0.0],
+       [&#39;13/04/2021 09:00:00&#39;, 0.0],
+       [&#39;14/04/2021 09:00:00&#39;, 0.2],
+       [&#39;15/04/2021 09:00:00&#39;, 0.0],
+       [&#39;16/04/2021 09:00:00&#39;, 0.0],
+       [&#39;17/04/2021 09:00:00&#39;, 0.0],
+       [&#39;18/04/2021 09:00:00&#39;, 0.0],
+       [&#39;19/04/2021 09:00:00&#39;, 0.0],
+       [&#39;20/04/2021 09:00:00&#39;, 0.4],
+       [&#39;21/04/2021 09:00:00&#39;, 0.0],
+       [&#39;22/04/2021 09:00:00&#39;, 0.0],
+       [&#39;23/04/2021 09:00:00&#39;, 0.0],
+       [&#39;24/04/2021 09:00:00&#39;, 0.0],
+       [&#39;25/04/2021 09:00:00&#39;, 0.0],
+       [&#39;26/04/2021 09:00:00&#39;, 3.6],
+       [&#39;27/04/2021 09:00:00&#39;, 1.6],
+       [&#39;28/04/2021 09:00:00&#39;, 0.2],
+       [&#39;29/04/2021 09:00:00&#39;, 0.6],
+       [&#39;30/04/2021 09:00:00&#39;, 0.0],
+       [&#39;01/05/2021 09:00:00&#39;, 3.0],
+       [&#39;02/05/2021 09:00:00&#39;, 0.2],
+       [&#39;03/05/2021 09:00:00&#39;, 30.0],
+       [&#39;04/05/2021 09:00:00&#39;, 1.0],
+       [&#39;05/05/2021 09:00:00&#39;, 0.6],
+       [&#39;06/05/2021 09:00:00&#39;, 5.6],
+       [&#39;07/05/2021 09:00:00&#39;, 1.4],
+       [&#39;08/05/2021 09:00:00&#39;, 6.8],
+       [&#39;09/05/2021 09:00:00&#39;, 0.6],
+       [&#39;10/05/2021 09:00:00&#39;, 4.8],
+       [&#39;11/05/2021 09:00:00&#39;, 9.4],
+       [&#39;12/05/2021 09:00:00&#39;, 0.2],
+       [&#39;13/05/2021 09:00:00&#39;, 0.0],
+       [&#39;14/05/2021 09:00:00&#39;, 0.0],
+       [&#39;15/05/2021 09:00:00&#39;, 0.0],
+       [&#39;16/05/2021 09:00:00&#39;, 0.0],
+       [&#39;17/05/2021 09:00:00&#39;, 8.0],
+       [&#39;18/05/2021 09:00:00&#39;, 1.0],
+       [&#39;19/05/2021 09:00:00&#39;, 10.0],
+       [&#39;20/05/2021 09:00:00&#39;, 18.2],
+       [&#39;21/05/2021 09:00:00&#39;, 3.4],
+       [&#39;22/05/2021 09:00:00&#39;, 0.2],
+       [&#39;23/05/2021 09:00:00&#39;, 32.8],
+       [&#39;24/05/2021 09:00:00&#39;, 3.2],
+       [&#39;25/05/2021 09:00:00&#39;, 2.4],
+       [&#39;26/05/2021 09:00:00&#39;, 1.8],
+       [&#39;27/05/2021 09:00:00&#39;, 0.0],
+       [&#39;28/05/2021 09:00:00&#39;, 0.2],
+       [&#39;29/05/2021 09:00:00&#39;, 0.0],
+       [&#39;30/05/2021 09:00:00&#39;, 0.0],
+       [&#39;31/05/2021 09:00:00&#39;, 0.0],
+       [&#39;01/06/2021 09:00:00&#39;, 0.0],
+       [&#39;02/06/2021 09:00:00&#39;, 0.0],
+       [&#39;03/06/2021 09:00:00&#39;, 0.0],
+       [&#39;04/06/2021 09:00:00&#39;, 0.0],
+       [&#39;05/06/2021 09:00:00&#39;, 0.0],
+       [&#39;06/06/2021 09:00:00&#39;, 0.0],
+       [&#39;07/06/2021 09:00:00&#39;, 0.0],
+       [&#39;08/06/2021 09:00:00&#39;, 0.0],
+       [&#39;09/06/2021 09:00:00&#39;, 0.0],
+       [&#39;10/06/2021 09:00:00&#39;, 0.2],
+       [&#39;11/06/2021 09:00:00&#39;, 0.0],
+       [&#39;12/06/2021 09:00:00&#39;, 0.0],
+       [&#39;13/06/2021 09:00:00&#39;, 3.2],
+       [&#39;14/06/2021 09:00:00&#39;, 0.0],
+       [&#39;15/06/2021 09:00:00&#39;, 0.0],
+       [&#39;16/06/2021 09:00:00&#39;, 0.0],
+       [&#39;17/06/2021 09:00:00&#39;, 0.0],
+       [&#39;18/06/2021 09:00:00&#39;, 0.0],
+       [&#39;19/06/2021 09:00:00&#39;, 0.0],
+       [&#39;20/06/2021 09:00:00&#39;, 0.0],
+       [&#39;21/06/2021 09:00:00&#39;, 0.2],
+       [&#39;22/06/2021 09:00:00&#39;, 0.0],
+       [&#39;23/06/2021 09:00:00&#39;, 0.0],
+       [&#39;24/06/2021 09:00:00&#39;, 3.4],
+       [&#39;25/06/2021 09:00:00&#39;, 2.4],
+       [&#39;26/06/2021 09:00:00&#39;, 7.4],
+       [&#39;27/06/2021 09:00:00&#39;, 1.0],
+       [&#39;28/06/2021 09:00:00&#39;, 0.0],
+       [&#39;29/06/2021 09:00:00&#39;, 0.0],
+       [&#39;30/06/2021 09:00:00&#39;, 0.0],
+       [&#39;01/07/2021 09:00:00&#39;, 0.0],
+       [&#39;02/07/2021 09:00:00&#39;, 0.0],
+       [&#39;03/07/2021 09:00:00&#39;, 1.0],
+       [&#39;04/07/2021 09:00:00&#39;, 5.8],
+       [&#39;05/07/2021 09:00:00&#39;, 1.0],
+       [&#39;06/07/2021 09:00:00&#39;, 5.6],
+       [&#39;07/07/2021 09:00:00&#39;, 0.2],
+       [&#39;08/07/2021 09:00:00&#39;, 0.0],
+       [&#39;09/07/2021 09:00:00&#39;, 0.0],
+       [&#39;10/07/2021 09:00:00&#39;, 0.4],
+       [&#39;11/07/2021 09:00:00&#39;, 0.2],
+       [&#39;12/07/2021 09:00:00&#39;, 0.0],
+       [&#39;13/07/2021 09:00:00&#39;, 0.0],
+       [&#39;14/07/2021 09:00:00&#39;, 0.0],
+       [&#39;15/07/2021 09:00:00&#39;, 0.0],
+       [&#39;16/07/2021 09:00:00&#39;, 0.0],
+       [&#39;17/07/2021 09:00:00&#39;, 0.0],
+       [&#39;18/07/2021 09:00:00&#39;, 0.0],
+       [&#39;19/07/2021 09:00:00&#39;, 0.0],
+       [&#39;20/07/2021 09:00:00&#39;, 0.0],
+       [&#39;21/07/2021 09:00:00&#39;, 0.2],
+       [&#39;22/07/2021 09:00:00&#39;, 0.0],
+       [&#39;23/07/2021 09:00:00&#39;, 0.0],
+       [&#39;24/07/2021 09:00:00&#39;, 0.0],
+       [&#39;25/07/2021 09:00:00&#39;, 0.0],
+       [&#39;26/07/2021 09:00:00&#39;, 0.0],
+       [&#39;27/07/2021 09:00:00&#39;, 12.6],
+       [&#39;28/07/2021 09:00:00&#39;, 0.6],
+       [&#39;29/07/2021 09:00:00&#39;, 1.0],
+       [&#39;30/07/2021 09:00:00&#39;, 4.8],
+       [&#39;31/07/2021 09:00:00&#39;, 0.8],
+       [&#39;01/08/2021 09:00:00&#39;, 0.0],
+       [&#39;02/08/2021 09:00:00&#39;, 0.0],
+       [&#39;03/08/2021 09:00:00&#39;, 0.0],
+       [&#39;04/08/2021 09:00:00&#39;, 0.0],
+       [&#39;05/08/2021 09:00:00&#39;, 11.0],
+       [&#39;06/08/2021 09:00:00&#39;, 1.2],
+       [&#39;07/08/2021 09:00:00&#39;, 1.6],
+       [&#39;08/08/2021 09:00:00&#39;, 5.4],
+       [&#39;09/08/2021 09:00:00&#39;, 1.8],
+       [&#39;10/08/2021 09:00:00&#39;, 13.2],
+       [&#39;11/08/2021 09:00:00&#39;, 4.8],
+       [&#39;12/08/2021 09:00:00&#39;, 0.2],
+       [&#39;13/08/2021 09:00:00&#39;, 0.0],
+       [&#39;14/08/2021 09:00:00&#39;, 0.0],
+       [&#39;15/08/2021 09:00:00&#39;, 0.0],
+       [&#39;16/08/2021 09:00:00&#39;, 0.2],
+       [&#39;17/08/2021 09:00:00&#39;, 0.0],
+       [&#39;18/08/2021 09:00:00&#39;, 2.8],
+       [&#39;19/08/2021 09:00:00&#39;, 0.2],
+       [&#39;20/08/2021 09:00:00&#39;, 3.2],
+       [&#39;21/08/2021 09:00:00&#39;, 8.0],
+       [&#39;22/08/2021 09:00:00&#39;, 0.0],
+       [&#39;23/08/2021 09:00:00&#39;, 0.0]], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">pandas</span></code> has automatically converted the second column to <code class="docutils literal notranslate"><span class="pre">float</span></code>. This makes <code class="docutils literal notranslate"><span class="pre">pandas</span></code> a convenient way of reading in <code class="docutils literal notranslate"><span class="pre">csv</span></code> files even if you don’t plan to use any other <code class="docutils literal notranslate"><span class="pre">pandas</span></code> features.</p>
+<p>After manipulating the data using <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, you might want to write the dataframe back to a <code class="docutils literal notranslate"><span class="pre">csv</span></code> file.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># rain_data2.to_csv(&quot;data/processed-rainfall-data.csv&quot;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="numpy-input-and-output">
+<h1><code class="docutils literal notranslate"><span class="pre">Numpy</span></code> input and output<a class="headerlink" href="#numpy-input-and-output" title="Permalink to this headline">#</a></h1>
+<p>Often the data we want to read or write to a file comes in the form of a <code class="docutils literal notranslate"><span class="pre">numpy</span></code> array. For example, after computing the values of a function on a large and high-resolution mesh, you might want to avoid recomputing them. The example below doesn’t take long to compute, but it will take a lot longer if the number of points in the <code class="docutils literal notranslate"><span class="pre">linspace</span></code> increases significantly.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">X</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">Y</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">27</span> <span class="o">*</span> <span class="n">X</span>
+
+<span class="c1"># now that we&#39;ve computed these values, we can save them:</span>
+<span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="s2">&quot;data/Z.txt&quot;</span><span class="p">,</span> <span class="n">Z</span><span class="p">)</span>
+
+<span class="c1"># If there is a lot of data, you might want to save a compressed file instead.</span>
+<span class="c1"># Just add &quot;.gz&quot; to the end of the file name</span>
+<span class="c1"># np.savetxt(&quot;data/Z.txt.gz&quot;, Z)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now that we’ve saved the files, we can easily load them in at any later point:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;data/Z.txt&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./1_IntroNotebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="Functions.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Functions</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="Interactivity.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Interactivity</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Dan Lucas<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

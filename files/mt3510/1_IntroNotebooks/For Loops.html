@@ -1,0 +1,819 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>For loops &#8212; MT3510 Introduction to Mathematical Computing</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Functions" href="Functions.html" />
+    <link rel="prev" title="Floating point numbers" href="Floating%20Point%20Numbers.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">MT3510 Introduction to Mathematical Computing</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown.html">
+   Markdown Files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown-notebooks.html">
+   Notebooks with MyST Markdown
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Arrays.html">
+   Arrays
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/1_IntroNotebooks/For Loops.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/1_IntroNotebooks/For Loops.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   For loops
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#computing-sums-and-pseudocode">
+     Computing sums and pseudocode
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ranges">
+   Ranges
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#looping-over-lists">
+   Looping over lists
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#nested-for-loops">
+   Nested
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     for
+    </span>
+   </code>
+   loops
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>For loops</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   For loops
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#computing-sums-and-pseudocode">
+     Computing sums and pseudocode
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ranges">
+   Ranges
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#looping-over-lists">
+   Looping over lists
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#nested-for-loops">
+   Nested
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     for
+    </span>
+   </code>
+   loops
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="for-loops">
+<h1>For loops<a class="headerlink" href="#for-loops" title="Permalink to this headline">#</a></h1>
+<p>Without us telling it otherwise, Python will execute code within a cell from top to bottom, with each line being run once. However, most of the important tasks that computers are used for involve repeating steps a large number of times. A computer’s ability to repeat steps quickly is one of the main things that make them so useful. We can have Python repeat lines by simply copy and pasting them:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mobilechelonian</span> <span class="kn">import</span> <span class="n">Turtle</span>
+
+<span class="n">tina</span> <span class="o">=</span> <span class="n">Turtle</span><span class="p">()</span>
+
+<span class="c1"># make tina go a bit faster for convenience</span>
+<span class="n">tina</span><span class="o">.</span><span class="n">speed</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># draw a square by repeatedly moving forward then turning left 90 degrees</span>
+<span class="n">tina</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+<span class="n">tina</span><span class="o">.</span><span class="n">left</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">tina</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+<span class="n">tina</span><span class="o">.</span><span class="n">left</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">tina</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+<span class="n">tina</span><span class="o">.</span><span class="n">left</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">tina</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+<span class="n">tina</span><span class="o">.</span><span class="n">left</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">mobilechelonian</span> <span class="kn">import</span> <span class="n">Turtle</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">tina</span> <span class="o">=</span> <span class="n">Turtle</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># make tina go a bit faster for convenience</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;mobilechelonian&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Doing this has many problems; for example, it is prone to mistakes, difficult to read, and difficult to modify (imagine we realised we wanted a hexagon instead). A <code class="docutils literal notranslate"><span class="pre">for</span></code> loop makes the code much tidier:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">raph</span> <span class="o">=</span> <span class="n">Turtle</span><span class="p">()</span>
+
+<span class="c1"># make tina go a bit faster for convenience</span>
+<span class="n">raph</span><span class="o">.</span><span class="n">speed</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># To repeat something 4 times, we use the following syntax</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+    <span class="c1"># these indented lines will be repeated 4 times</span>
+    <span class="n">raph</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+    <span class="n">raph</span><span class="o">.</span><span class="n">left</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+
+<span class="c1"># To create any other regular polygon, you would only need to change two numbers</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "b5c1d92619e545869d05693fa4b22153", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+<p>Let’s break down the code above. When we want Python to repeat a process a certain <em>number</em> of times, or once for each object in some sequence, we typically use a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop. The alternative is to loop until some <em>condition</em> is satisfied, which we will see in a later notebook on <code class="docutils literal notranslate"><span class="pre">while</span></code> loops. The <code class="docutils literal notranslate"><span class="pre">for</span></code> loop has the basic syntax</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">some_sequence</span><span class="p">:</span>
+    <span class="n">indented</span> <span class="n">body</span> <span class="n">statements</span> <span class="n">to</span> <span class="n">be</span> <span class="n">repeated</span><span class="p">,</span> <span class="n">possibly</span> <span class="n">making</span> <span class="n">use</span> <span class="n">of</span> <span class="n">x</span>
+<span class="nb">next</span> <span class="n">thing</span> <span class="n">to</span> <span class="n">do</span><span class="p">,</span> <span class="ow">not</span> <span class="n">repeated</span>
+</pre></div>
+</div>
+<p>In the example above, the <code class="docutils literal notranslate"><span class="pre">some_sequence</span></code> is <code class="docutils literal notranslate"><span class="pre">range(4)</span></code>, which represents the sequence <code class="docutils literal notranslate"><span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">2,</span> <span class="pre">3</span></code>.
+In that example, we didn’t really care about what the sequence was, only that it had four elements in it so that the code would be repeated four times (note that the variable <code class="docutils literal notranslate"><span class="pre">i</span></code> was never used).</p>
+<p>Here’s an example where we actually use the sequence in the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;i is </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;i squared is </span><span class="si">{</span><span class="n">i</span><span class="o">**</span><span class="mi">2</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="c1"># any following unindented lines will not be repeated</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;now the loop is done, and the final value of i is </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>i is 0
+i squared is 0
+i is 1
+i squared is 1
+i is 2
+i squared is 4
+i is 3
+i squared is 9
+now the loop is done, and the final value of i is 3
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can use any variables in your <code class="docutils literal notranslate"><span class="pre">for</span></code> loop; the only requirement is that <code class="docutils literal notranslate"><span class="pre">some_sequence</span></code> makes sense to “loop over”. The technical name for this is that <code class="docutils literal notranslate"><span class="pre">some_sequence</span></code> is <em><strong>iterable</strong></em>, and it includes things like <code class="docutils literal notranslate"><span class="pre">lists</span></code>, <code class="docutils literal notranslate"><span class="pre">sets</span></code>, <code class="docutils literal notranslate"><span class="pre">tuples</span></code>, and <code class="docutils literal notranslate"><span class="pre">ranges</span></code>, and most objects which “contain” other objects.</p>
+<p>The <em><strong>body</strong></em> statements are repeated once for each value in the sequence. Like regular code, they are executed from top to bottom within a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop. It is important to remember that the body statements are all executed in sequence for each value of <code class="docutils literal notranslate"><span class="pre">x</span></code>, rather than executing the first statement for all <code class="docutils literal notranslate"><span class="pre">x</span></code>, and then the second statement for all <code class="docutils literal notranslate"><span class="pre">x</span></code>, and so on. You can see this behaviour in the examples above.</p>
+<section id="computing-sums-and-pseudocode">
+<h2>Computing sums and pseudocode<a class="headerlink" href="#computing-sums-and-pseudocode" title="Permalink to this headline">#</a></h2>
+<p>A common example of where you might use a <code class="docutils literal notranslate"><span class="pre">for</span></code>-loop is to sum up some values. For example, let’s try to compute the sum</p>
+<p>\[ S(n) = \sum_{i = 1}^{n} i^{10}, \]</p>
+<p>where <span class="math notranslate nohighlight">\(n\)</span> is fixed. When we are trying to write code to solve a problem, it is often the best strategy to first understand how we would systematically do the computation by hand. To compute <span class="math notranslate nohighlight">\(S(n)\)</span>, the simplest method is to keep a running total, starting with zero and adding <span class="math notranslate nohighlight">\(i^{10}\)</span> to the total for <span class="math notranslate nohighlight">\(i = 1, \ldots, n\)</span>. We might write this down in the following way:</p>
+<ul class="simple">
+<li><p>We have some fixed <span class="math notranslate nohighlight">\(n \in \mathbb{N}\)</span></p></li>
+<li><p>Start with the total being 0</p></li>
+<li><p>For <span class="math notranslate nohighlight">\(i = 1, 2, \ldots, n\)</span>:</p>
+<ul>
+<li><p>Add <span class="math notranslate nohighlight">\(i^{10}\)</span> to the total</p></li>
+</ul>
+</li>
+<li><p>Report the total as the answer</p></li>
+</ul>
+<p>We call this sort of description of how to systematically solve a problem <em><strong>pseudocode</strong></em>. Pseudocode is not code and there is no specific standard which you must follow when writing it, but it should be possible to turn pseudocode directly into code. For example, the pseudocode above translates directly into Python like so:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># fix a value of n</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="c1"># start with the total being 0</span>
+<span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="c1"># loop through i = 0, 1, ..., n</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="c1"># add i**10 to the total</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">+</span> <span class="n">i</span><span class="o">**</span><span class="mi">10</span>
+
+<span class="c1"># report the total as the answer</span>
+<span class="n">total</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>14914341925
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="ranges">
+<h1>Ranges<a class="headerlink" href="#ranges" title="Permalink to this headline">#</a></h1>
+<p>In the example above, we used the command <code class="docutils literal notranslate"><span class="pre">range(4)</span></code> to create the sequence <code class="docutils literal notranslate"><span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">2,</span> <span class="pre">3</span></code>. Ranges are a very common way of making sequences of integers. You can see the numbers in a <code class="docutils literal notranslate"><span class="pre">range</span></code> by using the <code class="docutils literal notranslate"><span class="pre">list</span></code> command:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 2, 3]
+</pre></div>
+</div>
+</div>
+</div>
+<p>By default, a <code class="docutils literal notranslate"><span class="pre">range</span></code> starts at <code class="docutils literal notranslate"><span class="pre">0</span></code> and stops <em><strong>before</strong></em> reaching the stop value. You can change where the range starts by providing a <code class="docutils literal notranslate"><span class="pre">start</span></code> value as well:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[4, 5, 6, 7, 8, 9]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Sometimes we don’t want the integers to increase by <code class="docutils literal notranslate"><span class="pre">1</span></code> each time. We can change this by giving a <code class="docutils literal notranslate"><span class="pre">step</span></code> argument. For example, to produce the odd numbers between 1 and 21 (inclusive), we could start at 1 and step by 2 each time:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21]
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">stop</span></code> value doesn’t have to be precisely 1 more than the final value; it just has to be <em>less than or equal to</em> than the next value that the step would produce. In the previous example, using <code class="docutils literal notranslate"><span class="pre">23</span></code> as the stop value would produce the same result.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21]
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also go backwards by giving a negative step value. Note that in this case, the final element of the <code class="docutils literal notranslate"><span class="pre">range</span></code> will be <em>greater</em> than the <code class="docutils literal notranslate"><span class="pre">stop</span></code> value.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">23</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[23, 21, 19, 17, 15, 13]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="looping-over-lists">
+<h1>Looping over lists<a class="headerlink" href="#looping-over-lists" title="Permalink to this headline">#</a></h1>
+<p>It is very common to loop over a <code class="docutils literal notranslate"><span class="pre">range</span></code>, but you can also loop over other things. We’ll see more on <code class="docutils literal notranslate"><span class="pre">lists</span></code> later, but for now here is an example where we iterate over a <code class="docutils literal notranslate"><span class="pre">list</span></code> of strings:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;apple&quot;</span><span class="p">,</span> <span class="s2">&quot;durian&quot;</span><span class="p">,</span> <span class="s2">&quot;mangosteen&quot;</span><span class="p">,</span> <span class="s2">&quot;pear&quot;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">fruit</span> <span class="ow">in</span> <span class="n">fruits</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="n">fruit</span><span class="si">}</span><span class="s2">&#39; has </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">fruit</span><span class="p">)</span><span class="si">}</span><span class="s2"> letters&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;apple&#39; has 5 letters
+&#39;durian&#39; has 6 letters
+&#39;mangosteen&#39; has 10 letters
+&#39;pear&#39; has 4 letters
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="nested-for-loops">
+<h1>Nested <code class="docutils literal notranslate"><span class="pre">for</span></code> loops<a class="headerlink" href="#nested-for-loops" title="Permalink to this headline">#</a></h1>
+<p>It is often useful to “nest” a loop inside another loop. When this occurs, the “inner” loop (i.e. the one inside the body of the other loop) will be fully executed, then the “outer” loop will iterate; the inner loop will execute again, and so on until the outer loop is finished.</p>
+<p>This idea is easiest seen by example. Note that the body of the inner loop is indented two levels.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Start of the outer loop body&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Inner loop: the outer loop variable is </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> and inner loop variable is </span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;End of the outer loop body&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Start of the outer loop body
+  Inner loop: the outer loop variable is 0 and inner loop variable is 3
+  Inner loop: the outer loop variable is 0 and inner loop variable is 4
+End of the outer loop body
+Start of the outer loop body
+  Inner loop: the outer loop variable is 1 and inner loop variable is 3
+  Inner loop: the outer loop variable is 1 and inner loop variable is 4
+End of the outer loop body
+</pre></div>
+</div>
+</div>
+</div>
+<p>This might seem like a strange thing to want to do, but many problems involve repeating a repetitive task.
+For example, suppose you have an inbox full of emails you need to respond to. You could represent the basic process of responding to all your emails like this:</p>
+<ul class="simple">
+<li><p>For each email in your inbox:</p>
+<ul>
+<li><p>For each word in the email:</p>
+<ul>
+<li><p>Read the word</p></li>
+</ul>
+</li>
+<li><p>Think of a response</p></li>
+<li><p>For each word of the response:</p>
+<ul>
+<li><p>Write the word</p></li>
+<li><p>Add any necessary punctuation</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>We could also break down writing words into repeatedly typing letters - another level of nesting in our repetition! You can nest loops as much as you want in Python, but if you find yourself with many levels of nesting it is usually a sign that you need to reconsider what you are doing and try to simplify it.</p>
+<p>Here’s another example, where we output some short multiplication tables.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> times table:&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> x </span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s2"> is </span><span class="si">{</span><span class="n">i</span><span class="o">*</span><span class="n">j</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">()</span> <span class="c1"># print a blank line; note that this is only in the &quot;outer&quot; loop</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7 times table:
+7 x 1 is 7
+7 x 2 is 14
+7 x 3 is 21
+7 x 4 is 28
+
+8 times table:
+8 x 1 is 8
+8 x 2 is 16
+8 x 3 is 24
+8 x 4 is 32
+
+9 times table:
+9 x 1 is 9
+9 x 2 is 18
+9 x 3 is 27
+9 x 4 is 36
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here’s an example with a turtle; we draw a triangle with a small hexagon attached to each corner.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mobilechelonian</span> <span class="kn">import</span> <span class="n">Turtle</span>
+
+<span class="n">leo</span> <span class="o">=</span> <span class="n">Turtle</span><span class="p">()</span>
+<span class="n">leo</span><span class="o">.</span><span class="n">speed</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+
+<span class="c1"># loop 3 times for the triangle</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">leo</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+    
+    <span class="c1"># get the hexagon in the right orientation.</span>
+    <span class="n">leo</span><span class="o">.</span><span class="n">right</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+
+    <span class="c1"># loop 6 times for the hexagon</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">):</span>
+        <span class="n">leo</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+        <span class="n">leo</span><span class="o">.</span><span class="n">left</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+
+    <span class="c1"># point the turtle back in the right direction for the next triangle edge</span>
+    <span class="n">leo</span><span class="o">.</span><span class="n">left</span><span class="p">(</span><span class="mi">210</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "06a694389a5048debd7b1a776cd7fb05", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+<p>Finally, let’s use nested loops to compute the double sum</p>
+<p>\[ \sum_{i = 1}^{10} \sum_{j = 2 \text{, j even}}^{20} \frac{1}{i ^2  j}. \]</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># start with the total being 0</span>
+<span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="c1"># Use nested for-loops for the double sum.</span>
+<span class="c1"># The loop variables correspond to the sum indices.</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+        <span class="n">term</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="n">i</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">j</span><span class="p">)</span>
+        <span class="c1"># the next line means &quot;total = total + term&quot;</span>
+        <span class="n">total</span> <span class="o">+=</span> <span class="n">term</span>
+<span class="n">total</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.2696102428056033
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./1_IntroNotebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="Floating%20Point%20Numbers.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Floating point numbers</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="Functions.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Functions</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Dan Lucas<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

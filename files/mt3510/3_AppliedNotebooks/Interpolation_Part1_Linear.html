@@ -1,0 +1,1115 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Interpolation Part 1: Linear Interpolation &#8212; MT3510 Introduction to Mathematical Computing</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Interpolation Part 2: Polynomial interpolation" href="Interpolation_Part2_Polynomial.html" />
+    <link rel="prev" title="Chapter 3 Applied Mathematics: Interpolation" href="0intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">MT3510 Introduction to Mathematical Computing</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to MT3510
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../diary.html">
+   Module diary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../generic-guidance-23.html">
+   Coursework submission guidance
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../1_IntroNotebooks/0intro.html">
+   Chapter 1: The Fundamentals
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/1%20Python%20and%20Jupyter%20Notebooks%20Basics.html">
+     Python &amp; Jupyter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/2%20Variables.html">
+     Variables
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/3%20Modules%20and%20Numpy.html">
+     Modules and numpy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/4%20Errors.html">
+     Errors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/5%20Printing%20and%20Strings.html">
+     Printing to the screen
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/6%20For%20Loops.html">
+     For loops
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/7%20Nested%20For%20Loops.html">
+     Nested
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       for
+      </span>
+     </code>
+     loops
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/8%20Functions.html">
+     Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/9%20Conditionals.html">
+     Conditionals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/10%20While%20Loops.html">
+     While loops
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/11%20Lists%20and%20Tuples.html">
+     Lists
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/12%20Arrays.html">
+     Arrays
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/13%20Slicing.html">
+     Slicing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/14%20Floating%20Point%20Numbers.html">
+     Floating point numbers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/15%20Sets%20and%20Dicts.html">
+     Sets and Dicts
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/16%20Types.html">
+     Types
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/17%20Input%20and%20Files.html">
+     Input and files
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/18%20Plotting.html">
+     Matplotlib
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/19%20Markdown%20and%20LaTeX.html">
+     Markdown
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../2_CoreNotebooks/0intro.html">
+   Chapter 2: Topics in Computational Mathematics
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_CoreNotebooks/1Computational_Thinking.html">
+     Introduction to Computational Thinking
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_CoreNotebooks/2Interactivity.html">
+     Interactivity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_CoreNotebooks/3Sympy.html">
+     SymPy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_CoreNotebooks/4Computational_Complexity.html">
+     Introduction to Computational Complexity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_CoreNotebooks/5GoodPractise1_Efficiency.html">
+     Good practise in Python: Part 1 Efficiency
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_CoreNotebooks/6GoodPractise2_Usability.html">
+     Good practise in Python Part 2: Usability &amp; Style
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_CoreNotebooks/7ComputationalGeometry.html">
+     Computational Geometry
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_CoreNotebooks/8Introduction_to_Pandas.html">
+     Pandas
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="0intro.html">
+   Chapter 3 Applied Mathematics: Interpolation
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Interpolation Part 1: Linear Interpolation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Interpolation_Part2_Polynomial.html">
+     Interpolation Part 2: Polynomial interpolation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Interpolation_Part3_PiecewisePolynomial.html">
+     Interpolation Part 3: Piecewise polynomial interpolation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Interpolation_Part4_CubicSpline.html">
+     Interpolation Part 4: Spline interpolation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../4_PureNotebooks/0intro.html">
+   Chapter 4 Pure Mathematics: Graph Theory
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../5_StatsNotebooks/0intro.html">
+   Chapter 5 Statistics:
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/3_AppliedNotebooks/Interpolation_Part1_Linear.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/3_AppliedNotebooks/Interpolation_Part1_Linear.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#linear-interpolation">
+   Linear interpolation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#application">
+     Application
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#piecewise-linear-interpolation">
+   Piecewise linear interpolation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Application
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#array-broadcasting">
+     Array Broadcasting
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#scipy-interpolation">
+     Scipy interpolation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#error">
+   Error
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Application
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Interpolation Part 1: Linear Interpolation</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#linear-interpolation">
+   Linear interpolation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#application">
+     Application
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#piecewise-linear-interpolation">
+   Piecewise linear interpolation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Application
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#array-broadcasting">
+     Array Broadcasting
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#scipy-interpolation">
+     Scipy interpolation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#error">
+   Error
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Application
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="interpolation-part-1-linear-interpolation">
+<h1>Interpolation Part 1: Linear Interpolation<a class="headerlink" href="#interpolation-part-1-linear-interpolation" title="Permalink to this headline">#</a></h1>
+<p>In this chapter we will consider the approximation of a set of discrete data points by various types of functions.</p>
+<p><em>Interpolation</em> is the construction of a function <span class="math notranslate nohighlight">\(f(x)\)</span> that fits a known set of data points <span class="math notranslate nohighlight">\((x_k,y_k)\)</span>. Such a function can then be evaluated at new data points within the known interval.</p>
+<p><em>Extrapolation</em> is similar to interpolation but applies when the unknown evaluation points lie outside the range of known data points.</p>
+<p>The <em>Lagrange polynomial</em> is the polynomial of least degree such that at each point <span class="math notranslate nohighlight">\(x_j\)</span> the polynomial assumes the corresponding value <span class="math notranslate nohighlight">\(y_j\)</span>. This polynomial is unique but there are various ways of finding it.</p>
+<p>Given a sequence of <span class="math notranslate nohighlight">\(n\)</span> distinct numbers <span class="math notranslate nohighlight">\(x_k\)</span> (called knots) with corresponding <span class="math notranslate nohighlight">\(y_k\)</span> we are looking for a function <span class="math notranslate nohighlight">\(f(x)\)</span> such that
+<span class="math notranslate nohighlight">\(f(x_k) = y_k,\, k = 0,1,...,n-1.\)</span></p>
+<p>Each pair <span class="math notranslate nohighlight">\((x_k,y_k)\)</span> is called a <em>data point</em> and <span class="math notranslate nohighlight">\(f\)</span> is called the <em>interpolant</em> for the data points.</p>
+<section id="linear-interpolation">
+<h2>Linear interpolation<a class="headerlink" href="#linear-interpolation" title="Permalink to this headline">#</a></h2>
+<p>Arguably the simplest form of Lagrange polynomial is to compute the line between two data points, this is the first degree Lagrange interpolating polynomial. We are seeking an interpolant of the form</p>
+<div class="math notranslate nohighlight">
+\[p_1(x) = mx + c\]</div>
+<p>where <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(c\)</span> are unknowns to be determined by the two data points <span class="math notranslate nohighlight">\((x_0,y_0)\)</span> and <span class="math notranslate nohighlight">\((x_1,y_1).\)</span> Plugging these two points into our interpolating function gives the linear equations</p>
+<p><span class="math notranslate nohighlight">\(y_0 = mx_0 + c\)</span> and <span class="math notranslate nohighlight">\(y_1 = mx_1 + c\)</span></p>
+<p>in <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(c.\)</span> We solve these simultaneously to obtain</p>
+<p><span class="math notranslate nohighlight">\(m = \frac{y_0-y_1}{x_0-x_1}\)</span> and <span class="math notranslate nohighlight">\(c = y_0 - \frac{y_0-y_1}{x_0-x_1}x_0 \)</span> and the interpolant can be written as</p>
+<p><span class="math notranslate nohighlight">\(p_1(x) = \frac{y_0-y_1}{x_0-x_1}x + y_0 - \frac{y_0-y_1}{x_0-x_1}x_0\)</span></p>
+<p>or</p>
+<p><span class="math notranslate nohighlight">\(p_1(x) = y_0 + \frac{y_0-y_1}{x_0-x_1}(x-x_0) \)</span></p>
+<p>or in ‘Lagrange form’</p>
+<p><span class="math notranslate nohighlight">\(p_1(x) = \frac{x-x_1}{x_0-x_1}y_0 + \frac{x-x_0}{x_1-x_0}y_1 \)</span></p>
+<font color='#2F4F4F'>
+<section id="application">
+<h3>Application<a class="headerlink" href="#application" title="Permalink to this headline">#</a></h3>
+<p>In Python creating a linear function between two points is quite straight forward, only we need to take a little care about what our arguments should be. It is likely we want to have a general purpose interpolating function for a given point pair <span class="math notranslate nohighlight">\((x_0,y_0),\)</span> <span class="math notranslate nohighlight">\((x_1,y_1).\)</span> The simplest thing to do is have the independent variable <span class="math notranslate nohighlight">\(x\)</span> <em>and</em> the point pair <span class="math notranslate nohighlight">\((x_0,y_0),\)</span> <span class="math notranslate nohighlight">\((x_1,y_1)\)</span> as the arguments: </font></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;font.size&#39;</span><span class="p">:</span> <span class="mi">14</span><span class="p">})</span>            <span class="c1"># Increase the font size to 14pt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">p1_basic</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">x0</span><span class="p">,</span><span class="n">x1</span><span class="p">,</span><span class="n">y0</span><span class="p">,</span><span class="n">y1</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">y0</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">x1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">x0</span><span class="o">-</span><span class="n">x1</span><span class="p">)</span><span class="o">+</span><span class="n">y1</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">x0</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">x1</span><span class="o">-</span><span class="n">x0</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># call point pair a and b in this example</span>
+<span class="n">xa</span> <span class="o">=</span> <span class="mi">1</span> 
+<span class="n">xb</span> <span class="o">=</span> <span class="mi">2</span> 
+<span class="n">ya</span> <span class="o">=</span> <span class="mi">3</span> 
+<span class="n">yb</span> <span class="o">=</span> <span class="mi">4</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">p1_basic</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">xa</span><span class="p">,</span><span class="n">xb</span><span class="p">,</span><span class="n">ya</span><span class="p">,</span><span class="n">yb</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xa</span><span class="p">,</span><span class="n">ya</span><span class="p">,</span><span class="s1">&#39;ko&#39;</span><span class="p">,</span><span class="n">ms</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># plot interpolating point 1</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xb</span><span class="p">,</span><span class="n">yb</span><span class="p">,</span><span class="s1">&#39;ko&#39;</span><span class="p">,</span><span class="n">ms</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># plot interpolating point 2</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Interpolation_Part1_Linear_2_0.png" src="../_images/Interpolation_Part1_Linear_2_0.png" />
+</div>
+</div>
+<font color='#2F4F4F'>
+<p>This works perfectly well but is a little unweildy if it needs to be used a lot.</p>
+<p>We can make use of a <em>lambda</em> function to generalise a little. In Python a lambda function is a single expression function defined as follows </font></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Simple example</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">3</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">f</span><span class="p">(</span><span class="mf">30.2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7 63.4
+</pre></div>
+</div>
+</div>
+</div>
+<font color='#2F4F4F'>
+    You might wonder what help this is here. Well, we can embed a lambda function within a regular function such that the returned result is a function. For instance for a linear interpolation function we can create a general function which accepts the point pairs and returns for us the interpolating function, rather than above where we had to provide the interpolating data at the same time.<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">p1</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="n">x1</span><span class="p">,</span><span class="n">y0</span><span class="p">,</span><span class="n">y1</span><span class="p">):</span> <span class="c1"># this function creates the linear *interpolant* between these two points</span>
+    <span class="k">return</span> <span class="k">lambda</span> <span class="n">x</span> <span class="p">:</span> <span class="n">y0</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">x1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">x0</span><span class="o">-</span><span class="n">x1</span><span class="p">)</span><span class="o">+</span><span class="n">y1</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">x0</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">x1</span><span class="o">-</span><span class="n">x0</span><span class="p">)</span>
+
+<span class="c1"># The alternative</span>
+<span class="k">def</span> <span class="nf">p1_alt</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="n">x1</span><span class="p">,</span><span class="n">y0</span><span class="p">,</span><span class="n">y1</span><span class="p">):</span> <span class="c1"># this function creates the linear *interpolant* between these two points</span>
+    <span class="k">def</span> <span class="nf">temp</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">y0</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">x1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">x0</span><span class="o">-</span><span class="n">x1</span><span class="p">)</span><span class="o">+</span><span class="n">y1</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">x0</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">x1</span><span class="o">-</span><span class="n">x0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">temp</span>
+
+
+<span class="n">myp1</span> <span class="o">=</span> <span class="n">p1_alt</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>  <span class="c1"># now myp1 is the interpolating function</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">myp1</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="s1">&#39;ko&#39;</span><span class="p">,</span><span class="n">ms</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="s1">&#39;ko&#39;</span><span class="p">,</span><span class="n">ms</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Interpolation_Part1_Linear_6_0.png" src="../_images/Interpolation_Part1_Linear_6_0.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="piecewise-linear-interpolation">
+<h2>Piecewise linear interpolation<a class="headerlink" href="#piecewise-linear-interpolation" title="Permalink to this headline">#</a></h2>
+<p>It is fairly uncommon to only have two pieces of data, rather more likely is to have a set of <span class="math notranslate nohighlight">\(n\)</span> data points <span class="math notranslate nohighlight">\((x_k,y_k),\)</span> <span class="math notranslate nohighlight">\(k=0,1,...,n-1\)</span> that partition <span class="math notranslate nohighlight">\(x\in[a,b]\)</span> into subintervals <span class="math notranslate nohighlight">\([x_k,x_{l+1}]\)</span> where $<span class="math notranslate nohighlight">\( a=x_0 &lt; x_1&lt;x2&lt;...&lt;x_{n-1}=b; \)</span>$ these are the knots referred to at the start of the notebook.</p>
+<p>The natural extension to the linear interpolant above, is to form a piecewise function which connects line segments through each subinterval, or consecutive data points. This is <em>piecewise linear interpolation</em>.</p>
+<p>Using the interpolant formula above, the interpolant for <span class="math notranslate nohighlight">\(x\in[x_k,x_{k+1}]\)</span> will be</p>
+<div class="math notranslate nohighlight">
+\[p_{1k}(x) = \frac{x-x_{k+1}}{x_k-x_{k+1}}y_k + \frac{x-x_k}{x_{k+1}-x_k}y_{k+1}.\]</div>
+<p>Note that the full interpolating function will be continuous but will not be differentiable at the knots as, in general, the slopes of the individual interpolants will change there.</p>
+<font color='#2F4F4F'>
+<section id="id1">
+<h3>Application<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<p>In actual fact, this process is all that <code class="docutils literal notranslate"><span class="pre">plt.plot</span></code> produces; it will draw lines between adjacent points. This is fine for visualisation, but if we want to obtain new data or perform some extra manipulation we will need a code to give us the interpolant.</p>
+<p>As above the simplest approach is to perform the whole process in one go; i.e. have the function take the knots <em>and</em> the new evaluation points as its arguments and return the interpolated evaluation data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">piece_p1_v1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">x0</span><span class="p">,</span><span class="n">y0</span><span class="p">):</span>
+    <span class="c1"># Now we expect there to be more than a pair of knots</span>
+    <span class="c1"># First we wish to determine in which subinterval our unknown lies</span>
+    <span class="c1"># Simplest to implement/understand is to take each point in turn</span>
+    <span class="c1"># and decide which segment it belongs to</span>
+    
+    <span class="n">N</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>   <span class="c1"># new evaluation points</span>
+    <span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>  <span class="c1"># original data points</span>
+    
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+        <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span>         
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">M</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span> <span class="c1"># 1 fewer segments to points</span>
+            <span class="k">if</span><span class="p">((</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">&gt;=</span><span class="n">x0</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="ow">and</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">&lt;</span><span class="n">x0</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span> <span class="ow">or</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">==</span><span class="n">x0</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">])):</span> <span class="c1"># check if in a segment or equal to the last knot</span>
+                    <span class="n">k</span> <span class="o">=</span> <span class="n">j</span>
+        
+        <span class="c1"># Note if equal to a knot we don&#39;t need to do anything special, just not skip it</span>
+        
+        <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">y0</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">x0</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="n">x0</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">-</span><span class="n">x0</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="n">y0</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">x0</span><span class="p">[</span><span class="n">k</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="n">x0</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">x0</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="n">y</span>
+</pre></div>
+</div>
+</div>
+</div>
+<font color='#2F4F4F'>
+<p>Let’s test on <span class="math notranslate nohighlight">\(f(x) = \sin(x)\)</span> on <span class="math notranslate nohighlight">\(x\in[0,10]\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">M</span> <span class="o">=</span> <span class="mi">11</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="n">M</span><span class="p">)</span>
+<span class="n">y0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>
+
+<span class="n">N</span> <span class="o">=</span> <span class="mi">101</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">10.0</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>   <span class="c1"># new evaluation points</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">piece_p1_v1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">x0</span><span class="p">,</span><span class="n">y0</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;exact function&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="n">y0</span><span class="p">,</span><span class="s1">&#39;kx&#39;</span><span class="p">,</span><span class="n">mew</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s1">&#39;.&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;interpolated data&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Interpolation_Part1_Linear_10_0.png" src="../_images/Interpolation_Part1_Linear_10_0.png" />
+</div>
+</div>
+<font color='#2F4F4F'>
+<p><strong>Finding the subinterval</strong></p>
+<p>In the example above we used a costly loop to take each point in turn and then check which subinterval it lies in. Below we will see how to avoid the loop in general but for now let us consider the common situation where the data is evenly spaced. If this is the case we have that</p>
+<div class="math notranslate nohighlight">
+\[ x_k \in \{a,a+h,a+2h,...,a+Nh=b\}\]</div>
+<p>for <span class="math notranslate nohighlight">\(N\)</span> data points with spacing <span class="math notranslate nohighlight">\(h=\frac{b-a}{N-1}.\)</span></p>
+<p>With such a set up we can calculate the subinterval, <span class="math notranslate nohighlight">\(j,\)</span> in which the point <span class="math notranslate nohighlight">\(x\)</span> lies via</p>
+<div class="math notranslate nohighlight">
+\[ 
+j = \left \lfloor \frac{x-a}{h} \right \rfloor
+\]</div>
+<p>(where <span class="math notranslate nohighlight">\(\lfloor x\rfloor\)</span> is the <a class="reference external" href="https://en.wikipedia.org/wiki/Floor_and_ceiling_functions">floor function</a>). Not only does this simplify the code but it also gives a simple way to avoid looping to check each point/subinterval in turn.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">piece_p1_v2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">x0</span><span class="p">,</span><span class="n">y0</span><span class="p">):</span>
+    <span class="c1"># This version relies on the data being evenly spaced</span>
+    
+    <span class="n">N</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>   <span class="c1"># new evaluation points</span>
+    <span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>  <span class="c1"># original data points</span>
+    
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    
+    <span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="n">x0</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">x0</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="n">M</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>                  <span class="c1"># assumed spacing</span>
+    <span class="k">if</span> <span class="p">((</span><span class="n">x0</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">-</span><span class="n">x0</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">==</span><span class="n">h</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span> <span class="p">:</span>         <span class="c1"># check if regularly spaced</span>
+        
+        <span class="n">k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">minimum</span><span class="p">(</span><span class="n">M</span><span class="o">-</span><span class="mi">2</span><span class="p">,(</span><span class="n">x</span><span class="o">/</span><span class="n">h</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">))</span> <span class="c1"># making sure we don&#39;t overshoot the last subinterval</span>
+        <span class="n">ip</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>                     <span class="c1"># indexing array to align k with evaluation points</span>
+        
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;error, not evenly spaced data!&#39;</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="n">y</span><span class="p">[</span><span class="n">ip</span><span class="p">]</span> <span class="o">=</span> <span class="n">y0</span><span class="p">[</span><span class="n">k</span><span class="p">[</span><span class="n">ip</span><span class="p">]]</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">ip</span><span class="p">]</span><span class="o">-</span><span class="n">x0</span><span class="p">[</span><span class="n">k</span><span class="p">[</span><span class="n">ip</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="n">x0</span><span class="p">[</span><span class="n">k</span><span class="p">[</span><span class="n">ip</span><span class="p">]]</span><span class="o">-</span><span class="n">x0</span><span class="p">[</span><span class="n">k</span><span class="p">[</span><span class="n">ip</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="n">y0</span><span class="p">[</span><span class="n">k</span><span class="p">[</span><span class="n">ip</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">ip</span><span class="p">]</span><span class="o">-</span><span class="n">x0</span><span class="p">[</span><span class="n">k</span><span class="p">[</span><span class="n">ip</span><span class="p">]])</span><span class="o">/</span><span class="p">(</span><span class="n">x0</span><span class="p">[</span><span class="n">k</span><span class="p">[</span><span class="n">ip</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">x0</span><span class="p">[</span><span class="n">k</span><span class="p">[</span><span class="n">ip</span><span class="p">]])</span>
+
+    <span class="k">return</span> <span class="n">y</span>
+</pre></div>
+</div>
+</div>
+</div>
+<font color='#2F4F4F'>
+</section>
+<section id="array-broadcasting">
+<h3>Array Broadcasting<a class="headerlink" href="#array-broadcasting" title="Permalink to this headline">#</a></h3>
+<p>For the sake of generality we now consider how to avoid looping with points which may not be evenly spaced.</p>
+<p>The idea here is to use the <code class="docutils literal notranslate"><span class="pre">p1</span></code> general linear interpolation function above to return <code class="docutils literal notranslate"><span class="pre">M</span></code> functions for each segment of the data. We can then use a <em>mask</em> to select which function is appropriate for the evaluation points.</p>
+<p>In order for the mask to work, we need to take the <span class="math notranslate nohighlight">\(N\)</span> pieces of new data and <em>broadcast</em> them to the <span class="math notranslate nohighlight">\(M\)</span> segments for checking. Python can manage this provided these 1D arrays are orthogonal to each other, i.e. <span class="math notranslate nohighlight">\((1,N) \times (1,M)\)</span> will not work as the operation is ambiguous; do we mean to element-wise multiply the two arrays of different sizes? Instead we broadcast e.g. <span class="math notranslate nohighlight">\((1,N) \times (M,1)\)</span> to give an <span class="math notranslate nohighlight">\((M,N)\)</span> result. Note for our mask our binary operation isn’t arithmetic but boolean; we want to check a set of logical less than, equals etc.</p>
+<p>The result, below, is <code class="docutils literal notranslate"><span class="pre">ij</span></code> an array which is of shape <code class="docutils literal notranslate"><span class="pre">(N,M)</span></code> which is <code class="docutils literal notranslate"><span class="pre">True</span></code> if the <span class="math notranslate nohighlight">\(i^{th}\)</span> point of <span class="math notranslate nohighlight">\(N\)</span> new data points lies in the <span class="math notranslate nohighlight">\(j^{th}\)</span> segment of <span class="math notranslate nohighlight">\(M\)</span> original data points (also accounting for the possibility of the new data being outside the original observation region). Apply this to the <span class="math notranslate nohighlight">\(M\)</span> functions evaluated as the <span class="math notranslate nohighlight">\(N\)</span> data points gives the required piecewise linear representation. Note without the mask we get all <span class="math notranslate nohighlight">\(M\)</span> functions evaluated at all <span class="math notranslate nohighlight">\(N\)</span> new data points!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xt</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">x</span><span class="p">,(</span><span class="mi">1</span><span class="p">,</span><span class="n">N</span><span class="p">)))</span>
+<span class="n">xt0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">x0</span><span class="p">,(</span><span class="n">M</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">yt0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">y0</span><span class="p">,(</span><span class="n">M</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="n">testp1</span> <span class="o">=</span> <span class="n">p1</span><span class="p">(</span><span class="n">xt0</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">xt0</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span><span class="n">yt0</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">yt0</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>  <span class="c1"># Returns M linear functions</span>
+
+<span class="c1"># Mask which gives a True/False on an NxM grid </span>
+<span class="n">ij</span> <span class="o">=</span> <span class="p">((</span><span class="n">xt</span><span class="o">&lt;</span><span class="n">xt0</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">xt</span><span class="o">&gt;=</span><span class="n">xt0</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span> <span class="o">|</span> <span class="p">((</span><span class="n">xt0</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">==</span><span class="n">xt</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">xt</span><span class="o">&gt;</span><span class="n">xt0</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span> 
+<span class="n">ij</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,:]</span> <span class="o">=</span> <span class="p">((</span><span class="n">xt</span><span class="o">&gt;</span><span class="n">xt0</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">|</span> <span class="n">ij</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,:])</span>
+<span class="n">ij</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span> <span class="o">=</span> <span class="p">((</span><span class="n">xt</span><span class="o">&lt;</span><span class="n">xt0</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">|</span> <span class="n">ij</span><span class="p">[</span><span class="mi">0</span><span class="p">,:])</span>
+
+<span class="n">yt</span> <span class="o">=</span> <span class="n">testp1</span><span class="p">(</span><span class="n">xt</span><span class="p">)[</span><span class="n">ij</span><span class="p">]</span>                               <span class="c1"># Picks the appropriate function for the point in xt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;exact function&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="n">y0</span><span class="p">,</span><span class="s1">&#39;kx&#39;</span><span class="p">,</span><span class="n">mew</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">yt</span><span class="p">,</span><span class="s1">&#39;.&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;interpolated data&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Interpolation_Part1_Linear_14_0.png" src="../_images/Interpolation_Part1_Linear_14_0.png" />
+</div>
+</div>
+<font color='#2F4F4F'>
+<p>We can go a little further with our implementation now we have a compact code, we can create a function which will, given the data points (knots) return for us the piecewise interpolating function which we can then evaluate at whatever points we provide. This just wraps up the code above and returns a function name rather than the interpolated data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">piece_p1_v3</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="n">y0</span><span class="p">):</span>
+
+    <span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>
+    <span class="n">xt0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">x0</span><span class="p">,(</span><span class="n">M</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">yt0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">y0</span><span class="p">,(</span><span class="n">M</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+
+    <span class="n">testp1</span> <span class="o">=</span> <span class="n">p1</span><span class="p">(</span><span class="n">xt0</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">xt0</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span><span class="n">yt0</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">yt0</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>  <span class="c1"># Returns M linear functions</span>
+
+    <span class="k">def</span> <span class="nf">int_temp</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="n">N</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">xt</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">x</span><span class="p">,(</span><span class="mi">1</span><span class="p">,</span><span class="n">N</span><span class="p">)))</span>
+        <span class="c1"># Mask which gives a True/False on an NxM grid </span>
+        <span class="n">ij</span> <span class="o">=</span> <span class="p">((</span><span class="n">xt</span><span class="o">&lt;</span><span class="n">xt0</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">xt</span><span class="o">&gt;=</span><span class="n">xt0</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span> <span class="o">|</span> <span class="p">((</span><span class="n">xt0</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">==</span><span class="n">xt</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">xt</span><span class="o">&gt;</span><span class="n">xt0</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span> 
+        <span class="n">ij</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,:]</span> <span class="o">=</span> <span class="p">((</span><span class="n">xt</span><span class="o">&gt;</span><span class="n">xt0</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">|</span> <span class="n">ij</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,:])</span>
+        <span class="n">ij</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span> <span class="o">=</span> <span class="p">((</span><span class="n">xt</span><span class="o">&lt;</span><span class="n">xt0</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">|</span> <span class="n">ij</span><span class="p">[</span><span class="mi">0</span><span class="p">,:])</span>
+
+        <span class="k">return</span> <span class="n">testp1</span><span class="p">(</span><span class="n">xt</span><span class="p">)[</span><span class="n">ij</span><span class="p">]</span>                               <span class="c1"># Picks the appropriate function for the point in xt</span>
+    <span class="k">return</span> <span class="n">int_temp</span>
+</pre></div>
+</div>
+</div>
+</div>
+<font color='#2F4F4F'>
+<p><strong>Uneven data</strong></p>
+<p>To create a nice test case with uneven knots, we have created below a function <code class="docutils literal notranslate"><span class="pre">randspace(a,b,h)</span></code> which takes the start and end points of the interval <span class="math notranslate nohighlight">\([a,b]\)</span> plus a <em>maximum spacing</em> and creates a set of points with random spaces between starting at <span class="math notranslate nohighlight">\(a\)</span> and with a largest possible spacing <span class="math notranslate nohighlight">\(h.\)</span> This is acheived by the recurrence relation</p>
+<div class="math notranslate nohighlight">
+\[ x_{n+1} = x_n + \delta h\]</div>
+<p>where <span class="math notranslate nohighlight">\(\delta\)</span> is a uniformly distributed random number between 0 and 1.</p>
+<p>The sequence <span class="math notranslate nohighlight">\(\{x_0=a,\,x_1,\,x_2\dots\}\)</span> created by the above is terminated when <span class="math notranslate nohighlight">\(x_n\geq b,\)</span> at which point <span class="math notranslate nohighlight">\(x_n\)</span> is overwritten with <span class="math notranslate nohighlight">\(b\)</span> and becomes the final element in the array. In this way we do not control the number of elements in the array; it will be different each time.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">randspace</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">h</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">a</span><span class="p">])</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">&lt;</span><span class="n">b</span><span class="p">):</span>  <span class="c1"># Here is a good example of a while loop where the number of iterations are unknown in advance</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span><span class="o">*</span><span class="n">h</span><span class="p">)</span>  <span class="c1"># add to the array the next point</span>
+    <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="n">b</span>  <span class="c1"># having stopped, overwrite the last element with b</span>
+    <span class="k">return</span> <span class="n">x</span>
+
+<span class="n">M</span> <span class="o">=</span> <span class="mi">11</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="n">randspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">y0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>
+
+<span class="n">N</span> <span class="o">=</span> <span class="mi">101</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">10.0</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>   <span class="c1"># new evaluation points</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">piece_p1_v3</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="n">y0</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;exact function&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="n">y0</span><span class="p">,</span><span class="s1">&#39;kx&#39;</span><span class="p">,</span><span class="n">mew</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="s1">&#39;.&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;interpolated data&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Interpolation_Part1_Linear_18_0.png" src="../_images/Interpolation_Part1_Linear_18_0.png" />
+</div>
+</div>
+<font color='#2F4F4F'>
+</section>
+<section id="scipy-interpolation">
+<h3>Scipy interpolation<a class="headerlink" href="#scipy-interpolation" title="Permalink to this headline">#</a></h3>
+<p>To a certain extent we are reinventing the wheel here as Python, or rather the <code class="docutils literal notranslate"><span class="pre">scipy</span></code> library has interpolation functions built-in; to get a piecewise linear interpolant we can use <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.interp1d.html"><code class="docutils literal notranslate"><span class="pre">interp1d</span></code></a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">interp1d</span>
+
+
+<span class="n">g</span> <span class="o">=</span> <span class="n">interp1d</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="n">y0</span><span class="p">,</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;exact function&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="n">y0</span><span class="p">,</span><span class="s1">&#39;kx&#39;</span><span class="p">,</span><span class="n">mew</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="s1">&#39;.&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;our interpolated data&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">g</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="s1">&#39;.&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;scipy interpolated data&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Interpolation_Part1_Linear_20_0.png" src="../_images/Interpolation_Part1_Linear_20_0.png" />
+</div>
+</div>
+<font color='#2F4F4F'>
+As you can see, it looks like our interpolation is coincident with scipy's. We can check the agreement by plotting the difference:<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">-</span><span class="n">g</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span><span class="s1">&#39;.&#39;</span><span class="p">,)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$\delta y$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Interpolation_Part1_Linear_22_0.png" src="../_images/Interpolation_Part1_Linear_22_0.png" />
+</div>
+</div>
+<font color='#2F4F4F'>
+<p>The differences are at or below machine precision meaning the difference is probably just the order of the operations performed; slightly different rounding errors are accumulated.</p>
+<p>We should stress here that it is really very useful to be able to replicate some built-in functions some of the time. Not using them as black boxes and having a good grasp of the fundamentals is very useful e.g.</p>
+<ul class="simple">
+<li><p>should you need a niche implementation of a particular method which the built-in function cannot handle</p></li>
+<li><p>should the built-in function throw up something unexpected</p></li>
+</ul>
+<p>We can also learn a lot about programming technique, for instance here we have discovered array broadcasting.</p>
+</section>
+</section>
+<section id="error">
+<h2>Error<a class="headerlink" href="#error" title="Permalink to this headline">#</a></h2>
+<p>It is possible to perform a rigorous error analysis for linear interpolation and determine how we expect the errors to behave. We haven’t time to explore this here, if you are keen you can find details in, e.g. Section 2.2.2 <a class="reference external" href="https://encore.st-andrews.ac.uk/iii/encore/record/C__Rb2075268">Gautschi, <em>Numerical Analysis</em></a>. What comes out of the error analysis is that a piecewise linear approximation to a function <span class="math notranslate nohighlight">\(f(x)\)</span> has error</p>
+<div class="math notranslate nohighlight">
+\[|f(x)-p_1(x)| \sim h^2\]</div>
+<p>where <span class="math notranslate nohighlight">\(h = \frac{b-a}{n-1}\)</span> is the spacing of the knots, or the length of each subinterval. For example, for linear interpolation, if you are able to halve the spacing of the knots, i.e. double the total data points, you stand to quarter the error in your approximation.</p>
+<p><strong>This decrease of error with stepsize is referred to as the <em>convergence</em> of the method and is common to many areas of numerical analysis, such as numerical differentiation, integration and numerical solution to differential equations.</strong></p>
+<font color='#2F4F4F'>
+<section id="id2">
+<h3>Application<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
+<p>We can check this convergence by varying the number of data points in our test case and plot the maximum error. We will plot the maximum error on a log-log plot alongside, <span class="math notranslate nohighlight">\(h,\)</span> <span class="math notranslate nohighlight">\(h^2\)</span> and <span class="math notranslate nohighlight">\(h^3\)</span> so that we can be sure we obtain the predicted trend.</p>
+<p>Later on we will consider cases where this prediction can break down.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">NN</span> <span class="o">=</span> <span class="mi">100</span>                         <span class="c1"># Choose how many resolutions to test</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mf">10.0</span>
+<span class="n">err_h</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">NN</span><span class="p">)</span>             <span class="c1"># store error</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">NN</span><span class="p">)</span>                 <span class="c1"># store h</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">500</span><span class="p">)</span>       <span class="c1"># we must choose high resolution evaluation points </span>
+<span class="k">for</span> <span class="n">M</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">NN</span><span class="p">):</span>
+    <span class="n">x0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">M</span><span class="o">+</span><span class="mi">20</span><span class="p">)</span>   <span class="c1"># convergence is asymptotic, h&lt;&lt;1, so skip large h (M+20)</span>
+    <span class="n">y0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>
+    
+    <span class="n">f</span> <span class="o">=</span> <span class="n">piece_p1_v3</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="n">y0</span><span class="p">)</span>
+
+    <span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> 
+        
+    <span class="n">err_h</span><span class="p">[</span><span class="n">M</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span> <span class="c1"># get the largest error in your set of evaluation points</span>
+    <span class="n">h</span><span class="p">[</span><span class="n">M</span><span class="p">]</span> <span class="o">=</span> <span class="n">x0</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">-</span><span class="n">x0</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="n">err_h</span><span class="p">,</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="mf">0.01</span><span class="o">*</span><span class="n">h</span><span class="p">,</span><span class="s1">&#39;--&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;$h$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="mf">0.1</span><span class="o">*</span><span class="n">h</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;--&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;$h^2$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="n">h</span><span class="o">**</span><span class="mi">3</span><span class="p">,</span><span class="s1">&#39;--&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;$h^3$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$h$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$E(h)$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Interpolation_Part1_Linear_25_0.png" src="../_images/Interpolation_Part1_Linear_25_0.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./3_AppliedNotebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="0intro.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Chapter 3 Applied Mathematics: Interpolation</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="Interpolation_Part2_Polynomial.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Interpolation Part 2: Polynomial interpolation</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Dan Lucas, Finn Smith, Ben Swallow<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

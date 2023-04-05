@@ -1,0 +1,3511 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Introduction to Pandas &#8212; MT3510 Introduction to Mathematical Computing</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Chapter 3 Applied Mathematics: Interpolation" href="../3_AppliedNotebooks/0intro.html" />
+    <link rel="prev" title="Computational Geometry" href="7ComputationalGeometry.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">MT3510 Introduction to Mathematical Computing</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to MT3510
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../diary.html">
+   Module diary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../generic-guidance-23.html">
+   Coursework submission guidance
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../1_IntroNotebooks/0intro.html">
+   Chapter 1: The Fundamentals
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/1%20Python%20and%20Jupyter%20Notebooks%20Basics.html">
+     Python &amp; Jupyter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/2%20Variables.html">
+     Variables
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/3%20Modules%20and%20Numpy.html">
+     Modules and numpy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/4%20Errors.html">
+     Errors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/5%20Printing%20and%20Strings.html">
+     Printing to the screen
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/6%20For%20Loops.html">
+     For loops
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/7%20Nested%20For%20Loops.html">
+     Nested
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       for
+      </span>
+     </code>
+     loops
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/8%20Functions.html">
+     Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/9%20Conditionals.html">
+     Conditionals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/10%20While%20Loops.html">
+     While loops
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/11%20Lists%20and%20Tuples.html">
+     Lists
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/12%20Arrays.html">
+     Arrays
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/13%20Slicing.html">
+     Slicing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/14%20Floating%20Point%20Numbers.html">
+     Floating point numbers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/15%20Sets%20and%20Dicts.html">
+     Sets and Dicts
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/16%20Types.html">
+     Types
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/17%20Input%20and%20Files.html">
+     Input and files
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/18%20Plotting.html">
+     Matplotlib
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../1_IntroNotebooks/19%20Markdown%20and%20LaTeX.html">
+     Markdown
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="0intro.html">
+   Chapter 2: Topics in Computational Mathematics
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="1Computational_Thinking.html">
+     Introduction to Computational Thinking
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2Interactivity.html">
+     Interactivity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="3Sympy.html">
+     SymPy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="4Computational_Complexity.html">
+     Introduction to Computational Complexity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="5GoodPractise1_Efficiency.html">
+     Good practise in Python: Part 1 Efficiency
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="6GoodPractise2_Usability.html">
+     Good practise in Python Part 2: Usability &amp; Style
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="7ComputationalGeometry.html">
+     Computational Geometry
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Introduction to Pandas
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../3_AppliedNotebooks/0intro.html">
+   Chapter 3 Applied Mathematics: Interpolation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3_AppliedNotebooks/Interpolation_Part1_Linear.html">
+     Interpolation Part 1: Linear Interpolation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3_AppliedNotebooks/Interpolation_Part2_Polynomial.html">
+     Interpolation Part 2: Polynomial interpolation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3_AppliedNotebooks/Interpolation_Part3_PiecewisePolynomial.html">
+     Interpolation Part 3: Piecewise polynomial interpolation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3_AppliedNotebooks/Interpolation_Part4_CubicSpline.html">
+     Interpolation Part 4: Spline interpolation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../4_PureNotebooks/0intro.html">
+   Chapter 4 Pure Mathematics: Graph Theory
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../5_StatsNotebooks/0intro.html">
+   Chapter 5 Statistics:
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/2_CoreNotebooks/8Introduction_to_Pandas.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/2_CoreNotebooks/8Introduction_to_Pandas.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#importing-pandas">
+   Importing Pandas
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pandas-series-object">
+   Pandas Series Object
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pandas-dataframe-object">
+   Pandas DataFrame Object
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-dataframes-from-scratch">
+   Creating DataFrames From Scratch
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#importing-data-from-external-files">
+   Importing Data From External Files
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-wrangling">
+   Data wrangling
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reshaping-long-wide-format">
+     Reshaping - long ↔ wide format
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#wide-to-long-format">
+       Wide to long format
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#long-to-wide-format">
+       Long to wide format
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#combining-datasets-concat-merge-and-join">
+   Combining Datasets:
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     concat
+    </span>
+   </code>
+   ,
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     merge
+    </span>
+   </code>
+   and
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     join
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-aggregation-and-summarisation">
+   Data Aggregation and Summarisation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Introduction to Pandas</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#importing-pandas">
+   Importing Pandas
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pandas-series-object">
+   Pandas Series Object
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pandas-dataframe-object">
+   Pandas DataFrame Object
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-dataframes-from-scratch">
+   Creating DataFrames From Scratch
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#importing-data-from-external-files">
+   Importing Data From External Files
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-wrangling">
+   Data wrangling
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reshaping-long-wide-format">
+     Reshaping - long ↔ wide format
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#wide-to-long-format">
+       Wide to long format
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#long-to-wide-format">
+       Long to wide format
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#combining-datasets-concat-merge-and-join">
+   Combining Datasets:
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     concat
+    </span>
+   </code>
+   ,
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     merge
+    </span>
+   </code>
+   and
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     join
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-aggregation-and-summarisation">
+   Data Aggregation and Summarisation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-pandas">
+<h1>Introduction to Pandas<a class="headerlink" href="#introduction-to-pandas" title="Permalink to this headline">#</a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">pandas</span></code> package in Python provides a large collection of functions for <strong>importing, merging and wrangling</strong> data of many different types. This can be as simple as creating data objects from a text file on your computer to scraping text from websites and saving to particular data structures.</p>
+<p>In this section of the course, we will learn about some basic functionality of the pandas package for importing and wrangling data in a reproducible and ‘tidy’ way. Then we will pick up further on this at the end of the course to learn about more complex ways of handling and working with external data sources.</p>
+<p>There are many resources available to help you, with full documentation at <a class="reference external" href="http://pandas.pydata.org">the pandas repository</a>. If you want to learn more advanced ways of using <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, this is a great place to start.</p>
+<section id="importing-pandas">
+<h2>Importing Pandas<a class="headerlink" href="#importing-pandas" title="Permalink to this headline">#</a></h2>
+<p>As with the <code class="docutils literal notranslate"><span class="pre">numpy</span></code> package, it is customary to import the pandas package using a shortened name, <code class="docutils literal notranslate"><span class="pre">pd</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the simplest form, the <code class="docutils literal notranslate"><span class="pre">pandas</span></code> package contains functions that can create and manipulate enhanced data objects relative to <code class="docutils literal notranslate"><span class="pre">NumPy</span></code>. Specifically, there are three main types of data sctructure in <code class="docutils literal notranslate"><span class="pre">pandas</span></code> that we need to familiarise ourself with. <code class="docutils literal notranslate"><span class="pre">Series</span></code>, <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>s and <code class="docutils literal notranslate"><span class="pre">Indexes</span></code>. We may have an external files that we want to read into Python in order to later study or analyse or create our own objects from scratch.</p>
+</section>
+<section id="pandas-series-object">
+<h2>Pandas Series Object<a class="headerlink" href="#pandas-series-object" title="Permalink to this headline">#</a></h2>
+<p>Let us begin by looking at the <code class="docutils literal notranslate"><span class="pre">Series</span></code> object, a way of storing vectors of data. We supply a vector of values that we wish to store in our object as follows and observe the contents of the created object.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.3</span><span class="p">,</span><span class="mf">0.4</span><span class="p">])</span>
+<span class="n">data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    0.1
+1    0.2
+2    0.3
+3    0.4
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>As in <code class="docutils literal notranslate"><span class="pre">numpy</span></code>, data in <code class="docutils literal notranslate"><span class="pre">pandas</span></code> objects can be accessed using the square pbracket notation</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2    0.3
+3    0.4
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can see that this object has both a vector of values, (which can be accessed using <code class="docutils literal notranslate"><span class="pre">data.values</span></code>), but also an index (accessed using <code class="docutils literal notranslate"><span class="pre">data.index</span></code>). Although it may seem very similar to the <code class="docutils literal notranslate"><span class="pre">numpy</span></code> array, the <code class="docutils literal notranslate"><span class="pre">pandas</span></code> <code class="docutils literal notranslate"><span class="pre">Series</span></code> object is much more flexible than the former. In particular, we may want to use non-integers for the index, such as strings. In that case we can construct data dictionaries, allowing the association of the individual indices to specific values. For example, let us consider some made up fruit sales at a shop in St Andrews.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fruits</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Apples&#39;</span><span class="p">:</span><span class="mi">1537</span><span class="p">,</span>
+        <span class="s1">&#39;Bananas&#39;</span><span class="p">:</span> <span class="mi">2541</span><span class="p">,</span>
+        <span class="s1">&#39;Kiwis&#39;</span><span class="p">:</span> <span class="mi">527</span><span class="p">,</span>
+        <span class="s1">&#39;Peaches&#39;</span><span class="p">:</span><span class="mi">894</span><span class="p">}</span>
+
+<span class="n">fruit_sales</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">fruits</span><span class="p">)</span>
+<span class="n">fruit_sales</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Apples     1537
+Bananas    2541
+Kiwis       527
+Peaches     894
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Once we have created our data series out of the original dictionary, we can acccess the value we want by specifying the corresponding key in our dictionary.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fruit_sales</span><span class="p">[</span><span class="s1">&#39;Peaches&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>894
+</pre></div>
+</div>
+</div>
+</div>
+<p>We could also create the data series using the following code, specifying both the data vector and its corresponding keynames:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fruit_sales</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1537</span><span class="p">,</span><span class="mi">2541</span><span class="p">,</span><span class="mi">527</span><span class="p">,</span><span class="mi">894</span><span class="p">],</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Apples&#39;</span><span class="p">,</span><span class="s1">&#39;Bananas&#39;</span><span class="p">,</span><span class="s1">&#39;Kiwis&#39;</span><span class="p">,</span><span class="s1">&#39;Peaches&#39;</span><span class="p">])</span>
+<span class="n">fruit_sales</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Apples     1537
+Bananas    2541
+Kiwis       527
+Peaches     894
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="pandas-dataframe-object">
+<h2>Pandas DataFrame Object<a class="headerlink" href="#pandas-dataframe-object" title="Permalink to this headline">#</a></h2>
+<p>A central concept in statististical data analysis is the dataframe object. We often represent the data as observations where for each observation (stored as rows), multiple variables (storeed as columns) were recorded. The idea behind a dataframe is to create an object that is suited to managing this kind of data. In the <code class="docutils literal notranslate"><span class="pre">pandas</span></code> package, there is the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> function that creates an object of type dataframe. We can create a dataframe of the fruit sales Series object generated above.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">fruit_sales</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dat</span><span class="o">.</span><span class="n">info</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dat</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+Index: 4 entries, Apples to Peaches
+Data columns (total 1 columns):
+ #   Column  Non-Null Count  Dtype
+---  ------  --------------  -----
+ 0   0       4 non-null      int64
+dtypes: int64(1)
+memory usage: 236.0+ bytes
+None
+            0
+Apples   1537
+Bananas  2541
+Kiwis     527
+Peaches   894
+</pre></div>
+</div>
+</div>
+</div>
+<p>Once you have imported the data you want, you can study the resulting object to determine its properties. There is both the <code class="docutils literal notranslate"><span class="pre">info</span></code> function, which provides a variety of useful details on the structure of the object, and the <code class="docutils literal notranslate"><span class="pre">head</span></code> function that prints out the first five rows of the dataframe.</p>
+</section>
+<section id="creating-dataframes-from-scratch">
+<h2>Creating DataFrames From Scratch<a class="headerlink" href="#creating-dataframes-from-scratch" title="Permalink to this headline">#</a></h2>
+<p>We can also create a dataframe from scratch and input out own data. For example, let us assume we have measured people’s height as well as noting their age, using <code class="docutils literal notranslate"><span class="pre">None</span></code> in the case where the data are missing.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Height&#39;</span><span class="p">:[</span><span class="mf">1.7</span><span class="p">,</span><span class="mf">1.8</span><span class="p">,</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">1.6</span><span class="p">,</span><span class="mf">1.9</span><span class="p">],</span>
+                  <span class="s1">&#39;Age&#39;</span><span class="p">:[</span><span class="mi">37</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="kc">None</span><span class="p">,</span><span class="mi">19</span><span class="p">,</span><span class="mi">21</span><span class="p">]})</span> 
+<span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 5 entries, 0 to 4
+Data columns (total 2 columns):
+ #   Column  Non-Null Count  Dtype  
+---  ------  --------------  -----  
+ 0   Height  5 non-null      float64
+ 1   Age     4 non-null      float64
+dtypes: float64(2)
+memory usage: 208.0 bytes
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Height</th>
+      <th>Age</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.7</td>
+      <td>37.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1.8</td>
+      <td>28.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1.5</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1.6</td>
+      <td>19.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1.9</td>
+      <td>21.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="importing-data-from-external-files">
+<h2>Importing Data From External Files<a class="headerlink" href="#importing-data-from-external-files" title="Permalink to this headline">#</a></h2>
+<p>We have now seen how to create DataFrame objects from data we are inputting, but what if we have data in a spreadsheet or other file that we want to read into Python? <code class="docutils literal notranslate"><span class="pre">pandas</span></code> has a range of <code class="docutils literal notranslate"><span class="pre">read_*</span></code> functions to read in data of different formats. We will focus here on the <code class="docutils literal notranslate"><span class="pre">read_csv</span></code> function in particular, but if you have .xls, html, .txt etc. files, you may need to use one of the other functions.
+We will start with some data downloaded from <a class="reference external" href="https://www.gapminder.org/data/">gapminder</a> relating to GDP per capita of  various different countries and acorss years. We need to specify the path to the folder (here assumed to be in the current working directory) and use the read function to import it. Once we have done that, we can study the first few rowys of the dataframe.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Data from https://www.gapminder.org/data/</span>
+<span class="n">income</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;dat/indicator_gapminder_gdp_per_capita_ppp-Data.csv&#39;</span><span class="p">)</span>
+<span class="n">income</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>GDP per capita</th>
+      <th>1800</th>
+      <th>1801</th>
+      <th>1802</th>
+      <th>1803</th>
+      <th>1804</th>
+      <th>1805</th>
+      <th>1806</th>
+      <th>1807</th>
+      <th>1808</th>
+      <th>...</th>
+      <th>2003</th>
+      <th>2004</th>
+      <th>2005</th>
+      <th>2006</th>
+      <th>2007</th>
+      <th>2008</th>
+      <th>2009</th>
+      <th>2010</th>
+      <th>2011</th>
+      <th>2012</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Abkhazia</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Afghanistan</td>
+      <td>472.053500</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>785.127571</td>
+      <td>804.717458</td>
+      <td>874.0</td>
+      <td>887.914578</td>
+      <td>983.652314</td>
+      <td>984.805841</td>
+      <td>1154.859365</td>
+      <td>1214.613653</td>
+      <td>1261.354184</td>
+      <td>1349.696941</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Akrotiri and Dhekelia</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Albania</td>
+      <td>601.215222</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>4855.210024</td>
+      <td>5115.252837</td>
+      <td>5369.0</td>
+      <td>5652.049321</td>
+      <td>5958.021197</td>
+      <td>6365.530359</td>
+      <td>6550.896164</td>
+      <td>6746.445312</td>
+      <td>6914.267317</td>
+      <td>6969.306283</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Algeria</td>
+      <td>766.253664</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>5576.851564</td>
+      <td>5790.967692</td>
+      <td>6011.0</td>
+      <td>6022.270940</td>
+      <td>6133.782763</td>
+      <td>6162.719840</td>
+      <td>6173.729741</td>
+      <td>6300.648214</td>
+      <td>6354.640523</td>
+      <td>6419.127829</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 214 columns</p>
+</div></div></div>
+</div>
+<p>These data report various country’s GDP, across years (columns) for different countries (rows). We could import these as a series with the country being the index and the GDP the values, but in this case we will assume the column of countries is of wider interest as a variable in its own right. If you look at the data, you may notice that there is a large number of missing values represented by <code class="docutils literal notranslate"><span class="pre">NaN</span></code>. It we explore the <code class="docutils literal notranslate"><span class="pre">dtypes</span></code> of the dataframe, we see that the GDPs are classified as floats, whilst country is an <code class="docutils literal notranslate"><span class="pre">object</span></code> (string).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">income</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GDP per capita     object
+1800              float64
+1801              float64
+1802              float64
+1803              float64
+                   ...   
+2008              float64
+2009              float64
+2010              float64
+2011              float64
+2012              float64
+Length: 214, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>Before we go any further, notice that the first column is labelled incorrectly as GDP per capita (rather than country), so let us rename the first column using the <code class="docutils literal notranslate"><span class="pre">.rename()</span></code>function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">income</span><span class="o">=</span><span class="n">income</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;GDP per capita&quot;</span><span class="p">:</span> <span class="s2">&quot;country&quot;</span><span class="p">})</span>
+<span class="n">income</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>country</th>
+      <th>1800</th>
+      <th>1801</th>
+      <th>1802</th>
+      <th>1803</th>
+      <th>1804</th>
+      <th>1805</th>
+      <th>1806</th>
+      <th>1807</th>
+      <th>1808</th>
+      <th>...</th>
+      <th>2003</th>
+      <th>2004</th>
+      <th>2005</th>
+      <th>2006</th>
+      <th>2007</th>
+      <th>2008</th>
+      <th>2009</th>
+      <th>2010</th>
+      <th>2011</th>
+      <th>2012</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Abkhazia</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Afghanistan</td>
+      <td>472.053500</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>785.127571</td>
+      <td>804.717458</td>
+      <td>874.0</td>
+      <td>887.914578</td>
+      <td>983.652314</td>
+      <td>984.805841</td>
+      <td>1154.859365</td>
+      <td>1214.613653</td>
+      <td>1261.354184</td>
+      <td>1349.696941</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Akrotiri and Dhekelia</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Albania</td>
+      <td>601.215222</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>4855.210024</td>
+      <td>5115.252837</td>
+      <td>5369.0</td>
+      <td>5652.049321</td>
+      <td>5958.021197</td>
+      <td>6365.530359</td>
+      <td>6550.896164</td>
+      <td>6746.445312</td>
+      <td>6914.267317</td>
+      <td>6969.306283</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Algeria</td>
+      <td>766.253664</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>5576.851564</td>
+      <td>5790.967692</td>
+      <td>6011.0</td>
+      <td>6022.270940</td>
+      <td>6133.782763</td>
+      <td>6162.719840</td>
+      <td>6173.729741</td>
+      <td>6300.648214</td>
+      <td>6354.640523</td>
+      <td>6419.127829</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 214 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="data-wrangling">
+<h2>Data wrangling<a class="headerlink" href="#data-wrangling" title="Permalink to this headline">#</a></h2>
+<p>Data wrangling is a process by which we modify the data to a structure or format relevant to how we wish to utilise it. For example, we may want to extract certain entries or variables from the data, reshape the data to a more appropriate format, or check for and deal with missing values. We can slice specific column(s) based on their names; rows and/or columns specifying their <code class="docutils literal notranslate"><span class="pre">loc</span></code> (the index names of the rows and/or columns); rows and/or columns based on their array indices using <code class="docutils literal notranslate"><span class="pre">iloc</span></code>; or based on particular Boolean operations. Some care needs to be taken when using <code class="docutils literal notranslate"><span class="pre">loc</span></code> or <code class="docutils literal notranslate"><span class="pre">iloc</span></code> as if the dataframe from this function is saved into a new object and the orginal full dataframe is edited, it can sometimes change the sliced data automatically. This can be avoided by using <code class="docutils literal notranslate"><span class="pre">.copy()</span></code>. Below, if changes are made to <code class="docutils literal notranslate"><span class="pre">income</span></code> above, then this will not utomatically change the sliced dataframe unless the slicing is rerun.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">income</span><span class="p">[</span><span class="s1">&#39;1800&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0           NaN
+1    472.053500
+2           NaN
+3    601.215222
+4    766.253664
+Name: 1800, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">income</span><span class="p">[[</span><span class="s1">&#39;1800&#39;</span><span class="p">,</span><span class="s1">&#39;1805&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>1800</th>
+      <th>1805</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>472.053500</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>601.215222</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>766.253664</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">income</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">11</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span> <span class="s1">&#39;1800&#39;</span><span class="p">:</span><span class="s1">&#39;1805&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>1800</th>
+      <th>1801</th>
+      <th>1802</th>
+      <th>1803</th>
+      <th>1804</th>
+      <th>1805</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>11</th>
+      <td>378.403254</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>575.855054</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>671.478209</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>1434.507479</td>
+      <td>1440.072847</td>
+      <td>1445.659806</td>
+      <td>1451.268441</td>
+      <td>1456.898835</td>
+      <td>1462.551074</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>477.152815</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>1409.188697</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>808.991793</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>608.794297</td>
+      <td>608.635943</td>
+      <td>608.477630</td>
+      <td>608.319358</td>
+      <td>608.161127</td>
+      <td>608.002938</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>1017.813988</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>510.549704</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">income</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">11</span><span class="p">:</span><span class="mi">21</span><span class="p">,:</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>country</th>
+      <th>1800</th>
+      <th>1801</th>
+      <th>1802</th>
+      <th>1803</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>11</th>
+      <td>Armenia</td>
+      <td>378.403254</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Aruba</td>
+      <td>575.855054</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Australia</td>
+      <td>671.478209</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Austria</td>
+      <td>1434.507479</td>
+      <td>1440.072847</td>
+      <td>1445.659806</td>
+      <td>1451.268441</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Azerbaijan</td>
+      <td>477.152815</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>Bahamas</td>
+      <td>1409.188697</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>Bahrain</td>
+      <td>808.991793</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>Bangladesh</td>
+      <td>608.794297</td>
+      <td>608.635943</td>
+      <td>608.477630</td>
+      <td>608.319358</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>Barbados</td>
+      <td>1017.813988</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>Belarus</td>
+      <td>510.549704</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">income</span><span class="p">[</span><span class="n">income</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;Australia&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>country</th>
+      <th>1800</th>
+      <th>1801</th>
+      <th>1802</th>
+      <th>1803</th>
+      <th>1804</th>
+      <th>1805</th>
+      <th>1806</th>
+      <th>1807</th>
+      <th>1808</th>
+      <th>...</th>
+      <th>2003</th>
+      <th>2004</th>
+      <th>2005</th>
+      <th>2006</th>
+      <th>2007</th>
+      <th>2008</th>
+      <th>2009</th>
+      <th>2010</th>
+      <th>2011</th>
+      <th>2012</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>13</th>
+      <td>Australia</td>
+      <td>671.478209</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>31634.242428</td>
+      <td>32098.50615</td>
+      <td>32798.0</td>
+      <td>33204.155734</td>
+      <td>34196.812421</td>
+      <td>34444.333064</td>
+      <td>34389.09927</td>
+      <td>34884.763757</td>
+      <td>35253.938423</td>
+      <td>36064.737277</td>
+    </tr>
+  </tbody>
+</table>
+<p>1 rows × 214 columns</p>
+</div></div></div>
+</div>
+<section id="reshaping-long-wide-format">
+<h3>Reshaping - long ↔ wide format<a class="headerlink" href="#reshaping-long-wide-format" title="Permalink to this headline">#</a></h3>
+<section id="wide-to-long-format">
+<h4>Wide to long format<a class="headerlink" href="#wide-to-long-format" title="Permalink to this headline">#</a></h4>
+<p>It may not be convenient to have all the years as additional columns (often called ‘wide’ format). Instead, we would perhaps rather have a single column of GDP values, but with replicates of the country for each year (‘long’ format). To do this in Python we use the <code class="docutils literal notranslate"><span class="pre">melt</span></code> function, specifying:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">id_vars</span></code>: the column name(s) in each data to maintain/replicate</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">value_vars</span></code>: the column(s) that will be collapsed down to a single column</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">var_names</span></code>: the column name of the new variable constructed from the previous column names</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">value_name</span></code>: the column name for the values of the collapsed data</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">yearlist</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">income</span><span class="o">.</span><span class="n">columns</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="n">income_long</span><span class="o">=</span><span class="n">income</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">id_vars</span><span class="o">=</span><span class="s1">&#39;country&#39;</span><span class="p">,</span><span class="n">value_vars</span><span class="o">=</span><span class="n">yearlist</span><span class="p">,</span><span class="n">var_name</span><span class="o">=</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span><span class="n">value_name</span><span class="o">=</span><span class="s1">&#39;GDP&#39;</span><span class="p">)</span>
+<span class="n">income_long</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>country</th>
+      <th>Year</th>
+      <th>GDP</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Abkhazia</td>
+      <td>1800</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Afghanistan</td>
+      <td>1800</td>
+      <td>472.053500</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Akrotiri and Dhekelia</td>
+      <td>1800</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Albania</td>
+      <td>1800</td>
+      <td>601.215222</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Algeria</td>
+      <td>1800</td>
+      <td>766.253664</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="long-to-wide-format">
+<h4>Long to wide format<a class="headerlink" href="#long-to-wide-format" title="Permalink to this headline">#</a></h4>
+<p>To go from long to wide format, i.e, the reverse of this, we can use the <code class="docutils literal notranslate"><span class="pre">pivot()</span></code> function.</p>
+<ul class="simple">
+<li><p>columns: Column to use to make new frame’s columns</p></li>
+<li><p>values: Column(s) to use for populating new frame’s values</p></li>
+<li><p>index: Column to use to make new dataframe’s index</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">income_wide</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">income_long</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s1">&#39;country&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;GDP&#39;</span><span class="p">)</span>
+<span class="n">income_wide</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Year</th>
+      <th>1800</th>
+      <th>1801</th>
+      <th>1802</th>
+      <th>1803</th>
+      <th>1804</th>
+      <th>1805</th>
+      <th>1806</th>
+      <th>1807</th>
+      <th>1808</th>
+      <th>1809</th>
+      <th>...</th>
+      <th>2003</th>
+      <th>2004</th>
+      <th>2005</th>
+      <th>2006</th>
+      <th>2007</th>
+      <th>2008</th>
+      <th>2009</th>
+      <th>2010</th>
+      <th>2011</th>
+      <th>2012</th>
+    </tr>
+    <tr>
+      <th>country</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Abkhazia</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Afghanistan</th>
+      <td>472.053500</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>785.127571</td>
+      <td>804.717458</td>
+      <td>874.0</td>
+      <td>887.914578</td>
+      <td>983.652314</td>
+      <td>984.805841</td>
+      <td>1154.859365</td>
+      <td>1214.613653</td>
+      <td>1261.354184</td>
+      <td>1349.696941</td>
+    </tr>
+    <tr>
+      <th>Akrotiri and Dhekelia</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Albania</th>
+      <td>601.215222</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>4855.210024</td>
+      <td>5115.252837</td>
+      <td>5369.0</td>
+      <td>5652.049321</td>
+      <td>5958.021197</td>
+      <td>6365.530359</td>
+      <td>6550.896164</td>
+      <td>6746.445312</td>
+      <td>6914.267317</td>
+      <td>6969.306283</td>
+    </tr>
+    <tr>
+      <th>Algeria</th>
+      <td>766.253664</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>5576.851564</td>
+      <td>5790.967692</td>
+      <td>6011.0</td>
+      <td>6022.270940</td>
+      <td>6133.782763</td>
+      <td>6162.719840</td>
+      <td>6173.729741</td>
+      <td>6300.648214</td>
+      <td>6354.640523</td>
+      <td>6419.127829</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 213 columns</p>
+</div></div></div>
+</div>
+</section>
+</section>
+</section>
+<section id="combining-datasets-concat-merge-and-join">
+<h2>Combining Datasets: <code class="docutils literal notranslate"><span class="pre">concat</span></code>, <code class="docutils literal notranslate"><span class="pre">merge</span></code> and <code class="docutils literal notranslate"><span class="pre">join</span></code><a class="headerlink" href="#combining-datasets-concat-merge-and-join" title="Permalink to this headline">#</a></h2>
+<p>A common task when working with data is the need to combine multiple data structures together. This could be when we have new observations of existing variables (extra rows), or new variables measured on existing objects (extra columns), for example. The <code class="docutils literal notranslate"><span class="pre">pandas</span></code> package allows the combination of data in this way. Understanding the properties of the data we are combining is very important to ensure this is done in the correct way.</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, there are multiple functions for combining dataframes. Each has its uses and syntax. We will study examples of each below, starting by importing a similar dataset on total populations for each country and converting to long format.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">popn</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;dat/population_total.csv&#39;</span><span class="p">)</span>
+<span class="n">yearlist</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">popn</span><span class="o">.</span><span class="n">columns</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="n">popn_long</span><span class="o">=</span><span class="n">popn</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">id_vars</span><span class="o">=</span><span class="s1">&#39;country&#39;</span><span class="p">,</span><span class="n">value_vars</span><span class="o">=</span><span class="n">yearlist</span><span class="p">,</span><span class="n">var_name</span><span class="o">=</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span><span class="n">value_name</span><span class="o">=</span><span class="s1">&#39;Popn&#39;</span><span class="p">)</span>
+<span class="n">popn_long</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>country</th>
+      <th>Year</th>
+      <th>Popn</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Afghanistan</td>
+      <td>1799</td>
+      <td>3.28M</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Angola</td>
+      <td>1799</td>
+      <td>1.57M</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Albania</td>
+      <td>1799</td>
+      <td>400k</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Andorra</td>
+      <td>1799</td>
+      <td>2650</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>United Arab Emirates</td>
+      <td>1799</td>
+      <td>40.2k</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The population data start in the same year (1800) but goes as far as 2100, rather than 2012. This can cause problems when merging the data if we are not careful.</p>
+<p>The first function we will use to combine the data is the <code class="docutils literal notranslate"><span class="pre">concat</span></code> function. Here we can concatenate the two dataframes, that is stack the corresponding columns on top of each other. As we have noticed there are some columns in the population dataframe that are not replicated in the GDP data, we could stack all of the GDP data with only the corresponding columns from the population dataframe (this is fiddly if they do not follow the same order). An easier way is to use the <code class="docutils literal notranslate"><span class="pre">join</span></code> argument. Inner joining means only including data that are replicated across both dataframes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(([</span><span class="n">income</span><span class="p">,</span><span class="n">popn</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,:</span><span class="s2">&quot;2012&quot;</span><span class="p">]]))</span>
+<span class="c1">#or</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(([</span><span class="n">income</span><span class="p">,</span><span class="n">popn</span><span class="p">]),</span><span class="n">join</span><span class="o">=</span><span class="s2">&quot;inner&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>country</th>
+      <th>1800</th>
+      <th>1801</th>
+      <th>1802</th>
+      <th>1803</th>
+      <th>1804</th>
+      <th>1805</th>
+      <th>1806</th>
+      <th>1807</th>
+      <th>1808</th>
+      <th>...</th>
+      <th>2003</th>
+      <th>2004</th>
+      <th>2005</th>
+      <th>2006</th>
+      <th>2007</th>
+      <th>2008</th>
+      <th>2009</th>
+      <th>2010</th>
+      <th>2011</th>
+      <th>2012</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Abkhazia</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Afghanistan</td>
+      <td>472.0535</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>785.127571</td>
+      <td>804.717458</td>
+      <td>874.0</td>
+      <td>887.914578</td>
+      <td>983.652314</td>
+      <td>984.805841</td>
+      <td>1154.859365</td>
+      <td>1214.613653</td>
+      <td>1261.354184</td>
+      <td>1349.696941</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Akrotiri and Dhekelia</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Albania</td>
+      <td>601.215222</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>4855.210024</td>
+      <td>5115.252837</td>
+      <td>5369.0</td>
+      <td>5652.049321</td>
+      <td>5958.021197</td>
+      <td>6365.530359</td>
+      <td>6550.896164</td>
+      <td>6746.445312</td>
+      <td>6914.267317</td>
+      <td>6969.306283</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Algeria</td>
+      <td>766.253664</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>5576.851564</td>
+      <td>5790.967692</td>
+      <td>6011.0</td>
+      <td>6022.27094</td>
+      <td>6133.782763</td>
+      <td>6162.71984</td>
+      <td>6173.729741</td>
+      <td>6300.648214</td>
+      <td>6354.640523</td>
+      <td>6419.127829</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>192</th>
+      <td>Samoa</td>
+      <td>47.3k</td>
+      <td>47.3k</td>
+      <td>47.3k</td>
+      <td>47.3k</td>
+      <td>47.3k</td>
+      <td>47.3k</td>
+      <td>47.2k</td>
+      <td>47.2k</td>
+      <td>47.2k</td>
+      <td>...</td>
+      <td>177k</td>
+      <td>179k</td>
+      <td>180k</td>
+      <td>181k</td>
+      <td>182k</td>
+      <td>183k</td>
+      <td>185k</td>
+      <td>186k</td>
+      <td>187k</td>
+      <td>189k</td>
+    </tr>
+    <tr>
+      <th>193</th>
+      <td>Yemen</td>
+      <td>2.59M</td>
+      <td>2.59M</td>
+      <td>2.59M</td>
+      <td>2.59M</td>
+      <td>2.59M</td>
+      <td>2.59M</td>
+      <td>2.59M</td>
+      <td>2.59M</td>
+      <td>2.59M</td>
+      <td>...</td>
+      <td>19M</td>
+      <td>19.5M</td>
+      <td>20.1M</td>
+      <td>20.7M</td>
+      <td>21.3M</td>
+      <td>21.9M</td>
+      <td>22.5M</td>
+      <td>23.2M</td>
+      <td>23.8M</td>
+      <td>24.5M</td>
+    </tr>
+    <tr>
+      <th>194</th>
+      <td>South Africa</td>
+      <td>1.45M</td>
+      <td>1.46M</td>
+      <td>1.46M</td>
+      <td>1.47M</td>
+      <td>1.47M</td>
+      <td>1.48M</td>
+      <td>1.49M</td>
+      <td>1.49M</td>
+      <td>1.5M</td>
+      <td>...</td>
+      <td>46.7M</td>
+      <td>47.3M</td>
+      <td>47.9M</td>
+      <td>48.5M</td>
+      <td>49.1M</td>
+      <td>49.8M</td>
+      <td>50.5M</td>
+      <td>51.2M</td>
+      <td>52M</td>
+      <td>52.8M</td>
+    </tr>
+    <tr>
+      <th>195</th>
+      <td>Zambia</td>
+      <td>758k</td>
+      <td>770k</td>
+      <td>782k</td>
+      <td>794k</td>
+      <td>806k</td>
+      <td>818k</td>
+      <td>831k</td>
+      <td>843k</td>
+      <td>856k</td>
+      <td>...</td>
+      <td>11.3M</td>
+      <td>11.6M</td>
+      <td>11.9M</td>
+      <td>12.2M</td>
+      <td>12.5M</td>
+      <td>12.8M</td>
+      <td>13.2M</td>
+      <td>13.6M</td>
+      <td>14M</td>
+      <td>14.5M</td>
+    </tr>
+    <tr>
+      <th>196</th>
+      <td>Zimbabwe</td>
+      <td>1.09M</td>
+      <td>1.09M</td>
+      <td>1.09M</td>
+      <td>1.09M</td>
+      <td>1.09M</td>
+      <td>1.09M</td>
+      <td>1.09M</td>
+      <td>1.09M</td>
+      <td>1.09M</td>
+      <td>...</td>
+      <td>12M</td>
+      <td>12M</td>
+      <td>12.1M</td>
+      <td>12.2M</td>
+      <td>12.3M</td>
+      <td>12.4M</td>
+      <td>12.5M</td>
+      <td>12.7M</td>
+      <td>12.9M</td>
+      <td>13.1M</td>
+    </tr>
+  </tbody>
+</table>
+<p>457 rows × 213 columns</p>
+</div></div></div>
+</div>
+<p>If we did not select the matching rows, the default is to use an ‘outer’ join, which stacks the columns on top of each other, but filling the entries with <code class="docutils literal notranslate"><span class="pre">NaN</span></code> where the column does not exist. In the case of our dataframes, the GDP does not exist from 2013 to 2100, so all these elements will be <code class="docutils literal notranslate"><span class="pre">NaN</span></code>s (top right of the new dataset below).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(([</span><span class="n">income</span><span class="p">,</span><span class="n">popn</span><span class="p">]),</span><span class="n">join</span><span class="o">=</span><span class="s2">&quot;outer&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>country</th>
+      <th>1800</th>
+      <th>1801</th>
+      <th>1802</th>
+      <th>1803</th>
+      <th>1804</th>
+      <th>1805</th>
+      <th>1806</th>
+      <th>1807</th>
+      <th>1808</th>
+      <th>...</th>
+      <th>2091</th>
+      <th>2092</th>
+      <th>2093</th>
+      <th>2094</th>
+      <th>2095</th>
+      <th>2096</th>
+      <th>2097</th>
+      <th>2098</th>
+      <th>2099</th>
+      <th>2100</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Abkhazia</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Afghanistan</td>
+      <td>472.0535</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Akrotiri and Dhekelia</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Albania</td>
+      <td>601.215222</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Algeria</td>
+      <td>766.253664</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>192</th>
+      <td>Samoa</td>
+      <td>47.3k</td>
+      <td>47.3k</td>
+      <td>47.3k</td>
+      <td>47.3k</td>
+      <td>47.3k</td>
+      <td>47.3k</td>
+      <td>47.2k</td>
+      <td>47.2k</td>
+      <td>47.2k</td>
+      <td>...</td>
+      <td>315k</td>
+      <td>314k</td>
+      <td>314k</td>
+      <td>314k</td>
+      <td>313k</td>
+      <td>313k</td>
+      <td>312k</td>
+      <td>312k</td>
+      <td>311k</td>
+      <td>310k</td>
+    </tr>
+    <tr>
+      <th>193</th>
+      <td>Yemen</td>
+      <td>2.59M</td>
+      <td>2.59M</td>
+      <td>2.59M</td>
+      <td>2.59M</td>
+      <td>2.59M</td>
+      <td>2.59M</td>
+      <td>2.59M</td>
+      <td>2.59M</td>
+      <td>2.59M</td>
+      <td>...</td>
+      <td>54.5M</td>
+      <td>54.4M</td>
+      <td>54.3M</td>
+      <td>54.1M</td>
+      <td>54M</td>
+      <td>53.8M</td>
+      <td>53.7M</td>
+      <td>53.5M</td>
+      <td>53.4M</td>
+      <td>53.2M</td>
+    </tr>
+    <tr>
+      <th>194</th>
+      <td>South Africa</td>
+      <td>1.45M</td>
+      <td>1.46M</td>
+      <td>1.46M</td>
+      <td>1.47M</td>
+      <td>1.47M</td>
+      <td>1.48M</td>
+      <td>1.49M</td>
+      <td>1.49M</td>
+      <td>1.5M</td>
+      <td>...</td>
+      <td>79.8M</td>
+      <td>79.8M</td>
+      <td>79.7M</td>
+      <td>79.7M</td>
+      <td>79.6M</td>
+      <td>79.5M</td>
+      <td>79.5M</td>
+      <td>79.4M</td>
+      <td>79.3M</td>
+      <td>79.2M</td>
+    </tr>
+    <tr>
+      <th>195</th>
+      <td>Zambia</td>
+      <td>758k</td>
+      <td>770k</td>
+      <td>782k</td>
+      <td>794k</td>
+      <td>806k</td>
+      <td>818k</td>
+      <td>831k</td>
+      <td>843k</td>
+      <td>856k</td>
+      <td>...</td>
+      <td>74.4M</td>
+      <td>75.2M</td>
+      <td>76M</td>
+      <td>76.8M</td>
+      <td>77.6M</td>
+      <td>78.4M</td>
+      <td>79.2M</td>
+      <td>80M</td>
+      <td>80.8M</td>
+      <td>81.5M</td>
+    </tr>
+    <tr>
+      <th>196</th>
+      <td>Zimbabwe</td>
+      <td>1.09M</td>
+      <td>1.09M</td>
+      <td>1.09M</td>
+      <td>1.09M</td>
+      <td>1.09M</td>
+      <td>1.09M</td>
+      <td>1.09M</td>
+      <td>1.09M</td>
+      <td>1.09M</td>
+      <td>...</td>
+      <td>30.8M</td>
+      <td>30.9M</td>
+      <td>30.9M</td>
+      <td>30.9M</td>
+      <td>30.9M</td>
+      <td>30.9M</td>
+      <td>31M</td>
+      <td>31M</td>
+      <td>31M</td>
+      <td>31M</td>
+    </tr>
+  </tbody>
+</table>
+<p>457 rows × 303 columns</p>
+</div></div></div>
+</div>
+<p>Another type of combining datasets is to merge the two together where they share some common columns. For example, these data have the same countries and years. Firstly, let us join just the wide format dataframes on country. This will match the countries in each of the dataframes and produce a single dataframe with the remaining columns stuck together. Where there are other columns in the dataframes with the same name, these will be indexed by <code class="docutils literal notranslate"><span class="pre">_x</span></code>,<code class="docutils literal notranslate"><span class="pre">_y</span></code> etc. by default, or by the suffixes provided. Any rows from either data set that do not match the other data set are removed.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datwide_merge</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">income</span><span class="p">,</span><span class="n">popn</span><span class="p">,</span><span class="n">on</span><span class="o">=</span><span class="s1">&#39;country&#39;</span><span class="p">,</span><span class="n">suffixes</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;_GDP&#39;</span><span class="p">,</span> <span class="s1">&#39;_popn&#39;</span><span class="p">))</span>
+<span class="n">datwide_merge</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>country</th>
+      <th>1800_GDP</th>
+      <th>1801_GDP</th>
+      <th>1802_GDP</th>
+      <th>1803_GDP</th>
+      <th>1804_GDP</th>
+      <th>1805_GDP</th>
+      <th>1806_GDP</th>
+      <th>1807_GDP</th>
+      <th>1808_GDP</th>
+      <th>...</th>
+      <th>2091</th>
+      <th>2092</th>
+      <th>2093</th>
+      <th>2094</th>
+      <th>2095</th>
+      <th>2096</th>
+      <th>2097</th>
+      <th>2098</th>
+      <th>2099</th>
+      <th>2100</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Afghanistan</td>
+      <td>472.053500</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>76.6M</td>
+      <td>76.4M</td>
+      <td>76.3M</td>
+      <td>76.1M</td>
+      <td>76M</td>
+      <td>75.8M</td>
+      <td>75.6M</td>
+      <td>75.4M</td>
+      <td>75.2M</td>
+      <td>74.9M</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Albania</td>
+      <td>601.215222</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>1.33M</td>
+      <td>1.3M</td>
+      <td>1.27M</td>
+      <td>1.25M</td>
+      <td>1.22M</td>
+      <td>1.19M</td>
+      <td>1.17M</td>
+      <td>1.14M</td>
+      <td>1.11M</td>
+      <td>1.09M</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Algeria</td>
+      <td>766.253664</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>70.4M</td>
+      <td>70.5M</td>
+      <td>70.5M</td>
+      <td>70.6M</td>
+      <td>70.7M</td>
+      <td>70.7M</td>
+      <td>70.7M</td>
+      <td>70.7M</td>
+      <td>70.7M</td>
+      <td>70.7M</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Andorra</td>
+      <td>1260.123256</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>63k</td>
+      <td>62.9k</td>
+      <td>62.9k</td>
+      <td>62.8k</td>
+      <td>62.7k</td>
+      <td>62.7k</td>
+      <td>62.6k</td>
+      <td>62.5k</td>
+      <td>62.5k</td>
+      <td>62.4k</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Angola</td>
+      <td>359.932582</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>168M</td>
+      <td>170M</td>
+      <td>172M</td>
+      <td>175M</td>
+      <td>177M</td>
+      <td>179M</td>
+      <td>182M</td>
+      <td>184M</td>
+      <td>186M</td>
+      <td>188M</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 515 columns</p>
+</div></div></div>
+</div>
+<p>See here that the years up to 2012 are repeated and have suffixes, whereas subsequent years only appear in the population dataframe, and so these do not have any suffix.</p>
+<p>With the long format data, we can merge the data on both country and year. In this case there are no further replicated columns so no suffixes are required, but these can be given if required. The resulting dataframe will have a single country and year with additional columns for GDP and populations bound onto them.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dat_merge</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">income_long</span><span class="p">,</span><span class="n">popn_long</span><span class="p">,</span><span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">,</span><span class="s1">&#39;Year&#39;</span><span class="p">])</span>
+<span class="n">dat_merge</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>country</th>
+      <th>Year</th>
+      <th>GDP</th>
+      <th>Popn</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Afghanistan</td>
+      <td>1800</td>
+      <td>472.053500</td>
+      <td>3.28M</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Albania</td>
+      <td>1800</td>
+      <td>601.215222</td>
+      <td>402k</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Algeria</td>
+      <td>1800</td>
+      <td>766.253664</td>
+      <td>2.51M</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Andorra</td>
+      <td>1800</td>
+      <td>1260.123256</td>
+      <td>2650</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Angola</td>
+      <td>1800</td>
+      <td>359.932582</td>
+      <td>1.57M</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Another option is if the two dataframes contain the same columns but these are called different names in each dataframe. In that case, merging as above will not work. In this case, there is an option for specifying what the names of the columns are that should be matched.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dat_merge</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">income_long</span><span class="p">,</span><span class="n">popn_long</span><span class="p">,</span><span class="n">left_on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">,</span><span class="s1">&#39;Year&#39;</span><span class="p">],</span><span class="n">right_on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">,</span><span class="s1">&#39;Year&#39;</span><span class="p">])</span>
+<span class="n">dat_merge</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>country</th>
+      <th>Year</th>
+      <th>GDP</th>
+      <th>Popn</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Afghanistan</td>
+      <td>1800</td>
+      <td>472.053500</td>
+      <td>3.28M</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Albania</td>
+      <td>1800</td>
+      <td>601.215222</td>
+      <td>402k</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Algeria</td>
+      <td>1800</td>
+      <td>766.253664</td>
+      <td>2.51M</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Andorra</td>
+      <td>1800</td>
+      <td>1260.123256</td>
+      <td>2650</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Angola</td>
+      <td>1800</td>
+      <td>359.932582</td>
+      <td>1.57M</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Finally, there is the <code class="docutils literal notranslate"><span class="pre">join</span></code> function, used in a similar way to <code class="docutils literal notranslate"><span class="pre">numpy</span></code> <code class="docutils literal notranslate"><span class="pre">append</span></code> but this joins on index. It should produce an identical dataframe to that above.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">income_long</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">popn_long</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;country&#39;</span><span class="p">,</span><span class="s1">&#39;Year&#39;</span><span class="p">]),</span><span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">,</span><span class="s1">&#39;Year&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>country</th>
+      <th>Year</th>
+      <th>GDP</th>
+      <th>Popn</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Abkhazia</td>
+      <td>1800</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Afghanistan</td>
+      <td>1800</td>
+      <td>472.053500</td>
+      <td>3.28M</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Akrotiri and Dhekelia</td>
+      <td>1800</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Albania</td>
+      <td>1800</td>
+      <td>601.215222</td>
+      <td>402k</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Algeria</td>
+      <td>1800</td>
+      <td>766.253664</td>
+      <td>2.51M</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>55375</th>
+      <td>Yemen, Rep.</td>
+      <td>2012</td>
+      <td>2043.787776</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>55376</th>
+      <td>Yugoslavia</td>
+      <td>2012</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>55377</th>
+      <td>Zambia</td>
+      <td>2012</td>
+      <td>1550.923859</td>
+      <td>14.5M</td>
+    </tr>
+    <tr>
+      <th>55378</th>
+      <td>Zimbabwe</td>
+      <td>2012</td>
+      <td>545.344601</td>
+      <td>13.1M</td>
+    </tr>
+    <tr>
+      <th>55379</th>
+      <td>Åland</td>
+      <td>2012</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>55380 rows × 4 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="data-aggregation-and-summarisation">
+<h2>Data Aggregation and Summarisation<a class="headerlink" href="#data-aggregation-and-summarisation" title="Permalink to this headline">#</a></h2>
+<p>Now that we have the data imported, reshaped, combined and know how to index it, our final task is to calculate some useful summaries of the data. You will already have learnt how to calculate useful summaries of <code class="docutils literal notranslate"><span class="pre">numpy</span></code> arrays using <code class="docutils literal notranslate"><span class="pre">np.sum()</span></code>, for example. The <code class="docutils literal notranslate"><span class="pre">pandas</span></code> package has all of these similar functions that can be called using either <code class="docutils literal notranslate"><span class="pre">pd.sum(df)</span></code> or directly from the dataframe itself using:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">income</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">numeric_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">income</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">numeric_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1800    164489.577467
+1801     36543.812847
+1802     36718.280093
+1803     36751.917126
+1804     36770.763981
+dtype: float64
+1800     751.093961
+1801    1178.832672
+1802    1184.460648
+1803    1185.545714
+1804    1186.153677
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that as the first column, <code class="docutils literal notranslate"><span class="pre">country</span></code>, is a string variable, calculating the sum or mean of this does not make sense. Using the <code class="docutils literal notranslate"><span class="pre">numeric_oly=True</span></code> argument only calculates summaries on columns that are numeric. By default, these summary functions will calculate the aggregated summary over the rows, that is a single summary is provided for each column. We can specify alternative axes to compute summaries over using the <code class="docutils literal notranslate"><span class="pre">axis</span></code> argument. For example, if we want to calculate the average by country across all years, we would use:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">income</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">,</span><span class="n">numeric_only</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0              NaN
+1       817.075676
+2              NaN
+3      3212.062887
+4      4375.433233
+          ...     
+255    1566.370726
+256            NaN
+257    1320.193141
+258     620.935603
+259            NaN
+Length: 260, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>There is also a really helpful function <code class="docutils literal notranslate"><span class="pre">describe()</span></code> that provides many useful summaries of a dataframe in a single output. This function does not require us to specify the numeric only variables and does this automatically.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">income</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>1800</th>
+      <th>1801</th>
+      <th>1802</th>
+      <th>1803</th>
+      <th>1804</th>
+      <th>1805</th>
+      <th>1806</th>
+      <th>1807</th>
+      <th>1808</th>
+      <th>1809</th>
+      <th>...</th>
+      <th>2003</th>
+      <th>2004</th>
+      <th>2005</th>
+      <th>2006</th>
+      <th>2007</th>
+      <th>2008</th>
+      <th>2009</th>
+      <th>2010</th>
+      <th>2011</th>
+      <th>2012</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>219.000000</td>
+      <td>31.000000</td>
+      <td>31.000000</td>
+      <td>31.000000</td>
+      <td>31.000000</td>
+      <td>31.000000</td>
+      <td>31.000000</td>
+      <td>31.000000</td>
+      <td>31.000000</td>
+      <td>31.000000</td>
+      <td>...</td>
+      <td>217.000000</td>
+      <td>217.000000</td>
+      <td>230.000000</td>
+      <td>216.000000</td>
+      <td>213.000000</td>
+      <td>210.000000</td>
+      <td>210.000000</td>
+      <td>210.000000</td>
+      <td>210.000000</td>
+      <td>191.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>751.093961</td>
+      <td>1178.832672</td>
+      <td>1184.460648</td>
+      <td>1185.545714</td>
+      <td>1186.153677</td>
+      <td>1189.816980</td>
+      <td>1193.944536</td>
+      <td>1193.470663</td>
+      <td>1182.443690</td>
+      <td>1184.676918</td>
+      <td>...</td>
+      <td>12117.045916</td>
+      <td>12613.662437</td>
+      <td>13470.188318</td>
+      <td>13792.388794</td>
+      <td>14218.956165</td>
+      <td>14246.914126</td>
+      <td>13613.980391</td>
+      <td>13948.423690</td>
+      <td>14216.294100</td>
+      <td>12482.299676</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>363.341906</td>
+      <td>522.892265</td>
+      <td>526.138489</td>
+      <td>525.795645</td>
+      <td>527.457253</td>
+      <td>529.937857</td>
+      <td>533.391361</td>
+      <td>534.956049</td>
+      <td>512.663576</td>
+      <td>517.505712</td>
+      <td>...</td>
+      <td>13887.534772</td>
+      <td>14427.012694</td>
+      <td>15269.288053</td>
+      <td>15705.158194</td>
+      <td>16152.693584</td>
+      <td>15963.714599</td>
+      <td>15018.479845</td>
+      <td>15565.955318</td>
+      <td>15981.327997</td>
+      <td>14351.997403</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>340.000000</td>
+      <td>562.738123</td>
+      <td>562.591749</td>
+      <td>562.445412</td>
+      <td>562.299114</td>
+      <td>562.152854</td>
+      <td>562.006632</td>
+      <td>561.860447</td>
+      <td>561.714301</td>
+      <td>561.568193</td>
+      <td>...</td>
+      <td>299.490250</td>
+      <td>314.518974</td>
+      <td>330.000000</td>
+      <td>338.270005</td>
+      <td>348.969090</td>
+      <td>359.658528</td>
+      <td>359.080223</td>
+      <td>373.632392</td>
+      <td>387.705891</td>
+      <td>403.164594</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>501.320914</td>
+      <td>800.000000</td>
+      <td>800.000000</td>
+      <td>800.000000</td>
+      <td>800.000000</td>
+      <td>800.000000</td>
+      <td>800.000000</td>
+      <td>800.000000</td>
+      <td>800.000000</td>
+      <td>800.000000</td>
+      <td>...</td>
+      <td>2152.689867</td>
+      <td>2250.897567</td>
+      <td>2438.507760</td>
+      <td>2415.720812</td>
+      <td>2524.534357</td>
+      <td>2584.742113</td>
+      <td>2620.289388</td>
+      <td>2764.223704</td>
+      <td>2988.593507</td>
+      <td>2437.784461</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>667.709189</td>
+      <td>1056.469106</td>
+      <td>1057.879973</td>
+      <td>1059.292724</td>
+      <td>1060.707362</td>
+      <td>1062.123889</td>
+      <td>1063.542308</td>
+      <td>1064.962621</td>
+      <td>1066.384831</td>
+      <td>1067.808940</td>
+      <td>...</td>
+      <td>6500.126735</td>
+      <td>6877.986057</td>
+      <td>7183.000000</td>
+      <td>7335.729723</td>
+      <td>7508.367883</td>
+      <td>7826.267141</td>
+      <td>7671.274511</td>
+      <td>8069.778733</td>
+      <td>8014.654838</td>
+      <td>6975.140224</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>882.536501</td>
+      <td>1417.076555</td>
+      <td>1422.761772</td>
+      <td>1428.469822</td>
+      <td>1456.569099</td>
+      <td>1438.853749</td>
+      <td>1457.920399</td>
+      <td>1447.689538</td>
+      <td>1474.611622</td>
+      <td>1479.159408</td>
+      <td>...</td>
+      <td>19067.164078</td>
+      <td>19287.908016</td>
+      <td>20320.750000</td>
+      <td>21188.972251</td>
+      <td>21990.961428</td>
+      <td>22473.689659</td>
+      <td>20910.631598</td>
+      <td>20854.775489</td>
+      <td>20942.498188</td>
+      <td>16649.509264</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>2716.870226</td>
+      <td>2736.975065</td>
+      <td>2740.533133</td>
+      <td>2744.095826</td>
+      <td>2747.663151</td>
+      <td>2751.235113</td>
+      <td>2754.811718</td>
+      <td>2758.392974</td>
+      <td>2761.978884</td>
+      <td>2765.569457</td>
+      <td>...</td>
+      <td>77249.852411</td>
+      <td>78810.335959</td>
+      <td>81825.080975</td>
+      <td>88389.525727</td>
+      <td>95877.649215</td>
+      <td>92607.243436</td>
+      <td>82377.950189</td>
+      <td>89000.290551</td>
+      <td>90039.049626</td>
+      <td>91492.645269</td>
+    </tr>
+  </tbody>
+</table>
+<p>8 rows × 213 columns</p>
+</div></div></div>
+</div>
+<p>Finally, if we only want the summary for a particular year (cloumn), we can slice the dataframe first before calculating the summary.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">income</span><span class="p">[</span><span class="s1">&#39;1800&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>751.093961034262
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
+<p>This is a brief intro to some of the capabilities of the <code class="docutils literal notranslate"><span class="pre">pandas</span></code> package and the general tasks we can use it for. There are many other capabilities that we do not discuss here, some of which will be covered in the final two weeks of the course. More advanced concepts are left for you to explore!</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./2_CoreNotebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="7ComputationalGeometry.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Computational Geometry</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../3_AppliedNotebooks/0intro.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chapter 3 Applied Mathematics: Interpolation</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Dan Lucas, Finn Smith, Ben Swallow<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

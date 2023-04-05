@@ -1,0 +1,987 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Functions &#8212; MT3510 Introduction to Mathematical Computing</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Conditionals" href="9%20Conditionals.html" />
+    <link rel="prev" title="Nested for loops" href="7%20Nested%20For%20Loops.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">MT3510 Introduction to Mathematical Computing</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to MT3510
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="0intro.html">
+   Chapter 1: The Fundamentals
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="1%20Python%20and%20Jupyter%20Notebooks%20Basics.html">
+     Python &amp; Jupyter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2%20Variables.html">
+     Variables
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="3%20Modules%20and%20Numpy.html">
+     Modules and numpy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="4%20Errors.html">
+     Errors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="5%20Printing%20and%20Strings.html">
+     Printing to the screen
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="6%20For%20Loops.html">
+     For loops
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="7%20Nested%20For%20Loops.html">
+     Nested
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       for
+      </span>
+     </code>
+     loops
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="9%20Conditionals.html">
+     Conditionals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="10%20While%20Loops.html">
+     While loops
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="11%20Lists%20and%20Tuples.html">
+     Lists
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="12%20Arrays.html">
+     Arrays
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="13%20Slicing.html">
+     Slicing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="14%20Floating%20Point%20Numbers.html">
+     Floating point numbers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="15%20Sets%20and%20Dicts.html">
+     Sets and Dicts
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="16%20Types.html">
+     Types
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="17%20Input%20and%20Files.html">
+     Input and files
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="18%20Plotting.html">
+     Matplotlib
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="19%20Markdown%20and%20LaTeX.html">
+     Markdown
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../2_CoreNotebooks/0intro.html">
+   Chapter 2: Topics in Computational Mathematics
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_CoreNotebooks/1Computational_Thinking.html">
+     Introduction to Computational Thinking
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_CoreNotebooks/2Interactivity.html">
+     Interactivity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_CoreNotebooks/3Sympy.html">
+     SymPy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_CoreNotebooks/4Computational_Complexity.html">
+     Introduction to Computational Complexity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_CoreNotebooks/5GoodPractise1_Efficiency.html">
+     Good practise in Python: Part 1 Efficiency
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_CoreNotebooks/6ComputationalGeometry.html">
+     Computational Geometry
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_CoreNotebooks/7GoodPractise2_Usability.html">
+     Good practise in Python Part 2: Usability &amp; Style
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../3_AppliedNotebooks/0intro.html">
+   Chapter 3 Applied Mathematics: Interpolation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3_AppliedNotebooks/Interpolation_Part1_Linear.html">
+     Interpolation Part 1: Linear Interpolation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3_AppliedNotebooks/Interpolation_Part2_Polynomial.html">
+     Interpolation Part 2: Polynomial interpolation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3_AppliedNotebooks/Interpolation_Part3_PiecewisePolynomial.html">
+     Interpolation Part 3: Piecewise polynomial interpolation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3_AppliedNotebooks/Interpolation_Part4_CubicSpline.html">
+     Interpolation Part 4: Spline interpolation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../4_PureNotebooks/0intro.html">
+   Chapter 4 Pure Mathematics: Graphs
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../4_PureNotebooks/notebooks.html">
+     Content with notebooks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../5_StatsNotebooks/0intro.html">
+   Chapter 5 Statistics:
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/1_IntroNotebooks/8 Functions.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/1_IntroNotebooks/8 Functions.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fruitful-functions">
+   Fruitful functions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#multiple-arguments">
+   Multiple arguments
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#multiple-return-values">
+   Multiple return values
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#invisible-variables">
+   Invisible variables
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#optional-aside-1-member-functions">
+   Optional Aside 1: Member functions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#optional-aside-2-duck-typing">
+   Optional Aside 2: Duck typing
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#optional-aside-3-default-arguments">
+   Optional Aside 3: Default Arguments
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Functions</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fruitful-functions">
+   Fruitful functions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#multiple-arguments">
+   Multiple arguments
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#multiple-return-values">
+   Multiple return values
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#invisible-variables">
+   Invisible variables
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#optional-aside-1-member-functions">
+   Optional Aside 1: Member functions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#optional-aside-2-duck-typing">
+   Optional Aside 2: Duck typing
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#optional-aside-3-default-arguments">
+   Optional Aside 3: Default Arguments
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="functions">
+<h1>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">#</a></h1>
+<p>Throughout the previous Notebooks, we have been using <em><strong>functions</strong></em> provided by Python or by modules like <code class="docutils literal notranslate"><span class="pre">numpy</span></code> or <code class="docutils literal notranslate"><span class="pre">mobilechelonian</span></code>. Functions are one of the key features of programming languages that allow us to write complex programs. When we talk about functions in programming, we mean something more general than in mathematics.
+A function is simply a piece of code that achieves a particular task, and is written in such a way that it can be <em><strong>called</strong></em> whenever that task needs to be done. One of the key skills in programming is splitting up a problem into smaller sub-problems (i.e. smaller problems) that can be solved by functions.
+Because functions are used to solve sub-problems, functions are sometimes called “subroutines” in other programming languages.</p>
+<p>Here’s an example of how we can define a function to draw a square using a turtle.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">draw_square</span><span class="p">(</span><span class="n">turt</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+        <span class="n">turt</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+        <span class="n">turt</span><span class="o">.</span><span class="n">left</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mobilechelonian</span> <span class="kn">import</span> <span class="n">Turtle</span>
+<span class="n">raphael</span> <span class="o">=</span> <span class="n">Turtle</span><span class="p">()</span>
+<span class="n">raphael</span><span class="o">.</span><span class="n">speed</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="n">draw_square</span><span class="p">(</span><span class="n">raphael</span><span class="p">)</span> <span class="c1"># call the function with argument terry</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "99f4d2b35cdc4905b3f06cb9d7d5a851"}
+</script></div>
+</div>
+<p>Let’s look at what this means. The line <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">draw_square(turt):</span></code> tells Python that we are defining a function which is called <code class="docutils literal notranslate"><span class="pre">draw_square</span></code> and has a single <em><strong>parameter</strong></em> called <code class="docutils literal notranslate"><span class="pre">turt</span></code>. This means that we will be able to <em><strong>call</strong></em> the function <code class="docutils literal notranslate"><span class="pre">draw_square</span></code> by passing a single <em><strong>argument</strong></em> like so: <code class="docutils literal notranslate"><span class="pre">draw_square(raphael)</span></code>. Inside the function, there will be a variable called <code class="docutils literal notranslate"><span class="pre">turt</span></code> which refers to <code class="docutils literal notranslate"><span class="pre">raphael</span></code>. You can think of <code class="docutils literal notranslate"><span class="pre">turt</span></code> being replaced by <code class="docutils literal notranslate"><span class="pre">raphael</span></code> wherever it is used.</p>
+<p>The indented block of code</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+        <span class="n">turt</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+        <span class="n">turt</span><span class="o">.</span><span class="n">left</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>is called the <em><strong>body</strong></em> of the function. Whenever we call <code class="docutils literal notranslate"><span class="pre">draw_square</span></code>, the lines of code in the body are run, but <code class="docutils literal notranslate"><span class="pre">turt</span></code> will refer to whatever argument is given to the function. If we call <code class="docutils literal notranslate"><span class="pre">draw_square(raphael)</span></code> then you can think of the body of the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop as being</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+        <span class="n">raphael</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+        <span class="n">raphael</span><span class="o">.</span><span class="n">left</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Note that we could call <code class="docutils literal notranslate"><span class="pre">draw_square</span></code> with <strong>any</strong> single argument, like the number <code class="docutils literal notranslate"><span class="pre">3</span></code>.
+Because it doesn’t make sense to call <code class="docutils literal notranslate"><span class="pre">3.forward(100)</span></code> or <code class="docutils literal notranslate"><span class="pre">3.left(90)</span></code>, we would get a runtime error if we try to call <code class="docutils literal notranslate"><span class="pre">draw_square(3)</span></code>; see the optional aside at the end for more details.</p>
+<p>So far this hasn’t saved us any effort - we might as well have just written the code that draws the square like we did in previous Notebooks. The savings occur when we use the function more than once:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">terry</span> <span class="o">=</span> <span class="n">Turtle</span><span class="p">()</span>
+<span class="n">terry</span><span class="o">.</span><span class="n">speed</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="n">terry</span><span class="o">.</span><span class="n">pencolor</span><span class="p">(</span><span class="s2">&quot;orange&quot;</span><span class="p">)</span>     <span class="c1"># anything terry draws will now be orange</span>
+<span class="n">draw_square</span><span class="p">(</span><span class="n">terry</span><span class="p">)</span>
+
+<span class="n">terry</span><span class="o">.</span><span class="n">right</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+
+<span class="n">terry</span><span class="o">.</span><span class="n">pencolor</span><span class="p">(</span><span class="s2">&quot;green&quot;</span><span class="p">)</span>      <span class="c1"># anything terry draws will now be green</span>
+<span class="n">draw_square</span><span class="p">(</span><span class="n">terry</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "8fa03258ec5a466eaa0c87100c9f024b"}
+</script></div>
+</div>
+<p>Having the function <code class="docutils literal notranslate"><span class="pre">draw_square</span></code> allowed us to draw two squares without repeating many lines of code. A common piece of advice is to write <strong>DRY</strong> code (Don’t Repeat Yourself) not <strong>WET</strong> code (Write Everything Twice) - in other words, where you have to perform the same set of operations multiple times, write a function once and use it.</p>
+<p>Functions have another major benefit, which makes them worth writing even if you only use them once. They are a natural way of splitting a problem into smaller parts, and they make it easier to test your code, since you can test each function individually. If you choose sensible function names, they also make your code easier to understand, since anyone reading your code can see what the function is supposed to accomplish. You don’t need to read the code for the function <code class="docutils literal notranslate"><span class="pre">draw_square</span></code> to understand what the previous code cell should do.</p>
+<section id="fruitful-functions">
+<h2>Fruitful functions<a class="headerlink" href="#fruitful-functions" title="Permalink to this headline">#</a></h2>
+<p>In the example above, the function <code class="docutils literal notranslate"><span class="pre">draw_square</span></code> “does something” - we give it an object and ask it to do something to that object. There is another use of functions, which we have seen before with <code class="docutils literal notranslate"><span class="pre">numpy</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here the function <code class="docutils literal notranslate"><span class="pre">np.sin</span></code> <em><strong>returns</strong></em> an answer. Here’s how you return a value:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># returns the square of x</span>
+<span class="k">def</span> <span class="nf">square</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span>
+
+<span class="n">square</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9
+</pre></div>
+</div>
+</div>
+</div>
+<p>Of course, <code class="docutils literal notranslate"><span class="pre">square</span></code> is not very useful - we could just write <code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">**</span> <span class="pre">2</span></code> directly instead. Here’s a more useful example - a function to represent the polynomial <span class="math notranslate nohighlight">\(f(x) = (2x-3)^3 - 10(2x -3) + 2\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="mi">3</span>
+    <span class="k">return</span> <span class="n">y</span> <span class="o">**</span> <span class="mi">3</span> <span class="o">-</span> <span class="mi">10</span><span class="o">*</span><span class="n">y</span> <span class="o">+</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We will see more on plotting in a later Notebook, but it is now straightforward to plot <code class="docutils literal notranslate"><span class="pre">f</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>    <span class="c1"># the standard plotting library</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>  <span class="c1"># choose the points to evaluate f on</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>             <span class="c1"># plot those points against the value of f</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>                    <span class="c1"># tells Python to produce the plot now</span>
+
+<span class="c1"># We should also add axes labels, a title, and a legend - but we will</span>
+<span class="c1"># leave that for now.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/8 Functions_14_0.png" src="../_images/8 Functions_14_0.png" />
+</div>
+</div>
+</section>
+<section id="multiple-arguments">
+<h2>Multiple arguments<a class="headerlink" href="#multiple-arguments" title="Permalink to this headline">#</a></h2>
+<p>Your functions can have more than one argument. For example, the polynomial in two variables <span class="math notranslate nohighlight">\(g(x, y) = 2x^2y + xy^2 + 3y^3\)</span> could be represented like so:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">g</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">y</span> <span class="o">+</span> <span class="n">x</span><span class="o">*</span><span class="p">(</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="p">(</span><span class="n">y</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>It is important that when you call <code class="docutils literal notranslate"><span class="pre">g</span></code> you provide the arguments in the same order they are defined, so to evaluate <span class="math notranslate nohighlight">\(g\)</span> at <span class="math notranslate nohighlight">\((x = 1, y = 2)\)</span> you should call</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>32
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="multiple-return-values">
+<h2>Multiple return values<a class="headerlink" href="#multiple-return-values" title="Permalink to this headline">#</a></h2>
+<p>Strictly speaking, functions have at most one return value. However, that return value can be a <em><strong>tuple</strong></em> containing multiple things, and you can “unpack” the tuple into several variables after returning it. There is more on tuples later. For now, we consider the example of writing a Python function to represent the mathematical vector function</p>
+<p>\[ w(x, y) = \begin{pmatrix} x^2y + 3 \ y^3 - 3x \end{pmatrix}. \]</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">w</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">3</span><span class="p">,</span> <span class="n">y</span><span class="o">**</span><span class="mi">3</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="n">x</span>     <span class="c1"># returns a tuple of values</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># the return value of w(2, 3) is a tuple:</span>
+<span class="n">w</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(15, 21)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get the first component of w(2, 3) as u, and the second component as v</span>
+<span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">w</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">u</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>15
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">v</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>21
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="invisible-variables">
+<h2>Invisible variables<a class="headerlink" href="#invisible-variables" title="Permalink to this headline">#</a></h2>
+<p>One crucial fact about functions is that variables that are created inside functions cannot be accessed from the outside. The following code cell gives an error, because we try to access a variable that only exists inside the function <code class="docutils literal notranslate"><span class="pre">sum_of_sin_powers</span></code>. We instead should be using the value <code class="docutils literal notranslate"><span class="pre">sum_of_sin_powers(np.pi,</span> <span class="pre">3)</span></code> directly, or storing it in a variable.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># returns the sum of (1/n**2) for i from 1 to n</span>
+<span class="k">def</span> <span class="nf">sum_of_inverse_squares</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">sum_total</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">sum_total</span> <span class="o">=</span> <span class="n">sum_total</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">i</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sum_total</span>
+
+<span class="n">sum_of_inverse_squares</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.5961632439130233
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sum_total</span>    <span class="c1"># this doesn&#39;t work!</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [16],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">sum_total</span>
+
+<span class="ne">NameError</span>: name &#39;sum_total&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can think of functions as “black boxes”: from the perspective of the rest of a program, precisely what goes on inside a function is invisible. The program simply feeds them some input (the arguments), the box does something, and then it may or may not give some output (a <code class="docutils literal notranslate"><span class="pre">return</span></code> value).</p>
+<p><strong>Note:</strong> while variables inside functions are hidden from the rest of the program, functions <em>can</em> access variables that exist in the rest of the program. If they modify those variables, the effects can be seen in the rest of the program (though whether or not the effect will be seen is a little complex). This can be very confusing, and it is usually better to have all of the information a function needs as parameters.</p>
+<p>The principles governing when a given variable name is useable or not are called <em>scoping</em>, and for the moment we don’t want you to get bogged down in them.</p>
+</section>
+<section id="optional-aside-1-member-functions">
+<h2>Optional Aside 1: Member functions<a class="headerlink" href="#optional-aside-1-member-functions" title="Permalink to this headline">#</a></h2>
+<p>When we tell a turtle to move forward by writing <code class="docutils literal notranslate"><span class="pre">turtle.forward(100)</span></code>, we are also calling a function. However, it looks different to calling <code class="docutils literal notranslate"><span class="pre">draw_square(turtle)</span></code> or <code class="docutils literal notranslate"><span class="pre">draw_pentagon(turtle)</span></code>. This is because <code class="docutils literal notranslate"><span class="pre">forward</span></code> is a <em>member</em> function of the <code class="docutils literal notranslate"><span class="pre">Turtle</span></code> <em>class</em>. In these notes we won’t discuss these terms any further, other than to say that it would be possible to make <code class="docutils literal notranslate"><span class="pre">draw_square</span></code> into a member function and call it in the form <code class="docutils literal notranslate"><span class="pre">turtle.draw_square()</span></code>.</p>
+</section>
+<section id="optional-aside-2-duck-typing">
+<h2>Optional Aside 2: Duck typing<a class="headerlink" href="#optional-aside-2-duck-typing" title="Permalink to this headline">#</a></h2>
+<p>In many programming languages, we would have to declare what “type” of objects our function takes, and the language would not allow us to pass any arguments that do not match those types. Python is more permissive, and uses “duck typing”. This follows the philosophy “if it walks like a duck, and quacks like a duck, it is a duck”.</p>
+<p>Suppose we have written a function that is intended to take a <code class="docutils literal notranslate"><span class="pre">Duck</span></code> as its parameter <code class="docutils literal notranslate"><span class="pre">d</span></code>. Python will accept any argument (say, <code class="docutils literal notranslate"><span class="pre">bird</span></code>), and attempt to run the function. As long as the argument <code class="docutils literal notranslate"><span class="pre">bird</span></code> can do everything that the function asks the duck to do (e.g. <code class="docutils literal notranslate"><span class="pre">d.fly(somewhere)</span></code>), Python will be happy. But now suppose that the function also asks for <code class="docutils literal notranslate"><span class="pre">d.swim(somewhere)</span></code>, and this species of bird cannot swim (i.e. <code class="docutils literal notranslate"><span class="pre">bird</span></code> has no <code class="docutils literal notranslate"><span class="pre">swim</span></code> member function). At this point, Python will throw a runtime error.</p>
+</section>
+<section id="optional-aside-3-default-arguments">
+<h2>Optional Aside 3: Default Arguments<a class="headerlink" href="#optional-aside-3-default-arguments" title="Permalink to this headline">#</a></h2>
+<p>Sometimes you want to provide a sensible default value for an argument, so that someone using your function doesn’t have to enter it. This happens with the function <code class="docutils literal notranslate"><span class="pre">range</span></code> - it has a default <code class="docutils literal notranslate"><span class="pre">start</span></code> value of 0 and <code class="docutils literal notranslate"><span class="pre">step</span></code> value of 1. Here’s an example of how you would do this; note the <code class="docutils literal notranslate"><span class="pre">terms=10</span></code> in the function definition.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+
+<span class="c1"># evaluate the MacLaurin series of sin at x</span>
+<span class="c1"># defaults to 10 terms in the series</span>
+<span class="k">def</span> <span class="nf">sin_maclaurin</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">terms</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">terms</span><span class="p">):</span>
+        <span class="n">term</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="n">i</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">math</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">total</span> <span class="o">+=</span> <span class="n">term</span>
+    <span class="k">return</span> <span class="n">total</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># evaluate sin(5pi) using 10 terms</span>
+<span class="n">sin_maclaurin</span><span class="p">(</span><span class="mi">5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-169520.86600176583
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># now use 20 terms for a more accurate value (still not great!)</span>
+<span class="n">sin_maclaurin</span><span class="p">(</span><span class="mi">5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.288602305192303
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+
+<script type="application/vnd.jupyter.widget-state+json">
+{"state": {"84594bf4d0f5424cbd70895f4f3c8b71": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "99f4d2b35cdc4905b3f06cb9d7d5a851": {"model_name": "DOMWidgetModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "DOMWidgetModel", "_view_count": null, "_view_module": "nbextensions/mobilechelonianjs/turtlewidget", "_view_module_version": "", "_view_name": "TurtleView", "layout": "IPY_MODEL_84594bf4d0f5424cbd70895f4f3c8b71", "points": [{"p": 1, "lc": "black", "x": 200, "y": 200, "b": 0, "s": 1}, {"p": 1, "lc": "black", "x": 300.0, "y": 200.0, "b": 0, "s": 5}, {"p": 1, "lc": "black", "x": 300.0, "y": 200.0, "b": -90, "s": 5}, {"p": 1, "lc": "black", "x": 300.0, "y": 100.0, "b": 0, "s": 5}, {"p": 1, "lc": "black", "x": 300.0, "y": 100.0, "b": -90, "s": 5}, {"p": 1, "lc": "black", "x": 200.0, "y": 100.0, "b": 0, "s": 5}, {"p": 1, "lc": "black", "x": 200.0, "y": 100.0, "b": -90, "s": 5}, {"p": 1, "lc": "black", "x": 200.0, "y": 200.0, "b": 0, "s": 5}, {"p": 1, "lc": "black", "x": 200.0, "y": 200.0, "b": -90, "s": 5}]}}, "ef0e67246b7e4509aef8b04270d1c303": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "8fa03258ec5a466eaa0c87100c9f024b": {"model_name": "DOMWidgetModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "DOMWidgetModel", "_view_count": null, "_view_module": "nbextensions/mobilechelonianjs/turtlewidget", "_view_module_version": "", "_view_name": "TurtleView", "layout": "IPY_MODEL_ef0e67246b7e4509aef8b04270d1c303", "points": [{"p": 1, "lc": "black", "x": 200, "y": 200, "b": 0, "s": 1}, {"p": 1, "lc": "orange", "x": 300.0, "y": 200.0, "b": 0, "s": 5}, {"p": 1, "lc": "orange", "x": 300.0, "y": 200.0, "b": -90, "s": 5}, {"p": 1, "lc": "orange", "x": 300.0, "y": 100.0, "b": 0, "s": 5}, {"p": 1, "lc": "orange", "x": 300.0, "y": 100.0, "b": -90, "s": 5}, {"p": 1, "lc": "orange", "x": 200.0, "y": 100.0, "b": 0, "s": 5}, {"p": 1, "lc": "orange", "x": 200.0, "y": 100.0, "b": -90, "s": 5}, {"p": 1, "lc": "orange", "x": 200.0, "y": 200.0, "b": 0, "s": 5}, {"p": 1, "lc": "orange", "x": 200.0, "y": 200.0, "b": -90, "s": 5}, {"p": 1, "lc": "orange", "x": 200.0, "y": 200.0, "b": 90, "s": 5}, {"p": 1, "lc": "green", "x": 200.0, "y": 300.0, "b": 0, "s": 5}, {"p": 1, "lc": "green", "x": 200.0, "y": 300.0, "b": -90, "s": 5}, {"p": 1, "lc": "green", "x": 300.0, "y": 300.0, "b": 0, "s": 5}, {"p": 1, "lc": "green", "x": 300.0, "y": 300.0, "b": -90, "s": 5}, {"p": 1, "lc": "green", "x": 300.0, "y": 200.0, "b": 0, "s": 5}, {"p": 1, "lc": "green", "x": 300.0, "y": 200.0, "b": -90, "s": 5}, {"p": 1, "lc": "green", "x": 200.0, "y": 200.0, "b": 0, "s": 5}, {"p": 1, "lc": "green", "x": 200.0, "y": 200.0, "b": -90, "s": 5}]}}}, "version_major": 2, "version_minor": 0}
+</script>
+
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./1_IntroNotebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="7%20Nested%20For%20Loops.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Nested <code class="docutils literal notranslate"><span class="pre">for</span></code> loops</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="9%20Conditionals.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Conditionals</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Dan Lucas, Finn Smith, Ben Swallow<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

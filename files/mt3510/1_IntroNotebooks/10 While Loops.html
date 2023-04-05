@@ -1,0 +1,825 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>While loops &#8212; MT3510 Introduction to Mathematical Computing</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Lists" href="11%20Lists%20and%20Tuples.html" />
+    <link rel="prev" title="Conditionals" href="9%20Conditionals.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">MT3510 Introduction to Mathematical Computing</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to MT3510
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="0intro.html">
+   Chapter 1: The Fundamentals
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="1%20Python%20and%20Jupyter%20Notebooks%20Basics.html">
+     Python &amp; Jupyter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2%20Variables.html">
+     Variables
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="3%20Modules%20and%20Numpy.html">
+     Modules and numpy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="4%20Errors.html">
+     Errors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="5%20Printing%20and%20Strings.html">
+     Printing to the screen
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="6%20For%20Loops.html">
+     For loops
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="7%20Nested%20For%20Loops.html">
+     Nested
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       for
+      </span>
+     </code>
+     loops
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="8%20Functions.html">
+     Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="9%20Conditionals.html">
+     Conditionals
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     While loops
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="11%20Lists%20and%20Tuples.html">
+     Lists
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="12%20Arrays.html">
+     Arrays
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="13%20Slicing.html">
+     Slicing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="14%20Floating%20Point%20Numbers.html">
+     Floating point numbers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="15%20Sets%20and%20Dicts.html">
+     Sets and Dicts
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="16%20Types.html">
+     Types
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="17%20Input%20and%20Files.html">
+     Input and files
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="18%20Plotting.html">
+     Matplotlib
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="19%20Markdown%20and%20LaTeX.html">
+     Markdown
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../2_CoreNotebooks/0intro.html">
+   Chapter 2: Topics in Computational Mathematics
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_CoreNotebooks/1Computational_Thinking.html">
+     Introduction to Computational Thinking
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_CoreNotebooks/2Interactivity.html">
+     Interactivity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_CoreNotebooks/3Sympy.html">
+     SymPy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_CoreNotebooks/4Computational_Complexity.html">
+     Introduction to Computational Complexity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_CoreNotebooks/5GoodPractise1_Efficiency.html">
+     Good practise in Python: Part 1 Efficiency
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_CoreNotebooks/6ComputationalGeometry.html">
+     Computational Geometry
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2_CoreNotebooks/7GoodPractise2_Usability.html">
+     Good practise in Python Part 2: Usability &amp; Style
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../3_AppliedNotebooks/0intro.html">
+   Chapter 3 Applied Mathematics: Interpolation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3_AppliedNotebooks/Interpolation_Part1_Linear.html">
+     Interpolation Part 1: Linear Interpolation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3_AppliedNotebooks/Interpolation_Part2_Polynomial.html">
+     Interpolation Part 2: Polynomial interpolation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3_AppliedNotebooks/Interpolation_Part3_PiecewisePolynomial.html">
+     Interpolation Part 3: Piecewise polynomial interpolation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../3_AppliedNotebooks/Interpolation_Part4_CubicSpline.html">
+     Interpolation Part 4: Spline interpolation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../4_PureNotebooks/0intro.html">
+   Chapter 4 Pure Mathematics: Graphs
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../4_PureNotebooks/notebooks.html">
+     Content with notebooks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../5_StatsNotebooks/0intro.html">
+   Chapter 5 Statistics:
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/1_IntroNotebooks/10 While Loops.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/1_IntroNotebooks/10 While Loops.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#infinite-loops">
+   Infinite loops
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#breaking-out-of-loops">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Break
+    </span>
+   </code>
+   ing out of loops
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>While loops</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#infinite-loops">
+   Infinite loops
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#breaking-out-of-loops">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Break
+    </span>
+   </code>
+   ing out of loops
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="while-loops">
+<h1>While loops<a class="headerlink" href="#while-loops" title="Permalink to this headline">#</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">For</span></code> loops are a very valuable construct for repeating something when you already know how many times you will need to repeat (even if that is determined by some other variable). However, we often wish to repeat until a condition is no longer satisfied. For example, we might summarise the process of debugging as “while there are still bugs in the program, fix a bug!”</p>
+<p>Python offers the <code class="docutils literal notranslate"><span class="pre">while</span></code> loop for this purpose. It has the following form:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="o">&lt;</span><span class="n">condition</span><span class="o">&gt;</span><span class="p">:</span>
+    <span class="n">things</span> <span class="n">to</span> <span class="n">do</span> <span class="k">while</span> <span class="n">the</span> <span class="n">condition</span> <span class="ow">is</span> <span class="kc">True</span>
+</pre></div>
+</div>
+<p>Python will first evaluate the condition. If it is <code class="docutils literal notranslate"><span class="pre">True</span></code>, then the loop body will be run. The condition will then be checked again, and if it is <code class="docutils literal notranslate"><span class="pre">True</span></code> the loop body will be run again. This continues until the condition evaluates to <code class="docutils literal notranslate"><span class="pre">False</span></code>.
+Here’s an example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.9</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">while</span> <span class="n">x</span> <span class="o">!=</span> <span class="mf">0.5</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>  <span class="c1"># increment i manually, as we&#39;re not using a for-loop</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;after </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> iterations, x = </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>after 1 iterations, x = 0.17999999999999997
+after 2 iterations, x = 0.29519999999999996
+after 3 iterations, x = 0.41611392
+after 4 iterations, x = 0.4859262511644672
+after 5 iterations, x = 0.49960385918742867
+after 6 iterations, x = 0.49999968614491325
+after 7 iterations, x = 0.49999999999980305
+after 8 iterations, x = 0.5
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that the condition isn’t checked <em>inside</em> the loop body, so Python won’t break the loop halfway through the loop body if the condition becomes <code class="docutils literal notranslate"><span class="pre">False</span></code>. Because of this, if we rearranged the statements in the loop body, we would get a different final number printed:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.9</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">while</span> <span class="n">x</span> <span class="o">!=</span> <span class="mf">0.5</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;after </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> iterations, x = </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>after 0 iterations, x = 0.9
+after 1 iterations, x = 0.17999999999999997
+after 2 iterations, x = 0.29519999999999996
+after 3 iterations, x = 0.41611392
+after 4 iterations, x = 0.4859262511644672
+after 5 iterations, x = 0.49960385918742867
+after 6 iterations, x = 0.49999968614491325
+after 7 iterations, x = 0.49999999999980305
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the example below, we have a turtle draw a spiral from the centre until it reaches a bounding box 150 units away from the centre.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mobilechelonian</span> <span class="kn">import</span> <span class="n">Turtle</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># the centre coordinate is (200, 200)</span>
+<span class="n">centre</span> <span class="o">=</span> <span class="mi">200</span>
+
+<span class="c1"># create a turtle caled Terry</span>
+<span class="n">terry</span> <span class="o">=</span> <span class="n">Turtle</span><span class="p">()</span>
+<span class="n">terry</span><span class="o">.</span><span class="n">speed</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># we need a variable to keep track of the angle to turn to make the spiral</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1"># Loop until terry is 150 away from the centre in the x or y direction.</span>
+<span class="c1"># np.abs computes the absolute value of its argument, so we are testing the if the difference</span>
+<span class="c1"># between centre and posX is &lt; 150, and the difference between centre and posY is &lt; 150.</span>
+<span class="k">while</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">centre</span> <span class="o">-</span> <span class="n">terry</span><span class="o">.</span><span class="n">posX</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">150</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">centre</span> <span class="o">-</span> <span class="n">terry</span><span class="o">.</span><span class="n">posY</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">150</span><span class="p">):</span>
+    <span class="c1"># move forward a small amount to approximate a curve</span>
+    <span class="n">terry</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+    
+    <span class="c1"># The angle terry turns should get smaller as he goes to obtain a spiral</span>
+    <span class="c1"># so turn by 360/i, then increase i.</span>
+    <span class="c1"># There are many other choices that would also make a spiral.</span>
+    <span class="n">terry</span><span class="o">.</span><span class="n">left</span><span class="p">(</span><span class="mi">360</span><span class="o">/</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "224c7d559ed24c78907ea865781dd494"}
+</script></div>
+</div>
+<section id="infinite-loops">
+<h2>Infinite loops<a class="headerlink" href="#infinite-loops" title="Permalink to this headline">#</a></h2>
+<p>There is a danger lurking in <code class="docutils literal notranslate"><span class="pre">while</span></code> loops: what happens if the condition <em>never</em> becomes <code class="docutils literal notranslate"><span class="pre">False</span></code>? Python will simply keep running the loop body forever. This is called an <em><strong>infinite loop</strong></em>, and is one of the common causes of programs freezing or crashing. Whenever you write a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop, you should consider how you know it will eventually finish, i.e. how you know that the condition will eventually be false. It is <a class="reference external" href="https://en.wikipedia.org/wiki/Halting_problem">literally impossible</a> for Python to decide whether a general <code class="docutils literal notranslate"><span class="pre">while</span></code> loop will terminate, and so it is up to you as the programmer!
+Proving that a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop will terminate often requires some mathematical insight.</p>
+<p>If you run into an infinite loop (or simply a loop which is taking too long to terminate), you can stop Python executing your code by clicking the “stop” button in the menu beside the “Run” button.</p>
+</section>
+<section id="breaking-out-of-loops">
+<h2><code class="docutils literal notranslate"><span class="pre">Break</span></code>ing out of loops<a class="headerlink" href="#breaking-out-of-loops" title="Permalink to this headline">#</a></h2>
+<p>There are two common alternatives used to break out of while loops. The first is the <code class="docutils literal notranslate"><span class="pre">break</span></code> statement. When this is encountered in a loop, Python will immediately stop executing the loop and go to the next line in the code. If you have nested loops, <code class="docutils literal notranslate"><span class="pre">break</span></code> will only break out of the inner-most loop that contains the <code class="docutils literal notranslate"><span class="pre">break</span></code> statement.</p>
+<p>In the example below, a <code class="docutils literal notranslate"><span class="pre">break</span></code> statement is used to exit a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop when the user inputs the correct number. We’ll discuss user input more in the final worksheet. If you execute the following cell, Python will get “stuck” in the loop and you will have to exit using the “stop” button in the menu bar, or by guessing the correct number. The technique used in this example - using <code class="docutils literal notranslate"><span class="pre">while</span> <span class="pre">True</span></code> to keep looping and processing user input - is called an “event loop” and lies at the heart of any program you can interact with continuously, like office software or games.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+<span class="c1"># This program implements a guessing game where numbers are</span>
+<span class="c1"># read in from the user in order to guess an answer known to the</span>
+<span class="c1"># computer</span>
+
+<span class="c1"># First set the answer to be a random number between 0 and 100</span>
+<span class="n">answer</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># Explain in words what the user needs to do:</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Guess a number between 0 and 100 - I only stop when you get it right!&quot;</span><span class="p">)</span>
+
+<span class="c1"># Start a while loop which only exits if the user guesses the number correctly</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="c1"># This line reads in a guess from the user:</span>
+    <span class="n">guess</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;&gt;&quot;</span><span class="p">))</span>
+    <span class="c1"># Next see whether the guess is too small, too large or right:</span>
+    <span class="k">if</span> <span class="n">guess</span> <span class="o">&lt;</span> <span class="n">answer</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Higher&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">guess</span> <span class="o">&gt;</span> <span class="n">answer</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Lower&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># If we get here the answer is right</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Correct! Congratulations.&quot;</span><span class="p">)</span>
+        <span class="c1"># If the answer is right exit the loop</span>
+        <span class="k">break</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Come back and play again soon!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Guess a number between 0 and 100 - I only stop when you get it right!
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">StdinNotImplementedError</span><span class="g g-Whitespace">                  </span>Traceback (most recent call last)
+<span class="nn">Input In [4],</span> in <span class="ni">&lt;cell line: 13&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="c1"># Start a while loop which only exits if the user guesses the number correctly</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span>     <span class="c1"># This line reads in a guess from the user:</span>
+<span class="ne">---&gt; </span><span class="mi">15</span>     <span class="n">guess</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;&gt;&quot;</span><span class="p">))</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span>     <span class="c1"># Next see whether the guess is too small, too large or right:</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span>     <span class="k">if</span> <span class="n">guess</span> <span class="o">&lt;</span> <span class="n">answer</span><span class="p">:</span>
+
+<span class="nn">File ~/opt/anaconda3/envs/jupyterbook/lib/python3.10/site-packages/ipykernel/kernelbase.py:1174,</span> in <span class="ni">Kernel.raw_input</span><span class="nt">(self, prompt)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1167</span> <span class="sd">&quot;&quot;&quot;Forward raw_input to frontends</span>
+<span class="g g-Whitespace">   </span><span class="mi">1168</span><span class="sd"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">1169</span><span class="sd"> Raises</span>
+<span class="g g-Whitespace">   </span><span class="mi">1170</span><span class="sd"> ------</span>
+<span class="g g-Whitespace">   </span><span class="mi">1171</span><span class="sd"> StdinNotImplementedError if active frontend doesn&#39;t support stdin.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1172</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1173</span> <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_allow_stdin</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1174</span>     <span class="k">raise</span> <span class="n">StdinNotImplementedError</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1175</span>         <span class="s2">&quot;raw_input was called, but this frontend does not support input requests.&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1176</span>     <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1177</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_input_request</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1178</span>     <span class="nb">str</span><span class="p">(</span><span class="n">prompt</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1179</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_parent_ident</span><span class="p">[</span><span class="s2">&quot;shell&quot;</span><span class="p">],</span>
+<span class="g g-Whitespace">   </span><span class="mi">1180</span>     <span class="bp">self</span><span class="o">.</span><span class="n">get_parent</span><span class="p">(</span><span class="s2">&quot;shell&quot;</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1181</span>     <span class="n">password</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1182</span> <span class="p">)</span>
+
+<span class="ne">StdinNotImplementedError</span>: raw_input was called, but this frontend does not support input requests.
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Break</span></code> statements can also be used in <code class="docutils literal notranslate"><span class="pre">for</span></code> loops. They are often used when you are searching for an object with some property, and there is no reason to keep doing work once you have found it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sets i to be the first integer between 100 and 200 which is divisible by 47.</span>
+<span class="c1"># There are better ways of doing this!</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">201</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">47</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="c1"># if we break now, the variable i will keep its current value</span>
+        <span class="k">break</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;the first multiple of 47 between 100 and 200 is </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>the first multiple of 47 between 100 and 200 is 141
+</pre></div>
+</div>
+</div>
+</div>
+<p>The other standard way of breaking loops applies if the loop is contained in a function. Since a <code class="docutils literal notranslate"><span class="pre">return</span></code> statement immediately stops the function from being run and returns the control flow to where it was called from, it also breaks out of any loop in the function.</p>
+</section>
+</section>
+
+
+<script type="application/vnd.jupyter.widget-state+json">
+{"state": {"90c70d4491ff4c32bc916218e2a636e3": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "224c7d559ed24c78907ea865781dd494": {"model_name": "DOMWidgetModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "DOMWidgetModel", "_view_count": null, "_view_module": "nbextensions/mobilechelonianjs/turtlewidget", "_view_module_version": "", "_view_name": "TurtleView", "layout": "IPY_MODEL_90c70d4491ff4c32bc916218e2a636e3", "points": [{"p": 1, "lc": "black", "x": 200, "y": 200, "b": 0, "s": 1}, {"p": 1, "lc": "black", "x": 205.0, "y": 200.0, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 205.0, "y": 200.0, "b": -360.0, "s": 10}, {"p": 1, "lc": "black", "x": 210.0, "y": 200.0, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 210.0, "y": 200.0, "b": -180.0, "s": 10}, {"p": 1, "lc": "black", "x": 205.0, "y": 200.0, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 205.0, "y": 200.0, "b": -120.0, "s": 10}, {"p": 1, "lc": "black", "x": 207.5, "y": 204.3, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 207.5, "y": 204.3, "b": -90.0, "s": 10}, {"p": 1, "lc": "black", "x": 211.8, "y": 201.8, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 211.8, "y": 201.8, "b": -72.0, "s": 10}, {"p": 1, "lc": "black", "x": 210.8, "y": 196.9, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 210.8, "y": 196.9, "b": -60.0, "s": 10}, {"p": 1, "lc": "black", "x": 206.0, "y": 195.4, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 206.0, "y": 195.4, "b": -51.42857142857143, "s": 10}, {"p": 1, "lc": "black", "x": 201.8, "y": 198.20000000000002, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 201.8, "y": 198.20000000000002, "b": -45.0, "s": 10}, {"p": 1, "lc": "black", "x": 200.8, "y": 203.10000000000002, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 200.8, "y": 203.10000000000002, "b": -40.0, "s": 10}, {"p": 1, "lc": "black", "x": 203.20000000000002, "y": 207.50000000000003, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 203.20000000000002, "y": 207.50000000000003, "b": -36.0, "s": 10}, {"p": 1, "lc": "black", "x": 207.70000000000002, "y": 209.70000000000002, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 207.70000000000002, "y": 209.70000000000002, "b": -32.72727272727273, "s": 10}, {"p": 1, "lc": "black", "x": 212.70000000000002, "y": 209.10000000000002, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 212.70000000000002, "y": 209.10000000000002, "b": -30.0, "s": 10}, {"p": 1, "lc": "black", "x": 216.70000000000002, "y": 206.10000000000002, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 216.70000000000002, "y": 206.10000000000002, "b": -27.692307692307693, "s": 10}, {"p": 1, "lc": "black", "x": 218.8, "y": 201.60000000000002, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 218.8, "y": 201.60000000000002, "b": -25.714285714285715, "s": 10}, {"p": 1, "lc": "black", "x": 218.8, "y": 196.60000000000002, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 218.8, "y": 196.60000000000002, "b": -24.0, "s": 10}, {"p": 1, "lc": "black", "x": 216.70000000000002, "y": 192.10000000000002, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 216.70000000000002, "y": 192.10000000000002, "b": -22.5, "s": 10}, {"p": 1, "lc": "black", "x": 213.00000000000003, "y": 188.70000000000002, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 213.00000000000003, "y": 188.70000000000002, "b": -21.176470588235293, "s": 10}, {"p": 1, "lc": "black", "x": 208.40000000000003, "y": 186.8, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 208.40000000000003, "y": 186.8, "b": -20.0, "s": 10}, {"p": 1, "lc": "black", "x": 203.40000000000003, "y": 186.60000000000002, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 203.40000000000003, "y": 186.60000000000002, "b": -18.94736842105263, "s": 10}, {"p": 1, "lc": "black", "x": 198.60000000000002, "y": 188.10000000000002, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 198.60000000000002, "y": 188.10000000000002, "b": -18.0, "s": 10}, {"p": 1, "lc": "black", "x": 194.50000000000003, "y": 191.00000000000003, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 194.50000000000003, "y": 191.00000000000003, "b": -17.142857142857142, "s": 10}, {"p": 1, "lc": "black", "x": 191.40000000000003, "y": 195.00000000000003, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 191.40000000000003, "y": 195.00000000000003, "b": -16.363636363636363, "s": 10}, {"p": 1, "lc": "black", "x": 189.60000000000002, "y": 199.70000000000002, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 189.60000000000002, "y": 199.70000000000002, "b": -15.652173913043478, "s": 10}, {"p": 1, "lc": "black", "x": 189.10000000000002, "y": 204.70000000000002, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 189.10000000000002, "y": 204.70000000000002, "b": -15.0, "s": 10}, {"p": 1, "lc": "black", "x": 189.90000000000003, "y": 209.60000000000002, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 189.90000000000003, "y": 209.60000000000002, "b": -14.4, "s": 10}, {"p": 1, "lc": "black", "x": 191.90000000000003, "y": 214.20000000000002, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 191.90000000000003, "y": 214.20000000000002, "b": -13.846153846153847, "s": 10}, {"p": 1, "lc": "black", "x": 195.00000000000003, "y": 218.20000000000002, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 195.00000000000003, "y": 218.20000000000002, "b": -13.333333333333334, "s": 10}, {"p": 1, "lc": "black", "x": 198.90000000000003, "y": 221.4, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 198.90000000000003, "y": 221.4, "b": -12.857142857142858, "s": 10}, {"p": 1, "lc": "black", "x": 203.40000000000003, "y": 223.6, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 203.40000000000003, "y": 223.6, "b": -12.413793103448276, "s": 10}, {"p": 1, "lc": "black", "x": 208.30000000000004, "y": 224.79999999999998, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 208.30000000000004, "y": 224.79999999999998, "b": -12.0, "s": 10}, {"p": 1, "lc": "black", "x": 213.30000000000004, "y": 224.99999999999997, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 213.30000000000004, "y": 224.99999999999997, "b": -11.612903225806452, "s": 10}, {"p": 1, "lc": "black", "x": 218.20000000000005, "y": 224.09999999999997, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 218.20000000000005, "y": 224.09999999999997, "b": -11.25, "s": 10}, {"p": 1, "lc": "black", "x": 222.90000000000003, "y": 222.29999999999995, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 222.90000000000003, "y": 222.29999999999995, "b": -10.909090909090908, "s": 10}, {"p": 1, "lc": "black", "x": 227.10000000000002, "y": 219.69999999999996, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 227.10000000000002, "y": 219.69999999999996, "b": -10.588235294117647, "s": 10}, {"p": 1, "lc": "black", "x": 230.8, "y": 216.29999999999995, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 230.8, "y": 216.29999999999995, "b": -10.285714285714286, "s": 10}, {"p": 1, "lc": "black", "x": 233.8, "y": 212.29999999999995, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 233.8, "y": 212.29999999999995, "b": -10.0, "s": 10}, {"p": 1, "lc": "black", "x": 236.10000000000002, "y": 207.89999999999995, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 236.10000000000002, "y": 207.89999999999995, "b": -9.72972972972973, "s": 10}, {"p": 1, "lc": "black", "x": 237.60000000000002, "y": 203.09999999999994, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 237.60000000000002, "y": 203.09999999999994, "b": -9.473684210526315, "s": 10}, {"p": 1, "lc": "black", "x": 238.3, "y": 198.09999999999994, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 238.3, "y": 198.09999999999994, "b": -9.23076923076923, "s": 10}, {"p": 1, "lc": "black", "x": 238.20000000000002, "y": 193.09999999999994, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 238.20000000000002, "y": 193.09999999999994, "b": -9.0, "s": 10}, {"p": 1, "lc": "black", "x": 237.3, "y": 188.19999999999993, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 237.3, "y": 188.19999999999993, "b": -8.78048780487805, "s": 10}, {"p": 1, "lc": "black", "x": 235.70000000000002, "y": 183.49999999999994, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 235.70000000000002, "y": 183.49999999999994, "b": -8.571428571428571, "s": 10}, {"p": 1, "lc": "black", "x": 233.4, "y": 179.09999999999994, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 233.4, "y": 179.09999999999994, "b": -8.372093023255815, "s": 10}, {"p": 1, "lc": "black", "x": 230.5, "y": 175.09999999999994, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 230.5, "y": 175.09999999999994, "b": -8.181818181818182, "s": 10}, {"p": 1, "lc": "black", "x": 227.0, "y": 171.49999999999994, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 227.0, "y": 171.49999999999994, "b": -8.0, "s": 10}, {"p": 1, "lc": "black", "x": 223.1, "y": 168.39999999999995, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 223.1, "y": 168.39999999999995, "b": -7.826086956521739, "s": 10}, {"p": 1, "lc": "black", "x": 218.79999999999998, "y": 165.89999999999995, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 218.79999999999998, "y": 165.89999999999995, "b": -7.659574468085107, "s": 10}, {"p": 1, "lc": "black", "x": 214.2, "y": 163.99999999999994, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 214.2, "y": 163.99999999999994, "b": -7.5, "s": 10}, {"p": 1, "lc": "black", "x": 209.39999999999998, "y": 162.69999999999993, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 209.39999999999998, "y": 162.69999999999993, "b": -7.346938775510204, "s": 10}, {"p": 1, "lc": "black", "x": 204.39999999999998, "y": 161.99999999999994, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 204.39999999999998, "y": 161.99999999999994, "b": -7.2, "s": 10}, {"p": 1, "lc": "black", "x": 199.39999999999998, "y": 161.99999999999994, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 199.39999999999998, "y": 161.99999999999994, "b": -7.0588235294117645, "s": 10}, {"p": 1, "lc": "black", "x": 194.39999999999998, "y": 162.59999999999994, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 194.39999999999998, "y": 162.59999999999994, "b": -6.923076923076923, "s": 10}, {"p": 1, "lc": "black", "x": 189.49999999999997, "y": 163.79999999999993, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 189.49999999999997, "y": 163.79999999999993, "b": -6.7924528301886795, "s": 10}, {"p": 1, "lc": "black", "x": 184.79999999999998, "y": 165.59999999999994, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 184.79999999999998, "y": 165.59999999999994, "b": -6.666666666666667, "s": 10}, {"p": 1, "lc": "black", "x": 180.39999999999998, "y": 167.89999999999995, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 180.39999999999998, "y": 167.89999999999995, "b": -6.545454545454546, "s": 10}, {"p": 1, "lc": "black", "x": 176.2, "y": 170.69999999999996, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 176.2, "y": 170.69999999999996, "b": -6.428571428571429, "s": 10}, {"p": 1, "lc": "black", "x": 172.39999999999998, "y": 173.89999999999995, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 172.39999999999998, "y": 173.89999999999995, "b": -6.315789473684211, "s": 10}, {"p": 1, "lc": "black", "x": 168.99999999999997, "y": 177.49999999999994, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 168.99999999999997, "y": 177.49999999999994, "b": -6.206896551724138, "s": 10}, {"p": 1, "lc": "black", "x": 165.99999999999997, "y": 181.49999999999994, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 165.99999999999997, "y": 181.49999999999994, "b": -6.101694915254237, "s": 10}, {"p": 1, "lc": "black", "x": 163.39999999999998, "y": 185.79999999999995, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 163.39999999999998, "y": 185.79999999999995, "b": -6.0, "s": 10}, {"p": 1, "lc": "black", "x": 161.29999999999998, "y": 190.29999999999995, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 161.29999999999998, "y": 190.29999999999995, "b": -5.901639344262295, "s": 10}, {"p": 1, "lc": "black", "x": 159.6, "y": 194.99999999999994, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 159.6, "y": 194.99999999999994, "b": -5.806451612903226, "s": 10}, {"p": 1, "lc": "black", "x": 158.4, "y": 199.89999999999995, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 158.4, "y": 199.89999999999995, "b": -5.714285714285714, "s": 10}, {"p": 1, "lc": "black", "x": 157.70000000000002, "y": 204.89999999999995, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 157.70000000000002, "y": 204.89999999999995, "b": -5.625, "s": 10}, {"p": 1, "lc": "black", "x": 157.50000000000003, "y": 209.89999999999995, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 157.50000000000003, "y": 209.89999999999995, "b": -5.538461538461538, "s": 10}, {"p": 1, "lc": "black", "x": 157.80000000000004, "y": 214.89999999999995, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 157.80000000000004, "y": 214.89999999999995, "b": -5.454545454545454, "s": 10}, {"p": 1, "lc": "black", "x": 158.60000000000005, "y": 219.79999999999995, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 158.60000000000005, "y": 219.79999999999995, "b": -5.373134328358209, "s": 10}, {"p": 1, "lc": "black", "x": 159.80000000000004, "y": 224.59999999999997, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 159.80000000000004, "y": 224.59999999999997, "b": -5.294117647058823, "s": 10}, {"p": 1, "lc": "black", "x": 161.50000000000003, "y": 229.29999999999995, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 161.50000000000003, "y": 229.29999999999995, "b": -5.217391304347826, "s": 10}, {"p": 1, "lc": "black", "x": 163.60000000000002, "y": 233.79999999999995, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 163.60000000000002, "y": 233.79999999999995, "b": -5.142857142857143, "s": 10}, {"p": 1, "lc": "black", "x": 166.10000000000002, "y": 238.09999999999997, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 166.10000000000002, "y": 238.09999999999997, "b": -5.070422535211268, "s": 10}, {"p": 1, "lc": "black", "x": 169.00000000000003, "y": 242.19999999999996, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 169.00000000000003, "y": 242.19999999999996, "b": -5.0, "s": 10}, {"p": 1, "lc": "black", "x": 172.20000000000002, "y": 245.99999999999997, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 172.20000000000002, "y": 245.99999999999997, "b": -4.931506849315069, "s": 10}, {"p": 1, "lc": "black", "x": 175.70000000000002, "y": 249.49999999999997, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 175.70000000000002, "y": 249.49999999999997, "b": -4.864864864864865, "s": 10}, {"p": 1, "lc": "black", "x": 179.50000000000003, "y": 252.69999999999996, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 179.50000000000003, "y": 252.69999999999996, "b": -4.8, "s": 10}, {"p": 1, "lc": "black", "x": 183.60000000000002, "y": 255.59999999999997, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 183.60000000000002, "y": 255.59999999999997, "b": -4.7368421052631575, "s": 10}, {"p": 1, "lc": "black", "x": 187.90000000000003, "y": 258.2, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 187.90000000000003, "y": 258.2, "b": -4.675324675324675, "s": 10}, {"p": 1, "lc": "black", "x": 192.40000000000003, "y": 260.4, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 192.40000000000003, "y": 260.4, "b": -4.615384615384615, "s": 10}, {"p": 1, "lc": "black", "x": 197.10000000000002, "y": 262.2, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 197.10000000000002, "y": 262.2, "b": -4.556962025316456, "s": 10}, {"p": 1, "lc": "black", "x": 201.90000000000003, "y": 263.7, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 201.90000000000003, "y": 263.7, "b": -4.5, "s": 10}, {"p": 1, "lc": "black", "x": 206.80000000000004, "y": 264.8, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 206.80000000000004, "y": 264.8, "b": -4.444444444444445, "s": 10}, {"p": 1, "lc": "black", "x": 211.80000000000004, "y": 265.5, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 211.80000000000004, "y": 265.5, "b": -4.390243902439025, "s": 10}, {"p": 1, "lc": "black", "x": 216.80000000000004, "y": 265.8, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 216.80000000000004, "y": 265.8, "b": -4.337349397590361, "s": 10}, {"p": 1, "lc": "black", "x": 221.80000000000004, "y": 265.7, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 221.80000000000004, "y": 265.7, "b": -4.285714285714286, "s": 10}, {"p": 1, "lc": "black", "x": 226.80000000000004, "y": 265.3, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 226.80000000000004, "y": 265.3, "b": -4.235294117647059, "s": 10}, {"p": 1, "lc": "black", "x": 231.70000000000005, "y": 264.5, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 231.70000000000005, "y": 264.5, "b": -4.186046511627907, "s": 10}, {"p": 1, "lc": "black", "x": 236.60000000000005, "y": 263.3, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 236.60000000000005, "y": 263.3, "b": -4.137931034482759, "s": 10}, {"p": 1, "lc": "black", "x": 241.40000000000006, "y": 261.8, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 241.40000000000006, "y": 261.8, "b": -4.090909090909091, "s": 10}, {"p": 1, "lc": "black", "x": 246.00000000000006, "y": 260.0, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 246.00000000000006, "y": 260.0, "b": -4.044943820224719, "s": 10}, {"p": 1, "lc": "black", "x": 250.50000000000006, "y": 257.8, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 250.50000000000006, "y": 257.8, "b": -4.0, "s": 10}, {"p": 1, "lc": "black", "x": 254.80000000000007, "y": 255.3, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 254.80000000000007, "y": 255.3, "b": -3.956043956043956, "s": 10}, {"p": 1, "lc": "black", "x": 259.00000000000006, "y": 252.5, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 259.00000000000006, "y": 252.5, "b": -3.9130434782608696, "s": 10}, {"p": 1, "lc": "black", "x": 263.00000000000006, "y": 249.4, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 263.00000000000006, "y": 249.4, "b": -3.870967741935484, "s": 10}, {"p": 1, "lc": "black", "x": 266.70000000000005, "y": 246.1, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 266.70000000000005, "y": 246.1, "b": -3.8297872340425534, "s": 10}, {"p": 1, "lc": "black", "x": 270.20000000000005, "y": 242.5, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 270.20000000000005, "y": 242.5, "b": -3.789473684210526, "s": 10}, {"p": 1, "lc": "black", "x": 273.50000000000006, "y": 238.7, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 273.50000000000006, "y": 238.7, "b": -3.75, "s": 10}, {"p": 1, "lc": "black", "x": 276.50000000000006, "y": 234.7, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 276.50000000000006, "y": 234.7, "b": -3.711340206185567, "s": 10}, {"p": 1, "lc": "black", "x": 279.30000000000007, "y": 230.5, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 279.30000000000007, "y": 230.5, "b": -3.673469387755102, "s": 10}, {"p": 1, "lc": "black", "x": 281.80000000000007, "y": 226.2, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 281.80000000000007, "y": 226.2, "b": -3.6363636363636362, "s": 10}, {"p": 1, "lc": "black", "x": 284.00000000000006, "y": 221.7, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 284.00000000000006, "y": 221.7, "b": -3.6, "s": 10}, {"p": 1, "lc": "black", "x": 285.90000000000003, "y": 217.1, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 285.90000000000003, "y": 217.1, "b": -3.5643564356435644, "s": 10}, {"p": 1, "lc": "black", "x": 287.50000000000006, "y": 212.4, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 287.50000000000006, "y": 212.4, "b": -3.5294117647058822, "s": 10}, {"p": 1, "lc": "black", "x": 288.80000000000007, "y": 207.6, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 288.80000000000007, "y": 207.6, "b": -3.495145631067961, "s": 10}, {"p": 1, "lc": "black", "x": 289.80000000000007, "y": 202.7, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 289.80000000000007, "y": 202.7, "b": -3.4615384615384617, "s": 10}, {"p": 1, "lc": "black", "x": 290.50000000000006, "y": 197.79999999999998, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 290.50000000000006, "y": 197.79999999999998, "b": -3.4285714285714284, "s": 10}, {"p": 1, "lc": "black", "x": 290.90000000000003, "y": 192.79999999999998, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 290.90000000000003, "y": 192.79999999999998, "b": -3.3962264150943398, "s": 10}, {"p": 1, "lc": "black", "x": 291.00000000000006, "y": 187.79999999999998, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 291.00000000000006, "y": 187.79999999999998, "b": -3.364485981308411, "s": 10}, {"p": 1, "lc": "black", "x": 290.90000000000003, "y": 182.79999999999998, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 290.90000000000003, "y": 182.79999999999998, "b": -3.3333333333333335, "s": 10}, {"p": 1, "lc": "black", "x": 290.50000000000006, "y": 177.79999999999998, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 290.50000000000006, "y": 177.79999999999998, "b": -3.302752293577982, "s": 10}, {"p": 1, "lc": "black", "x": 289.80000000000007, "y": 172.89999999999998, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 289.80000000000007, "y": 172.89999999999998, "b": -3.272727272727273, "s": 10}, {"p": 1, "lc": "black", "x": 288.80000000000007, "y": 167.99999999999997, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 288.80000000000007, "y": 167.99999999999997, "b": -3.2432432432432434, "s": 10}, {"p": 1, "lc": "black", "x": 287.50000000000006, "y": 163.19999999999996, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 287.50000000000006, "y": 163.19999999999996, "b": -3.2142857142857144, "s": 10}, {"p": 1, "lc": "black", "x": 285.90000000000003, "y": 158.39999999999995, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 285.90000000000003, "y": 158.39999999999995, "b": -3.185840707964602, "s": 10}, {"p": 1, "lc": "black", "x": 284.1, "y": 153.69999999999996, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 284.1, "y": 153.69999999999996, "b": -3.1578947368421053, "s": 10}, {"p": 1, "lc": "black", "x": 282.0, "y": 149.09999999999997, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 282.0, "y": 149.09999999999997, "b": -3.130434782608696, "s": 10}, {"p": 1, "lc": "black", "x": 279.7, "y": 144.69999999999996, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 279.7, "y": 144.69999999999996, "b": -3.103448275862069, "s": 10}, {"p": 1, "lc": "black", "x": 277.2, "y": 140.39999999999995, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 277.2, "y": 140.39999999999995, "b": -3.076923076923077, "s": 10}, {"p": 1, "lc": "black", "x": 274.4, "y": 136.19999999999996, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 274.4, "y": 136.19999999999996, "b": -3.0508474576271185, "s": 10}, {"p": 1, "lc": "black", "x": 271.4, "y": 132.19999999999996, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 271.4, "y": 132.19999999999996, "b": -3.0252100840336134, "s": 10}, {"p": 1, "lc": "black", "x": 268.2, "y": 128.39999999999995, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 268.2, "y": 128.39999999999995, "b": -3.0, "s": 10}, {"p": 1, "lc": "black", "x": 264.8, "y": 124.69999999999995, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 264.8, "y": 124.69999999999995, "b": -2.975206611570248, "s": 10}, {"p": 1, "lc": "black", "x": 261.2, "y": 121.19999999999995, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 261.2, "y": 121.19999999999995, "b": -2.9508196721311477, "s": 10}, {"p": 1, "lc": "black", "x": 257.4, "y": 117.89999999999995, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 257.4, "y": 117.89999999999995, "b": -2.926829268292683, "s": 10}, {"p": 1, "lc": "black", "x": 253.49999999999997, "y": 114.79999999999995, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 253.49999999999997, "y": 114.79999999999995, "b": -2.903225806451613, "s": 10}, {"p": 1, "lc": "black", "x": 249.39999999999998, "y": 111.89999999999995, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 249.39999999999998, "y": 111.89999999999995, "b": -2.88, "s": 10}, {"p": 1, "lc": "black", "x": 245.2, "y": 109.19999999999995, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 245.2, "y": 109.19999999999995, "b": -2.857142857142857, "s": 10}, {"p": 1, "lc": "black", "x": 240.89999999999998, "y": 106.69999999999995, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 240.89999999999998, "y": 106.69999999999995, "b": -2.8346456692913384, "s": 10}, {"p": 1, "lc": "black", "x": 236.39999999999998, "y": 104.39999999999995, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 236.39999999999998, "y": 104.39999999999995, "b": -2.8125, "s": 10}, {"p": 1, "lc": "black", "x": 231.79999999999998, "y": 102.39999999999995, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 231.79999999999998, "y": 102.39999999999995, "b": -2.7906976744186047, "s": 10}, {"p": 1, "lc": "black", "x": 227.1, "y": 100.59999999999995, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 227.1, "y": 100.59999999999995, "b": -2.769230769230769, "s": 10}, {"p": 1, "lc": "black", "x": 222.4, "y": 98.99999999999996, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 222.4, "y": 98.99999999999996, "b": -2.7480916030534353, "s": 10}, {"p": 1, "lc": "black", "x": 217.6, "y": 97.59999999999995, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 217.6, "y": 97.59999999999995, "b": -2.727272727272727, "s": 10}, {"p": 1, "lc": "black", "x": 212.7, "y": 96.49999999999996, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 212.7, "y": 96.49999999999996, "b": -2.706766917293233, "s": 10}, {"p": 1, "lc": "black", "x": 207.79999999999998, "y": 95.59999999999995, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 207.79999999999998, "y": 95.59999999999995, "b": -2.6865671641791047, "s": 10}, {"p": 1, "lc": "black", "x": 202.79999999999998, "y": 94.89999999999995, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 202.79999999999998, "y": 94.89999999999995, "b": -2.6666666666666665, "s": 10}, {"p": 1, "lc": "black", "x": 197.79999999999998, "y": 94.49999999999994, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 197.79999999999998, "y": 94.49999999999994, "b": -2.6470588235294117, "s": 10}, {"p": 1, "lc": "black", "x": 192.79999999999998, "y": 94.29999999999994, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 192.79999999999998, "y": 94.29999999999994, "b": -2.627737226277372, "s": 10}, {"p": 1, "lc": "black", "x": 187.79999999999998, "y": 94.29999999999994, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 187.79999999999998, "y": 94.29999999999994, "b": -2.608695652173913, "s": 10}, {"p": 1, "lc": "black", "x": 182.79999999999998, "y": 94.59999999999994, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 182.79999999999998, "y": 94.59999999999994, "b": -2.5899280575539567, "s": 10}, {"p": 1, "lc": "black", "x": 177.79999999999998, "y": 95.09999999999994, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 177.79999999999998, "y": 95.09999999999994, "b": -2.5714285714285716, "s": 10}, {"p": 1, "lc": "black", "x": 172.79999999999998, "y": 95.79999999999994, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 172.79999999999998, "y": 95.79999999999994, "b": -2.5531914893617023, "s": 10}, {"p": 1, "lc": "black", "x": 167.89999999999998, "y": 96.69999999999995, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 167.89999999999998, "y": 96.69999999999995, "b": -2.535211267605634, "s": 10}, {"p": 1, "lc": "black", "x": 162.99999999999997, "y": 97.79999999999994, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 162.99999999999997, "y": 97.79999999999994, "b": -2.5174825174825175, "s": 10}, {"p": 1, "lc": "black", "x": 158.19999999999996, "y": 99.19999999999995, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 158.19999999999996, "y": 99.19999999999995, "b": -2.5, "s": 10}, {"p": 1, "lc": "black", "x": 153.39999999999995, "y": 100.79999999999994, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 153.39999999999995, "y": 100.79999999999994, "b": -2.4827586206896552, "s": 10}, {"p": 1, "lc": "black", "x": 148.69999999999996, "y": 102.59999999999994, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 148.69999999999996, "y": 102.59999999999994, "b": -2.4657534246575343, "s": 10}, {"p": 1, "lc": "black", "x": 144.09999999999997, "y": 104.59999999999994, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 144.09999999999997, "y": 104.59999999999994, "b": -2.4489795918367347, "s": 10}, {"p": 1, "lc": "black", "x": 139.59999999999997, "y": 106.79999999999994, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 139.59999999999997, "y": 106.79999999999994, "b": -2.4324324324324325, "s": 10}, {"p": 1, "lc": "black", "x": 135.19999999999996, "y": 109.09999999999994, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 135.19999999999996, "y": 109.09999999999994, "b": -2.4161073825503356, "s": 10}, {"p": 1, "lc": "black", "x": 130.89999999999995, "y": 111.59999999999994, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 130.89999999999995, "y": 111.59999999999994, "b": -2.4, "s": 10}, {"p": 1, "lc": "black", "x": 126.69999999999995, "y": 114.29999999999994, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 126.69999999999995, "y": 114.29999999999994, "b": -2.384105960264901, "s": 10}, {"p": 1, "lc": "black", "x": 122.59999999999995, "y": 117.19999999999995, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 122.59999999999995, "y": 117.19999999999995, "b": -2.3684210526315788, "s": 10}, {"p": 1, "lc": "black", "x": 118.59999999999995, "y": 120.19999999999995, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 118.59999999999995, "y": 120.19999999999995, "b": -2.3529411764705883, "s": 10}, {"p": 1, "lc": "black", "x": 114.79999999999995, "y": 123.39999999999995, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 114.79999999999995, "y": 123.39999999999995, "b": -2.3376623376623376, "s": 10}, {"p": 1, "lc": "black", "x": 111.09999999999995, "y": 126.79999999999995, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 111.09999999999995, "y": 126.79999999999995, "b": -2.3225806451612905, "s": 10}, {"p": 1, "lc": "black", "x": 107.49999999999996, "y": 130.29999999999995, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 107.49999999999996, "y": 130.29999999999995, "b": -2.3076923076923075, "s": 10}, {"p": 1, "lc": "black", "x": 104.09999999999995, "y": 133.99999999999994, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 104.09999999999995, "y": 133.99999999999994, "b": -2.2929936305732483, "s": 10}, {"p": 1, "lc": "black", "x": 100.79999999999995, "y": 137.79999999999995, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 100.79999999999995, "y": 137.79999999999995, "b": -2.278481012658228, "s": 10}, {"p": 1, "lc": "black", "x": 97.69999999999996, "y": 141.69999999999996, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 97.69999999999996, "y": 141.69999999999996, "b": -2.2641509433962264, "s": 10}, {"p": 1, "lc": "black", "x": 94.69999999999996, "y": 145.69999999999996, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 94.69999999999996, "y": 145.69999999999996, "b": -2.25, "s": 10}, {"p": 1, "lc": "black", "x": 91.89999999999996, "y": 149.79999999999995, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 91.89999999999996, "y": 149.79999999999995, "b": -2.2360248447204967, "s": 10}, {"p": 1, "lc": "black", "x": 89.29999999999997, "y": 154.09999999999997, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 89.29999999999997, "y": 154.09999999999997, "b": -2.2222222222222223, "s": 10}, {"p": 1, "lc": "black", "x": 86.79999999999997, "y": 158.39999999999998, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 86.79999999999997, "y": 158.39999999999998, "b": -2.208588957055215, "s": 10}, {"p": 1, "lc": "black", "x": 84.49999999999997, "y": 162.79999999999998, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 84.49999999999997, "y": 162.79999999999998, "b": -2.1951219512195124, "s": 10}, {"p": 1, "lc": "black", "x": 82.39999999999998, "y": 167.29999999999998, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 82.39999999999998, "y": 167.29999999999998, "b": -2.1818181818181817, "s": 10}, {"p": 1, "lc": "black", "x": 80.39999999999998, "y": 171.89999999999998, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 80.39999999999998, "y": 171.89999999999998, "b": -2.1686746987951806, "s": 10}, {"p": 1, "lc": "black", "x": 78.59999999999998, "y": 176.59999999999997, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 78.59999999999998, "y": 176.59999999999997, "b": -2.155688622754491, "s": 10}, {"p": 1, "lc": "black", "x": 76.99999999999999, "y": 181.29999999999995, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 76.99999999999999, "y": 181.29999999999995, "b": -2.142857142857143, "s": 10}, {"p": 1, "lc": "black", "x": 75.59999999999998, "y": 186.09999999999997, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 75.59999999999998, "y": 186.09999999999997, "b": -2.1301775147928996, "s": 10}, {"p": 1, "lc": "black", "x": 74.39999999999998, "y": 190.89999999999998, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 74.39999999999998, "y": 190.89999999999998, "b": -2.1176470588235294, "s": 10}, {"p": 1, "lc": "black", "x": 73.29999999999998, "y": 195.79999999999998, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 73.29999999999998, "y": 195.79999999999998, "b": -2.1052631578947367, "s": 10}, {"p": 1, "lc": "black", "x": 72.39999999999998, "y": 200.7, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 72.39999999999998, "y": 200.7, "b": -2.0930232558139537, "s": 10}, {"p": 1, "lc": "black", "x": 71.69999999999997, "y": 205.7, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 71.69999999999997, "y": 205.7, "b": -2.0809248554913293, "s": 10}, {"p": 1, "lc": "black", "x": 71.19999999999997, "y": 210.7, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 71.19999999999997, "y": 210.7, "b": -2.0689655172413794, "s": 10}, {"p": 1, "lc": "black", "x": 70.89999999999998, "y": 215.7, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 70.89999999999998, "y": 215.7, "b": -2.057142857142857, "s": 10}, {"p": 1, "lc": "black", "x": 70.69999999999997, "y": 220.7, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 70.69999999999997, "y": 220.7, "b": -2.0454545454545454, "s": 10}, {"p": 1, "lc": "black", "x": 70.69999999999997, "y": 225.7, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 70.69999999999997, "y": 225.7, "b": -2.0338983050847457, "s": 10}, {"p": 1, "lc": "black", "x": 70.89999999999998, "y": 230.7, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 70.89999999999998, "y": 230.7, "b": -2.0224719101123596, "s": 10}, {"p": 1, "lc": "black", "x": 71.29999999999998, "y": 235.7, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 71.29999999999998, "y": 235.7, "b": -2.011173184357542, "s": 10}, {"p": 1, "lc": "black", "x": 71.79999999999998, "y": 240.7, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 71.79999999999998, "y": 240.7, "b": -2.0, "s": 10}, {"p": 1, "lc": "black", "x": 72.49999999999999, "y": 245.6, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 72.49999999999999, "y": 245.6, "b": -1.988950276243094, "s": 10}, {"p": 1, "lc": "black", "x": 73.39999999999999, "y": 250.5, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 73.39999999999999, "y": 250.5, "b": -1.978021978021978, "s": 10}, {"p": 1, "lc": "black", "x": 74.49999999999999, "y": 255.4, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 74.49999999999999, "y": 255.4, "b": -1.9672131147540983, "s": 10}, {"p": 1, "lc": "black", "x": 75.69999999999999, "y": 260.2, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 75.69999999999999, "y": 260.2, "b": -1.9565217391304348, "s": 10}, {"p": 1, "lc": "black", "x": 77.1, "y": 265.0, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 77.1, "y": 265.0, "b": -1.945945945945946, "s": 10}, {"p": 1, "lc": "black", "x": 78.69999999999999, "y": 269.8, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 78.69999999999999, "y": 269.8, "b": -1.935483870967742, "s": 10}, {"p": 1, "lc": "black", "x": 80.39999999999999, "y": 274.5, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 80.39999999999999, "y": 274.5, "b": -1.9251336898395721, "s": 10}, {"p": 1, "lc": "black", "x": 82.3, "y": 279.1, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 82.3, "y": 279.1, "b": -1.9148936170212767, "s": 10}, {"p": 1, "lc": "black", "x": 84.3, "y": 283.70000000000005, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 84.3, "y": 283.70000000000005, "b": -1.9047619047619047, "s": 10}, {"p": 1, "lc": "black", "x": 86.5, "y": 288.20000000000005, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 86.5, "y": 288.20000000000005, "b": -1.894736842105263, "s": 10}, {"p": 1, "lc": "black", "x": 88.8, "y": 292.6, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 88.8, "y": 292.6, "b": -1.8848167539267016, "s": 10}, {"p": 1, "lc": "black", "x": 91.3, "y": 296.90000000000003, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 91.3, "y": 296.90000000000003, "b": -1.875, "s": 10}, {"p": 1, "lc": "black", "x": 93.89999999999999, "y": 301.20000000000005, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 93.89999999999999, "y": 301.20000000000005, "b": -1.8652849740932642, "s": 10}, {"p": 1, "lc": "black", "x": 96.6, "y": 305.40000000000003, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 96.6, "y": 305.40000000000003, "b": -1.8556701030927836, "s": 10}, {"p": 1, "lc": "black", "x": 99.5, "y": 309.50000000000006, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 99.5, "y": 309.50000000000006, "b": -1.8461538461538463, "s": 10}, {"p": 1, "lc": "black", "x": 102.5, "y": 313.50000000000006, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 102.5, "y": 313.50000000000006, "b": -1.836734693877551, "s": 10}, {"p": 1, "lc": "black", "x": 105.6, "y": 317.40000000000003, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 105.6, "y": 317.40000000000003, "b": -1.8274111675126903, "s": 10}, {"p": 1, "lc": "black", "x": 108.89999999999999, "y": 321.20000000000005, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 108.89999999999999, "y": 321.20000000000005, "b": -1.8181818181818181, "s": 10}, {"p": 1, "lc": "black", "x": 112.3, "y": 324.90000000000003, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 112.3, "y": 324.90000000000003, "b": -1.8090452261306533, "s": 10}, {"p": 1, "lc": "black", "x": 115.8, "y": 328.50000000000006, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 115.8, "y": 328.50000000000006, "b": -1.8, "s": 10}, {"p": 1, "lc": "black", "x": 119.39999999999999, "y": 332.00000000000006, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 119.39999999999999, "y": 332.00000000000006, "b": -1.791044776119403, "s": 10}, {"p": 1, "lc": "black", "x": 123.1, "y": 335.40000000000003, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 123.1, "y": 335.40000000000003, "b": -1.7821782178217822, "s": 10}, {"p": 1, "lc": "black", "x": 126.89999999999999, "y": 338.6, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 126.89999999999999, "y": 338.6, "b": -1.7733990147783252, "s": 10}, {"p": 1, "lc": "black", "x": 130.79999999999998, "y": 341.70000000000005, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 130.79999999999998, "y": 341.70000000000005, "b": -1.7647058823529411, "s": 10}, {"p": 1, "lc": "black", "x": 134.79999999999998, "y": 344.70000000000005, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 134.79999999999998, "y": 344.70000000000005, "b": -1.7560975609756098, "s": 10}, {"p": 1, "lc": "black", "x": 138.89999999999998, "y": 347.6, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 138.89999999999998, "y": 347.6, "b": -1.7475728155339805, "s": 10}, {"p": 1, "lc": "black", "x": 143.09999999999997, "y": 350.3, "b": 0, "s": 10}, {"p": 1, "lc": "black", "x": 143.09999999999997, "y": 350.3, "b": -1.7391304347826086, "s": 10}]}}}, "version_major": 2, "version_minor": 0}
+</script>
+
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./1_IntroNotebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="9%20Conditionals.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Conditionals</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="11%20Lists%20and%20Tuples.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lists</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Dan Lucas, Finn Smith, Ben Swallow<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

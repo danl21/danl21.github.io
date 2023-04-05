@@ -1,0 +1,703 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Computational Geometry &#8212; MT3510 Introduction to Mathematical Computing</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">MT3510 Introduction to Mathematical Computing</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown.html">
+   Markdown Files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown-notebooks.html">
+   Notebooks with MyST Markdown
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../1_IntroNotebooks/Arrays.html">
+   Arrays
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/2_CoreNotebooks/ComputationalGeometry.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/2_CoreNotebooks/ComputationalGeometry.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#point-in-polygon">
+   Point-in-polygon
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sympy">
+   Sympy
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#delauny-triangulation">
+   Delauny Triangulation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#convex-hull">
+   Convex Hull
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Computational Geometry</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#point-in-polygon">
+   Point-in-polygon
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sympy">
+   Sympy
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#delauny-triangulation">
+   Delauny Triangulation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#convex-hull">
+   Convex Hull
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="computational-geometry">
+<h1>Computational Geometry<a class="headerlink" href="#computational-geometry" title="Permalink to this headline">#</a></h1>
+<p>Computational geometry is a classical field at the intersection of computing and mathematics. A large range of problems rely on dealing with spatial data to make decisions or obtain detailed information. Examples include pattern recognition (e.g. facial recognition or collision avoidance), mapping (e.g. route planning), computer vision (e.g. 3D reconstruction) and physical simulation (e.g. modelling of a complex ocean basin). This notebook/lecture is a (very) short introduction to this broad and varied topic.</p>
+<p>Computational geometry problems require us to define geometrical objects like points, lines and polygons on the computer and then answer queries about them.</p>
+<section id="point-in-polygon">
+<h2>Point-in-polygon<a class="headerlink" href="#point-in-polygon" title="Permalink to this headline">#</a></h2>
+<p>A simple, but computationally interesting, starting example is a point-in-polygon problem, i.e. we might want to know if a certain point lies within a known polygon. Applications include deciding if your cursor is within a certain application window or if an aircraft is within the airspace of a particular country.</p>
+<p>Let’s set up such a situation in Python</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Make an array of points for the polygon</span>
+<span class="n">poly1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+               <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">],[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">]])</span>
+
+<span class="c1"># A point to check</span>
+<span class="n">point1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+
+
+<span class="c1"># Make a plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">poly1</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">poly1</span><span class="p">[:,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">point1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">point1</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="s1">&#39;.&#39;</span><span class="p">,</span><span class="n">ms</span><span class="o">=</span><span class="s1">&#39;10&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># Make an array of points for the polygon</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;numpy&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>By eye, this problem is trivial, but formulating the question into one which can be parsed by the computer requires a little thought.</p>
+<p>There are a couple of ways this can be done, a point is inside the polygon if</p>
+<ul class="simple">
+<li><p>a ray originating at the point intersects the polygon boundary an odd number of times (odd <em>crossing number</em>)</p></li>
+</ul>
+<p>or</p>
+<ul class="simple">
+<li><p>the curve definining the polygon travels around the point at least once (non-zero <em>winding number</em>)</p></li>
+</ul>
+<p>We can try writing our own function which implements the winding number version. If we assume the polygon is convex and its points are sensibly ordered, we can choose an arbitrary vertex to start, traverse the edges, summing the angles created by the point of interest and the pairs of points at each end of the edge.</p>
+<p>If an edge is defined by points <span class="math notranslate nohighlight">\(\mathbf{x}_i\)</span> and <span class="math notranslate nohighlight">\(\mathbf{x}_{i+1},\)</span> and <span class="math notranslate nohighlight">\(\mathbf{x}_p\)</span> is the point of interest the angle we require is given by</p>
+<p><span class="math notranslate nohighlight">\(\mathbf{v}_{i} = \mathbf{x}_i-\mathbf{x}_p\)</span></p>
+<p><span class="math notranslate nohighlight">\(\mathbf{v}_{i+1} = \mathbf{x}_{i+1}-\mathbf{x}_p\)</span></p>
+<div class="math notranslate nohighlight">
+\[\theta_i = \sin^{-1}\frac{|\mathbf{v}_{i}\times \mathbf{v}_{i+1}|}{|\mathbf{v}_{i}||\mathbf{v}_{i+1}|} \]</div>
+<p>Then the <em>winding number</em> can then be defined as</p>
+<div class="math notranslate nohighlight">
+\[ W =  \frac{\sum_i^N\theta_i}{2\pi}  \]</div>
+<p>if <span class="math notranslate nohighlight">\(W&gt;1,\)</span> <span class="math notranslate nohighlight">\(\mathbf{x}_p\)</span> is inside the polygon.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">angle</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">x2</span><span class="p">,</span><span class="n">x3</span><span class="p">):</span> <span class="c1"># Computes theta</span>
+    <span class="n">v1</span> <span class="o">=</span> <span class="n">x1</span> <span class="o">-</span> <span class="n">x2</span>  
+    <span class="n">v2</span> <span class="o">=</span> <span class="n">x3</span> <span class="o">-</span> <span class="n">x2</span> 
+    <span class="n">mag1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">v1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">v1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">mag2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">v2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">v2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">arcsin</span><span class="p">((</span><span class="n">v1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">v2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">v1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">v2</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="n">mag1</span><span class="o">*</span><span class="n">mag2</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">winding</span><span class="p">(</span><span class="n">polyPoints</span><span class="p">,</span><span class="n">point</span><span class="p">):</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">polyPoints</span><span class="p">)</span>
+    <span class="n">totalAngle</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">totalAngle</span> <span class="o">+=</span> <span class="n">angle</span><span class="p">(</span><span class="n">polyPoints</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">point</span><span class="p">,</span><span class="n">polyPoints</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="p">((</span><span class="n">totalAngle</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="c1"># account for clockwise/anticlockwise rotation and rounding error</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Test on our example above</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">winding</span><span class="p">(</span><span class="n">poly1</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>A different test case</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">poly2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+      <span class="p">[[</span><span class="mf">0.78758964</span><span class="p">,</span> <span class="mf">0.08941681</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.54969572</span><span class="p">,</span> <span class="mf">0.10175701</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.19493093</span><span class="p">,</span> <span class="mf">0.31976052</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.13663129</span><span class="p">,</span> <span class="mf">0.37082234</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.05754</span>   <span class="p">,</span> <span class="mf">0.52834017</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.10790758</span><span class="p">,</span> <span class="mf">0.89923077</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.50819293</span><span class="p">,</span> <span class="mf">0.96794738</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.9991026</span> <span class="p">,</span> <span class="mf">0.98431721</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.98201591</span><span class="p">,</span> <span class="mf">0.28409295</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.78758964</span><span class="p">,</span> <span class="mf">0.08941681</span><span class="p">]])</span>
+
+<span class="n">point2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.5</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;winding number = &#39;</span><span class="p">,</span><span class="n">winding</span><span class="p">(</span><span class="n">poly2</span><span class="p">,</span><span class="n">point2</span><span class="p">))</span>
+
+<span class="c1"># Make a plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">poly2</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">poly2</span><span class="p">[:,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">point2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">point2</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="s1">&#39;.&#39;</span><span class="p">,</span><span class="n">ms</span><span class="o">=</span><span class="s1">&#39;10&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>winding number =  -1.0
+</pre></div>
+</div>
+<img alt="../_images/ComputationalGeometry_7_1.png" src="../_images/ComputationalGeometry_7_1.png" />
+</div>
+</div>
+<p>This algorithm has some issues, mainly because it uses <code class="docutils literal notranslate"><span class="pre">arcsin</span></code> to get the angle which is expensive to execute and prone to <em>edge cases</em>, e.g. here rounding can create an argument for <code class="docutils literal notranslate"><span class="pre">arcsin</span></code> which is greater than 1.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">winding</span><span class="p">(</span><span class="n">poly1</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/l_/nz3b162x51n6xt0rvbk43ypc0000gq/T/ipykernel_28277/3215083744.py:6: RuntimeWarning: invalid value encountered in true_divide
+  return np.arcsin((v1[0]*v2[1]-v1[1]*v2[0])/(mag1*mag2))
+/var/folders/l_/nz3b162x51n6xt0rvbk43ypc0000gq/T/ipykernel_28277/3215083744.py:6: RuntimeWarning: invalid value encountered in arcsin
+  return np.arcsin((v1[0]*v2[1]-v1[1]*v2[0])/(mag1*mag2))
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nan
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let us attempt a version of the crossing number method. In this case we will again cycle through polygon edges, but now check if the <em>horizontal</em> line through the point intersects the edge and increment the crossing number if so.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">crossing</span><span class="p">(</span><span class="n">polyPoints</span><span class="p">,</span><span class="n">point</span><span class="p">):</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">polyPoints</span><span class="p">)</span>
+    <span class="n">cn</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">polyPoints</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">&lt;</span><span class="n">point</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">and</span> <span class="n">polyPoints</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">&lt;</span><span class="n">point</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">and</span> <span class="n">polyPoints</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">&gt;</span><span class="n">point</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span> <span class="c1"># upward crossing</span>
+            <span class="n">cn</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">elif</span><span class="p">(</span><span class="n">polyPoints</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">&lt;</span><span class="n">point</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">and</span> <span class="n">polyPoints</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">&gt;</span><span class="n">point</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">and</span> <span class="n">polyPoints</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">&lt;</span><span class="n">point</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span> <span class="c1"># downward crossing</span>
+            <span class="n">cn</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">cn</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;crossing number 1 = &#39;</span><span class="p">,</span> <span class="n">crossing</span><span class="p">(</span><span class="n">poly1</span><span class="p">,</span><span class="n">point1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;crossing number 2 = &#39;</span><span class="p">,</span> <span class="n">crossing</span><span class="p">(</span><span class="n">poly2</span><span class="p">,</span><span class="n">point2</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;crossing number fail = &#39;</span><span class="p">,</span> <span class="n">crossing</span><span class="p">(</span><span class="n">poly1</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>crossing number 1 =  1.0
+crossing number 2 =  1.0
+crossing number fail =  0.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now there are still certain issues with the crossing number approach, if the polygon is not simple (has holes or overlaps itself) the crossing number can fail. There is an algorithm which computes the winding number by crossings giving us the best of both worlds (see <a class="reference external" href="https://web.archive.org/web/20130126163405/http://geomalgorithms.com/a03-_inclusion.html">here</a> to investigate more for yourself). A simplified version for convex polygons tests to see if the point lies always to the same side of each edge. Taking an edge <span class="math notranslate nohighlight">\(\mathbf{v}_i\)</span> we can determine if one turns through a positive or negative angle when moving to <span class="math notranslate nohighlight">\(\mathbf{x}_p\)</span> by evaluating</p>
+<div class="math notranslate nohighlight">
+\[ \phi_i = \mathbf{v}_i \times (\mathbf{x}_p - \mathbf{x}_{i+1}), \]</div>
+<p>i.e.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mathbf{x}_p\)</span> is left of <span class="math notranslate nohighlight">\(\mathbf{v}_i\)</span> if <span class="math notranslate nohighlight">\(\phi_i&gt;0,\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{x}_p\)</span> is right of <span class="math notranslate nohighlight">\(\mathbf{v}_i\)</span> if <span class="math notranslate nohighlight">\(\phi_i&lt;0,\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{x}_p\)</span> is <em>on</em> <span class="math notranslate nohighlight">\(\mathbf{v}_i\)</span> if <span class="math notranslate nohighlight">\(\phi_i=0.\)</span></p></li>
+</ul>
+<p>So if <em>all</em> <span class="math notranslate nohighlight">\(\phi_i&gt;0\)</span> <em>or all</em> <span class="math notranslate nohighlight">\(\phi_i&lt;0\)</span> then the point is inside the polygon (accounting for whether the vertices are ordered clockwise or anticlockwise).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">pip</span><span class="p">(</span><span class="n">polyPoints</span><span class="p">,</span><span class="n">point</span><span class="p">):</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">polyPoints</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>
+    <span class="n">phi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+        <span class="n">v1</span> <span class="o">=</span> <span class="n">polyPoints</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">polyPoints</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>  
+        <span class="n">v2</span> <span class="o">=</span> <span class="n">point</span> <span class="o">-</span> <span class="n">polyPoints</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">phi</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span>  <span class="n">v1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">v2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">v1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">v2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+ 
+    <span class="k">return</span> <span class="p">(</span><span class="n">phi</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span> <span class="ow">or</span> <span class="p">(</span><span class="n">phi</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span><span class="p">(</span><span class="n">poly2</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="sympy">
+<h2>Sympy<a class="headerlink" href="#sympy" title="Permalink to this headline">#</a></h2>
+<p>There are a few modules/libraries in Python for exploring geometric problems.</p>
+<p><code class="docutils literal notranslate"><span class="pre">sympy</span></code> has a <a class="reference external" href="https://docs.sympy.org/latest/modules/geometry/index.html">set of functions</a> for investigating and experimenting with geometrical problems, for instance the point-in-polygon problem is answered by</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="n">Point</span><span class="p">,</span> <span class="n">Polygon</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">Polygon</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+               <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">),(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">),(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">),(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">encloses_point</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>There are plenty of other functions, but we leave it for your own investigation for now.</p>
+</section>
+<section id="delauny-triangulation">
+<h2>Delauny Triangulation<a class="headerlink" href="#delauny-triangulation" title="Permalink to this headline">#</a></h2>
+<p>When dealing with spatial data many problems require the segmentation of a certain space (for instance for physical modelling) or require some connectivity of a set of data points (for instance for route planning). One method to create such a description is the Delauny Triangulation which takes a set of points and builds a set of triangles with those points as vertices such that no point lies <em>inside</em> the circumcircle of any triangle (i.e. they only lie on the edge). This maximises the angles of the triangles, reducing as much as possible triangles with one or more very acute angles (called <a class="reference external" href="https://en.wikipedia.org/wiki/Glossary_of_computer_graphics#sliver_triangle">sliver triangles</a> in computer graphics).</p>
+<p>The algorithms to obtain such triangulations are quite involved and sophisticated, here we just introduce an application using Python.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.spatial</span> <span class="kn">import</span> <span class="n">Delaunay</span><span class="p">,</span> <span class="n">delaunay_plot_2d</span>
+
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">()</span>
+<span class="n">points</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">50</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">tri</span> <span class="o">=</span> <span class="n">Delaunay</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
+
+<span class="n">delaunay_plot_2d</span><span class="p">(</span><span class="n">tri</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/ComputationalGeometry_18_0.png" src="../_images/ComputationalGeometry_18_0.png" />
+</div>
+</div>
+</section>
+<section id="convex-hull">
+<h2>Convex Hull<a class="headerlink" href="#convex-hull" title="Permalink to this headline">#</a></h2>
+<p>The <em>union of simplices</em> of the Delauny triangulation of a set of points (i.e. the outer edge, or union of edges belonging to only one triangle) is known as the <em>convex hull</em>. The convex hull of a set of points is an important concept in computational geometry. For instance many pattern recognition algorithms will identify a certain set of points associated with a feature and the convex hull will give its boundary. There are a number of algorithms for obtaining the convex hull, in fact one such algorithm, the “Graham scan algorithm” will be the subject of this week’s laboratory exercise, see the additional video with the description and pseudocode for the algorithm which you will implement.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.spatial</span> <span class="kn">import</span> <span class="n">ConvexHull</span>
+
+<span class="n">hull</span> <span class="o">=</span> <span class="n">ConvexHull</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">points</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">points</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">simplex</span> <span class="ow">in</span> <span class="n">hull</span><span class="o">.</span><span class="n">simplices</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="n">simplex</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">points</span><span class="p">[</span><span class="n">simplex</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;k-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/ComputationalGeometry_20_0.png" src="../_images/ComputationalGeometry_20_0.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./2_CoreNotebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Dan Lucas<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

@@ -1,0 +1,965 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Conditions and basic if statements &#8212; MT3510 Introduction to Mathematical Computing</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Errors" href="Errors.html" />
+    <link rel="prev" title="Arrays" href="Arrays.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">MT3510 Introduction to Mathematical Computing</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown.html">
+   Markdown Files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown-notebooks.html">
+   Notebooks with MyST Markdown
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Arrays.html">
+   Arrays
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/1_IntroNotebooks/Conditionals.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/1_IntroNotebooks/Conditionals.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Conditions and basic
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     if
+    </span>
+   </code>
+   statements
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#relational-and-logical-operators">
+   Relational and logical operators
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#divisibility-and-the-modulo-operator">
+   Divisibility and the modulo operator
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#logical-operators">
+   Logical Operators
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#if-else-statements">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     If-else
+    </span>
+   </code>
+   statements
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#elif-statements">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Elif
+    </span>
+   </code>
+   statements
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conditional-return-statements">
+   Conditional
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     return
+    </span>
+   </code>
+   statements
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aside-patterns">
+   Aside: Patterns
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Conditions and basic if statements</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Conditions and basic
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     if
+    </span>
+   </code>
+   statements
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#relational-and-logical-operators">
+   Relational and logical operators
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#divisibility-and-the-modulo-operator">
+   Divisibility and the modulo operator
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#logical-operators">
+   Logical Operators
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#if-else-statements">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     If-else
+    </span>
+   </code>
+   statements
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#elif-statements">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Elif
+    </span>
+   </code>
+   statements
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conditional-return-statements">
+   Conditional
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     return
+    </span>
+   </code>
+   statements
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aside-patterns">
+   Aside: Patterns
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="conditions-and-basic-if-statements">
+<h1>Conditions and basic <code class="docutils literal notranslate"><span class="pre">if</span></code> statements<a class="headerlink" href="#conditions-and-basic-if-statements" title="Permalink to this headline">#</a></h1>
+<p>In the previous worksheets, we’ve seen two ways in which we can control how the lines of a program are executed  (which we sometimes call the <em><strong>control flow</strong></em> of the program): we can use <code class="docutils literal notranslate"><span class="pre">for</span></code> loops to repeat lines of code, and functions to separate lines of code into smaller blocks. There is only one more fundamental concept we need for manipulating the control flow. This is the ability to make decisions based on <em><strong>conditions</strong></em>.</p>
+<p>In normal speech, when giving instructions we often use conditions. For example: “<em>if</em> the traffic light is red <em>then</em> stop”. This has a direct analogue in Python: the simple <code class="docutils literal notranslate"><span class="pre">if</span></code> statement, which has the following form:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="o">&lt;</span><span class="n">condition</span><span class="o">&gt;</span><span class="p">:</span>
+    <span class="n">body</span> <span class="n">statements</span>
+<span class="nb">next</span> <span class="n">line</span> <span class="n">of</span> <span class="n">code</span>
+</pre></div>
+</div>
+<p>As always, the indentation is critical. The indented statements are the body of the <code class="docutils literal notranslate"><span class="pre">if</span></code> statement, and will only be executed if the condition holds.</p>
+<p>In mathematical computing, the conditions we are interested in are often relationships between numbers. For example, we can test whether <code class="docutils literal notranslate"><span class="pre">a</span></code> is equal to <code class="docutils literal notranslate"><span class="pre">b</span></code> using <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">==</span> <span class="pre">b</span></code> (<strong>notice there are <em>two</em> <code class="docutils literal notranslate"><span class="pre">=</span></code> signs</strong>).</p>
+<p>In the following example, we print out when an iteratively-defined sequence has converged.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.9</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="mf">0.5</span><span class="p">):</span>  <span class="c1"># if the sequence has converged</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;after </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> iterations, x = </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>after 8 iterations, x = 0.5
+after 9 iterations, x = 0.5
+</pre></div>
+</div>
+</div>
+</div>
+<p>The condition <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">==</span> <span class="pre">0.5</span></code> evaluates to one of the two <em><strong>boolean</strong></em> values <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">==</span> <span class="mf">0.5</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">==</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that these are not the same thing as the strings <code class="docutils literal notranslate"><span class="pre">&quot;True&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;False&quot;</span></code>!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kc">True</span> <span class="o">==</span> <span class="s2">&quot;True&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="relational-and-logical-operators">
+<h1>Relational and logical operators<a class="headerlink" href="#relational-and-logical-operators" title="Permalink to this headline">#</a></h1>
+<p>We’ve seen that you can use <code class="docutils literal notranslate"><span class="pre">==</span></code> to test equality. These is an example of a <em><strong>relational operator</strong></em>. There are several more relational operators available in Python.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Operator</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">&lt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code></p></td>
+<td><p>less than, less than or equal to</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code></p></td>
+<td><p>greater than, greater than or equal to</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">==</span></code></p></td>
+<td><p>equal to</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">!=</span></code></p></td>
+<td><p>not equal to</p></td>
+</tr>
+</tbody>
+</table>
+<p>Here’s an example of using <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code> to find when the iteration above is “close to” converging.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.9</span>
+<span class="n">err</span> <span class="o">=</span> <span class="mf">0.05</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>  
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">if</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">err</span><span class="p">):</span>  <span class="c1"># if the difference between x and 0.5 is small enough</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;after </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> iterations, x = </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>after 4 iterations, x = 0.4859262511644672
+after 5 iterations, x = 0.49960385918742867
+after 6 iterations, x = 0.49999968614491325
+after 7 iterations, x = 0.49999999999980305
+after 8 iterations, x = 0.5
+after 9 iterations, x = 0.5
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="divisibility-and-the-modulo-operator">
+<h1>Divisibility and the modulo operator<a class="headerlink" href="#divisibility-and-the-modulo-operator" title="Permalink to this headline">#</a></h1>
+<p>One of the conditions that we often want to test is if an integer <span class="math notranslate nohighlight">\(a\)</span> is divisible by another integer <span class="math notranslate nohighlight">\(b\)</span>. In Python we do this using the <em><strong>modulo</strong></em> operator <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">%</span> <span class="pre">b</span></code>, which returns the remainder on dividing <code class="docutils literal notranslate"><span class="pre">a</span></code> by <code class="docutils literal notranslate"><span class="pre">b</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">23</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="n">a</span> <span class="o">%</span> <span class="n">b</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can then test if <code class="docutils literal notranslate"><span class="pre">b</span></code> divides <code class="docutils literal notranslate"><span class="pre">a</span></code> like so:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">%</span> <span class="n">b</span> <span class="o">==</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<p>As an aside, you can also get the quotient of <code class="docutils literal notranslate"><span class="pre">a</span></code> by <code class="docutils literal notranslate"><span class="pre">b</span></code> like so:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">//</span> <span class="n">b</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="logical-operators">
+<h1>Logical Operators<a class="headerlink" href="#logical-operators" title="Permalink to this headline">#</a></h1>
+<p>We often need to combine relational operators to form more complex conditions. For example, we may wish to test if a number is divisible by 13 <em><strong>and</strong></em> is positive. Python allows us to combine together conditions in this way:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">52</span>
+<span class="n">n</span> <span class="o">%</span> <span class="mi">13</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>There are three <em><strong>logical operators</strong></em> offered by Python:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Operator</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">and</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if both sides evaluate to <code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">or</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if <strong>at least</strong> one side evaluates to <code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">not</span></code></p></td>
+<td><p>the opposite of whatever follows it</p></td>
+</tr>
+</tbody>
+</table>
+<p>Here are some examples of how they work:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">13</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="mi">27</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">13</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="ow">not</span> <span class="mi">27</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>The example above is already a little confusing to read; it is good practice to bracket your logical expressions when they become complex.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">13</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">27</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="if-else-statements">
+<h1><code class="docutils literal notranslate"><span class="pre">If-else</span></code> statements<a class="headerlink" href="#if-else-statements" title="Permalink to this headline">#</a></h1>
+<p>It is very common in programming that we want the code to do one thing if a condition is true, and a different thing if it is false.
+In Python, we can achieve this using <code class="docutils literal notranslate"><span class="pre">if-else</span></code> statements, which have the following form:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="o">&lt;</span><span class="n">condition</span><span class="o">&gt;</span><span class="p">:</span>
+    <span class="n">lines</span> <span class="n">to</span> <span class="n">run</span> <span class="k">if</span> <span class="n">the</span> <span class="n">condition</span> <span class="ow">is</span> <span class="n">true</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">lines</span> <span class="n">to</span> <span class="n">run</span> <span class="k">if</span> <span class="n">the</span> <span class="n">condition</span> <span class="ow">is</span> <span class="n">false</span>
+<span class="n">lines</span> <span class="n">to</span> <span class="n">run</span> <span class="n">regardless</span> <span class="n">of</span> <span class="n">condition</span>
+</pre></div>
+</div>
+<p>For example, suppose I want to check if I remember the value of <span class="math notranslate nohighlight">\(\sinh(\log(2))\)</span>, and if not I want to be told the correct value.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">remembered_value</span> <span class="o">=</span> <span class="mi">5</span><span class="o">/</span><span class="mi">4</span>
+
+<span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">sinh</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="o">==</span> <span class="n">remembered_value</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hurray!&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sorry, the actual value of sinh(log(2)) is&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sinh</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="nn">Input In [13],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">remembered_value</span> <span class="o">=</span> <span class="mi">5</span><span class="o">/</span><span class="mi">4</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">sinh</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="o">==</span> <span class="n">remembered_value</span><span class="p">:</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;numpy&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="elif-statements">
+<h1><code class="docutils literal notranslate"><span class="pre">Elif</span></code> statements<a class="headerlink" href="#elif-statements" title="Permalink to this headline">#</a></h1>
+<p>We often need our programs to choose between more than two options. Suppose we have a number <span class="math notranslate nohighlight">\(n\)</span> and we want to compute
+$<span class="math notranslate nohighlight">\(x = \begin{cases}n^2 &amp; \text{\)</span>2<span class="math notranslate nohighlight">\( divides \)</span>n<span class="math notranslate nohighlight">\(} \\ n^3 &amp; \text{\)</span>3<span class="math notranslate nohighlight">\( divides \)</span>n<span class="math notranslate nohighlight">\( but \)</span>2<span class="math notranslate nohighlight">\( does not} \\ n &amp; \text{otherwise.} \end{cases}\)</span>$</p>
+<p>In order to do so, we could nest <code class="docutils literal notranslate"><span class="pre">if-else</span></code> statements as in the cell below. <em>This is just an example and would be considered bad practice</em>, as explained afterwards.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Don&#39;t do this! See the next text cell for a better method.</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="c1"># n is even, so set x = n ** 2</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">n</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># if we&#39;re here n isn&#39;t even, so we test if it is divisible by 3</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="c1"># n is not even but is divisible by 3, so set x = n ** 3</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">n</span> <span class="o">**</span> <span class="mi">3</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># n is neither even nor divisible by 3, so set x = n</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">n</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>27
+</pre></div>
+</div>
+</div>
+</div>
+<p>There are other ways of nesting the <code class="docutils literal notranslate"><span class="pre">if-else</span></code> statements to achieve the same result. However, nested conditionals are often <em>extremely</em> confusing and are a very common source of bugs in code. Sometimes it is necessary to nest conditionals, but in the example above a better alternative would be to use <code class="docutils literal notranslate"><span class="pre">elif</span></code> statements. These are used inside an <code class="docutils literal notranslate"><span class="pre">if</span></code> or <code class="docutils literal notranslate"><span class="pre">if-else</span></code> statement, and have the following general form:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="o">&lt;</span><span class="n">condition</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">:</span>
+    <span class="n">thing</span> <span class="n">to</span> <span class="n">do</span> <span class="k">if</span> <span class="n">condition</span> <span class="mi">1</span> <span class="n">holds</span>
+<span class="k">elif</span> <span class="o">&lt;</span><span class="n">condition</span> <span class="mi">2</span><span class="o">&gt;</span><span class="p">:</span>
+    <span class="n">thing</span> <span class="n">to</span> <span class="n">do</span> <span class="k">if</span> <span class="mi">1</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">hold</span> <span class="n">but</span> <span class="mi">2</span> <span class="n">does</span>
+<span class="k">elif</span> <span class="o">&lt;</span><span class="n">condition</span> <span class="mi">3</span><span class="o">&gt;</span><span class="p">:</span>
+    <span class="n">thing</span> <span class="n">to</span> <span class="n">do</span> <span class="k">if</span> <span class="mi">1</span> <span class="ow">and</span> <span class="mi">2</span> <span class="n">do</span> <span class="ow">not</span> <span class="n">hold</span> <span class="n">but</span> <span class="mi">3</span> <span class="n">does</span>
+<span class="o">...</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">thing</span> <span class="n">to</span> <span class="n">do</span> <span class="k">if</span> <span class="n">none</span> <span class="n">of</span> <span class="n">the</span> <span class="n">conditions</span> <span class="n">hold</span>
+</pre></div>
+</div>
+<p>You can have as many <code class="docutils literal notranslate"><span class="pre">elif</span></code>s as you want, and you don’t have to include the <code class="docutils literal notranslate"><span class="pre">else</span></code> statement. Here’s what the code above would look like using <code class="docutils literal notranslate"><span class="pre">elif</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="c1"># n is even</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">n</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="k">elif</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="c1"># n is not even since the first condition failed</span>
+    <span class="c1"># but it is divisible by 3</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">n</span> <span class="o">**</span> <span class="mi">3</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># neither condition held, so n is neither even nor divisible by 3</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">n</span>
+<span class="n">x</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>27
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="conditional-return-statements">
+<h1>Conditional <code class="docutils literal notranslate"><span class="pre">return</span></code> statements<a class="headerlink" href="#conditional-return-statements" title="Permalink to this headline">#</a></h1>
+<p>We often combine <code class="docutils literal notranslate"><span class="pre">if-else</span></code> statements with <code class="docutils literal notranslate"><span class="pre">return</span></code> statements to determine what a function will return. The following function takes one argument <code class="docutils literal notranslate"><span class="pre">n</span></code>, and returns <span class="math notranslate nohighlight">\(n/2\)</span> if <span class="math notranslate nohighlight">\(n &lt; 100\)</span> and <span class="math notranslate nohighlight">\(2n\)</span> otherwise.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">piecewise_function</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">n</span><span class="o">/</span><span class="mi">2</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">n</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">piecewise_function</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.5
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">piecewise_function</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>200
+</pre></div>
+</div>
+</div>
+</div>
+<p>When writing functions which contain <code class="docutils literal notranslate"><span class="pre">return</span></code> statements, the key thing to remember is that as soon as a <code class="docutils literal notranslate"><span class="pre">return</span></code> statement is reached, the function returns the given value <strong>and the function stops</strong>. This is demonstrated by the following example, which returns the smallest (larger than 1) factor of a given number.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">smallest_factor</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="c1"># go through the values 2 up to n in order, until we find a factor</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="c1"># if i divides n, then return i and exit this function immediately</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">i</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">smallest_factor</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+</pre></div>
+</div>
+</div>
+</div>
+<p>When writing functions, we are not limited to a single <code class="docutils literal notranslate"><span class="pre">return</span></code> statement inside a function: we can have as many as we want. In the following example, we use this in combination with the fact that return statements exit the function to test if a number is prime. Make you sure understand this example!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_prime</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="c1"># check whether the number has any factors (we could be cleverer about this range)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="c1"># if i divides n, then n is not prime (since 1 &lt; i &lt; n)</span>
+        <span class="c1"># so return False and exit this function</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="c1"># If we get to this point, after the for loop, we haven&#39;t found any factors</span>
+    <span class="c1"># because otherwise we would have already returned False and exited the function.</span>
+    <span class="c1"># So n must be prime.</span>
+    <span class="k">return</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">is_prime</span><span class="p">(</span><span class="mi">17</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="aside-patterns">
+<h1>Aside: Patterns<a class="headerlink" href="#aside-patterns" title="Permalink to this headline">#</a></h1>
+<p>The function above follows a very common code <em><strong>pattern</strong></em>. A pattern is like a “template” for solving a particular type of problem. Here the more general problem is “non-existence of an object with some property”, which we can test by iterating through all of the possibilities for that object, returning <code class="docutils literal notranslate"><span class="pre">False</span></code> if one of them has the given property, and returning <code class="docutils literal notranslate"><span class="pre">True</span></code> after exhausting all of the possibilities. It’s worth thinking about what patterns you are using while you code. Can you see what the analogous pattern would be for checking “<em>existence</em> of an object with some property”? What about “<em>all</em> objects have some property”, or “all objects do not have some property”?</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./1_IntroNotebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="Arrays.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Arrays</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="Errors.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Errors</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Dan Lucas<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

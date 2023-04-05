@@ -1,0 +1,545 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Chapter 1: The Fundamentals &#8212; MT3510 Introduction to Mathematical Computing</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Python &amp; Jupyter" href="1%20Python%20and%20Jupyter%20Notebooks%20Basics.html" />
+    <link rel="prev" title="Notebooks with MyST Markdown" href="../markdown-notebooks.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">MT3510 Introduction to Mathematical Computing</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown.html">
+   Markdown Files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown-notebooks.html">
+   Notebooks with MyST Markdown
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="current reference internal" href="#">
+   Chapter 1: The Fundamentals
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="1%20Python%20and%20Jupyter%20Notebooks%20Basics.html">
+     Python &amp; Jupyter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2%20Variables.html">
+     Variables
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="3%20Modules%20and%20Numpy.html">
+     More mathematical commands via Numpy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="4%20Errors.html">
+     Errors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="5%20Printing%20and%20Strings.html">
+     Printing output to the screen
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="6%20For%20Loops.html">
+     For loops
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="7%20Nested%20For%20Loops.html">
+     Nested
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       for
+      </span>
+     </code>
+     loops
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="8%20Functions.html">
+     Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="9%20Conditionals.html">
+     Conditions and basic
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       if
+      </span>
+     </code>
+     statements
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="10%20While%20Loops.html">
+     While loops
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="11%20Lists%20and%20Tuples.html">
+     Lists
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="12%20Arrays.html">
+     Arrays
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="13%20Slicing.html">
+     List slicing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="14%20Floating%20Point%20Numbers.html">
+     Floating point numbers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="15%20Sets%20and%20Dicts.html">
+     Data structures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="16%20Types.html">
+     Types
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="17%20Input%20and%20Files.html">
+     Input and files
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="18%20Plotting.html">
+     Matplotlib
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="19%20Markdown%20and%20LaTeX.html">
+     Markdown
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="20%20SymPy.html">
+     SymPy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="21%20Interactivity.html">
+     Interactivity
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/1_IntroNotebooks/intro.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Chapter 1: The Fundamentals</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-1-the-fundamentals">
+<h1>Chapter 1: The Fundamentals<a class="headerlink" href="#chapter-1-the-fundamentals" title="Permalink to this headline">#</a></h1>
+<p>This chapter contains the <em>basics</em> of Python covered in the MT2000 workshops that we will build upon in this module. Take the first week to refresh this material and use this chapter as a reference as you work through the rest of the module.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="1%20Python%20and%20Jupyter%20Notebooks%20Basics.html">Python &amp; Jupyter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2%20Variables.html">Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2%20Variables.html#reassigning-variables">Reassigning variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2%20Variables.html#viewing-variables">Viewing variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2%20Variables.html#variable-names">Variable names</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2%20Variables.html#optional-multiple-labels-for-one-object">Optional: Multiple labels for one object</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3%20Modules%20and%20Numpy.html">More mathematical commands via Numpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3%20Modules%20and%20Numpy.html#other-modules">Other modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4%20Errors.html">Errors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5%20Printing%20and%20Strings.html">Printing output to the screen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5%20Printing%20and%20Strings.html#optional-formatted-strings">Optional: Formatted strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6%20For%20Loops.html">For loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6%20For%20Loops.html#ranges">Ranges</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6%20For%20Loops.html#looping-over-lists">Looping over lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6%20For%20Loops.html#nested-for-loops">Nested <code class="docutils literal notranslate"><span class="pre">for</span></code> loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7%20Nested%20For%20Loops.html">Nested <code class="docutils literal notranslate"><span class="pre">for</span></code> loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8%20Functions.html">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8%20Functions.html#fruitful-functions">Fruitful functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8%20Functions.html#multiple-parameters">Multiple parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8%20Functions.html#multiple-return-values">Multiple return values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8%20Functions.html#invisible-variables">Invisible variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8%20Functions.html#optional-aside-1-member-functions">Optional Aside 1: Member functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8%20Functions.html#optional-aside-2-duck-typing">Optional Aside 2: Duck typing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8%20Functions.html#optional-aside-3-default-arguments">Optional Aside 3: Default Arguments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9%20Conditionals.html">Conditions and basic <code class="docutils literal notranslate"><span class="pre">if</span></code> statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9%20Conditionals.html#relational-and-logical-operators">Relational and logical operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9%20Conditionals.html#divisibility-and-the-modulo-operator">Divisibility and the modulo operator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9%20Conditionals.html#logical-operators">Logical Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9%20Conditionals.html#if-else-statements"><code class="docutils literal notranslate"><span class="pre">If-else</span></code> statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9%20Conditionals.html#elif-statements"><code class="docutils literal notranslate"><span class="pre">Elif</span></code> statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9%20Conditionals.html#conditional-return-statements">Conditional <code class="docutils literal notranslate"><span class="pre">return</span></code> statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9%20Conditionals.html#aside-patterns">Aside: Patterns</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10%20While%20Loops.html">While loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10%20While%20Loops.html#infinite-loops">Infinite loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10%20While%20Loops.html#breaking-out-of-loops"><code class="docutils literal notranslate"><span class="pre">Break</span></code>ing out of loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11%20Lists%20and%20Tuples.html">Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11%20Lists%20and%20Tuples.html#nested-lists">Nested Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11%20Lists%20and%20Tuples.html#tuples">Tuples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12%20Arrays.html">Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12%20Arrays.html#creating-arrays">Creating Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12%20Arrays.html#diagonal-arrays">Diagonal arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12%20Arrays.html#working-with-arrays">Working with <code class="docutils literal notranslate"><span class="pre">arrays</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="13%20Slicing.html">List slicing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13%20Slicing.html#array-slicing">Array slicing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13%20Slicing.html#assignment-with-arrays-and-lists">Assignment with arrays and lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14%20Floating%20Point%20Numbers.html">Floating point numbers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14%20Floating%20Point%20Numbers.html#precision-and-the-machine-epsilon">Precision and the machine epsilon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14%20Floating%20Point%20Numbers.html#binary-representations">Binary representations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14%20Floating%20Point%20Numbers.html#comparing-floats">Comparing floats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14%20Floating%20Point%20Numbers.html#overflow-and-underflow">Overflow and underflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14%20Floating%20Point%20Numbers.html#infinity-and-nan">Infinity and NaN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="15%20Sets%20and%20Dicts.html">Data structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="15%20Sets%20and%20Dicts.html#sets">Sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="15%20Sets%20and%20Dicts.html#dicts">Dicts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="16%20Types.html">Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="16%20Types.html#conversion-between-types">Conversion between types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="17%20Input%20and%20Files.html">Input and files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="17%20Input%20and%20Files.html#csv-files"><code class="docutils literal notranslate"><span class="pre">CSV</span></code> files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="17%20Input%20and%20Files.html#numpy-input-and-output"><code class="docutils literal notranslate"><span class="pre">Numpy</span></code> input and output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="18%20Plotting.html">Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="18%20Plotting.html#basic-2d-plots">Basic 2D plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="18%20Plotting.html#d-surface-plots">3D surface plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="18%20Plotting.html#contour-plots">Contour plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="18%20Plotting.html#vector-fields">Vector fields</a></li>
+<li class="toctree-l1"><a class="reference internal" href="18%20Plotting.html#annotations">Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="18%20Plotting.html#saving-plots">Saving plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="18%20Plotting.html#animated-plots">Animated plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="19%20Markdown%20and%20LaTeX.html">Markdown</a></li>
+<li class="toctree-l1"><a class="reference internal" href="19%20Markdown%20and%20LaTeX.html#optional-writing-maths-using-latex">Optional: writing maths using <span class="math notranslate nohighlight">\(\LaTeX\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="20%20SymPy.html">SymPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20%20SymPy.html#creating-symbols">Creating symbols</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20%20SymPy.html#expressions-and-substitution">Expressions and substitution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20%20SymPy.html#evaluation">Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20%20SymPy.html#exact-values">Exact values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20%20SymPy.html#manipulating-expressions">Manipulating expressions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20%20SymPy.html#solving-equations">Solving equations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20%20SymPy.html#differentiation">Differentiation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20%20SymPy.html#integration">Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20%20SymPy.html#plotting">Plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="21%20Interactivity.html">Interactivity</a></li>
+</ul>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./1_IntroNotebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../markdown-notebooks.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Notebooks with MyST Markdown</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="1%20Python%20and%20Jupyter%20Notebooks%20Basics.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Python &amp; Jupyter</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Dan Lucas<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
