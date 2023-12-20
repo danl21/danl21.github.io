@@ -61,7 +61,9 @@ Teaching
 Service and leadership
 ======
 
+* Deputy Director of Teaching for Mathematics and Statistics (St Andrews Aug 2023-date)
 * Director of Recruitment & Marketing and Admissions Tutor for Mathematics (Keele 2019-2022).
 * Member of extended School Senior Management Team, Mathematics Courses Committee and Athena SWAN steering committee. (Keele)
 * Reviewer for EPSRC, Journal of Fluid Mechanics, Physics of Fluids, Fluid Dynamics Research & EJM B/Fluids.
 
+B
