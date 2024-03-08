@@ -66,4 +66,3 @@ Service and leadership
 * Member of extended School Senior Management Team, Mathematics Courses Committee and Athena SWAN steering committee. (Keele)
 * Reviewer for EPSRC, Journal of Fluid Mechanics, Physics of Fluids, Fluid Dynamics Research & EJM B/Fluids.
 
-B
