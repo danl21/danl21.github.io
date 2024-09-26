@@ -1,15 +1,15 @@
 ---
-title: "Teaching Semester 1 2023"
+title: "Teaching Semester 1 2024/25"
 collection: teaching
 type: "Undergraduate courses"
-permalink: /teaching/2023-Martinmas-teaching
+permalink: /teaching/2024-Martinmas-teaching
 venue: "University of St Andrews, Department of Mathematics & Statistics"
-date: 2023-09-12
+date: 2024-09-12
 location: "St Andrews, UK"
 ---
 
 
-In semester 1 I will be teaching [MT4112 Computational Numerical Analysis](https://www.st-andrews.ac.uk/subjects/modules/catalogue/?code=MT4112&academic_year=2023%2F4)
+In semester 1 I will be teaching [MT4112 Computational Numerical Analysis](https://www.st-andrews.ac.uk/subjects/modules/catalogue/?code=MT4112&academic_year=2024%2F5)
 
 ======
 
