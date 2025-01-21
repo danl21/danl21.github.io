@@ -1,6 +1,7 @@
 ---
 title: "Irreversible mixing by unstable periodic orbits in buoyancy dominated stratified turbulence"
 collection: publications
+category: manuscripts
 permalink: /publication/2017-01-01-Irreversible-mixing-by-unstable-periodic-orbits-in-buoyancy-dominated-stratified-turbulence
 date: 2017-01-01
 venue: 'Journal of Fluid Mechanics'

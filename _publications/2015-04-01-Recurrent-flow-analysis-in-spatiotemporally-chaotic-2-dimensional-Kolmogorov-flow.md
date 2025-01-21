@@ -1,6 +1,7 @@
 ---
 title: "Recurrent flow analysis in spatiotemporally chaotic 2-dimensional Kolmogorov flow"
 collection: publications
+category: manuscripts
 permalink: /publication/2015-04-01-Recurrent-flow-analysis-in-spatiotemporally-chaotic-2-dimensional-Kolmogorov-flow
 date: 2015-04-01
 venue: 'Physics of Fluids'

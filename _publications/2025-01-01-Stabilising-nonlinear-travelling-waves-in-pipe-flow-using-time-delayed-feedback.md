@@ -1,6 +1,7 @@
 ---
 title: "Stabilising nonlinear travelling waves in pipe flow using time-delayed feedback"
 collection: publications
+category: manuscripts
 permalink: /publication/2022-01-01-Stabilization-of-exact-coherent-structures-in-two-dimensional-turbulence-using-time-delayed-feedback
 date: 2025-01-01
 venue: 'Journal of Fluid Mechanics (in press)'

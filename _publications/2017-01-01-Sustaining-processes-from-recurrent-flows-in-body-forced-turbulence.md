@@ -1,6 +1,7 @@
 ---
 title: "Sustaining processes from recurrent flows in body-forced turbulence"
 collection: publications
+category: manuscripts
 permalink: /publication/2017-01-01-Sustaining-processes-from-recurrent-flows-in-body-forced-turbulence
 date: 2017-01-01
 venue: 'Journal of Fluid Mechanics'

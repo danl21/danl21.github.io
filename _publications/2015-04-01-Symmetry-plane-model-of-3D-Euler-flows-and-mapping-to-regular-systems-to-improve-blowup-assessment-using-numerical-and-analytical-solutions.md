@@ -1,6 +1,7 @@
 ---
 title: "Symmetry-plane model of 3D Euler flows and mapping to regular systems to improve blowup assessment using numerical and analytical solutions"
 collection: publications
+category: manuscripts
 permalink: /publication/2015-04-01-Symmetry-plane-model-of-3D-Euler-flows-and-mapping-to-regular-systems-to-improve-blowup-assessment-using-numerical-and-analytical-solutions
 date: 2015-04-01
 venue: 'Journal of Fluid Mechanics'

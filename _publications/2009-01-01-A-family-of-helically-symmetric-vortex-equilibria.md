@@ -1,7 +1,7 @@
 ---
 title: "A family of helically symmetric vortex equilibria"
 collection: publications
-category: articles
+category: manuscripts
 permalink: /publication/2009-01-01-A-family-of-helically-symmetric-vortex-equilibria
 excerpt: ' . '
 date: 2009-01-01

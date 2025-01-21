@@ -1,6 +1,7 @@
 ---
 title: "Stabilization of exact coherent structures in two-dimensional turbulence using time-delayed feedback"
 collection: publications
+category: manuscripts
 permalink: /publication/2022-01-01-Stabilization-of-exact-coherent-structures-in-two-dimensional-turbulence-using-time-delayed-feedback
 date: 2022-01-01
 venue: 'Phys. Rev. Fluids'

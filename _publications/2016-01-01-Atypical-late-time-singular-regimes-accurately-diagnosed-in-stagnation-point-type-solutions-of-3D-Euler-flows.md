@@ -1,6 +1,7 @@
 ---
 title: "Atypical late-time singular regimes accurately diagnosed in stagnation-point-type solutions of 3D Euler flows"
 collection: publications
+category: manuscripts
 permalink: /publication/2016-01-01-Atypical-late-time-singular-regimes-accurately-diagnosed-in-stagnation-point-type-solutions-of-3D-Euler-flows
 date: 2016-01-01
 venue: 'Journal of Fluid Mechanics'

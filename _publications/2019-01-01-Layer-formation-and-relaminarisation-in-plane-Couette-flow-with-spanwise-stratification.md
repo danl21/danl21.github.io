@@ -1,6 +1,7 @@
 ---
 title: "Layer formation and relaminarisation in plane Couette flow with spanwise stratification"
 collection: publications
+category: manuscripts
 permalink: /publication/2019-01-01-Layer-formation-and-relaminarisation-in-plane-Couette-flow-with-spanwise-stratification
 date: 2019-01-01
 venue: 'Journal of Fluid Mechanics'
