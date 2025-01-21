@@ -1,6 +1,7 @@
 ---
 title: "Five-Wave Resonances in Deep Water Gravity Waves: Integrability, Numerical Simulations and Experiments"
 collection: publications
+category: manuscripts
 permalink: /publication/2021-01-01-Five-Wave-Resonances-in-Deep-Water-Gravity-Waves-Integrability-Numerical-Simulations-and-Experiments
 date: 2021-01-01
 venue: 'Fluids'
