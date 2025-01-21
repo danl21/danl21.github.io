@@ -15,6 +15,7 @@ EPSRC New Investigator Award “Stabilisation of Exact Coherent Structures in Fl
 
 Education
 ======
+<<<<<<< HEAD
 * MMath in Applied Mathematics, University of St Andrews, 2006
 * MSc in Mathematical & Numerical Modelling of the Atmosphere & Oceans, Reading University, 2007
 * Ph.D in Vortex Dynamics, University of St Andrews, 2012
@@ -39,22 +40,44 @@ Work experience
   * University of Bristol
   * Periodic orbits as a basis for fluid turbulence
   * Supervisor: Professor Rich Kerswell
+=======
+* Ph.D in Version Control Theory, GitHub University, 2018 (expected)
+* M.S. in Jekyll, GitHub University, 2014
+* B.S. in GitHub, GitHub University, 2012
+
+Work experience
+======
+* Spring 2024: Academic Pages Collaborator
+  * Github University
+  * Duties includes: Updates and improvements to template
+  * Supervisor: The Users
+
+* Fall 2015: Research Assistant
+  * Github University
+  * Duties included: Merging pull requests
+  * Supervisor: Professor Hub
+
+* Summer 2015: Research Assistant
+  * Github University
+  * Duties included: Tagging issues
+  * Supervisor: Professor Git
+>>>>>>> 1acca92e64c8e345fdda983aca94f1ce0bbd3447
   
 Publications
 ======
-  <ul>{% for post in site.publications %}
+  <ul>{% for post in site.publications reversed %}
     {% include archive-single-cv.html %}
   {% endfor %}</ul>
   
 Talks
 ======
-  <ul>{% for post in site.talks %}
-    {% include archive-single-talk-cv.html %}
+  <ul>{% for post in site.talks reversed %}
+    {% include archive-single-talk-cv.html  %}
   {% endfor %}</ul>
   
 Teaching
 ======
-  <ul>{% for post in site.teaching %}
+  <ul>{% for post in site.teaching reversed %}
     {% include archive-single-cv.html %}
   {% endfor %}</ul>
   
