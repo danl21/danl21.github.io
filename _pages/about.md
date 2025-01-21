@@ -1,9 +1,6 @@
 ---
 permalink: /
 title: "Welcome"
-excerpt: "About me"
-=======
-title: "Something something "
 author_profile: true
 redirect_from: 
   - /about/
