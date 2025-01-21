@@ -6,23 +6,14 @@
 # `jekyll serve -l -H localhost`. If you change this file, please restart the 
 # server process.
 
-<<<<<<< HEAD
-# Site Settings
+=======
+# Basic Site Settings
 locale                   : "en-UK"
 title                    : "Dan Lucas"
 title_separator          : "-"
 name                     : &name "Dan Lucas"
 description              : &description "Lecturer in Computational Mathematics"
 url                      : https://danl21.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
-=======
-# Basic Site Settings
-locale                   : "en-US"
-title                    : "Your Name / Site Title"
-title_separator          : "-"
-name                     : &name "Your Name"
-description              : &description "personal description"
-url                      : https://academicpages.github.io # the base hostname & protocol for your site e.g. "https://[your GitHub username].github.io"
->>>>>>> 1acca92e64c8e345fdda983aca94f1ce0bbd3447
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "academicpages/academicpages.github.io"
 
@@ -32,19 +23,19 @@ repository               : "academicpages/academicpages.github.io"
 author:
   # Biographic information
   avatar           : "profile.png"
-  name             : "Your Sidebar Name"
-  pronouns         : # example: "she/her"  
-  bio              : "Short biography for the left-hand sidebar"
-  location         : "Earth"
-  employer         : "Red Brick University"
+  name             : "Dan Lucas"
+  pronouns         : "he/him" # example: "she/her"  
+  bio              : ""
+  location         : "St Andrews"
+  employer         : "University of St Andrews"
   uri              : # URL
-  email            : "none@example.org" 
+  email            : "dl21@st-andrews.ac.uk" 
 
   # Academic websites
-  arxiv            : # URL - Update with the correct link to your profile
-  googlescholar    : "https://scholar.google.com/citations?user=PS_CX0AAAAAJ"
+  arxiv            : "https://arxiv.org/a/lucas_d_1.html" # URL - Update with the correct link to your profile
+  googlescholar    : "https://scholar.google.com/citations?hl=en&user=7CTMPOUAAAAJ"
   impactstory      : # URL
-  orcid            : "http://orcid.org/yourorcidurl"
+  orcid            : "https://orcid.org/my-orcid?orcid=0000-0001-6309-8808"
   semantic         : # URL
   pubmed           : "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
   researchgate     : # URL
@@ -54,12 +45,12 @@ author:
   bitbucket        : # Username - Update with your username on the site
   codepen          : # Username
   dribbble         : # Username
-  github           : "academicpages"
+  github           : "danl21"
   kaggle           : # Username  
   stackoverflow    : # User number or user number and name (i.e., use "1" or "1/jeff-atwood")    
 
   # Social media
-  bluesky          : "bsky.app" # Replace this with you Bluesky username
+  bluesky          : "drdanlucas.bsky.social" # Replace this with you Bluesky username
   facebook         : # Username
   flickr           : # Username
   foursquare       : # Username
@@ -81,7 +72,7 @@ author:
   weibo            : # Username
   wikipedia        : # Username
   xing             : # Username
-  youtube          : # Username
+  youtube          : drdanlucas # Username
   zhihu            : # Username
 
 # Publication Category - The following the list of publication categories and their headings
@@ -161,48 +152,6 @@ analytics:
     tracking_id          :
 
 
-<<<<<<< HEAD
-# Site Author
-author:
-  name             : "Dan Lucas"
-  avatar           : "profile.png"
-  bio              : 
-  location         : "St Andrews"
-  employer         :
-  pubmed           : 
-  googlescholar    : "https://scholar.google.com/citations?hl=en&user=7CTMPOUAAAAJ"
-  email            :
-  researchgate     : "https://www.researchgate.net/profile/Dan-Lucas-3" # example: "https://www.researchgate.net/profile/yourprofile"
-  uri              :
-  bitbucket        :
-  codepen          :
-  dribbble         :
-  flickr           :
-  facebook         :
-  foursquare       :
-  github           : "danl21"
-  google_plus      :
-  keybase          :
-  instagram        :
-  impactstory      : #"https://profiles.impactstory.org/u/xxxx-xxxx-xxxx-xxxx"
-  lastfm           :
-  linkedin         :
-  orcid            : "https://orcid.org/my-orcid?orcid=0000-0001-6309-8808"
-  pinterest        :
-  soundcloud       :
-  stackoverflow    : # http://stackoverflow.com/users/123456/username
-  steam            :
-  tumblr           :
-  twitter          : "drdanlucas"
-  vine             :
-  weibo            :
-  xing             :
-  youtube          : "@drdanlucas"
-  wikipedia        :
-
-
-=======
->>>>>>> 1acca92e64c8e345fdda983aca94f1ce0bbd3447
 # Reading Files
 include:
   - .htaccess
