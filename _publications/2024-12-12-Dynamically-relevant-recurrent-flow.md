@@ -1,7 +1,9 @@
 ---
 title: "Dynamically relevant recurrent flows obtained via a nonlinear recurrence function from two-dimensional turbulence"
 collection: publications
+category: articles
 permalink: /publication/2022-01-01-Dynamically-relevant-recurrent-flows
+excerpt: ''
 date: 2024-12-12
 venue: 'Physical Review Fluids'
 paperurl: 'https://doi.org/10.1103/PhysRevFluids.9.124401'
