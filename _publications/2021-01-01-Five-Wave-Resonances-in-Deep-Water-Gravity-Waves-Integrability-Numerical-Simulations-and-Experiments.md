@@ -8,8 +8,6 @@ venue: 'Fluids'
 paperurl: 'https://www.mdpi.com/2311-5521/6/6/205'
 citation: ' Dan Lucas,  Marc Perlin,  Dian-Yong Liu,  Shane Walsh,  Rossen Ivanov,  Miguel Bustamante, &quot;Five-Wave Resonances in Deep Water Gravity Waves: Integrability, Numerical Simulations and Experiments.&quot; Fluids, 2021.'
 ---
-[Access paper here](https://www.mdpi.com/2311-5521/6/6/205){:target="_blank"}
-
 
 ![Colliding wave packets](\/images/waterwave.mp4){loop=""}
 

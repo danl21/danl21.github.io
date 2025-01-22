@@ -8,7 +8,6 @@ venue: 'Phys. Rev. Fluids'
 paperurl: 'https://link.aps.org/doi/10.1103/PhysRevFluids.7.014401'
 citation: ' Dan Lucas,  Tatsuya Yasuda, &quot;Stabilization of exact coherent structures in two-dimensional turbulence using time-delayed feedback.&quot; Phys. Rev. Fluids, 2022.'
 ---
-[Access paper here](https://link.aps.org/doi/10.1103/PhysRevFluids.7.014401){:target="_blank"}
 
 See video below demonstrating the stabilisation of a travelling wave in 2D turbulence using time-delayed feedback control.
 
