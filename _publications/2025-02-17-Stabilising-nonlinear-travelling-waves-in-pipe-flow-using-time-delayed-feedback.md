@@ -1,13 +1,13 @@
 ---
 title: "Stabilising nonlinear travelling waves in pipe flow using time-delayed feedback"
 collection: publications
-permalink: /publication/2022-01-01-Stabilization-of-exact-coherent-structures-in-two-dimensional-turbulence-using-time-delayed-feedback
-date: 2024-01-01
-venue: 'accepted at Journal of Fluid Mechanics'
-paperurl: 'https://arxiv.org/abs/2406.15588'
-citation: ' Tatsuya Yasuda, Dan Lucas, &quot;Stabilising nonlinear travelling waves in pipe flow using time-delayed feedback &quot; arxiv.org/abs/2406.1558, 2024.'
+category: manuscripts
+permalink: /publication/2022-02-17-Stabilization-of-exact-coherent-structures-in-two-dimensional-turbulence-using-time-delayed-feedback
+date: 2025-02-17
+venue: 'Journal of Fluid Mechanics'
+paperurl: 'https://doi.org/10.1017/jfm.2024.1188'
+citation: ' Tatsuya Yasuda, Dan Lucas, &quot;Stabilising nonlinear travelling waves in pipe flow using time-delayed feedback &quot; J. Fluid Mech. 1005:A3 2025.'
 ---
-[Access paper here](arxiv.org/abs/2406.1558){:target="_blank"}
 
 See video below demonstrating the stabilisation of a travelling wave in pipe flow using time-delayed feedback control.
 
