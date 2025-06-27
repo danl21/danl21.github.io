@@ -3,7 +3,34 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>7GenerativeAI</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>7GenerativeAI</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script><script>
+(function() {
+  function addWidgetsRenderer() {
+    var mimeElement = document.querySelector('script[type="application/vnd.jupyter.widget-view+json"]');
+    var scriptElement = document.createElement('script');
+    
+    var widgetRendererSrc = 'https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js';
+    
+    var widgetState;
+
+    // Fallback for older version:
+    try {
+      widgetState = mimeElement && JSON.parse(mimeElement.innerHTML);
+
+      if (widgetState && (widgetState.version_major < 2 || !widgetState.version_major)) {
+        
+        var widgetRendererSrc = 'https://unpkg.com/@jupyter-js-widgets@*/dist/embed.js';
+        
+      }
+    } catch(e) {}
+
+    scriptElement.src = widgetRendererSrc;
+    document.body.appendChild(scriptElement);
+  }
+
+  document.addEventListener('DOMContentLoaded', addWidgetsRenderer);
+}());
+</script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7493,7 +7520,7 @@ a.anchor-link {
 <p>AI is a broad and rather nebulous term covering a range of technologies where an algorithm has been "trained" to be able to perform certain tasks.</p>
 <p>Often the underlying algorithm is a <a href="https://en.wikipedia.org/wiki/Neural_network">neural network</a>, which is essentially a function (with inputs and outputs) that operates on the inputs via layers of neurons. Neurons simply peform a weighted sum of the inputs, the learning part comes when determining what the weights need to be for a specific set of "training data". An optimisation step occurs to set these weights based on finding the minimum of some loss function between the network output and the training data. Other elements are added into the design of the network (number of layers, activation functions, biases etc.) but this is the general idea. A "test" step follows, once the network is trained, to make sure that it is performing correctly. See <a href="https://towardsdatascience.com/training-a-neural-network-by-hand-1bcac4d82a6e">here</a> for a "worked example".</p>
 <p><em>Generative AI</em> is a class of AI models capable of creating completely new outputs with similar features to the training data. For instance chatbots, which can converse with a user (see below), or text-to-image generators (<a href="https://labs.openai.com/">DALL-E</a>, <a href="https://stablediffusionweb.com/#ai-image-generator">Stable Diffusion</a>).</p>
-<h2 id="What-is-an-LLM?">What is an LLM?<a class="anchor-link" href="#What-is-an-LLM?">¶</a></h2><p>ChatGPT, Bard and Copilot are examples of large language models (LLMs). These are AI trained on very large data sets of text and are designed to emulate human language by producing outputs as "natural language". The idea is to provide a user friendly "chatbot" interface for a back catalogue of human knowledge.</p>
+<h2 id="What-is-an-LLM?">What is an LLM?<a class="anchor-link" href="#What-is-an-LLM?">¶</a></h2><p>ChatGPT, Bard and Gemini are examples of large language models (LLMs). These are AI trained on very large data sets of text and are designed to emulate human language by producing outputs as "natural language". The idea is to provide a user friendly "chatbot" interface for a back catalogue of human knowledge.</p>
 <p>The LLM creates a response based on weighted probabilities; it essentially provides you with an answer which is "most likely" correct or helpful. This means that the LLM can give incorrect or unhelpful answers since these were deemed the "least worst" response. Responses like 'I don't know the answer' are down-weighted significantly. This becomes a significant concern, particularly in fields like mathematics, where precision is crucial, and an incorrect answer is of little use.</p>
 <p>This means that the model lacks true 'reasoning' capabilities. While it may appear to present a logical sequence of arguments, this is still a result of the 'least worst' mindset, and the model's responses are essentially educated guesses based on the patterns observed in the training data. If the specific example provided is not present in the training data, the model's accuracy becomes uncertain.</p>
 <p>The best use case for us is perhaps to use LLMs to summarise a "textbook" concept, rather than expecting it to complete worked examples for us. For instance, we might ask it to explain what a neural network is (try this as homework!), or remind us of a simple mathematical definition (see below). Keep in mind that you should cross check anything produced by a chatbot in this context, as it can simply make things up, see for instance <a href="https://blogs.library.duke.edu/blog/2023/03/09/chatgpt-and-fake-citations/">controversy about made up references</a>, or <a href="https://x.com/littmath/status/1707895875777785866?s=20">this dodgy proof</a>. We'll take a look at some more examples below.</p>
@@ -7510,19 +7537,223 @@ a.anchor-link {
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="Examples">Examples<a class="anchor-link" href="#Examples">¶</a></h2><p>In this section we will generate some examples using ChatGPT to demonstrate where it can be helpful and where it does a bad job.</p>
 <p>We show examples via screenshot. These tools are constantly being re-trained so there is no gaurantee that the prompts used below will give the same response in a few months time (try this!). We've tried to pick out examples to demonstrate the <em>way</em> LLMs work, rather than specific topics that always perform well or not.</p>
-<p>First the bad.</p>
-<h3 id="The-bad">The bad<a class="anchor-link" href="#The-bad">¶</a></h3><p>As we mentioned earlier, specific examples are generally not handled well by LLMs. Here we ask a question which is related to the applied part of this course. We ask "What is the Lagrange interpolating quadratic through (0,0) and (1,2).", in other words the polynomial of degree $\leq 2$ through these two points. Note that this cannot be a unique quadratic (the Lagrange polynomial), as this would need three pieces of data. Here's how ChatGPT handled the query:</p>
-<p><img alt="ChatGPT attempting to perform interpolation" width="800" src="images/ChatGPT_Interpolation.png"/></p>
-<p>First of all, it is aware of Lagrange interpolating polynomials (don't worry if you aren't! we'll cover this in more detail in Chapter 5) and has given us the correct formula for the linear case, so it has realised that linear is the best we can do with two points. So far so good! Unfortunately it then goes wrong when simplifying the result down. Clearly we should find $y=2x$ as the line through $(0,0)$ and $(1,2)!$</p>
-<p>It gets worse! You would hope it would be possible to point out to the chatbot that it has made a mistake. Here we check it has the correct points and then that the polynomial it has arrived at goes through the required points:</p>
-<p><img alt="ChatGPT checking it's interpolation" width="800" src="images/ChatGPT_InterpolationTest.png"/></p>
-<p>It has doubled down on us and attempts to gaslight us that $2=0!$ To us as mathematicians this is quite heinous but it is indicative of the way that these LLMs work. They aren't always able to recognise logical errors and will regularly give incorrect guesses. We should say, the same mistake is made if we ask for the linear interpolant rather than the quadratic; it isn't that we have thrown it off with a bad prompt (but this can happen!).</p>
-<p>For this reason if you do use something like ChatGPT, you have the ability to verify the result it has given you, and you do not blindly accept it.</p>
-<p>A further example is given here demonstrating the <em>inefficiency</em> of using an LLM for simple mathematics. Suppose we are posed with finding a quadratic with a root at $x=1$ and a turning point (of any type) at $x=2.$ Quickly we should/could realise that by symmetry the other root of the quadratic is at $x=3,$ therefore the quadratics are $\pm(x-1)(x-3)$ (you can check the turning point at $x=2$ for yourself if you like). Hopefully you agree, from a mathematical reasoning point of view, this was a quick problem to solve, once you spot the right approach. Take a look at what ChatGPT did:</p>
-<p><img alt="ChatGPT going wrong" width="800" src="images/ChatGPT_Quadratic2.png"/></p>
-<p>This example has really mangled the methods; it recognises $(x-1)$ should be a factor but then tries to combine this with another method altogether and ends up with a cubic! Again the reasoning has let it down, but moreover, unless it has seen the convenient "trick" before, it will always attempt something more convoluted. Think of it in the following way; would you use your calculator to compute $1+1$? No, because it's not efficient! Part of developing good mathematical skills is using them efficiently to build up more advanced results or concepts. If we blindly use technology to prop up our skills we will not be able to make progress.</p>
-<h3 id="The-not-bad">The not bad<a class="anchor-link" href="#The-not-bad">¶</a></h3><p>A common use-case for AI is actually in producing code. Some platforms embed a kind of <a href="https://code.visualstudio.com/docs/editor/github-copilot">auto-complete system</a> to help but ChatGPT can produce Python code. In a similar way that we have already discussed, we should be prepared to critically evaluate the code, as we would with any other AI output.</p>
-<p>Here is a reasonable example where we asked for some code to evaluate the trapezium rule for numerical integration:</p>
+<h3 id="Problem-cases">Problem cases<a class="anchor-link" href="#Problem-cases">¶</a></h3><p>As we mentioned earlier, specific examples are generally not handled well by LLMs. Often (although increasingly less) the AI will be unable to step you through a complex set of deductions as the example, or similar enough examples, have not been processed in the training data. Similarly the AI does not like to admit defeat and say it does not know the answer or cannot provide an accurate solution; such outcomes are downweighted in the training.</p>
+<p>Simple examples can be handled pretty well, for instance solving quadratic equations, performing simple integration and so on. The issue is that you need to be able to verify that a mistake has not been made!</p>
+<p>Here is an example where we ask for a solution to a very common ordinary differential equation</p>
+$$
+y''(x) = -\sin(y),
+$$<p>which describes the motion of a simple pendulum ($y$ would be the angle made with the vertical and $x$ time), which is well-known to have no closed-form solution, here is what happened</p>
+<p><img alt="ChatGPT going wrong with the pendulum equation" src="images/ChatGPT_pendulum1.png"/></p>
+<p>while this might be a worthwhile approach in some examples, it doesn't get us very far with the pendulum and the output suggests that it will. After some more steps which we omit the output gives</p>
+<p><img alt="ChatGPT going wrong with the pendulum equation" src="images/ChatGPT_pendulum2.png"/></p>
+<p>This final expression is sometimes used as means to approximate the period of the pendulum. The AI has recognised the solution is not easily obtained but it has not recognised the problem for what it is and that plenty of references, including wikipedia, will give a clearer response and historical context about this equation. Part of the difficulty might be that the variables used are different from the standard notation for the pendulum ($\theta(t)$ instead of $y(x)$).</p>
+<p>Note in this example Gemini gave the following as part of its response: <em>The differential equation $y'' = -\sin(y)$ is a nonlinear second-order ordinary differential equation. It describes the motion of a simple pendulum. There's no closed-form analytical solution in terms of elementary functions for general initial conditions.</em></p>
+<p>There are plenty of examples of AI going wrong with elementary mathematical deductions too, for instance:</p>
+<p><img alt="ChatGPT going wrong with the cos(3x)" src="images/ChatGPT_cos3x_1.png"/></p>
+<p>We were a bit cheeky giving the leading question, but most mathematicians would work on the problem and then decide whether the identity is correct, the AI compares to its nearest most common equation for $\cos(3x)$ and then decides there is a mistake.</p>
+<p>If we follow up with a different question, the AI does eventually figure it out, but not after some confusing output.</p>
+<p><img alt="ChatGPT going wrong with the cos(3x)" src="images/ChatGPT_cos3x_2.png"/>
+<img alt="ChatGPT going wrong with the cos(3x)" src="images/ChatGPT_cos3x_3.png"/></p>
+<h3 id="For-code?">For code?<a class="anchor-link" href="#For-code?">¶</a></h3><p>A common use-case for AI is actually in producing code. Some platforms embed a kind of <a href="https://code.visualstudio.com/docs/editor/github-copilot">auto-complete system</a> to help, but tools like ChatGPT and Gemini can produce Python code. In a similar way that we have already discussed, we should be prepared to critically evaluate the code, as we would with any other AI output.</p>
+<p>Here is an interesting case, ChatGPT was asked</p>
+<p><em>In Python can you write a function is_heterogram which takes a string as input and returns True if it contains no repeated letters (and False otherwise)?</em></p>
+<p>Here is the verbatim output.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=e2fc3abf-d54c-41f5-a4a0-23e8ad5dfdd4">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">is_heterogram</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Checks if the input string is a heterogram (contains no repeated letters).</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters:</span>
+<span class="sd">    - s: Input string</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">    - True if the string is a heterogram, False otherwise.</span>
+<span class="sd">    """</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>  <span class="c1"># Make the string case-insensitive</span>
+    <span class="n">seen</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>  <span class="c1"># Use a set to track letters</span>
+
+    <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">char</span><span class="o">.</span><span class="n">isalpha</span><span class="p">():</span>  <span class="c1"># Only consider letters</span>
+            <span class="k">if</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">seen</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">False</span>  <span class="c1"># Found a repeated letter</span>
+            <span class="n">seen</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">char</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="kc">True</span>
+
+<span class="c1"># Example usage</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">is_heterogram</span><span class="p">(</span><span class="s2">"The quick brown fox"</span><span class="p">))</span>  <span class="c1"># Should return True</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">is_heterogram</span><span class="p">(</span><span class="s2">"hello"</span><span class="p">))</span>  <span class="c1"># Should return False</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>False
+False
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=920b4800-5cbb-4e14-ab49-9d908b063225">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Take some time to digest the code. It turns out the function works perfectly well, however the first example is incorrectly commented, it is also False; both contain repeated letters! Another good example of AI struggling with specifics, a good validation should include both outcomes. See below, functionally the code is correct.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=77bb295f-686f-48d9-90a0-faef27a3476c">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">is_heterogram</span><span class="p">(</span><span class="s2">"The quick fox"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">is_heterogram</span><span class="p">(</span><span class="s2">"abcdefghijklmnopqrstuvwxyz"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">is_heterogram</span><span class="p">(</span><span class="s2">"a"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">is_heterogram</span><span class="p">(</span><span class="s2">"aa"</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>True
+True
+True
+False
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d9db829c-b461-4767-a33e-88c5f23fb01f">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>On the other hand, casting a critical eye over this code you might realise the approach taken is a little long-winded and somewhat inelegant. If you took MT1003 in recent years you may recognise this example from one of the computing worksheets when discussing Python sets; there we realised a simple way to do this is by conversion to a set and check equality of the length of the raw string and the converted set:</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cec2901d-c1d8-455e-97c7-f98bd31b9c0c">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">is_heterogram_sets</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">' '</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span>    <span class="c1"># remove case sensitivity and spaces</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">s</span><span class="p">))</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">is_heterogram_sets</span><span class="p">(</span><span class="s2">"The quick fox"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">is_heterogram_sets</span><span class="p">(</span><span class="s2">"abcdefghijklmnopqrstuvwxyz"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">is_heterogram_sets</span><span class="p">(</span><span class="s2">"a"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">is_heterogram_sets</span><span class="p">(</span><span class="s2">"aa"</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>True
+True
+True
+False
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=7baa0092-b57c-46e1-9baf-f94c4e70c39f">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">timeit</span> is_heterogram("abcdefghijklmnopqrstuvwxyz")
+<span class="o">%</span><span class="k">timeit</span> is_heterogram_sets("abcdefghijklmnopqrstuvwxyz")
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>1.2 µs ± 3.72 ns per loop (mean ± std. dev. of 7 runs, 1,000,000 loops each)
+465 ns ± 2.17 ns per loop (mean ± std. dev. of 7 runs, 1,000,000 loops each)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5fd64d0b-3050-4ac6-b8ad-1582c8c69cb7">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Hopefully you can see that this approach is much simpler. A working code need not be a good code, and good knowledge of programming structures/methods can be extremely helpful.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a0a747cd-a8e2-4284-bebb-bad63f605a77">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Here is another more reasonable example where we asked for some code to evaluate the trapezium rule for numerical integration:</p>
 </div>
 </div>
 </div>
@@ -7531,7 +7762,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">trapezoidal_rule_integral</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
@@ -7592,7 +7823,7 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>The code looks reasonable and obeys a number of the good practice principles that we have discussed earlier. There is even a validation example provided linking back to our discussion on computational thinking.</p>
+<p>The code looks good and obeys a number of the good practice principles that we have discussed earlier. There is even a validation example provided linking back to our discussion on computational thinking.</p>
 <p>However, we know from our good practice discussion that Python can conduct numerical operations like these ones much more quickly by using vectorisation via <code>numpy</code> arrays. Adding into the prompt "using numpy arrays" yields the following code:</p>
 </div>
 </div>
@@ -7602,12 +7833,12 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="k">def</span> <span class="nf">trapezoidal_rule_integral</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">trapezoidal_rule_integral2</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Compute the definite integral of a function using the trapezoidal rule.</span>
 
@@ -7637,7 +7868,7 @@ a.anchor-link {
 <span class="n">upper_limit</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">num_subintervals</span> <span class="o">=</span> <span class="mi">1000</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="n">trapezoidal_rule_integral</span><span class="p">(</span><span class="n">function_to_integrate</span><span class="p">,</span> <span class="n">lower_limit</span><span class="p">,</span> <span class="n">upper_limit</span><span class="p">,</span> <span class="n">num_subintervals</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">trapezoidal_rule_integral2</span><span class="p">(</span><span class="n">function_to_integrate</span><span class="p">,</span> <span class="n">lower_limit</span><span class="p">,</span> <span class="n">upper_limit</span><span class="p">,</span> <span class="n">num_subintervals</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"The approximate integral is: </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -7657,6 +7888,35 @@ a.anchor-link {
 </div>
 </div>
 </div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=51359398-44c4-49e4-ab4b-c414058b5945">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">timeit</span> trapezoidal_rule_integral(function_to_integrate, lower_limit, upper_limit, num_subintervals)
+<span class="o">%</span><span class="k">timeit</span> trapezoidal_rule_integral2(function_to_integrate, lower_limit, upper_limit, num_subintervals)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>92.1 µs ± 651 ns per loop (mean ± std. dev. of 7 runs, 10,000 loops each)
+8.17 µs ± 67.1 ns per loop (mean ± std. dev. of 7 runs, 100,000 loops each)
+</pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2c13acbd">
 <div class="jp-Cell-inputWrapper" tabindex="0">
@@ -7664,14 +7924,7 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>We get the same result but now much more efficiently. The key here is knowing the best prompt to give ChatGPT, there is significant danger in using it naively and expecting good quality code.</p>
-<p>We should also give a warning about using LLMs for debugging. We have discussed that LLMs cannot reason, therefore they are incapable of accurately finding logical mistakes in code.</p>
-<p>Here we give the debugging example from the computational thinking notebook:</p>
-<p><img alt="ChatGPT fails to debug a simple code" width="800" src="images/ChatGPT_Debug1.png"/></p>
-<p>The response is surprisingly bad, there are too many parenthesis (because we just removed <code>0.5*</code>) and it assumes this must be a bug. Given it could give us the trapezium rule (above) it should have no trouble with the midpoint rule, but the educated guesses aren't good enough. It did call us out for not using <code>import numpy as np</code>.</p>
-<p>We can persist and try and resolve it's concerns:</p>
-<p><img alt="ChatGPT fails to debug a simple code" width="800" src="images/ChatGPT_Debug2.png"/></p>
-<p>Now it assumes the issue is that we're not providing a <code>numpy</code> compatible (vectorised function) and so gives us the loop version. Now the factor of $1/2$ is present, but it hasn't really debugged our code, we've just been given an alternative (sub-optimal) code.</p>
+<p>We get the same result but now much more efficiently. The key with this example is knowing the best prompt to give ChatGPT, there is significant danger in using it naively and expecting good quality code.</p>
 </div>
 </div>
 </div>
@@ -7682,14 +7935,50 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="The-good">The good<a class="anchor-link" href="#The-good">¶</a></h2><p>Arguably the best thing to use an LLM for is to revise/refresh simple bookwork results where the chatbot will just parrot a standard definition widely found in multiple sources. In this sense we use them like we would any other reference material like an internet search, a textbook or the lecture notes for your modules. You may even notice the wording of a standard definition from an LLM follows closely some prominent source like wikipedia because this is in the training data.  Importantly for your studies you should always consider the lecture notes or course materials the definitive source; this should be thought of as <em>your</em> training data!</p>
+<h2 id="%22That's-textbook%22">"That's textbook"<a class="anchor-link" href="#%22That's-textbook%22">¶</a></h2><p>Arguably the best thing to use an LLM for is to revise/refresh simple bookwork results where the chatbot will just parrot a standard definition widely found in multiple sources. In this sense we use them like we would any other reference material like an internet search, a textbook or the lecture notes for your modules. You may even notice the wording of a standard definition from an LLM follows closely some prominent source like wikipedia because this is in the training data.  Importantly for your studies you should always consider the lecture notes or course materials the definitive source; this should be thought of as <em>your</em> training data!</p>
 <p>Here are a few examples of potentially helpful interactions with ChatGPT:</p>
-<p><img alt="ChatGPT giving coprime definition" width="800" src="images/ChatGPT_Coprime.png"/></p>
-<p><img alt="ChatGPT giving Euler Identity definition" width="800" src="images/ChatGPT_Euler.png"/></p>
-<p><img alt="ChatGPT giving Fourier Series definition" width="800" src="images/ChatGPT_Fourier.png"/></p>
+<p><img alt="ChatGPT giving coprime definition" src="images/ChatGPT_Coprime.png"/></p>
+<p><img alt="ChatGPT giving Euler Identity definition" src="images/ChatGPT_Euler.png"/></p>
+<p><img alt="ChatGPT giving Fourier Series definition" src="images/ChatGPT_Fourier.png"/></p>
 <p>The first two examples are quite standard. The third one on Fourier Series is textbook stuff too, however when you learn Fourier Series as a mathematician you will learn how the coefficients are obtained by these formulas and what properties of the Fourier basis functions are important. This is really very valuable for a good understanding of Fourier Series and the ChatGPT definition is missing it. One could give further prompts to get this information but you need to know what is missing, so just be wary.</p>
 <p><strong>Report writing</strong></p>
 <p>If you read into LLMs more widely you may notice that they are often used for language correction, proof-reading or to improve/edit text generally. For mathematicians this can be useful when we come to write journal articles or when you are report writing, however, as we mentioned at the beginning the <a href="https://www.st-andrews.ac.uk/policy/academic-policies-assessment-examination-and-award-good-academic-practice/good-academic-practice.pdf">university forbids this usage</a> and language correction should only be used where <a href="https://www.st-andrews.ac.uk/policy/academic-policies-learning-and-teaching-language-correction/language-correction.pdf">authorised and acknowledged</a>. The same reasoning applied here as to the mathematical use of AI; if we are unable to write effectively ourselves, how do we know the AI is performing well?</p>
+<p>One thing that you might find useful, when it comes to writing dissertations or reports, is a quick way to obtain standard $\LaTeX$ code. When I asked</p>
+<p><em>can you give me the LaTeX code for the incompressible Navier-Stokes equations?</em></p>
+<p>to ChatGPT I got</p>
+<div class="highlight"><pre><span></span><span class="k">\begin</span><span class="nb">{</span>align<span class="nb">}</span>
+    <span class="k">\frac</span><span class="nb">{</span><span class="k">\partial</span> <span class="k">\mathbf</span><span class="nb">{</span>u<span class="nb">}}{</span><span class="k">\partial</span> t<span class="nb">}</span> + (<span class="k">\mathbf</span><span class="nb">{</span>u<span class="nb">}</span> <span class="k">\cdot</span> <span class="k">\nabla</span>)<span class="k">\mathbf</span><span class="nb">{</span>u<span class="nb">}</span> <span class="nb">&amp;</span>= -<span class="k">\nabla</span> p + <span class="k">\nu</span> <span class="k">\nabla</span><span class="nb">^</span>2 <span class="k">\mathbf</span><span class="nb">{</span>u<span class="nb">}</span> + <span class="k">\mathbf</span><span class="nb">{</span>f<span class="nb">}</span>, <span class="k">\\</span>
+    <span class="k">\nabla</span> <span class="k">\cdot</span> <span class="k">\mathbf</span><span class="nb">{</span>u<span class="nb">}</span> <span class="nb">&amp;</span>= 0,
+<span class="k">\end</span><span class="nb">{</span>align<span class="nb">}</span>
+
+where:
+<span class="k">\begin</span><span class="nb">{</span>itemize<span class="nb">}</span>
+    <span class="k">\item</span> <span class="s">$</span><span class="nv">\mathbf</span><span class="nb">{u}</span><span class="s">$</span> is the velocity vector field,
+    <span class="k">\item</span> <span class="s">$</span><span class="nb">t</span><span class="s">$</span> is time,
+    <span class="k">\item</span> <span class="s">$</span><span class="nb">p</span><span class="s">$</span> is the pressure field,
+    <span class="k">\item</span> <span class="s">$</span><span class="nv">\nu</span><span class="s">$</span> is the kinematic viscosity,
+    <span class="k">\item</span> <span class="s">$</span><span class="nv">\mathbf</span><span class="nb">{f}</span><span class="s">$</span> represents external forces (e.g., gravity),
+    <span class="k">\item</span> <span class="s">$</span><span class="nv">\nabla</span><span class="s">$</span> denotes the gradient operator,
+    <span class="k">\item</span> <span class="s">$</span><span class="nv">\nabla</span><span class="nb"> </span><span class="nv">\cdot</span><span class="s">$</span> represents the divergence operator,
+    <span class="k">\item</span> <span class="s">$</span><span class="nv">\nabla</span><span class="nb">^</span><span class="m">2</span><span class="s">$</span> is the Laplacian operator.
+<span class="k">\end</span><span class="nb">{</span>itemize<span class="nb">}</span>
+</pre></div>
+<p>which renders as</p>
+\begin{align}
+    \frac{\partial \mathbf{u}}{\partial t} + (\mathbf{u} \cdot \nabla)\mathbf{u} &amp;= -\nabla p + \nu \nabla^2 \mathbf{u} + \mathbf{f}, \\
+    \nabla \cdot \mathbf{u} &amp;= 0,
+\end{align}<p>where:</p>
+<ul>
+<li>$\mathbf{u}$ is the velocity vector field,</li>
+<li>$t$ is time,</li>
+<li>$p$ is the pressure field,</li>
+<li>$\nu$ is the kinematic viscosity,</li>
+<li>$\mathbf{f}$ represents external forces (e.g., gravity),</li>
+<li>$\nabla$ denotes the gradient operator,</li>
+<li>$\nabla \cdot$ represents the divergence operator,</li>
+<li>$\nabla^2$ is the Laplacian operator.</li>
+</ul>
+<p>which might be quicker than typing it out yourself if you are new to writing $\LaTeX.$</p>
 </div>
 </div>
 </div>
@@ -7710,4 +7999,7 @@ a.anchor-link {
 </div>
 </main>
 </body>
+<script type="application/vnd.jupyter.widget-state+json">
+{"state": {}, "version_major": 2, "version_minor": 0}
+</script>
 </html>
